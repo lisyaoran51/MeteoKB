@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="來源檔案">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="標頭檔">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="資源檔">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="來源檔案\base">
+      <UniqueIdentifier>{b47231be-71b5-47ad-a59b-1dad985cbb17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\audio">
+      <UniqueIdentifier>{52e6cf0f-087f-4aa5-8d3c-b540e9d7e054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\config">
+      <UniqueIdentifier>{876c942e-eb77-4d2b-b607-d499188ce71d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\graphic">
+      <UniqueIdentifier>{509f8f57-bd33-49c2-a694-3331c5ccd976}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\graphic\map">
+      <UniqueIdentifier>{66fed2c7-33b6-4b56-b9a9-566a16414da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\graphic\map\mapper">
+      <UniqueIdentifier>{6f1862fa-3975-45d2-ba5b-98db458e58f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\graphic\map\builder">
+      <UniqueIdentifier>{e0fac2ff-c77b-4473-8fd3-e678a2d8f630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\graphic\renderer">
+      <UniqueIdentifier>{b9660b82-fee8-41ee-9798-a7ecfbfed1eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\led_driver">
+      <UniqueIdentifier>{ae8710b1-77bd-414d-89cd-4b1734e15b6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\ruleset">
+      <UniqueIdentifier>{e98acdf5-b1ff-496d-b526-489a31d12475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\ruleset\timing">
+      <UniqueIdentifier>{f5e39454-dd55-4449-821f-ee19d91a77aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\ruleset\mod">
+      <UniqueIdentifier>{5f0c8bc0-c3bd-4c69-8369-17e84d315e27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\scheduler">
+      <UniqueIdentifier>{dc7542f1-f488-4525-b0f7-5ce192292d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\sheetmusic">
+      <UniqueIdentifier>{b1e5452f-c54d-4b50-b125-a98dd28cd148}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\sheetmusic\format">
+      <UniqueIdentifier>{98f05cb6-2d93-4ef4-8e21-05c603177691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\sheetmusic\io">
+      <UniqueIdentifier>{7a8c5739-55a5-4757-8220-08dbdf16fe21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base">
+      <UniqueIdentifier>{2723fef1-aafa-45fb-bc73-3313e6550d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\audio">
+      <UniqueIdentifier>{43b88f58-650a-41b6-8101-05c5c81a3555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\config">
+      <UniqueIdentifier>{3a594a5c-f9c9-423b-b545-bbff5cbdf73e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\graphic">
+      <UniqueIdentifier>{d9f3edba-2177-4212-8fa7-e7f7250f8455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\graphic\map">
+      <UniqueIdentifier>{c226911d-0f33-4712-83a5-c634c2aa056c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\graphic\map\mapper">
+      <UniqueIdentifier>{857a2757-034a-443f-ad55-b605a196c01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\graphic\map\builder">
+      <UniqueIdentifier>{d2e13dfb-0f6a-4270-9896-4163857c5a16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\graphic\renderer">
+      <UniqueIdentifier>{dd2cc401-e926-4c0f-8705-fb842c966ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\led_driver">
+      <UniqueIdentifier>{d7d69f68-c3af-4120-ae96-74174d600029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\ruleset">
+      <UniqueIdentifier>{84536ac4-1aeb-4147-9996-d843bc60286c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\ruleset\timing">
+      <UniqueIdentifier>{2e54dcdb-7caa-41d8-bf23-11f4932841e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\ruleset\mod">
+      <UniqueIdentifier>{a9628056-7986-46e1-a9fb-f11c8409f00f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\scheduler">
+      <UniqueIdentifier>{3fc45852-de71-42f6-a695-15fc7d33716f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\sheetmusic">
+      <UniqueIdentifier>{11fd7402-738a-4c3b-82f2-b67055d74555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\sheetmusic\format">
+      <UniqueIdentifier>{6cfab30d-a591-47d8-9dfe-3fdbeb79128e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\sheetmusic\io">
+      <UniqueIdentifier>{fbffc68a-9def-4f45-a18f-1cfd4c19744b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\util">
+      <UniqueIdentifier>{8dcdda0b-686c-44eb-8ea2-ba3507645485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\scheduler\event">
+      <UniqueIdentifier>{165c21fd-5e28-4d17-8324-47edb46bd3e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\scheduler\event\effect">
+      <UniqueIdentifier>{df56837d-3ce4-4e7a-9643-c5e938e0ab42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\scheduler\event">
+      <UniqueIdentifier>{19a8d4ba-2469-466c-9f2c-4c16b7ce90fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\scheduler\event\effect">
+      <UniqueIdentifier>{14675e33-753d-424d-8515-ff8015873bf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\sheetmusic\ctrl_point">
+      <UniqueIdentifier>{89ca8d74-69a5-4e96-bc1d-0f500b63b1d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\base\sheetmusic\ctrl_point">
+      <UniqueIdentifier>{7a92ee2b-4f53-4bd0-8fb2-22c08d48d392}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\dma.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\mailbox.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pcm.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pwm.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\rpihw.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ws2811.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="base\config\config_manager.cpp">
+      <Filter>來源檔案\base\config</Filter>
+    </ClCompile>
+    <ClCompile Include="base\sheetmusic\sheetmusic.cpp">
+      <Filter>來源檔案\base\sheetmusic</Filter>
+    </ClCompile>
+    <ClCompile Include="base\sheetmusic\io\file_reader.cpp">
+      <Filter>來源檔案\base\sheetmusic\io</Filter>
+    </ClCompile>
+    <ClCompile Include="base\sheetmusic\format\sm_decoder.cpp">
+      <Filter>來源檔案\base\sheetmusic\format</Filter>
+    </ClCompile>
+    <ClCompile Include="base\scheduler\scheduler.cpp">
+      <Filter>來源檔案\base\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="base\graphic\map\map.cpp">
+      <Filter>來源檔案\base\graphic\map</Filter>
+    </ClCompile>
+    <ClCompile Include="base\graphic\map\mapper\mapper.cpp">
+      <Filter>來源檔案\base\graphic\map\mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="base\graphic\map\builder\map_builder.cpp">
+      <Filter>來源檔案\base\graphic\map\builder</Filter>
+    </ClCompile>
+    <ClCompile Include="base\graphic\renderer\renderer.cpp">
+      <Filter>來源檔案\base\graphic\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="base\ruleset\mod\mod.cpp">
+      <Filter>來源檔案\base\ruleset\mod</Filter>
+    </ClCompile>
+    <ClCompile Include="base\ruleset\timing\processor.cpp">
+      <Filter>來源檔案\base\ruleset\timing</Filter>
+    </ClCompile>
+    <ClCompile Include="base\scheduler\event\event.cpp">
+      <Filter>來源檔案\base\scheduler\event</Filter>
+    </ClCompile>
+    <ClCompile Include="base\scheduler\event\event_builder.cpp">
+      <Filter>來源檔案\base\scheduler\event</Filter>
+    </ClCompile>
+    <ClCompile Include="base\scheduler\event\effect\effect.cpp">
+      <Filter>來源檔案\base\scheduler\event\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="base\sheetmusic\ctrl_point\ctrl_point.cpp">
+      <Filter>來源檔案\base\sheetmusic\ctrl_point</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\clk.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dma.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gpio.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\mailbox.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pcm.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pwm.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\rpihw.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ws2811.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\config\config_manager.h">
+      <Filter>標頭檔\base\config</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\io\file_reader.h">
+      <Filter>標頭檔\base\sheetmusic\io</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\format\sm_decoder.h">
+      <Filter>標頭檔\base\sheetmusic\format</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\scheduler.h">
+      <Filter>標頭檔\base\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphic\map\map.h">
+      <Filter>標頭檔\base\graphic\map</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphic\map\mapper\mapper.h">
+      <Filter>標頭檔\base\graphic\map\mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphic\map\builder\map_builder.h">
+      <Filter>標頭檔\base\graphic\map\builder</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphic\renderer\renderer.h">
+      <Filter>標頭檔\base\graphic\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ruleset\mod\mod.h">
+      <Filter>標頭檔\base\ruleset\mod</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ruleset\timing\processor.h">
+      <Filter>標頭檔\base\ruleset\timing</Filter>
+    </ClInclude>
+    <ClInclude Include="util\singleton.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\template_constraint.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\event\event_builder.h">
+      <Filter>標頭檔\base\scheduler\event</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\event\event.h">
+      <Filter>標頭檔\base\scheduler\event</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\event\effect\effect.h">
+      <Filter>標頭檔\base\scheduler\event\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h">
+      <Filter>標頭檔\base\sheetmusic\ctrl_point</Filter>
+    </ClInclude>
+    <ClInclude Include="base\config\type.h">
+      <Filter>標頭檔\base\config</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="daily_log.txt">
+      <Filter>資源檔</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

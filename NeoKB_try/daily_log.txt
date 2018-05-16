@@ -1,0 +1,13 @@
+
+
+
+5/16
+	把資料夾整理好，寫了file reader和 decoder
+
+5/17
+	在template上加constraint
+	http://www.stroustrup.com/bs_faq2.html#constraints
+
+	vector
+	http://mropengate.blogspot.tw/2015/07/cc-vector-stl.htm
+	l
