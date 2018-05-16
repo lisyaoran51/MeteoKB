@@ -44,7 +44,6 @@ namespace effect {
 			MTO_FLOAT life_t
 		);
 
-		(void*)handler(event_t* self);
 
 	protected:
 

@@ -26,7 +26,7 @@ namespace event {
 
 		void is_alive();
 
-		(void*)handler(event_t* self);
+		int virtual register_handler(void* h);
 
 	protected:
 
@@ -36,6 +36,8 @@ namespace event {
 		MTO_FLOAT* start_time;
 		MTO_FLOAT* life_time;
 		MTO_FLOAT* time_left;
+
+		(void*)handler(event_t* self);
 	};
 
 	enum event_start_type {

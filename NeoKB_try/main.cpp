@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	decoder.decode(path, sm);
 
 	// build events from sm
-	List<meteo_event_t> events;
+	vector<event_t*>* events;
 	sm_event_builder_t event_builder(sm);
 	events = event_builder.build();
 
