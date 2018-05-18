@@ -4,17 +4,19 @@
 
 #include <vector>
 #include "event/event.h"
-
+#include "updatable.h"
 
 using namespace std;
 using namespace base::scheduler::event;
-
+using namespace base::scheduler;
 
 namespace base {
 namespace scheduler {
 
-
-	class scheduler_t {
+	/// <summary>
+	/// to watch if a timing task is up
+	/// </summary>
+	class scheduler_t: public updatable_t {
 
 		int tid;
 
@@ -22,7 +24,10 @@ namespace scheduler {
 
 		vector<event_t*>* running_events;
 
-		MTO_FLOAT current_time;
+		/// <summary>
+		/// let the processor to register the handler for every event
+		/// </summary>
+		int* event_handler(event_t* e);
 
 	public:
 
@@ -30,8 +35,7 @@ namespace scheduler {
 
 		int add_range(vector<event_t*>* es);
 
-
-
+		int register_handler(void* h);
 	};
 
 }}

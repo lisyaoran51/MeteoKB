@@ -43,9 +43,6 @@
     <Filter Include="來源檔案\base\ruleset">
       <UniqueIdentifier>{e98acdf5-b1ff-496d-b526-489a31d12475}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\base\ruleset\timing">
-      <UniqueIdentifier>{f5e39454-dd55-4449-821f-ee19d91a77aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\base\ruleset\mod">
       <UniqueIdentifier>{5f0c8bc0-c3bd-4c69-8369-17e84d315e27}</UniqueIdentifier>
     </Filter>
@@ -91,9 +88,6 @@
     <Filter Include="標頭檔\base\ruleset">
       <UniqueIdentifier>{84536ac4-1aeb-4147-9996-d843bc60286c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="標頭檔\base\ruleset\timing">
-      <UniqueIdentifier>{2e54dcdb-7caa-41d8-bf23-11f4932841e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="標頭檔\base\ruleset\mod">
       <UniqueIdentifier>{a9628056-7986-46e1-a9fb-f11c8409f00f}</UniqueIdentifier>
     </Filter>
@@ -130,26 +124,11 @@
     <Filter Include="來源檔案\base\sheetmusic\ctrl_point">
       <UniqueIdentifier>{7a92ee2b-4f53-4bd0-8fb2-22c08d48d392}</UniqueIdentifier>
     </Filter>
+    <Filter Include="標頭檔\base\play">
+      <UniqueIdentifier>{6e8bb58a-6b7d-413c-8830-74d6c0444286}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\dma.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\mailbox.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\pcm.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\pwm.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\rpihw.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\ws2811.c">
-      <Filter>來源檔案\base\led_driver</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
@@ -183,9 +162,6 @@
     <ClCompile Include="base\ruleset\mod\mod.cpp">
       <Filter>來源檔案\base\ruleset\mod</Filter>
     </ClCompile>
-    <ClCompile Include="base\ruleset\timing\processor.cpp">
-      <Filter>來源檔案\base\ruleset\timing</Filter>
-    </ClCompile>
     <ClCompile Include="base\scheduler\event\event.cpp">
       <Filter>來源檔案\base\scheduler\event</Filter>
     </ClCompile>
@@ -197,6 +173,24 @@
     </ClCompile>
     <ClCompile Include="base\sheetmusic\ctrl_point\ctrl_point.cpp">
       <Filter>來源檔案\base\sheetmusic\ctrl_point</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\dma.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\mailbox.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\pcm.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\pwm.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\rpihw.c">
+      <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\led_driver\ws2811.c">
+      <Filter>來源檔案\base\led_driver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,9 +217,6 @@
     </ClInclude>
     <ClInclude Include="..\..\ws2811.h">
       <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="base\config\config_manager.h">
-      <Filter>標頭檔\base\config</Filter>
     </ClInclude>
     <ClInclude Include="base\sheetmusic\sheetmusic.h">
       <Filter>標頭檔\base\sheetmusic</Filter>
@@ -254,9 +245,6 @@
     <ClInclude Include="base\ruleset\mod\mod.h">
       <Filter>標頭檔\base\ruleset\mod</Filter>
     </ClInclude>
-    <ClInclude Include="base\ruleset\timing\processor.h">
-      <Filter>標頭檔\base\ruleset\timing</Filter>
-    </ClInclude>
     <ClInclude Include="util\singleton.h">
       <Filter>標頭檔\util</Filter>
     </ClInclude>
@@ -275,8 +263,41 @@
     <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h">
       <Filter>標頭檔\base\sheetmusic\ctrl_point</Filter>
     </ClInclude>
-    <ClInclude Include="base\config\type.h">
-      <Filter>標頭檔\base\config</Filter>
+    <ClInclude Include="base\scheduler\updatable.h">
+      <Filter>標頭檔\base\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\updater.h">
+      <Filter>標頭檔\base\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="util\mto_type.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\event\event_processor.h">
+      <Filter>標頭檔\base\scheduler\event</Filter>
+    </ClInclude>
+    <ClInclude Include="base\config\config_manager.h">
+      <Filter>標頭檔\base\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\scheduler\event\event_processor_master.h">
+      <Filter>標頭檔\base\scheduler\event</Filter>
+    </ClInclude>
+    <ClInclude Include="util\instance_creator.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ruleset\ruleset.h">
+      <Filter>標頭檔\base\ruleset</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ruleset\ruleset_info.h">
+      <Filter>標頭檔\base\ruleset</Filter>
+    </ClInclude>
+    <ClInclude Include="base\play\playfield.h">
+      <Filter>標頭檔\base\play</Filter>
+    </ClInclude>
+    <ClInclude Include="base\ruleset\ruleset_executor.h">
+      <Filter>標頭檔\base\ruleset</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\working_sheetmusic.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

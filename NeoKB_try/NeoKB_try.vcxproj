@@ -19,19 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\dma.c" />
-    <ClCompile Include="..\..\mailbox.c" />
-    <ClCompile Include="..\..\pcm.c" />
-    <ClCompile Include="..\..\pwm.c" />
-    <ClCompile Include="..\..\rpihw.c" />
-    <ClCompile Include="..\..\ws2811.c" />
     <ClCompile Include="base\config\config_manager.cpp" />
     <ClCompile Include="base\graphic\map\builder\map_builder.cpp" />
     <ClCompile Include="base\graphic\map\map.cpp" />
     <ClCompile Include="base\graphic\map\mapper\mapper.cpp" />
     <ClCompile Include="base\graphic\renderer\renderer.cpp" />
+    <ClCompile Include="base\led_driver\dma.c" />
+    <ClCompile Include="base\led_driver\mailbox.c" />
+    <ClCompile Include="base\led_driver\pcm.c" />
+    <ClCompile Include="base\led_driver\pwm.c" />
+    <ClCompile Include="base\led_driver\rpihw.c" />
+    <ClCompile Include="base\led_driver\ws2811.c" />
     <ClCompile Include="base\ruleset\mod\mod.cpp" />
-    <ClCompile Include="base\ruleset\timing\processor.cpp" />
     <ClCompile Include="base\sheetmusic\ctrl_point\ctrl_point.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="base\scheduler\scheduler.cpp" />
@@ -51,22 +50,31 @@
     <ClInclude Include="..\..\pwm.h" />
     <ClInclude Include="..\..\rpihw.h" />
     <ClInclude Include="..\..\ws2811.h" />
-    <ClInclude Include="base\config\type.h" />
     <ClInclude Include="base\config\config_manager.h" />
     <ClInclude Include="base\graphic\map\builder\map_builder.h" />
     <ClInclude Include="base\graphic\map\map.h" />
     <ClInclude Include="base\graphic\map\mapper\mapper.h" />
     <ClInclude Include="base\graphic\renderer\renderer.h" />
+    <ClInclude Include="base\play\playfield.h" />
     <ClInclude Include="base\ruleset\mod\mod.h" />
-    <ClInclude Include="base\ruleset\timing\processor.h" />
+    <ClInclude Include="base\ruleset\ruleset.h" />
+    <ClInclude Include="base\ruleset\ruleset_info.h" />
+    <ClInclude Include="base\ruleset\ruleset_executor.h" />
+    <ClInclude Include="base\scheduler\event\event_processor.h" />
+    <ClInclude Include="base\scheduler\event\event_processor_master.h" />
     <ClInclude Include="base\scheduler\scheduler.h" />
     <ClInclude Include="base\scheduler\event\effect\effect.h" />
     <ClInclude Include="base\scheduler\event\event.h" />
     <ClInclude Include="base\scheduler\event\event_builder.h" />
+    <ClInclude Include="base\scheduler\updatable.h" />
+    <ClInclude Include="base\scheduler\updater.h" />
     <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h" />
     <ClInclude Include="base\sheetmusic\format\sm_decoder.h" />
     <ClInclude Include="base\sheetmusic\io\file_reader.h" />
     <ClInclude Include="base\sheetmusic\sheetmusic.h" />
+    <ClInclude Include="base\sheetmusic\working_sheetmusic.h" />
+    <ClInclude Include="util\instance_creator.h" />
+    <ClInclude Include="util\mto_type.h" />
     <ClInclude Include="util\singleton.h" />
     <ClInclude Include="util\template_constraint.h" />
   </ItemGroup>

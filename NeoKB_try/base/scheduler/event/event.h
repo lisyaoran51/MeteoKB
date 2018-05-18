@@ -5,7 +5,7 @@
 #include <fstream>
 #include <vector>
 #include "../../util/template_constraint.h"
-#include "../../config/type.h"
+#include "../../util/mto_type.h"
 
 
 
@@ -22,6 +22,12 @@ namespace event {
 
 	public:
 
+		/// <summary>
+		/// When master receive a event, he asks the event's typename. 
+		/// Use the typename to register a corresponding processor for this event.
+		/// </summary>
+		static string get_event_type_name();
+
 		void elapse(MTO_FLOAT sec);
 
 		void is_alive();
@@ -30,6 +36,8 @@ namespace event {
 
 	protected:
 
+		int eid;
+
 		event_start_type start_type;
 		event_elapse_type elapse_type;
 
@@ -37,6 +45,7 @@ namespace event {
 		MTO_FLOAT* life_time;
 		MTO_FLOAT* time_left;
 
+		/// ???
 		(void*)handler(event_t* self);
 	};
 

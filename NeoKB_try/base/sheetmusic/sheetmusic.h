@@ -17,7 +17,7 @@ namespace sheetmusic {
 	/// where T : effect_group
 	/// 
 	template <class T>
-	class sm_t : T_constraint_t
+	class sm_t : T_constraint_t<effect_group_t>
 	{
 
 		sm_info_t* sm_info;
@@ -28,13 +28,14 @@ namespace sheetmusic {
 		
 		vector<ctrl_point>* effects;
 
+		void constraint_check_derived_from<T>();
+
 	public:
 		
 		sm_t(sm_t* sm = NULL);
 
 	protected:
 
-		void T_constraint_check();
 	};
 
 
