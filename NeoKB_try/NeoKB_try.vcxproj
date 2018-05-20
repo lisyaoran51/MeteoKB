@@ -42,19 +42,19 @@
     <ClCompile Include="base\sheetmusic\sheetmusic.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\clk.h" />
-    <ClInclude Include="..\..\dma.h" />
-    <ClInclude Include="..\..\gpio.h" />
-    <ClInclude Include="..\..\mailbox.h" />
-    <ClInclude Include="..\..\pcm.h" />
-    <ClInclude Include="..\..\pwm.h" />
-    <ClInclude Include="..\..\rpihw.h" />
-    <ClInclude Include="..\..\ws2811.h" />
     <ClInclude Include="base\config\config_manager.h" />
     <ClInclude Include="base\graphic\map\builder\map_builder.h" />
     <ClInclude Include="base\graphic\map\map.h" />
     <ClInclude Include="base\graphic\map\mapper\mapper.h" />
     <ClInclude Include="base\graphic\renderer\renderer.h" />
+    <ClInclude Include="base\led_driver\clk.h" />
+    <ClInclude Include="base\led_driver\dma.h" />
+    <ClInclude Include="base\led_driver\gpio.h" />
+    <ClInclude Include="base\led_driver\mailbox.h" />
+    <ClInclude Include="base\led_driver\pcm.h" />
+    <ClInclude Include="base\led_driver\pwm.h" />
+    <ClInclude Include="base\led_driver\rpihw.h" />
+    <ClInclude Include="base\led_driver\ws2811.h" />
     <ClInclude Include="base\play\playfield.h" />
     <ClInclude Include="base\ruleset\mod\mod.h" />
     <ClInclude Include="base\ruleset\ruleset.h" />
@@ -66,13 +66,16 @@
     <ClInclude Include="base\scheduler\event\effect\effect.h" />
     <ClInclude Include="base\scheduler\event\event.h" />
     <ClInclude Include="base\scheduler\event\event_builder.h" />
-    <ClInclude Include="base\scheduler\updatable.h" />
-    <ClInclude Include="base\scheduler\updater.h" />
     <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h" />
     <ClInclude Include="base\sheetmusic\format\sm_decoder.h" />
     <ClInclude Include="base\sheetmusic\io\file_reader.h" />
     <ClInclude Include="base\sheetmusic\sheetmusic.h" />
     <ClInclude Include="base\sheetmusic\working_sheetmusic.h" />
+    <ClInclude Include="util\hierachal\cachable.h" />
+    <ClInclude Include="util\hierachal\child_addable.h" />
+    <ClInclude Include="util\hierachal\loadable.h" />
+    <ClInclude Include="util\hierachal\updatable.h" />
+    <ClInclude Include="util\hierachal\updater.h" />
     <ClInclude Include="util\instance_creator.h" />
     <ClInclude Include="util\mto_type.h" />
     <ClInclude Include="util\singleton.h" />

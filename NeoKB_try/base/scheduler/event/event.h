@@ -38,8 +38,8 @@ namespace event {
 
 		int eid;
 
-		event_start_type start_type;
-		event_elapse_type elapse_type;
+		event_start_type_t start_type;
+		event_elapse_type_t elapse_type;
 
 		MTO_FLOAT* start_time;
 		MTO_FLOAT* life_time;
@@ -49,12 +49,12 @@ namespace event {
 		(void*)handler(event_t* self);
 	};
 
-	enum event_start_type {
+	enum event_start_type_t {
 		immediate,
 		reserved
 	};
 
-	enum event_elapse_type {
+	enum event_elapse_type_t {
 		one_time,
 		longterm
 	};

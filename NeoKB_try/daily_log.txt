@@ -14,3 +14,14 @@
 	寫了event effect，現在要寫scheduler
 
 	寫了scheduler、event、event processor，現在要寫map
+
+5/19
+	cachable -> loadable -> child_addable
+	找到mutual ref的解決方法
+	http://squall.cs.ntou.edu.tw/cpp/1042/labtest/test2/MutualReferences.html
+
+5/20
+	找步道方法把不同input的load()串成一串vector
+	https://stackoverflow.com/questions/16262338/get-base-class-for-a-type-in-class-hierarchy
+	找到了，但不知道怎麼取父類別的類別出來
+	卡在register_private_loader那

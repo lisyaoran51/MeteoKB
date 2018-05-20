@@ -127,6 +127,9 @@
     <Filter Include="標頭檔\base\play">
       <UniqueIdentifier>{6e8bb58a-6b7d-413c-8830-74d6c0444286}</UniqueIdentifier>
     </Filter>
+    <Filter Include="標頭檔\util\hierachal">
+      <UniqueIdentifier>{1e0527f3-4ccf-4628-a294-61ed2047cf6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -194,30 +197,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\clk.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dma.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gpio.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\mailbox.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\pcm.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\pwm.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\rpihw.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\ws2811.h">
-      <Filter>標頭檔\base\led_driver</Filter>
-    </ClInclude>
     <ClInclude Include="base\sheetmusic\sheetmusic.h">
       <Filter>標頭檔\base\sheetmusic</Filter>
     </ClInclude>
@@ -263,12 +242,6 @@
     <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h">
       <Filter>標頭檔\base\sheetmusic\ctrl_point</Filter>
     </ClInclude>
-    <ClInclude Include="base\scheduler\updatable.h">
-      <Filter>標頭檔\base\scheduler</Filter>
-    </ClInclude>
-    <ClInclude Include="base\scheduler\updater.h">
-      <Filter>標頭檔\base\scheduler</Filter>
-    </ClInclude>
     <ClInclude Include="util\mto_type.h">
       <Filter>標頭檔\util</Filter>
     </ClInclude>
@@ -298,6 +271,45 @@
     </ClInclude>
     <ClInclude Include="base\sheetmusic\working_sheetmusic.h">
       <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\updatable.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\updater.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\loadable.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\cachable.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\child_addable.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\clk.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\dma.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\gpio.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\mailbox.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\pcm.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\pwm.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\rpihw.h">
+      <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="base\led_driver\ws2811.h">
+      <Filter>標頭檔\base\led_driver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

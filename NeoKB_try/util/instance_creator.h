@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include"singleton.h"
 
 
 /*
@@ -19,7 +20,7 @@ namespace util {
 	/// instantiate a class with its name in string
 	/// </summary>
 	template<class T_base>
-	class instance_creator_t {
+	class instance_creator_t: public singleton_t {
 	
 		map<string, T_base*(*)()> derived_creators;
 

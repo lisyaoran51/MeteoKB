@@ -33,7 +33,7 @@ namespace ruleset {
 
 	public:
 
-		
+		ruleset_executor_t(working_sm_t<T>* w);
 
 	protected:
 
@@ -52,6 +52,8 @@ namespace ruleset {
 		event_processor_master_t* event_processor_master;
 
 		renderer_t* renderer;
+
+		vector<void*> judgement_handler;
 
 		/// <summary>
 		/// when added to a object hierchy, do load() to load in the information in the hierachy.
