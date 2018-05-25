@@ -13,24 +13,19 @@ using namespace std;
 
 
 
-namespace util {
-namespace hierachal{
+namespace Util {
+namespace Hierachal{
 
 	class loadable_t;
 
 	/// <summary>
 	/// to make a cache of the whole game for some configuration and common data
 	/// </summary>
-	class cachable_t {
+	class cachable_t: has_parent_t {
 
 		map<type_info, void*> cache;
 
 	public:
-
-		/// <summary>
-		/// get the parent object in hierachy
-		/// </summary>
-		loadable_t* get_parent();
 
 		/// <summary>
 		/// get the cache of a certain type in the whole hierachy

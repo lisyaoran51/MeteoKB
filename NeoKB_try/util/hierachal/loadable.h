@@ -2,22 +2,38 @@
 #define LOADABLE_H
 
 #include "cachable.h"
+#include "../MtoType.h"
 #include<vector>
 #include<utility>
 
 using namespace std;
+using namespace Util;
 
-#define LOADER_POINTER int (*)(int, char*)
+/*
+ * pointer of every variable
+ * https://stackoverflow.com/questions/19710601/any-type-of-pointer-can-point-to-anything
+ *
+ * 註冊privateLoad的方法
+ * 在constructor裡面放一個registerPrivateLoader("類別名稱", privateLoad);
+ */
+
+
+#define LOADER_POINTER MTO_FUNC_POINTER
 #define LOADER_INPUT pair<int, char**>*
 
 /*
  * when child class call parent class's protected function to access private variable, it only
  * access his own private variable, but not access child class's private variable
  *
+ * c++ can't automatically register private function. so we do it manually by put 
+ * "registerPrivateLoader()" into every constructor of child classes. So that
+ * we could find a vector of loaders of each class inherited from loadable_t
+ * and then call them
+ *
  */
 
-namespace util {
-namespace hierachal{
+namespace Util {
+namespace Hierachal{
 
 	class loadable_t: public cachable_t {
 
@@ -33,17 +49,13 @@ namespace hierachal{
 		/// </summary>
 		vector<LOADER_INPUT> loader_inputs;
 
-		int private_load();
-		
-		/// <summary>
-		/// find every parent class's load() and put into loaders
-		/// </summary>
-		int register_loaders();
+		int privateLoad(int argc, char* argv);
 
 	public:
 
 		loadable_t() {
-			register_private_loader();
+			// must do in every loadable derived class
+			registerPrivateLoader("loadable_t", privateLoad);
 		}
 
 		bool is_loaded();
@@ -52,17 +64,25 @@ namespace hierachal{
 
 		/// <summary>
 		/// call every parent class's private load() function
-		/// 1. register every private load()
-		/// 2. call every loaders
+		/// 1. take out all loaders and all parameters
+		/// 2. call every loaders with those parameter
 		/// </summary>
 		int load();
 
 	protected:
 
-		int register_private_loader() {
+		/// <summary>
+		/// register loader, must do in every loadable derived class 
+		/// 
+		/// </summary>
+		/// <param name="name">類別名稱</param>
+		/// <param name="p_loader">private loader</param>
+		/// <param name="argc">loader需要幾個輸入</param>
+		/// <param name="argv">每個輸入的名稱</param>
+		int registerPrivateLoader(string name, int(pLoader*)(int, char*), int argc, char** argv) {
 			// find every parent class's private load() function
 			// https://stackoverflow.com/questions/16262338/get-base-class-for-a-type-in-class-hierarchy
-			loaders.push_back(private_load);
+			loaders.push_back(pLoader);
 
 		}
 

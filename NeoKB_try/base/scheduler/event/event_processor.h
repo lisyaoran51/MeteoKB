@@ -4,14 +4,14 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "../../util/template_constraint.h"
-#include "../../util/mto_type.h"
+#include "../../Util/template_constraint.h"
+#include "../../Util/MtoType.h"
 #include "../updatable.h"
 #include "event.h"
 
 
 using namespace std;
-using namespace util;
+using namespace Util;
 
 
 
@@ -23,15 +23,9 @@ namespace event {
 	/// a processor to process one event including effects, 
 	/// </summary>
 	template<class T>
-	class event_processor_t : public updatable_t, private T_constraint_t<event_t>
+	class event_processor_t : public Updatable, private T_constraint_t<event_t>
 	{
 
-		/// <summary>
-		/// make a constraint for template
-		/// </summary>
-		void constraint_check() {
-			constraint_check_derived_from<T>();
-		}
 
 	public:
 

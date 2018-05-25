@@ -4,13 +4,13 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "../../util/template_constraint.h"
-#include "../../util/mto_type.h"
+#include "../../Util/template_constraint.h"
+#include "../../Util/MtoType.h"
 
 
 
 using namespace std;
-using namespace util;
+using namespace Util;
 
 namespace base {
 namespace scheduler {

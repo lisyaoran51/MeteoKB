@@ -4,16 +4,16 @@
 #include <string>
 #include <map>
 #include <vector>
-#include "../../util/template_constraint.h"
-#include "../../util/mto_type.h"
-#include "../../util/instance_creator.h"
+#include "../../Util/template_constraint.h"
+#include "../../Util/MtoType.h"
+#include "../../Util/instance_creator.h"
 #include "../updatable.h"
 #include "event.h"
 #include "event_processor.h"
 
 
 using namespace std;
-using namespace util;
+using namespace Util;
 using namespace base::scheduler::event;
 
 /*
@@ -29,7 +29,7 @@ namespace event {
 	/// <summary>
 	/// a processor center to process every event including effects, 
 	/// </summary>
-	class event_processor_master_t : public updatable_t
+	class event_processor_master_t : public Updatable
 	{
 		// for thread
 		int tid;

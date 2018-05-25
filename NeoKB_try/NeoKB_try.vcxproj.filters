@@ -130,6 +130,12 @@
     <Filter Include="標頭檔\util\hierachal">
       <UniqueIdentifier>{1e0527f3-4ccf-4628-a294-61ed2047cf6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="標頭檔\base\sheetmusic\format\event_parser">
+      <UniqueIdentifier>{311d5e29-ec8f-4ccd-a0f0-cf9ed6d9b21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\base\sheetmusic\pattern">
+      <UniqueIdentifier>{5e4fb93a-ba6a-4be6-b91f-4f5aa8c64f8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -168,9 +174,6 @@
     <ClCompile Include="base\scheduler\event\event.cpp">
       <Filter>來源檔案\base\scheduler\event</Filter>
     </ClCompile>
-    <ClCompile Include="base\scheduler\event\event_builder.cpp">
-      <Filter>來源檔案\base\scheduler\event</Filter>
-    </ClCompile>
     <ClCompile Include="base\scheduler\event\effect\effect.cpp">
       <Filter>來源檔案\base\scheduler\event\effect</Filter>
     </ClCompile>
@@ -194,6 +197,12 @@
     </ClCompile>
     <ClCompile Include="base\led_driver\ws2811.c">
       <Filter>來源檔案\base\led_driver</Filter>
+    </ClCompile>
+    <ClCompile Include="base\sheetmusic\sheetmusic_converter.cpp">
+      <Filter>來源檔案\base\sheetmusic</Filter>
+    </ClCompile>
+    <ClCompile Include="base\ruleset\ruleset_executor.cpp">
+      <Filter>來源檔案\base\ruleset</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +239,6 @@
     <ClInclude Include="util\template_constraint.h">
       <Filter>標頭檔\util</Filter>
     </ClInclude>
-    <ClInclude Include="base\scheduler\event\event_builder.h">
-      <Filter>標頭檔\base\scheduler\event</Filter>
-    </ClInclude>
     <ClInclude Include="base\scheduler\event\event.h">
       <Filter>標頭檔\base\scheduler\event</Filter>
     </ClInclude>
@@ -241,9 +247,6 @@
     </ClInclude>
     <ClInclude Include="base\sheetmusic\ctrl_point\ctrl_point.h">
       <Filter>標頭檔\base\sheetmusic\ctrl_point</Filter>
-    </ClInclude>
-    <ClInclude Include="util\mto_type.h">
-      <Filter>標頭檔\util</Filter>
     </ClInclude>
     <ClInclude Include="base\scheduler\event\event_processor.h">
       <Filter>標頭檔\base\scheduler\event</Filter>
@@ -284,9 +287,6 @@
     <ClInclude Include="util\hierachal\cachable.h">
       <Filter>標頭檔\util\hierachal</Filter>
     </ClInclude>
-    <ClInclude Include="util\hierachal\child_addable.h">
-      <Filter>標頭檔\util\hierachal</Filter>
-    </ClInclude>
     <ClInclude Include="base\led_driver\clk.h">
       <Filter>標頭檔\base\led_driver</Filter>
     </ClInclude>
@@ -310,6 +310,48 @@
     </ClInclude>
     <ClInclude Include="base\led_driver\ws2811.h">
       <Filter>標頭檔\base\led_driver</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\has_parent.h">
+      <Filter>標頭檔\util\hierachal</Filter>
+    </ClInclude>
+    <ClInclude Include="base\play\player.h">
+      <Filter>標頭檔\base\play</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_manager.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_info.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_metadata.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_difficulty.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\format\event_parser\event_parser.h">
+      <Filter>標頭檔\base\sheetmusic\format\event_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_converter.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\pattern\pattern.h">
+      <Filter>標頭檔\base\sheetmusic\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\pattern\pattern_generator.h">
+      <Filter>標頭檔\base\sheetmusic\pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="base\sheetmusic\sheetmusic_postprocesser.h">
+      <Filter>標頭檔\base\sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MtoObject.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\MtoType.h">
+      <Filter>標頭檔\util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\hierachal\ChildAddable.h">
+      <Filter>標頭檔\util\hierachal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

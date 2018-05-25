@@ -5,13 +5,37 @@
 /*
  * https://stackoverflow.com/questions/1008019/c-singleton-design-pattern
  *
- *
- *
  */
 
 
-namespace util {
+namespace Util {
 
+	template<typename T>
+	class singleton_t
+	{
+	protected:
+		singleton_t() noexcept = default;
+
+		singleton_t(const singleton_t&) = delete;
+
+		singleton_t& operator=(const singleton_t&) = delete;
+
+		virtual ~singleton_t() = default; // to silence base class Singleton<T> has a
+										// non-virtual destructor [-Weffc++]
+
+	public:
+		static T& get_instance() noexcept(std::is_nothrow_constructible<T>::value)
+		{
+			// Guaranteed to be destroyed.
+			// Instantiated on first use.
+			// Thread safe in C++11
+			static T instance;
+
+			return instance;
+		}
+	};
+
+	/* --DEPRICATED
 	class singleton_t {
 		singleton_t() {}
 
@@ -28,6 +52,7 @@ namespace util {
 		singleton_t(const singleton_t&) = delete;
 		void operator=(const singleton_t&) = delete;
 	};
+	*/
 
 
 

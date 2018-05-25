@@ -3,26 +3,26 @@
 
 
 #include <vector>
-#include "../../util/mto_type.h"
+#include "../../Util/MtoType.h"
 
 using namespace std;
 
 
-namespace base {
-namespace scheduler {
+namespace Util {
+namespace Hierachal {
 
 	/// <summary>
 	/// every class inherit form this has a function to update. we register update() to the updater. updater will call update().
-	/// <summary>
-	class updatable_t {
+	/// </summary>
+	class Updatable {
 
 	public:
 
-		virtual int elapse(MTO_FLOAT elapsed_time) = 0;
+		virtual int Elapse(MTO_FLOAT elapsedTime) = 0;
 
 	protected:
 
-		MTO_FLOAT current_time;
+		MTO_FLOAT currentTime;
 
 	};
 

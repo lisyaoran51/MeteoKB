@@ -14,23 +14,21 @@
 */
 
 
-namespace util {
+namespace Util {
 
 	/// <summary>
 	/// instantiate a class with its name in string
 	/// </summary>
 	template<class T_base>
-	class instance_creator_t: public singleton_t {
+	class instance_creator_t: public singleton_t<instance_creator_t<T_base>> {
 	
 		map<string, T_base*(*)()> derived_creators;
 
 	public:
 
-		template<class T_derived>
-		int register_type(string type_name);
+		int register_type(string type_name, T_base* type);
 
-		template<class T_derived>
-		T_derived* create_instance(string type_name);
+		T_base* create_instance(string type_name);
 
 	};
 

@@ -24,4 +24,42 @@
 	找步道方法把不同input的load()串成一串vector
 	https://stackoverflow.com/questions/16262338/get-base-class-for-a-type-in-class-hierarchy
 	找到了，但不知道怎麼取父類別的類別出來
-	卡在register_private_loader那
+	卡在registerPrivateLoader那
+
+5/23 
+	自動註冊類別
+	https://stackoverflow.com/questions/10332725/how-to-automatically-register-a-class-on-creation
+	最後loadable決定手動註冊每一個privateLoad()，c++就是麻煩
+
+	寫完一堆Hierachal，望計原本寫到哪
+
+	把所有基本的class都建好了，接下來可以開始寫讀譜到顯示的pipeline，寫完以後可以再開始寫鍵力遊戲場景的物鍵階層
+
+5/24
+	https://stackoverflow.com/questions/9477581/force-all-classes-to-implement-override-a-pure-virtual-method-in-multi-level
+	強制每個繼承的class附寫
+
+	回去研究舊板程式從decode到建立Note的過程，首先會在decode時用hit object parser去讀sm每一行hit object的內容，
+	然後建成Note或Hold note回傳進去list<hit object>裡，等到遊戲開始時，ruleset container會呼叫sheetmusic converter，
+	去把hit object轉換成他原本的形態，轉換的方法是呼叫一個pattern generator，pattern generator去根據hit object內有哪些功能
+	來建立新的note 或 holdnote。
+
+	每個ruleset都有一個sheetmusic converter，但是底下又會有一群pattern generator，是因為不同的樂譜會需要不同的pattern generator
+	例如是osu的樂譜，放到mania舊需要使用一套不同的pattern generator
+
+5/25
+	virutal private的好處，可以讓子類去修改父類，但又不能值接call父類
+	https://stackoverflow.com/questions/2170688/private-virtual-method-in-c
+
+	註冊privateLoad的方法
+	registerPrivateLoader("loadable_t", privateLoad);
+	從今開始都打中文註解
+
+	在osu裡get visual representation是在ruleset container裡面，這邊我擺在process master裡，遊戲進行中才會去建立visual representation
+	這樣好像比較不好，應該先在ruleset executor建好擺在scheduler裡？
+
+	寫到ruleset executor等set playfield。
+
+	待辦：
+	1. 把所有命名方法改成C#風格
+	2. 繼續寫完ruleset executor，然後延pipeline寫下去

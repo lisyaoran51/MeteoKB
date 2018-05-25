@@ -4,13 +4,16 @@
 #include <string>
 #include <fstream>
 #include <map>
-#include "../../../util/singleton.h"
+#include <stdexcept>
+#include "../../../Util/singleton.h"
 #include "../sheetmusic.h"
+#include "../../scheduler/event/effect/effect.h"
 
 
 using namespace std;
-using namespace util;
+using namespace Util;
 using namespace base::sheetmusic;
+using namespace base::scheduler::event::effect;
 
 // inlcude path defined by macro
 // https://stackoverflow.com/questions/32066204/construct-path-for-include-directive-with-macro
@@ -23,17 +26,21 @@ namespace format {
 
 
 
-	class sm_decoder_t: public singleton_t
+	class sm_decoder_t: public singleton_t<sm_decoder_t>
 	{
-		map<string, sm_decoder_t*> decoders;
+
+		friend class singleton_t<sm_decoder_t>;
+
+		map<string, string> decoders;
 
 	public:
 		
-		sm_decoder_t* get_decoder(fstream* stream);
+		sm_decoder_t* get_decoder(ifstream* stream);
 		sm_t<effect_t>* decode(fstream* stream);
 
 	protected:
-		static void add_decoder(string version, sm_decoder_t* decoder);
+
+		void add_decoder(string version, string type_name);
 		virtual sm_t<effect_t>* parse_file(fstream* stream);
 		virtual void parse_file(fstream* stream, sm_t<effect_t>* sm) = 0;
 	};
