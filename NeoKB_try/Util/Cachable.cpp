@@ -2,26 +2,46 @@
 #include <stdexcept>
 
 
+
 using namespace Util::Hierachal;
 
 
 
-Cachable* Cachable::GetCache(string type)
+MtoObject* Cachable::getCache(string type)
 {
-	if (cache.find(type) == cache.end()) {
-		if (GetParent() != NULL) {
+	
+	if (cache.find(type) != cache.end()) {
+		// 找到
 
-		}
+		MtoObject* c = cache[type];
+		return c;
 	}
+	else {
+		// 沒找到
+		
+		HasParent* h = GetParent();
+		if (!h)
+			return NULL;
 
+		Cachable* c = Cast<Cachable*>(h);
+		return c->GetCache(type);
+	}
+}
 
-	Cachable* c = cache[type];
+template<typename T>
+T Cachable::GetCache(string type) {
 
-	// TODO: 在沒有的時候丟錯誤
-	if (!c)
-		throw invalid_argument("Cachable: No such type in this cache");
+	MtoObject* o = GetCache(type);
 
-	return c;
+	if (!o)
+		return NULL;
+
+	T to = Cast<T>(o);
+
+	if (!to) 
+		throw invalid_argument("Cachable::GetCache<T>(string): cast to wrong class type.");
+	
+	return to;
 }
 
 template<typename T>

@@ -22,6 +22,7 @@ namespace Util {
 	template<typename TBase>
 	class InstanceCreator: public singleton_t<InstanceCreator<TBase>> {
 	
+		int a;
 		map<string, TBase*(*)()> creators;
 
 		template<typename T>

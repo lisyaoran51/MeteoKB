@@ -14,12 +14,12 @@ namespace Hierachal {
 	/// <summary>
 	/// able to add to a parent object
 	/// </summary>
-	class ChildAddable {
+	class ChildAddable: public Loadable {
 
 		/// <summary>
 		/// this vector is applied every time you call add_child()
 		/// </summary>
-		private vector<MTO_FUNC_POINTER> onAdd;
+		vector<MTO_FUNC_POINTER> onAdd;
 
 	public:
 
@@ -27,6 +27,8 @@ namespace Hierachal {
 		/// when add child, automatically call every privateLoad() to load in parent's configuration
 		/// </summary>
 		int AddChild(ChildAddable* child);
+
+		int RegisterOnAdd(int(*action)());
 
 
 	};

@@ -2,7 +2,7 @@
 
 
 using namespace Util;
-
+using namespace std;
 
 
 template<typename TBase>
@@ -16,7 +16,6 @@ template<typename TBase>
 template<typename T>
 int InstanceCreator<TBase>::RegisterType(string typeName)
 {
-
 	creators[typeName] = create<T>;
 
 	return 0;

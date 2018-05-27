@@ -1,8 +1,9 @@
 #ifndef CACHABLE_H
 #define CACHABLE_H
 
-#include"loadable.h"
+#include"Loadable.h"
 #include<map>
+#include"HasParent.h"
 
 using namespace std;
 /*
@@ -16,24 +17,29 @@ using namespace std;
 namespace Util {
 namespace Hierachal{
 
-	class loadable_t;
+	class Loadable;
 
 	/// <summary>
 	/// to make a cache of the whole game for some configuration and common data
 	/// </summary>
-	class Cachable: HasParent {
+	class Cachable: public HasParent {
 
 		map<string, MtoObject*> cache;
 
 	public:
 
-		/// <summary>
-		/// get the cache of a certain type in the whole hierachy
-		/// </summary>
-		Cachable* GetCache(string type);
+		template<typename T>
+		T* GetCache(string type);
 
 		template<typename T>
 		int Cache(T* o);
+
+	protected:
+
+		/// <summary>
+		/// get the cache of a certain type in the whole hierachy
+		/// </summary>
+		MtoObject* getCache(string type);
 
 	};
 

@@ -1,10 +1,10 @@
 #ifndef LOADABLE_H
 #define LOADABLE_H
 
-#include "cachable.h"
+#include "Cachable.h"
 #include "../MtoType.h"
 #include<vector>
-#include<utility>
+#include<string>
 
 using namespace std;
 using namespace Util;
@@ -18,8 +18,6 @@ using namespace Util;
  */
 
 
-#define LOADER_POINTER MTO_FUNC_POINTER
-#define LOADER_INPUT pair<int, char**>*
 
 /*
  * when child class call parent class's protected function to access private variable, it only
@@ -27,7 +25,7 @@ using namespace Util;
  *
  * c++ can't automatically register private function. so we do it manually by put 
  * "registerPrivateLoader()" into every constructor of child classes. So that
- * we could find a vector of loaders of each class inherited from loadable_t
+ * we could find a vector of loaders of each class inherited from Loadable
  * and then call them
  *
  */
@@ -35,56 +33,113 @@ using namespace Util;
 namespace Util {
 namespace Hierachal{
 
-	class loadable_t: public Cachable {
 
-		load_state_t load_state;
+	class Loadable: public Cachable {
 
 		/// <summary>
 		/// for register_load() to ergister every loaders into this vector
 		/// </summary>
-		vector<LOADER_POINTER> loaders;
+		vector<MTO_FUNC_POINTER> loaders;
 
 		/// <summary>
-		/// for every loaders to put input parameter into loaders
+		/// 真正進行load的地方
 		/// </summary>
-		vector<LOADER_INPUT> loader_inputs;
-
-		int privateLoad(int argc, char* argv);
+		int load();
 
 	public:
 
-		loadable_t() {
-			// must do in every loadable derived class
-			registerPrivateLoader("loadable_t", privateLoad);
-		}
-
-		bool is_loaded();
-
-		load_state_t get_load_state();
+		Loadable();
 
 		/// <summary>
 		/// call every parent class's private load() function
 		/// 1. take out all loaders and all parameters
 		/// 2. call every loaders with those parameter
+		/// 這個式給public的物建專用，通常一場遊戲中只有一個，會把parent設成要加入的資料
 		/// </summary>
-		int load();
+		int Async();
+
+		LoadState GetLoadState();
+
+		/// <summary>
+		/// override HasParent的函式，在裡面加上handler
+		/// </summary>
+		int SetParent(HasParent* p);
 
 	protected:
 
 		/// <summary>
 		/// register loader, must do in every loadable derived class 
-		/// 
 		/// </summary>
-		/// <param name="name">類別名稱</param>
-		/// <param name="p_loader">private loader</param>
-		/// <param name="argc">loader需要幾個輸入</param>
-		/// <param name="argv">每個輸入的名稱</param>
-		int registerPrivateLoader(string name, int(pLoader*)(int, char*), int argc, char** argv) {
-			// find every parent class's private load() function
-			// https://stackoverflow.com/questions/16262338/get-Base-class-for-a-type-in-class-hierarchy
-			loaders.push_back(pLoader);
+		/// <param name="l">private loader</param>
+		int registerLoad(int(*l)());
 
-		}
+		/// <summary>
+		/// 把所有的load全不執行一次
+		/// 這個式給childaddable用的
+		/// </summary>
+		int Load();
+
+	private:
+
+		class LoadStateHandler;
+		class NoParentHandler;
+		class NotLoadedHandler;
+		class LoadingHandler;
+		class ReadyHandler;
+
+		LoadStateHandler* loadStateHandler;
+		NoParentHandler noParentHandler;
+		NotLoadedHandler notLoadedHandler;
+		LoadingHandler loadingHandler;
+		ReadyHandler readyHandler;
+
+
+		class LoadStateHandler {
+		public:
+			virtual LoadState GetLoadState() = 0;
+			virtual int HandleLoad() = 0;
+			virtual int Async() = 0;
+			virtual int SetParent(HasParent* p) = 0;
+		protected:
+			Loadable& loadable;
+			LoadStateHandler(Loadable& l);
+		};
+
+		class NoParentHandler : public LoadStateHandler {
+		public:
+			NoParentHandler(Loadable& l);
+			LoadState GetLoadState();
+			int HandleLoad();
+			int Async();
+			int SetParent(HasParent* p);
+		};
+
+		class NotLoadedHandler : public LoadStateHandler {
+		public:
+			NotLoadedHandler(Loadable& l);
+			LoadState GetLoadState();
+			int HandleLoad();
+			int Async();
+			int SetParent(HasParent* p);
+		};
+
+		class LoadingHandler : public LoadStateHandler {
+		public:
+			LoadingHandler(Loadable& l);
+			LoadState GetLoadState();
+			int HandleLoad();
+			int Async();
+			int SetParent(HasParent* p);
+		};
+
+		class ReadyHandler : public LoadStateHandler {
+		public:
+			ReadyHandler(Loadable& l);
+			LoadState GetLoadState();
+			int HandleLoad();
+			int Async();
+			int SetParent(HasParent* p);
+		};
 
 	};
 
@@ -92,27 +147,31 @@ namespace Hierachal{
 	/// <summary>
 	/// Possible states of a <see cref="Drawable"/> within the loading pipeline.
 	/// </summary>
-	enum load_state_t {
+	enum LoadState {
 		/// <summary>
 		/// Not loaded, and no load has been initiated yet.
 		/// </summary>
-		load_state_not_loaded,
+		LoadStateNoParent,
+		/// <summary>
+		/// Not loaded, and no load has been initiated yet.
+		/// </summary>
+		LoadStateNotLoaded,
 		/// <summary>
 		/// Currently loading (possibly and usually on a background
 		/// thread via <see cref="Drawable.LoadAsync(Game, Drawable, Action)"/>).
 		/// </summary>
-		load_state_loading,
+		LoadStateLoading,
 		/// <summary>
 		/// Loading is complete, but has not yet been finalized on the update thread
 		/// (<see cref="Drawable.LoadComplete"/> has not been called yet, which
 		/// always runs on the update thread and requires <see cref="Drawable.IsAlive"/>).
 		/// </summary>
-		load_state_ready,
+		LoadStateReady
 		/// <summary>
 		/// Loading is fully completed and the Drawable is now part of the scene graph.
 		/// </summary>
-		load_state_loaded
-	}
+		// LoadStateLoaded
+	};
 
 
 

@@ -52,7 +52,7 @@
 	https://stackoverflow.com/questions/2170688/private-virtual-method-in-c
 
 	註冊privateLoad的方法
-	registerPrivateLoader("loadable_t", privateLoad);
+	registerPrivateLoader("Loadable", privateLoad);
 	從今開始都打中文註解
 
 	在osu裡get visual representation是在ruleset container裡面，這邊我擺在process master裡，遊戲進行中才會去建立visual representation
@@ -78,3 +78,6 @@
 
 	renderer很難寫，因為太容易變換，每換一次硬體就換要一個renderer，要想辦法用最簡單的方法抽換
 	應該要拿decoder的方法
+
+5/27
+	寫了很多util，剩下的東西不多了，可以去實作現在的ruleset了(硬體相關的東西應該要找地方寫)

@@ -240,6 +240,15 @@
     <ClCompile Include="Util\Cachable.cpp">
       <Filter>來源檔案\Util\Hierachal</Filter>
     </ClCompile>
+    <ClCompile Include="Util\Hierachal\Loadable.cpp">
+      <Filter>來源檔案\Util\Hierachal</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Hierachal\LoadStateHandler.cpp">
+      <Filter>來源檔案\Util\Hierachal</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Hierachal\ChildAddable.cpp">
+      <Filter>來源檔案\Util\Hierachal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="DailyLog.txt">

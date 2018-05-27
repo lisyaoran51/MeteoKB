@@ -46,6 +46,9 @@
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Util\Cachable.cpp" />
+    <ClCompile Include="Util\Hierachal\ChildAddable.cpp" />
+    <ClCompile Include="Util\Hierachal\Loadable.cpp" />
+    <ClCompile Include="Util\Hierachal\LoadStateHandler.cpp" />
     <ClCompile Include="Util\InstanceCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
