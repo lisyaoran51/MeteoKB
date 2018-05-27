@@ -35,7 +35,7 @@ using namespace Util;
 namespace Util {
 namespace Hierachal{
 
-	class loadable_t: public cachable_t {
+	class loadable_t: public Cachable {
 
 		load_state_t load_state;
 
@@ -81,7 +81,7 @@ namespace Hierachal{
 		/// <param name="argv">每個輸入的名稱</param>
 		int registerPrivateLoader(string name, int(pLoader*)(int, char*), int argc, char** argv) {
 			// find every parent class's private load() function
-			// https://stackoverflow.com/questions/16262338/get-base-class-for-a-type-in-class-hierarchy
+			// https://stackoverflow.com/questions/16262338/get-Base-class-for-a-type-in-class-hierarchy
 			loaders.push_back(pLoader);
 
 		}

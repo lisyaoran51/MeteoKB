@@ -20,11 +20,11 @@ namespace Util {
 
 		singleton_t& operator=(const singleton_t&) = delete;
 
-		virtual ~singleton_t() = default; // to silence base class Singleton<T> has a
+		virtual ~singleton_t() = default; // to silence Base class Singleton<T> has a
 										// non-virtual destructor [-Weffc++]
 
 	public:
-		static T& get_instance() noexcept(std::is_nothrow_constructible<T>::value)
+		static T& GetInstance() noexcept(std::is_nothrow_constructible<T>::value)
 		{
 			// Guaranteed to be destroyed.
 			// Instantiated on first use.

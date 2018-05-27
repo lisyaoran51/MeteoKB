@@ -4,35 +4,38 @@
 
 
 
-namespace base {
-namespace graphic {
-namespace map {
+namespace Base {
+namespace Graphic {
+namespace Map {
 
-	class map_t {
+	class Map {
 
 		int** map;
 
-		int** default_map;
+		int** defaultMap;
 
 		int width;
 		int height;
 
 	public:
 
-		map_t(int w, int h);
+		Map(int w, int h);
 
-		~map_t();
+		~Map();
 
-		int add(int x, int y, int v);
+		int Add(int x, int y, int v);
 
-		int set(int x, int y, int v);
+		int Set(int x, int y, int v);
 
-		int reset();
+		/// <summary>
+		/// 每一次frame都要先把map重置一次再開始畫
+		/// </summary>
+		int Reset();
 
 		/// <summary>
 		/// set the map now as the default map. after reset the map, the default map value would be the map now
 		/// </summary>
-		int set_default();
+		virtual int SetDefault();
 	};
 
 

@@ -7,7 +7,7 @@
 
 
 
-namespace base {
+namespace Base {
 namespace ruleset {
 	
 	/// <summary>
@@ -20,7 +20,7 @@ namespace ruleset {
 
 		ruleset_t(ruleset_info_t* r);
 
-		virtual ruleset_executor_t* create_ruleset_executor(working_sm_t* sm) = 0;
+		virtual RulesetExecutor* create_ruleset_executor(working_sm_t* sm) = 0;
 
 	protected:
 

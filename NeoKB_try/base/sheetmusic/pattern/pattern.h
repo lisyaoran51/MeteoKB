@@ -3,14 +3,14 @@
 
 
 #include <vector>
-#include "../../scheduler/event/event.h"
+#include "../../Scheduler/Event/Event.h"
 
 
 using namespace std;
-using namespace base::scheduler::event;
+using namespace Base::Scheduler::Event;
 
 
-namespace base {
+namespace Base {
 namespace sheetmusic {
 namespace pattern {
 
@@ -22,13 +22,13 @@ namespace pattern {
 
 	public:
 
-		int add(event_t* e);
+		int add(Event* e);
 
-		vector<event_t*>* get_events();
+		vector<Event*>* get_events();
 
 	protected:
 
-		vector<event_t*>* events;
+		vector<Event*>* events;
 
 	};
 

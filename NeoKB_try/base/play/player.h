@@ -6,14 +6,14 @@
 using namespace Util::Hierachal;
 
 
-namespace base {
-namespace play {
+namespace Base {
+namespace Play {
 
 	class player_t: Updatable {
 
 		ruleset_info_t* ruleset_info;
 
-		ruleset_executor_t* ruleset_executor;
+		RulesetExecutor* ruleset_executor;
 
 		Playfield* playfield;
 

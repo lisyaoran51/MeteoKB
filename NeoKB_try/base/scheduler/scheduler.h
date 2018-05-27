@@ -3,40 +3,42 @@
 
 
 #include <vector>
-#include "event/event.h"
-#include "event/event_processor.h"
+#include "Event/Event.h"
+#include "Event/EventProcessor.h"
 #include "Updatable.h"
 
 using namespace std;
-using namespace base::scheduler::event;
-using namespace base::scheduler;
+using namespace Base::Scheduler::Event;
+using namespace Base::Scheduler;
 
-namespace base {
-namespace scheduler {
+namespace Base {
+namespace Scheduler {
 
 	/// <summary>
 	/// to watch if a timing task is up
 	/// </summary>
-	class scheduler_t: public Updatable {
+	class Scheduler: public Updatable {
 
 		int tid;
 
-		vector<event_processor_t*>* events;
-
-		vector<event_processor_t*>* running_events;
+		vector<EventProcessor*>* eventProcessors;
 
 		/// <summary>
-		/// let the processor to register the handler for every event
+		/// let the processor master to register the handler for every Event
 		/// </summary>
-		int* event_handler(event_t* e);
+		int (*deliverHandler)(EventProcessor* ep);
 
 	public:
 
-		int add(event_processor_t* e);
+		Scheduler();
 
-		int add_range(vector<event_processor_t*>* es);
+		~Scheduler();
 
-		int register_handler(void* h);
+		int Add(EventProcessor* ep);
+
+		int AddRange(vector<EventProcessor*>* eps);
+
+		int RegisterHandler(int(*h)(EventProcessor*));
 	};
 
 }}

@@ -4,21 +4,21 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "../event.h"
+#include "../Event.h"
 
 
 using namespace std;
 using namespace Util;
-using namespace base::scheduler::event;
+using namespace Base::Scheduler::Event;
 
 
-namespace base {
-namespace scheduler {
-namespace event {
+namespace Base {
+namespace Scheduler {
+namespace Event {
 namespace effect {
 	
 
-	class effect_t: public event_t
+	class Effect: public Event
 	{
 
 	public:
@@ -26,7 +26,7 @@ namespace effect {
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		effect_t( 
+		Effect( 
 			int p, 
 			MTO_FLOAT v,
 			MTO_FLOAT s,
@@ -36,7 +36,7 @@ namespace effect {
 		/// <summary>
 		/// construct a reserved effect
 		///	</summary>
-		effect_t(
+		Effect(
 			int p,
 			MTO_FLOAT v,
 			MTO_FLOAT s,

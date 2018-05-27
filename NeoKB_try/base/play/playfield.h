@@ -3,22 +3,22 @@
 
 
 #include"../../Util/Hierachal/updatable.h"
-#include"../scheduler/event/event.h"
-#include"../scheduler/event/event_processor_master.h"
-#include"../scheduler/scheduler.h"
+#include"../Scheduler/Event/Event.h"
+#include"../Scheduler/Event/EventProcessorMaster.h"
+#include"../Scheduler/Scheduler.h"
 
 
 
 using namespace Util::Hierachal;
-using namespace base::scheduler::event;
-using namespace base::scheduler;
+using namespace Base::Scheduler::Event;
+using namespace Base::Scheduler;
 
 
-namespace base {
-namespace play {
+namespace Base {
+namespace Play {
 
 	/// <summary>
-	/// when playfield start, it should connect scheduler, master, renderer with updater.
+	/// when playfield start, it should connect Scheduler, master, renderer with updater.
 	/// So that these objects could be updated on each frame.
 	/// should they be connected in this class????
 	/// </summary>
@@ -28,22 +28,20 @@ namespace play {
 
 	public:
 
-		virtual int on_judgement(event_t* judge_event, judgement_t* j);
+		virtual int on_judgement(Event* judge_event, judgement_t* j);
 
 		/// <summary>
 		/// add events to scheuler
 		/// </summary>
-		virtual int add(event_t*);
-
-
+		virtual int Add(EventProcessor* ep);
 
 	protected:
 
-		scheduler_t* scheduler;
+		Scheduler* scheduler;
 
-		event_processor_master_t* event_process_master;
+		EventProcessorMaster* event_process_master;
 
-		renderer_t* renderer;
+		Renderer* renderer;
 
 	};
 

@@ -4,20 +4,20 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "../../Util/template_constraint.h"
+#include "../../Util/TemplateConstraint.h"
 
 
 
 using namespace std;
 using namespace Util;
 
-namespace base {
+namespace Base {
 namespace sheetmusic {
 	
 	/// where T : effect
 	/// 
 	template <class T>
-	class sm_t : T_constraint_t<T, effect_t>
+	class sm_t : TConstraint<T, Effect>
 	{
 
 		sm_info_t* sm_info;
@@ -26,15 +26,15 @@ namespace sheetmusic {
 		
 		sm_metadata_t* sm_metadata;
 		
-		vector<event_t*>* events;
+		vector<Event*>* events;
 
 	public:
 		
 		sm_t(sm_t* sm = NULL);
 
-		int set_events(vector<event_t*>* e);
+		int set_events(vector<Event*>* e);
 
-		vector<event_t*>* get_events();
+		vector<Event*>* get_events();
 
 	protected:
 

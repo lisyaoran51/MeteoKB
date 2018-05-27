@@ -21,24 +21,21 @@ namespace Hierachal{
 	/// <summary>
 	/// to make a cache of the whole game for some configuration and common data
 	/// </summary>
-	class cachable_t: has_parent_t {
+	class Cachable: HasParent {
 
-		map<type_info, void*> cache;
+		map<string, MtoObject*> cache;
 
 	public:
 
 		/// <summary>
 		/// get the cache of a certain type in the whole hierachy
 		/// </summary>
-		cachable_t* get_cache(type_info t);
+		Cachable* GetCache(string type);
 
-		template<T>
-		int cache(T o);
+		template<typename T>
+		int Cache(T* o);
 
 	};
-
-
-
 
 }}
 

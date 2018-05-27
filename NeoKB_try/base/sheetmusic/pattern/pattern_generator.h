@@ -7,20 +7,20 @@
 #include <fstream>
 #include <vector>
 #include "../working_sheetmusic.h"
-#include "../../Util/template_constraint.h"
+#include "../../Util/TemplateConstraint.h"
 #include "../sheetmusic_info.h"
 #include "../sheetmusic.h"
-#include "../../scheduler/event/event.h"
+#include "../../Scheduler/Event/Event.h"
 
 
 
 
 using namespace std;
 using namespace Util;
-using namespace base::scheduler::event;
-using namespace base::sheetmusic;
+using namespace Base::Scheduler::Event;
+using namespace Base::sheetmusic;
 
-namespace base {
+namespace Base {
 namespace sheetmusic {
 namespace pattern {
 
@@ -42,9 +42,9 @@ namespace pattern {
 
 		pattern_generator_t* previous_pattern;
 
-		event_t* event;
+		Event* Event;
 
-		sm_t<event_t>* sm;
+		sm_t<Event>* sm;
 
 
 

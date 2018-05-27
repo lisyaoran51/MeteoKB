@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "../../Util/template_constraint.h"
+#include "../../Util/TemplateConstraint.h"
 #include "../../Util/MtoType.h"
 
 
@@ -12,19 +12,19 @@
 using namespace std;
 using namespace Util;
 
-namespace base {
-namespace scheduler {
-namespace event {
+namespace Base {
+namespace Scheduler {
+namespace Event {
 	
 
-	class event_t
+	class Event
 	{
 
 	public:
 
 		/// <summary>
-		/// When master receive a event, he asks the event's typename. 
-		/// Use the typename to register a corresponding processor for this event.
+		/// When master receive a Event, he asks the Event's typename. 
+		/// Use the typename to register a corresponding processor for this Event.
 		/// </summary>
 		static string get_event_type_name();
 
@@ -46,7 +46,7 @@ namespace event {
 		MTO_FLOAT* time_left;
 
 		/// ???
-		(void*)handler(event_t* self);
+		(void*)handler(Event* self);
 	};
 
 	enum event_start_type_t {

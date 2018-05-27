@@ -1,8 +1,8 @@
-#include "base/sheetmusic/io/file_reader.h"
-#include "base/sheetmusic/format/sm_decoder.h"
+#include "Base/sheetmusic/io/file_reader.h"
+#include "Base/sheetmusic/format/sm_decoder.h"
 
-using namespace base::sheetmusic::io;
-using namespace base::sheetmusic::format;
+using namespace Base::sheetmusic::io;
+using namespace Base::sheetmusic::format;
 
 
 
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	decoder.decode(path, sm);
 
 	// build events from sm
-	vector<event_t*>* events;
+	vector<Event*>* events;
 	sm_event_builder_t event_builder(sm);
 	events = event_builder.build();
 
