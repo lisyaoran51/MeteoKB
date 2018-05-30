@@ -28,21 +28,12 @@ namespace effect {
 
 		int RegisterMapAlgo(MapAlgorithm<T>* ma);
 
-		int RegisterShiftAlgo(ShiftAlgorithm* sa);
-
 	protected:
 
 		Map* map;
 
-		/// <summary>
-		/// to transform the effect to the map with every parameter relevant.
-		/// </summary>
 		MapAlgorithm<T>* mapAlgo;
 
-		/// <summary>
-		/// 把生好的effect移到他該擺的位置上
-		/// </summary>
-		ShiftAlgorithm* shiftAlgo;
 	};
 
 

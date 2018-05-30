@@ -1,0 +1,16 @@
+#include"MeteorRuleset.h"
+
+using namespace Meteor::Ruleset;
+
+RulesetExecutor<Event>* MeteorRuleset::CreateRulesetExecutor(WorkingSm * sm)
+{
+	InstanceCreator<MtoObject> iCreator = InstanceCreator<MtoObject>::GetInstance();
+
+	RulesetExecutor<Event>* rulesetExecutor = iCreator.CreateInstance<MeteorRulesetExecutor>("MeteorRulesetExecutor");
+
+	// instance creator⊿快猭ミ碞р把计メ秈? 
+	// ⊿快猭秨﹍メ┮碞ぇㄓlazy construct 硂妓ゑ耕
+	rulesetExecutor->LazyConstruct(sm);
+
+	return rulesetExecutor;
+}

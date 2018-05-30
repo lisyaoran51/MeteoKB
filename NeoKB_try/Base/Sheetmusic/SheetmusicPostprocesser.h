@@ -2,7 +2,7 @@
 #define SHEETMUSIC_POSTPROCESSOR_H
 
 
-#include "sheetmusic.h"
+#include "Sheetmusic.h"
 #include "../Scheduler/Event/Event.h"
 
 
@@ -13,7 +13,7 @@ using namespace Base::Scheduler::Event;
 
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 
 	/// <summary>
 	/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理，例如說把Event重新排序
@@ -26,7 +26,7 @@ namespace sheetmusic {
 		/// <summary>
 		/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理
 		///	</summary>
-		virtual sm_t<Event>* postprocess(sm_t<Event>* s) {
+		virtual Sm<Event>* postprocess(Sm<Event>* s) {
 			return s;
 		}
 

@@ -16,8 +16,8 @@ using namespace Util;
 
 
 namespace Base {
-namespace Scheduler {
-namespace Event {
+namespace Schedulers {
+namespace Events {
 
 	/// <summary>
 	/// a processor to process one Event including effects, 

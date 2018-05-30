@@ -12,11 +12,11 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 
 	/// where T : effect_group
 	/// 
-	class working_sm_t
+	class WorkingSm
 	{
 
 		sm_info_t* sm_info;
@@ -27,17 +27,17 @@ namespace sheetmusic {
 
 		vector<mod_t*> mods;
 
-		sm_t* sm;
+		Sm* sm;
 
 	public:
 
-		sm_t* get_sm();
+		Sm* get_sm();
 
 	protected:
 
-		working_sm_t(sm_info_t* s);
+		WorkingSm(sm_info_t* s);
 
-		virtual sm_t* create_sm() = 0;
+		virtual Sm* create_sm() = 0;
 
 	};
 

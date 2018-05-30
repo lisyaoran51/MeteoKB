@@ -7,6 +7,7 @@
 
 class RegisterType {
 
+	// TODO: 讓他不要佔這麼多空間，改用一個lookup table之類
 	string typeName;
 
 public:

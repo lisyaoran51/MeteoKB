@@ -5,9 +5,12 @@
 #include"ruleset_info.h"
 #include"../../Util/TemplateConstraint.h"
 #include"../Scheduler/Event/Event.h"
+#include"../Scheduler/Event/EventProcessor.h"
 #include "../../Util/Hierachal/updatable.h"
-#include "../sheetmusic/sheetmusic_converter.h"
-#include "../sheetmusic/sheetmusic_postprocesser.h"
+#include "../Sheetmusic/sheetmusic_converter.h"
+#include "../Sheetmusic/sheetmusic_postprocesser.h"
+#include "../Play/Playfield.h"
+
 
 /*
  * virutal private的好處，可以讓子類去修改父類，但又不能值接call父類
@@ -20,9 +23,10 @@ using namespace std;
 using namespace Util;
 using namespace Base::Scheduler::Event;
 using namespace Util::Hierachal;
+using namespace Base::Play;
 
 namespace Base {
-namespace ruleset {
+namespace Ruleset {
 	
 	/// <summary>
 	/// a game rule that designs how the game plays
@@ -37,7 +41,7 @@ namespace ruleset {
 		/// 1. find the objects in sm?
 		/// 2. add them to playfield?
 		/// </summary>
-		int loadEventToPlayfield();
+		int playfieldLoad();
 
 		/// <summary>
 		/// jobs:
@@ -45,11 +49,11 @@ namespace ruleset {
 		/// 2. add playfield as child
 		/// 3. ??? load objects?
 		/// </summary>
-		int privateLoad(int argc, char** argv);
+		int load();
 
 		int apply_mods(vector<mod*>* m);
 
-		virtual sm_converter_t* create_sm_converter() = 0;
+		virtual SmConverter* create_sm_converter() = 0;
 
 		virtual sm_postprocessor_t* create_sm_postprocessor() = 0;
 
@@ -61,13 +65,13 @@ namespace ruleset {
 		/// 2. apply mods
 		/// 3. register privateLoad()
 		/// </summary>
-		RulesetExecutor(working_sm_t<T>* w);
+		RulesetExecutor(WorkingSm<T>* w);
 
 	protected:
 
-		sm_t<T>* sm;
+		Sm<T>* sm;
 
-		working_sm_t<T>* working_sm;
+		WorkingSm<T>* working_sm;
 
 		vector<mod_t*> mods;
 
@@ -89,7 +93,7 @@ namespace ruleset {
 
 		virtual Playfield* create_playfield() = 0;
 
-
+		virtual EventProcessor* getEventProcessor(T* e) = 0;
 	};
 
 

@@ -31,9 +31,9 @@ Renderer * Base::Graphic::Renderer::Renderer::GetRenderer(string hwVersion)
 {
 	string rendererName = renderers[hwVersion];
 
-	InstanceCreator<MtoObject>* iCreator = InstanceCreator<MtoObject>::GetInstance();
+	InstanceCreator<MtoObject> iCreator = InstanceCreator<MtoObject>::GetInstance();
 
-	Renderer* renderer = (Renderer*)iCreator->CreateInstance(rendererName);
+	Renderer* renderer = (Renderer*)iCreator.CreateInstance(rendererName);
 
 	// TODO: 查看有沒有這個renderer，沒有要丟錯誤
 

@@ -40,11 +40,11 @@
 	強制每個繼承的class附寫
 
 	回去研究舊板程式從decode到建立Note的過程，首先會在decode時用hit object parser去讀sm每一行hit object的內容，
-	然後建成Note或Hold note回傳進去list<hit object>裡，等到遊戲開始時，ruleset container會呼叫sheetmusic converter，
+	然後建成Note或Hold note回傳進去list<hit object>裡，等到遊戲開始時，Ruleset container會呼叫Sheetmusic converter，
 	去把hit object轉換成他原本的形態，轉換的方法是呼叫一個pattern generator，pattern generator去根據hit object內有哪些功能
 	來建立新的note 或 holdnote。
 
-	每個ruleset都有一個sheetmusic converter，但是底下又會有一群pattern generator，是因為不同的樂譜會需要不同的pattern generator
+	每個Ruleset都有一個Sheetmusic converter，但是底下又會有一群pattern generator，是因為不同的樂譜會需要不同的pattern generator
 	例如是osu的樂譜，放到mania舊需要使用一套不同的pattern generator
 
 5/25
@@ -55,19 +55,19 @@
 	registerPrivateLoader("Loadable", privateLoad);
 	從今開始都打中文註解
 
-	在osu裡get visual representation是在ruleset container裡面，這邊我擺在process master裡，遊戲進行中才會去建立visual representation
-	這樣好像比較不好，應該先在ruleset executor建好擺在Scheduler裡？
+	在osu裡get visual representation是在Ruleset container裡面，這邊我擺在process master裡，遊戲進行中才會去建立visual representation
+	這樣好像比較不好，應該先在Ruleset executor建好擺在Scheduler裡？
 
-	寫到ruleset executor等set playfield。
+	寫到Ruleset executor等set playfield。
 
 	待辦：
 	1. 把所有命名方法改成C#風格
-	2. 繼續寫完ruleset executor，然後延pipeline寫下去
+	2. 繼續寫完Ruleset executor，然後延pipeline寫下去
 
 	幾乎寫完event proc master了，下次打開之前先把所有檔案改名
 
 5/26
-	ruleset executor會註冊updater的執行順序，應該是：
+	Ruleset executor會註冊updater的執行順序，應該是：
 	1. map reset
 	2. scheduler 
 	3. event master
@@ -80,4 +80,19 @@
 	應該要拿decoder的方法
 
 5/27
-	寫了很多util，剩下的東西不多了，可以去實作現在的ruleset了(硬體相關的東西應該要找地方寫)
+	寫了很多util，剩下的東西不多了，可以去實作現在的Ruleset了(硬體相關的東西應該要找地方寫)
+
+5/29
+	旺季之前要在哪裏get visual representation，其實擺在loadEventToPlayfield裡，的getEventProcessor，會把event轉成processor
+	開始寫meteor ruleset相關的程式
+
+5/30
+	要不要在meteor ruleset executor的get processor把map algo加進去?
+	map algo應該由誰負責製造? (config中的一部分?)
+	應該是meteor ruleset executor先抓出來所有需要的map algo，丟在一個table裡面
+	什麼時候會知道哪個effect式對哪個algo?
+	###
+	最一開始要知道所有的effect要對哪個algo，先在meteor ruleset executor的playfield load時，把會用到的algo建好，
+	然後cache起來，然後在meteor playfield，每個processor加進來時就把algo放進去processor裡。
+	###
+	應該寫在base裡

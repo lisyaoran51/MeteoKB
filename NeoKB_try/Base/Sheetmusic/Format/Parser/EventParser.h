@@ -7,14 +7,14 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::sheetmusic;
+using namespace Base::Sheetmusic;
 using namespace Base::Scheduler::Event::effect;
 
 
 
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 namespace format {
 namespace event_parser {
 

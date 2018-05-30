@@ -3,7 +3,7 @@
 
 
 using namespace std;
-using namespace Base::sheetmusic::format;
+using namespace Base::Sheetmusic::format;
 using namespace Util;
 
 /*
@@ -37,7 +37,7 @@ sm_decoder_t* sm_decoder_t::get_decoder(ifstream * stream)
 	return InstanceCreator<sm_decoder_t>::create_instance(decoders[line]);
 }
 
-sm_t<Effect>* sm_decoder_t::decode(fstream * stream)
+Sm<Effect>* sm_decoder_t::decode(fstream * stream)
 {
 	return parse_file(stream);
 }
@@ -47,9 +47,9 @@ void sm_decoder_t::add_decoder(string version, string type_name)
 	decoders[version] = type_name;
 }
 
-sm_t<Effect>* sm_decoder_t::parse_file(fstream * stream)
+Sm<Effect>* sm_decoder_t::parse_file(fstream * stream)
 {
-	sm_t<Effect>* sm = new sm_t<Effect>();
+	Sm<Effect>* sm = new Sm<Effect>();
 
 	parse_file(stream, sm);
 

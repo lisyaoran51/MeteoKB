@@ -9,13 +9,13 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 
 namespace Base {
-namespace Scheduler {
-namespace Event {
-namespace effect {
+namespace Schedulers {
+namespace Events {
+namespace Effects {
 	
 
 	class Effect: public Event
@@ -26,30 +26,22 @@ namespace effect {
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		Effect( 
-			int p, 
-			MTO_FLOAT v,
-			MTO_FLOAT s,
-			MTO_FLOAT life_t
-		);
-
-		/// <summary>
-		/// construct a reserved effect
-		///	</summary>
 		Effect(
-			int p,
-			MTO_FLOAT v,
-			MTO_FLOAT s,
+			int x,
+			int y,
 			MTO_FLOAT start_t,
 			MTO_FLOAT life_t
 		);
 
+		int SetBrightness();
+		int SetSpeed();
 
 	protected:
 
-		int pitch;
-		MTO_FLOAT vol;
-		MTO_FLOAT speed;
+		int x;
+		int y;
+		MTO_FLOAT brightness;	// default as 1.0
+		MTO_FLOAT speed;		// default as 1.0
 	};
 
 

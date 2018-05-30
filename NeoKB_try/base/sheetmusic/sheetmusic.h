@@ -12,12 +12,12 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 	
 	/// where T : effect
 	/// 
 	template <class T>
-	class sm_t : TConstraint<T, Effect>
+	class Sm : TConstraint<T, Effect>
 	{
 
 		sm_info_t* sm_info;
@@ -30,7 +30,7 @@ namespace sheetmusic {
 
 	public:
 		
-		sm_t(sm_t* sm = NULL);
+		Sm(Sm* sm = NULL);
 
 		int set_events(vector<Event*>* e);
 

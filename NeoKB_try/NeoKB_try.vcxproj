@@ -30,9 +30,11 @@
     <ClCompile Include="Base\LedDriver\pwm.c" />
     <ClCompile Include="Base\LedDriver\rpihw.c" />
     <ClCompile Include="Base\LedDriver\ws2811.c" />
+    <ClCompile Include="Base\Play\Player.cpp" />
     <ClCompile Include="Base\Play\Playfield.cpp" />
     <ClCompile Include="Base\Ruleset\Mod\Mod.cpp" />
     <ClCompile Include="Base\Ruleset\RulesetExecutor.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Effect.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\EffectMapper.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Event.cpp" />
@@ -45,6 +47,10 @@
     <ClCompile Include="Base\Sheetmusic\Sheetmusic.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RulesetMeteor\Play\MeteorPlayfield.cpp" />
+    <ClCompile Include="RulesetMeteor\Ruleset\MeteorRuleset.cpp" />
+    <ClCompile Include="RulesetMeteor\Ruleset\MeteorRulesetExecutor.cpp" />
+    <ClCompile Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.cpp" />
     <ClCompile Include="Util\Cachable.cpp" />
     <ClCompile Include="Util\Hierachal\ChildAddable.cpp" />
     <ClCompile Include="Util\Hierachal\Loadable.cpp" />
@@ -74,6 +80,9 @@
     <ClInclude Include="Base\Ruleset\Ruleset.h" />
     <ClInclude Include="Base\Ruleset\RulesetExecutor.h" />
     <ClInclude Include="Base\Ruleset\RulesetInfo.h" />
+    <ClInclude Include="Base\Scheduler\Event\ControlPoints\ControlPoint.h" />
+    <ClInclude Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.h" />
+    <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.h" />
     <ClInclude Include="Base\Scheduler\Event\Effect\Effect.h" />
     <ClInclude Include="Base\Scheduler\Event\Effect\EffectMapper.h" />
     <ClInclude Include="Base\Scheduler\Event\Event.h" />
@@ -85,7 +94,7 @@
     <ClInclude Include="Base\Sheetmusic\Format\SmDecoder.h" />
     <ClInclude Include="Base\Sheetmusic\IO\FileReader.h" />
     <ClInclude Include="Base\Sheetmusic\Pattern\pattern.h" />
-    <ClInclude Include="Base\Sheetmusic\Pattern\pattern_generator.h" />
+    <ClInclude Include="Base\Sheetmusic\Pattern\PatternGenerator.h" />
     <ClInclude Include="Base\Sheetmusic\Sheetmusic.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicConverter.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicDifficulty.h" />
@@ -94,6 +103,10 @@
     <ClInclude Include="Base\Sheetmusic\SheetmusicMetadata.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocesser.h" />
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h" />
+    <ClInclude Include="RulesetMeteor\Play\MeteorPlayfield.h" />
+    <ClInclude Include="RulesetMeteor\Ruleset\MeteorRuleset.h" />
+    <ClInclude Include="RulesetMeteor\Ruleset\MeteorRulesetExecutor.h" />
+    <ClInclude Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.h" />
     <ClInclude Include="Util\Hierachal\Cachable.h" />
     <ClInclude Include="Util\Hierachal\ChildAddable.h" />
     <ClInclude Include="Util\Hierachal\HasParent.h" />

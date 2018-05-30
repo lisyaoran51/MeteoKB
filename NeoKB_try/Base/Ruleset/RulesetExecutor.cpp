@@ -1,10 +1,10 @@
 #include "RulesetExecutor.h"
 
 
-using namespace Base::ruleset;
+using namespace Base::Ruleset;
 
 template<class T>
-int RulesetExecutor<T>::loadEventToPlayfield()
+int RulesetExecutor<T>::playfieldLoad()
 {
 
 	// 把Event轉成Event processor擺進去playfield裡
@@ -22,10 +22,8 @@ int RulesetExecutor<T>::loadEventToPlayfield()
 /// <summary>
 /// load入遊戲狀態
 /// </summary>
-/// <param name="argc">輸入數目=0</param>
-/// <param name="argv">無</param>
 template<class T>
-int RulesetExecutor<T>::privateLoad(int argc, char ** argv)
+int RulesetExecutor<T>::load()
 {
 	playfield = create_playfield();
 
@@ -38,13 +36,13 @@ int RulesetExecutor<T>::privateLoad(int argc, char ** argv)
 }
 
 template<class T>
-RulesetExecutor<T>::RulesetExecutor(working_sm_t<T>* w)
+RulesetExecutor<T>::RulesetExecutor(WorkingSm<T>* w)
 {
 	working_sm = w;
 
 	mods = w->get_mods();
 
-	sm_converter_t* converter = create_sm_converter();
+	SmConverter* converter = create_sm_converter();
 	sm_postprocessor_t* postprocessor = create_sm_postprocessor();
 
 	sm = converter->convert(w->get_sm());

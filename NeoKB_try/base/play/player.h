@@ -1,29 +1,40 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../../Util/Hierachal/updatable.h"
+#include "../../Util/Update/Updatable.h"
+#include "../../Util/Hierachal/ChildAddable.h"
+#include"../Ruleset/RulesetExecutor.h"
+
+
 
 using namespace Util::Hierachal;
-
+using namespace Base::Ruleset;
 
 namespace Base {
 namespace Play {
 
-	class player_t: Updatable {
+	class Player: ChildAddable {
 
-		ruleset_info_t* ruleset_info;
+		SmManager* smManager;
 
-		RulesetExecutor* ruleset_executor;
+		WorkingSm* workingSm;
+
+		RulesetInfo* rulesetInfo;
+
+		RulesetExecutor<Event>* rulesetExecutor;
 
 		Playfield* playfield;
 
 		/// <summary>
-		/// load in things like sm, ruleset info. then create ruleset executor
+		/// load in things like sm, Ruleset info. then create Ruleset executor
 		/// </summary>
-		int privateLoad(int argc, char** argv);
+		int load();
 
+	public:
 
+		Player();
 
+		~Player();
 
 	};
 

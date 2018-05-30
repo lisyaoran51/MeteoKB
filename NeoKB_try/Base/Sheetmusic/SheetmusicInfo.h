@@ -7,16 +7,16 @@
 #include "../../Util/TemplateConstraint.h"
 #include "sheetmusic_metadata.h"
 #include "sheetmusic_difficulty.h"
-#include "../ruleset/ruleset.h"
+#include "../Ruleset/Ruleset.h"
 
 
 
 using namespace std;
 using namespace Util;
-using namespace Base::ruleset;
+using namespace Base::Ruleset;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 	
 	 
 	class sm_info_t
@@ -38,9 +38,9 @@ namespace sheetmusic {
 
 		int version;
 
-		ruleset_t* ruleset;
+		Ruleset* Ruleset;
 
-		ruleset_info_t* ruleset_info;
+		RulesetInfo* ruleset_info;
 
 
 

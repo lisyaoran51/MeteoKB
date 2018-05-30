@@ -6,7 +6,7 @@
 using namespace Util;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 namespace ctrl_point {
 
 	class ctrl_point_t {

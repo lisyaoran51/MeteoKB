@@ -8,11 +8,11 @@
 #include "Updatable.h"
 
 using namespace std;
-using namespace Base::Scheduler::Event;
-using namespace Base::Scheduler;
+using namespace Base::Schedulers::Events;
+using namespace Base::Schedulers;
 
 namespace Base {
-namespace Scheduler {
+namespace Schedulers {
 
 	/// <summary>
 	/// to watch if a timing task is up
@@ -21,12 +21,12 @@ namespace Scheduler {
 
 		int tid;
 
-		vector<EventProcessor*>* eventProcessors;
+		vector<EventProcessor<Event>*>* eventProcessors;
 
 		/// <summary>
 		/// let the processor master to register the handler for every Event
 		/// </summary>
-		int (*deliverHandler)(EventProcessor* ep);
+		int (*deliverHandler)(EventProcessor<Event>* ep);
 
 	public:
 
@@ -34,11 +34,11 @@ namespace Scheduler {
 
 		~Scheduler();
 
-		int Add(EventProcessor* ep);
+		int Add(EventProcessor<Event>* ep);
 
-		int AddRange(vector<EventProcessor*>* eps);
+		int AddRange(vector<EventProcessor<Event>*>* eps);
 
-		int RegisterHandler(int(*h)(EventProcessor*));
+		int RegisterHandler(int(*h)(EventProcessor<Event>*));
 	};
 
 }}

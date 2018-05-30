@@ -9,7 +9,7 @@
 #include "../working_sheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
 #include "../sheetmusic_info.h"
-#include "../sheetmusic.h"
+#include "../Sheetmusic.h"
 #include "../../Scheduler/Event/Event.h"
 
 
@@ -17,22 +17,22 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
-using namespace Base::sheetmusic;
+using namespace Base::Schedulers::Events;
+using namespace Base::Sheetmusic;
 
 namespace Base {
-namespace sheetmusic {
-namespace pattern {
+namespace Sheetmusic {
+namespace Patterns {
 
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class pattern_generator_t
+	class PatternGenerator
 	{
 
 	public:
 
-		virtual pattern_t* generate() = 0;
+		virtual Pattern* generate() = 0;
 
 	protected:
 
@@ -40,11 +40,11 @@ namespace pattern {
 
 		int map_height;
 
-		pattern_generator_t* previous_pattern;
+		PatternGenerator* previous_pattern;
 
 		Event* Event;
 
-		sm_t<Event>* sm;
+		Sm<Event>* sm;
 
 
 

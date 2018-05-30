@@ -10,8 +10,8 @@
 
 
 using namespace Util::Hierachal;
-using namespace Base::Scheduler::Event;
-using namespace Base::Scheduler;
+using namespace Base::Schedulers::Event;
+using namespace Base::Schedulers;
 
 
 namespace Base {
@@ -24,7 +24,9 @@ namespace Play {
 	/// </summary>
 	class Playfield: Updatable {
 
-		int privateLoad(int argc, char** argv);
+		int load();
+
+		int load(Scheduler* s, EventProcessorMaster* e, Renderer* r);
 
 	public:
 

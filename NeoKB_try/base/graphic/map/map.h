@@ -6,7 +6,7 @@
 
 namespace Base {
 namespace Graphic {
-namespace Map {
+namespace Maps {
 
 	class Map {
 
@@ -38,7 +38,14 @@ namespace Map {
 		virtual int SetDefault();
 	};
 
-
+	template<typename T>
+	struct Matrix2D {
+		T** mat;
+		int width;
+		int height;
+		Matrix2D(int w, int h);
+		int Clean();
+	};
 
 
 }}}

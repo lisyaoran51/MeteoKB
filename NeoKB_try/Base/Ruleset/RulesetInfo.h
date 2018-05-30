@@ -9,12 +9,12 @@ using namespace std;
 
 
 namespace Base {
-namespace ruleset {
+namespace Ruleset {
 	
 	/// <summary>
 	/// a game rule that designs how the game plays
 	///	</summary>
-	class ruleset_info_t
+	class RulesetInfo
 	{
 
 		int id;
@@ -25,7 +25,9 @@ namespace ruleset {
 
 	public:
 
-		ruleset_info_t(int i, string n, string instantiate_n);
+		RulesetInfo(int i, string n, string instantiate_n);
+
+		Ruleset* CreateRuleset();
 
 		int get_id();
 

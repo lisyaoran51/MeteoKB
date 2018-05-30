@@ -13,8 +13,8 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace Scheduler {
-namespace Event {
+namespace Schedulers {
+namespace Events {
 	
 
 	class Event
@@ -22,13 +22,7 @@ namespace Event {
 
 	public:
 
-		/// <summary>
-		/// When master receive a Event, he asks the Event's typename. 
-		/// Use the typename to register a corresponding processor for this Event.
-		/// </summary>
-		static string get_event_type_name();
-
-		void elapse(MTO_FLOAT sec);
+		void Elapse(MTO_FLOAT sec);
 
 		void is_alive();
 
@@ -38,25 +32,25 @@ namespace Event {
 
 		int eid;
 
-		event_start_type_t start_type;
-		event_elapse_type_t elapse_type;
+		EventStartType start_type;
+		EventElapseType elapse_type;
 
-		MTO_FLOAT* start_time;
-		MTO_FLOAT* life_time;
-		MTO_FLOAT* time_left;
+		MTO_FLOAT start_time;
+		MTO_FLOAT life_time;
 
 		/// ???
 		(void*)handler(Event* self);
 	};
 
-	enum event_start_type_t {
-		immediate,
-		reserved
+	enum EventStartType {
+		Immediate,
+		Reserved
 	};
 
-	enum event_elapse_type_t {
-		one_time,
-		longterm
+	enum EventElapseType {
+		OneTime,
+		Longterm,
+		BySignal
 	};
 
 	

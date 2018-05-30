@@ -2,35 +2,31 @@
 #define RULESET_H
 
 
-#include"ruleset_info.h"
-
+#include"RulesetInfo.h"
+#include"RulesetExecutor.h"
 
 
 
 namespace Base {
-namespace ruleset {
+namespace Ruleset {
 	
 	/// <summary>
 	/// a game rule that designs how the game plays
 	///	</summary>
-	class ruleset_t
+	class Ruleset
 	{
 
 	public:
 
-		ruleset_t(ruleset_info_t* r);
+		Ruleset(RulesetInfo* r);
 
-		virtual RulesetExecutor* create_ruleset_executor(working_sm_t* sm) = 0;
+		virtual RulesetExecutor<Event>* CreateRulesetExecutor(WorkingSm* sm) = 0;
 
 	protected:
 
-		ruleset_info_t* ruleset_info;
+		RulesetInfo* rulesetInfo;
 
 	};
-
-
-
-	
 
 }}
 

@@ -23,8 +23,8 @@ using namespace Base::Scheduler::Event;
 
 
 namespace Base {
-namespace Scheduler {
-namespace Event {
+namespace Schedulers {
+namespace Events {
 
 	/// <summary>
 	/// a processor center to process every Event including effects, 

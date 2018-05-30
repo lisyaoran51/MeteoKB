@@ -12,7 +12,7 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 	
 	 
 	class sm_difficulty_t

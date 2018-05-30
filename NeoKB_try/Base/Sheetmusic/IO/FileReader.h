@@ -8,7 +8,7 @@
 using namespace std;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 namespace io {
 
 	class file_reader_t

@@ -11,13 +11,13 @@ using namespace Base::Scheduler::Event;
 
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 namespace pattern {
 
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class pattern_t
+	class Pattern
 	{
 
 	public:

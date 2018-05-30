@@ -7,7 +7,7 @@
 #include "working_sheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
 #include "sheetmusic_info.h"
-#include "sheetmusic.h"
+#include "Sheetmusic.h"
 #include "../Scheduler/Event/Event.h"
 
 
@@ -15,16 +15,21 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 
 	/// <summary>
-	/// when ruleset executor load in sm, this converter converts the events in sm.
+	/// when Ruleset executor load in sm, this converter converts the events in sm.
 	///	</summary>
-	class sm_converter_t
+	class SmConverter
 	{
+		/// <summary>
+		/// 讀取pattern generator
+		///	</summary>
+		int load();
+		int load(PatternGenerator* pg);
 
 	public:
 
@@ -32,11 +37,19 @@ namespace sheetmusic {
 		/// converts the events in sm
 		/// We always operate on a clone of the original sm, to not modify it game-wide
 		///	</summary>
-		virtual sm_t<Event>* convert(sm_t<Event>* s);
+		virtual Sm<Event>* convert(Sm<Event>* s);
 
 	protected:
 
-		virtual vector<Event*>* convert_event(Event* e, sm_t<Event>* s) = 0;
+		/// <summary>
+		/// 用來把一個event變成各種特效
+		///	</summary>
+		PatternGenerator* patternGenerator;
+
+		/// <summary>
+		/// 把event付智，並且轉換成各種特效
+		///	</summary>
+		virtual int convert_event(vector<Event*>* es, Event* e, Sm<Event>* s);
 
 	};
 

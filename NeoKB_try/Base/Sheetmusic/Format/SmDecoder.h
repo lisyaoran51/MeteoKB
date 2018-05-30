@@ -6,13 +6,13 @@
 #include <map>
 #include <stdexcept>
 #include "../../../Util/singleton.h"
-#include "../sheetmusic.h"
+#include "../Sheetmusic.h"
 #include "../../Scheduler/Event/effect/effect.h"
 
 
 using namespace std;
 using namespace Util;
-using namespace Base::sheetmusic;
+using namespace Base::Sheetmusic;
 using namespace Base::Scheduler::Event::effect;
 
 // inlcude path defined by macro
@@ -21,7 +21,7 @@ using namespace Base::Scheduler::Event::effect;
 
 
 namespace Base {
-namespace sheetmusic {
+namespace Sheetmusic {
 namespace format {
 
 
@@ -37,12 +37,12 @@ namespace format {
 		
 		static int registerDecoder(string version, string type_name);
 		static sm_decoder_t* get_decoder(ifstream* stream);
-		sm_t<Effect>* decode(fstream* stream);
+		Sm<Effect>* decode(fstream* stream);
 
 	protected:
 
-		virtual sm_t<Effect>* parse_file(fstream* stream);
-		virtual void parse_file(fstream* stream, sm_t<Effect>* sm) = 0;
+		virtual Sm<Effect>* parse_file(fstream* stream);
+		virtual void parse_file(fstream* stream, Sm<Effect>* sm) = 0;
 	};
 
 

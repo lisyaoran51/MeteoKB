@@ -1,8 +1,8 @@
-#include "Base/sheetmusic/io/file_reader.h"
-#include "Base/sheetmusic/format/sm_decoder.h"
+#include "Base/Sheetmusic/io/file_reader.h"
+#include "Base/Sheetmusic/format/sm_decoder.h"
 
-using namespace Base::sheetmusic::io;
-using namespace Base::sheetmusic::format;
+using namespace Base::Sheetmusic::io;
+using namespace Base::Sheetmusic::format;
 
 
 
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	// read sheet music
 	sm_decoder_t decoder(reader);
 
-	sm_t<fall_effect_group>* sm;
+	Sm<fall_effect_group>* sm;
 
 	// decode sheet music to sm type
 	decoder.decode(path, sm);
