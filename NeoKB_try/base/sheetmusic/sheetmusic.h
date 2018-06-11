@@ -36,6 +36,8 @@ namespace Sheetmusic {
 
 		vector<Event*>* get_events();
 
+		RulesetInfo* GetRulesetInfo();
+
 	protected:
 
 	};

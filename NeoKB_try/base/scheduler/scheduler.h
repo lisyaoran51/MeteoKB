@@ -5,11 +5,14 @@
 #include <vector>
 #include "Event/Event.h"
 #include "Event/EventProcessor.h"
-#include "Updatable.h"
+#include <functional>
+#include "../../Util/Hierachal/ChildAddable.h"
+
 
 using namespace std;
 using namespace Base::Schedulers::Events;
-using namespace Base::Schedulers;
+using namespace Util::Hierachal;
+
 
 namespace Base {
 namespace Schedulers {
@@ -17,7 +20,7 @@ namespace Schedulers {
 	/// <summary>
 	/// to watch if a timing task is up
 	/// </summary>
-	class Scheduler: public Updatable {
+	class Scheduler: public Updatable, public ChildAddable {
 
 		int tid;
 
@@ -25,8 +28,9 @@ namespace Schedulers {
 
 		/// <summary>
 		/// let the processor master to register the handler for every Event
+		/// ---(¤£¥Î¤F)int (*deliverHandler)(EventProcessor<Event>* ep);
 		/// </summary>
-		int (*deliverHandler)(EventProcessor<Event>* ep);
+		function<int(EventProcessor<Event>*)> deliverHandler;
 
 	public:
 
@@ -38,7 +42,9 @@ namespace Schedulers {
 
 		int AddRange(vector<EventProcessor<Event>*>* eps);
 
-		int RegisterHandler(int(*h)(EventProcessor<Event>*));
+		int RegisterHandler(function<int(EventProcessor<Event>*)> dh);
+
+		virtual int Elapse(MTO_FLOAT elapsedTime);
 	};
 
 }}

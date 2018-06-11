@@ -1,12 +1,13 @@
 #include "EffectMapper.h"
 
-using namespace Base::Scheduler::Event::effect;
+using namespace Base::Schedulers::Events::Effects;
 
 
 template<class T>
-EffectMapper<T>::EffectMapper(int w, int h): EventProcessor<Effect>(w,h)
+EffectMapper<T>::EffectMapper(int w, int h): EventProcessor<Event>(w,h)
 {
 
+	&effect = (T**)&event;
 }
 
 template<class T>

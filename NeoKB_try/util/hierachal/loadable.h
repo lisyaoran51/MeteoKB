@@ -5,6 +5,7 @@
 #include "../MtoType.h"
 #include<vector>
 #include<string>
+#include<functional>
 
 using namespace std;
 using namespace Util;
@@ -17,6 +18,10 @@ using namespace Util;
  * 在constructor裡面放一個registerPrivateLoader("類別名稱", privateLoad);
  */
 
+/*
+ * functional的punction pointer方法
+ * https://kheresy.wordpress.com/2010/11/12/function_object_tr1/
+ */
 
 
 /*
@@ -71,7 +76,7 @@ namespace Hierachal{
 		/// register loader, must do in every loadable derived class 
 		/// </summary>
 		/// <param name="l">private loader</param>
-		int registerLoad(int(*l)());
+		int registerLoad(function<int(void)> f);
 
 		/// <summary>
 		/// 把所有的load全不執行一次

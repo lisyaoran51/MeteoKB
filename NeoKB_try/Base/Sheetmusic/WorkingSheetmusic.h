@@ -5,14 +5,17 @@
 #include <fstream>
 #include <vector>
 #include "../../Util/TemplateConstraint.h"
+#include "Sheetmusic.h"
+#include "SheetmusicInfo.h"
 
 
 
 using namespace std;
 using namespace Util;
+using namespace Base::Schedulers::Events;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 
 	/// where T : effect_group
 	/// 
@@ -27,17 +30,17 @@ namespace Sheetmusic {
 
 		vector<mod_t*> mods;
 
-		Sm* sm;
+		Sm<Event>* sm;
 
 	public:
 
-		Sm* get_sm();
+		Sm<Event>* GetSm();
 
 	protected:
 
 		WorkingSm(sm_info_t* s);
 
-		virtual Sm* create_sm() = 0;
+		virtual Sm<Event>* create_sm() = 0;
 
 	};
 

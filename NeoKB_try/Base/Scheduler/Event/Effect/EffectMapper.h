@@ -5,16 +5,16 @@
 #include "../../../Scheduler/Event/EventProcessor.h"
 #include "../../../Scheduler/Event/Effect/Effect.h"
 
-using namespace Base::Scheduler::Event;
-using namespace Base::Scheduler::Event::effect;
+using namespace Base::Schedulers::Events;
+using namespace Base::Schedulers::Events::Effects;
 
 namespace Base {
-namespace Scheduler {
-namespace Event {
-namespace effect {
+namespace Schedulers {
+namespace Events {
+namespace Effects {
 
 	template<class T>
-	class EffectMapper : public EventProcessor<Effect>, private TConstraint<T, Effect> {
+	class EffectMapper : public EventProcessor<Event>, private TConstraint<T, Effect> {
 
 
 	public:
@@ -29,6 +29,10 @@ namespace effect {
 		int RegisterMapAlgo(MapAlgorithm<T>* ma);
 
 	protected:
+
+
+
+		T* effect;
 
 		Map* map;
 

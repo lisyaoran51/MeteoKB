@@ -16,9 +16,7 @@ namespace ControlPoints {
 
 		NoteControlPoint(Pitch p, MTO_FLOAT s, MTO_FLOAT l);
 
-		ControlPointType GetControlPointType();
-
-	protected:
+		virtual ControlPointType GetControlPointType();
 
 		Pitch GetPitch();
 

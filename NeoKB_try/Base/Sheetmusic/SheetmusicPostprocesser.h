@@ -13,12 +13,12 @@ using namespace Base::Scheduler::Event;
 
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 
 	/// <summary>
 	/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理，例如說把Event重新排序
 	///	</summary>
-	class sm_postprocessor_t
+	class SmPostprocessor
 	{
 
 	public:

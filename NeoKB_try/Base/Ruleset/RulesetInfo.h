@@ -3,13 +3,14 @@
 
 
 #include<string>
+#include "Ruleset.h"
 
 
 using namespace std;
 
 
 namespace Base {
-namespace Ruleset {
+namespace Rulesets {
 	
 	/// <summary>
 	/// a game rule that designs how the game plays
@@ -21,19 +22,18 @@ namespace Ruleset {
 
 		string name;
 
-		string instantiate_name;
+		string instantiateName;
 
 	public:
 
-		RulesetInfo(int i, string n, string instantiate_n);
+		RulesetInfo(int i, string n);
 
 		Ruleset* CreateRuleset();
 
-		int get_id();
+		int GetId();
 
-		int get_name();
+		string GetName();
 
-		int get_instantiate_name();
 
 	};
 

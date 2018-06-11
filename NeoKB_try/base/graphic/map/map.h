@@ -10,9 +10,9 @@ namespace Maps {
 
 	class Map {
 
-		int** map;
+		int** matrix;
 
-		int** defaultMap;
+		int** defaultMatrix;
 
 		int width;
 		int height;
@@ -23,9 +23,21 @@ namespace Maps {
 
 		~Map();
 
+		int** GetMatrix();
+
 		int Add(int x, int y, int v);
 
 		int Set(int x, int y, int v);
+
+		/// <summary>
+		/// 將m上面x,y位置長寬xLen,yLen的圖案貼到這個map上，用疊加
+		/// </summary>
+		int PasteAdd(Map* m, int x, int y, int toX, int toY, int xLen, int yLen);
+
+		/// <summary>
+		/// 將m上面x,y位置長寬xLen,yLen的圖案貼到這個map上，用重社
+		/// </summary>
+		int PasteSet(Map* m, int x, int y, int toX, int toY, int xLen, int yLen);
 
 		/// <summary>
 		/// 每一次frame都要先把map重置一次再開始畫

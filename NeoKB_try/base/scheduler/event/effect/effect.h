@@ -27,14 +27,14 @@ namespace Effects {
 		/// construct an immediate effect
 		///	</summary>
 		Effect(
-			int x,
-			int y,
+			int xPos,
+			int yPos,
 			MTO_FLOAT start_t,
 			MTO_FLOAT life_t
 		);
 
-		int SetBrightness();
-		int SetSpeed();
+		int SetBrightness(MTO_FLOAT b);
+		int SetSpeed(MTO_FLOAT s);
 
 	protected:
 

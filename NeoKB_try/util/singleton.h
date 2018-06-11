@@ -11,16 +11,16 @@
 namespace Util {
 
 	template<typename T>
-	class singleton_t
+	class Singleton
 	{
 	protected:
-		singleton_t() noexcept = default;
+		Singleton() noexcept = default;
 
-		singleton_t(const singleton_t&) = delete;
+		Singleton(const Singleton&) = delete;
 
-		singleton_t& operator=(const singleton_t&) = delete;
+		Singleton& operator=(const Singleton&) = delete;
 
-		virtual ~singleton_t() = default; // to silence Base class Singleton<T> has a
+		virtual ~Singleton() = default; // to silence Base class Singleton<T> has a
 										// non-virtual destructor [-Weffc++]
 
 	public:
@@ -36,21 +36,21 @@ namespace Util {
 	};
 
 	/* --DEPRICATED
-	class singleton_t {
-		singleton_t() {}
+	class Singleton {
+		Singleton() {}
 
-		singleton_t(const singleton_t&);
-		void operator=(const singleton_t&);
+		Singleton(const Singleton&);
+		void operator=(const Singleton&);
 
 	public:
-		static singleton_t get_instance() {
-			static singleton_t instance; // Guaranteed to be destroyed.
+		static Singleton get_instance() {
+			static Singleton instance; // Guaranteed to be destroyed.
 										 // Instantiated on first use.
 			return instance;
 		}
 
-		singleton_t(const singleton_t&) = delete;
-		void operator=(const singleton_t&) = delete;
+		Singleton(const Singleton&) = delete;
+		void operator=(const Singleton&) = delete;
 	};
 	*/
 

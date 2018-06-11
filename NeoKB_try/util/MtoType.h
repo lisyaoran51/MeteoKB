@@ -1,11 +1,13 @@
 #ifndef MTO_TYPE_H
 #define MTO_TYPE_H
 
+#include<functional>
+
 #define MTO_FLOAT float		// MTO means meteo
-#define MTO_FUNC_POINTER int(*)()
+#define MTO_FUNC_POINTER function<int(void)>
 
 
-enum Pitch {
+enum class Pitch {
         // major2
         C2,             // 0
         D2b,            //

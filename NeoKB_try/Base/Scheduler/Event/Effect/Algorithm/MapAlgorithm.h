@@ -33,7 +33,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
-		virtual int Draw(Map* m, EventProcessor<Event>* e);
+		virtual int Draw(Map* m, T* e);
 
 	protected:
 

@@ -9,21 +9,26 @@
 #include "sheetmusic_info.h"
 #include "Sheetmusic.h"
 #include "../Scheduler/Event/Event.h"
+#include "../../Util/MtoObject.h"
+#include "Pattern\PatternGenerator.h"
+#include "../../Util/Hierachal/ChildAddable.h"
 
 
 
 
 using namespace std;
 using namespace Util;
+using namespace Util::Hierachal;
 using namespace Base::Schedulers::Events;
+using namespace Base::Sheetmusics::Patterns;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 
 	/// <summary>
 	/// when Ruleset executor load in sm, this converter converts the events in sm.
 	///	</summary>
-	class SmConverter
+	class SmConverter: public ChildAddable
 	{
 		/// <summary>
 		/// Åª¨úpattern generator
@@ -37,7 +42,7 @@ namespace Sheetmusic {
 		/// converts the events in sm
 		/// We always operate on a clone of the original sm, to not modify it game-wide
 		///	</summary>
-		virtual Sm<Event>* convert(Sm<Event>* s);
+		virtual Sm<Event>* Convert(Sm<Event>* s);
 
 	protected:
 

@@ -7,17 +7,17 @@
 
 
 using namespace std;
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 
 namespace Base {
-namespace Sheetmusic {
-namespace pattern {
+namespace Sheetmusics {
+namespace Patterns {
 
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class Pattern
+	class Pattern : public MtoObject
 	{
 
 	public:

@@ -1,28 +1,42 @@
 #include"Player.h"
 #include<string>
+#include "Session.h"
+#include "../Sheetmusic/Sheetmusic.h"
 
 using namespace std;
 using namespace Base::Play;
 using namespace Util::Hierachal;
+using namespace Base::Rulesets;
+using namespace Base::Sheetmusics;
 
 
 int Player::load()
 {
 
-	Session* s = GetCache<Session*>("Session");
+	Session* s = GetCache<Session>("Session");
 
 	rulesetInfo = s->GetRulesetInfo();
 	workingSm = s->GetWorkingSm();
 
-	Sm* sm = workingSm->GetSm();
+	Sm<Event>* sm = workingSm->GetSm();
 
 	if (!rulesetInfo)
 		rulesetInfo = sm->GetRulesetInfo();
-	Ruleset* r = rulesetInfo->CreateRuleset();
+	ruleset = rulesetInfo->CreateRuleset();
 
-	rulesetExecutor = r->CreateRulesetExecutor(workingSm);
+	rulesetExecutor = ruleset->CreateRulesetExecutor(workingSm);
 
 	AddChild(rulesetExecutor);
 
 	return 0;
+}
+
+Player::Player(): RegisterType("Player")
+{
+}
+
+Base::Play::Player::~Player()
+{
+	delete ruleset;
+	delete rulesetExecutor;
 }

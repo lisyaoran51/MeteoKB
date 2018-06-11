@@ -2,14 +2,17 @@
 #define RULESET_EXECUTOR_H
 
 
-#include"ruleset_info.h"
+#include"RulesetInfo.h"
 #include"../../Util/TemplateConstraint.h"
 #include"../Scheduler/Event/Event.h"
 #include"../Scheduler/Event/EventProcessor.h"
-#include "../../Util/Hierachal/updatable.h"
-#include "../Sheetmusic/sheetmusic_converter.h"
-#include "../Sheetmusic/sheetmusic_postprocesser.h"
+#include "../../Util/Update/updatable.h"
+#include "../Sheetmusic/SheetmusicConverter.h"
+#include "../Sheetmusic/SheetmusicPostprocesser.h"
 #include "../Play/Playfield.h"
+#include "../Sheetmusic/Pattern/PatternGenerator.h"
+#include "../Config/FrameworkConfigManager.h"
+
 
 
 /*
@@ -21,20 +24,26 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 using namespace Util::Hierachal;
 using namespace Base::Play;
+using namespace Base::Sheetmusics;
+using namespace Base::Sheetmusics::Patterns;
+using namespace Base::Config;
 
 namespace Base {
-namespace Ruleset {
+namespace Rulesets {
 	
 	/// <summary>
 	/// a game rule that designs how the game plays
 	///	</summary>
 	template<class T>
-	class RulesetExecutor: private TConstraint<T, Event>, Updatable
+	class RulesetExecutor: private TConstraint<T, Event>, public Updatable, public ChildAddable
 	{
-
+		/// <summary>
+		/// 把每個event processor會用到的algo先讀出來
+		/// </summary>
+		virtual int mapAlgorithmLoad() = 0;
 
 		/// <summary>
 		/// jobs:
@@ -50,12 +59,13 @@ namespace Ruleset {
 		/// 3. ??? load objects?
 		/// </summary>
 		int load();
+		int load(FrameworkConfigManager* m);
 
-		int apply_mods(vector<mod*>* m);
+		int applyMods(vector<mod*>* m);
 
-		virtual SmConverter* create_sm_converter() = 0;
+		virtual SmConverter* createSmConverter(PatternGenerator* pg) = 0;
 
-		virtual sm_postprocessor_t* create_sm_postprocessor() = 0;
+		virtual SmPostprocessor* createSmPostprocessor() = 0;
 
 	public:
 
@@ -71,14 +81,16 @@ namespace Ruleset {
 
 		Sm<T>* sm;
 
-		WorkingSm<T>* working_sm;
+		WorkingSm<T>* workingSm;
 
 		vector<mod_t*> mods;
 
 		Playfield* playfield;
 
-		//?
-		event_builder_t* event_builder;
+		///<summary>
+		/// 在這邊存了會用到的algo，在getEventProcessor時可以到這邊選擇要用的algo
+		///</summary>
+		map<string, MapAlgorithm*> mapAlgorithms;
 
 		// 移到playfield裡，因為這個是基本功能，不會隨規則變動
 		/*Scheduler* Scheduler;*/
@@ -91,11 +103,15 @@ namespace Ruleset {
 
 		vector<void*> on_judgement;
 
-		virtual Playfield* create_playfield() = 0;
+		virtual Playfield* createPlayfield() = 0;
 
+		/// <summary>
+		/// jobs:
+		/// 1. 建立與event對應的processor
+		/// 2. 如果processor是effect mapper，就把map algo加進去
+		/// </summary>
 		virtual EventProcessor* getEventProcessor(T* e) = 0;
 	};
-
 
 
 	

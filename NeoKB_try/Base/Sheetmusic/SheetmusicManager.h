@@ -15,7 +15,7 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 
 	/// where T : effect_group
 	/// 

@@ -3,27 +3,28 @@
 
 
 #include <vector>
+#include"../MtoType.h"
 
 using namespace std;
 
 
-namespace Base {
-namespace Scheduler {
+namespace Util {
+namespace Update {
 
 	/// <summary>
 	/// to update current time for every object who need to update.
 	/// <summary>
-	class updater_t {
+	class Updater {
 
-		vector<void*> tasks;
+		vector<MTO_FUNC_POINTER> tasks;
 
 	public:
 
-		int register_task(void* t);
+		int RegisterTask(MTO_FUNC_POINTER t);
 
-		int remove_task(void* t);
+		// int RemoveTask(MTO_FUNC_POINTER t);
 
-		void update();
+		void Update();
 	};
 
 }}

@@ -1,6 +1,6 @@
 #include "HardwareMapAlgorithm.h"
 
-using namespace Base::Graphic::Renderer::MapAlgorithm;
+using namespace Base::Graphic::Renderers::MapAlgorithms;
 
 
 int HardwareMapAlgo::setCompatibleHwVersion()
@@ -8,7 +8,7 @@ int HardwareMapAlgo::setCompatibleHwVersion()
 	return 0;
 }
 
-HardwareMapAlgo::HardwareMapAlgo()
+HardwareMapAlgo::HardwareMapAlgo(): RegisterType("HardwareMapAlgo")
 {
 	setCompatibleHwVersion();
 }
@@ -19,7 +19,11 @@ int HardwareMapAlgo::RegisterMap(Map * m)
 	return 0;
 }
 
-int HardwareMapAlgo::CheckHardwareVersion()
+bool HardwareMapAlgo::CheckHardwareVersion(int hwVersion)
 {
-	return 0;
+	for (int i = 0; i < compatibleHwVersion.size(); i++) {
+		if (compatibleHwVersion[i] == hwVersion)
+			return true;
+	}
+	return false;
 }

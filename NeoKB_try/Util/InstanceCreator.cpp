@@ -22,7 +22,16 @@ int InstanceCreator<TBase>::RegisterType(string typeName)
 }
 
 template<typename TBase>
-TBase* Util::InstanceCreator<TBase>::CreateInstance(string typeName)
+TBase* InstanceCreator<TBase>::CreateInstance(string typeName)
 {
 	return creators[typeName]();
+}
+
+template<typename TBase>
+template<typename T>
+T* InstanceCreator<TBase>::CreateInstanceWithT(string typeName)
+{
+	TBase* temp = creators[typeName]();
+	T temp2 = temp->Cast<T>();
+	return temp2;
 }

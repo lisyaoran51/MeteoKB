@@ -93,6 +93,41 @@
 	什麼時候會知道哪個effect式對哪個algo?
 	###
 	最一開始要知道所有的effect要對哪個algo，先在meteor ruleset executor的playfield load時，把會用到的algo建好，
-	然後cache起來，然後在meteor playfield，每個processor加進來時就把algo放進去processor裡。
+	然後cache起來(6/1想到不能cache吧！)，然後在meteor playfield，每個processor加進來時就把algo放進去processor裡。
 	###
 	應該寫在base裡
+
+6/1
+	把metero setting寫好，以後playfield就直接讀setting，就可以拿到每個map algo。
+	不對，應該是ruleset executor會把需要的algo建好，然後在playfield load的時候跟著event一起load進去playfield裡 
+
+	map algo的問題解決了，現在要來重新順一變整個遊戲的流程：
+
+	1. session裡面先cache一些遊戲設定
+
+	2. Main裡面new一個player，player把session資料load進來(樂譜)
+
+	3. player會把session裡的樂譜和規則拿出來，用規則和樂譜去建立一個ruleset executor，
+
+
+
+
+
+
+	functional的punction pointer方法
+	* https://kheresy.wordpress.com/2010/11/12/function_object_tr1/
+
+6/7
+	今天決定重投把code補完，現在補到map
+	
+	functional裡面的bind不能對overloading問題
+	https://stackoverflow.com/questions/4159487/stdbind-overload-resolution
+
+	從上到下一個一個寫完，現在寫到event processor master
+	要把has name拉出來
+
+6/10
+	把event processor轉換成effect mapper，這個動再擺在playfield 的add裡面，然後把map加進去
+
+6/11	
+	到efect mapper

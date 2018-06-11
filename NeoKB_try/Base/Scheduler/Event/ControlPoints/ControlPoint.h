@@ -14,11 +14,13 @@ namespace ControlPoints {
 
 	public:
 
+		ControlPoint(MTO_FLOAT s, MTO_FLOAT l);
+
 		virtual ControlPointType GetControlPointType() = 0;
 
 	};
 
-	enum ControlPointType {
+	enum class ControlPointType {
 		ControlPointTypeNote,
 		ControlPointTypeSound,
 		ControlPointTypeEffect

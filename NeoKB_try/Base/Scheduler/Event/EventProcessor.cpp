@@ -1,7 +1,7 @@
 #include "EventProcessor.h"
 
 
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 
 template<class T>
@@ -9,4 +9,10 @@ int EventProcessor<T>::RegisterEvent(T * e)
 {
 	event = e;
 	return 0;
+}
+
+template<class T>
+MTO_FLOAT EventProcessor<T>::GetStartTime()
+{
+	return event->GetStartTime();
 }

@@ -14,7 +14,6 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
 
 /*
 * instantiate a class with its name in string
@@ -36,6 +35,9 @@ namespace Events {
 
 	public:
 
+		/// <summary>
+		/// 在遊戲進行中來負責接收集將執行的事件， 
+		/// </summary>
 		int ReceiveEventProcessor(EventProcessor<Event>* ep);
 
 		/* 改成擺在rulset executor裡

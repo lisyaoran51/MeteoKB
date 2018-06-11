@@ -11,6 +11,8 @@
 #include "../sheetmusic_info.h"
 #include "../Sheetmusic.h"
 #include "../../Scheduler/Event/Event.h"
+#include "pattern.h"
+#include "../../../Util/MtoObject.h"
 
 
 
@@ -21,13 +23,13 @@ using namespace Base::Schedulers::Events;
 using namespace Base::Sheetmusic;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 namespace Patterns {
 
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class PatternGenerator
+	class PatternGenerator: public MtoObject
 	{
 
 	public:

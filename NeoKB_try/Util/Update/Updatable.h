@@ -9,7 +9,7 @@ using namespace std;
 
 
 namespace Util {
-namespace Hierachal {
+namespace Update {
 
 	/// <summary>
 	/// every class inherit form this has a function to update. we register update() to the updater. updater will call update().

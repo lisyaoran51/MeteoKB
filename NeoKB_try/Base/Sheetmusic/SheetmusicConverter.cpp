@@ -3,20 +3,20 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Sheetmusic;
+using namespace Base::Sheetmusics;
 
 
-int Base::Sheetmusic::SmConverter::load()
+int SmConverter::load()
 {
 	PatternGenerator* pg = GetCache<PatternGenerator>("PatternGenerator");
 
 	if (!pg)
-		throw runtime_error("int MeteorSmConverter::load() : PatternGenerator not found in cache.");
+		throw runtime_error("int SmConverter::load() : PatternGenerator not found in cache.");
 
 	return load(pg);
 }
 
-int Base::Sheetmusic::SmConverter::load(PatternGenerator * pg)
+int SmConverter::load(PatternGenerator * pg)
 {
 	patternGenerator = pg;
 	return 0;
@@ -28,7 +28,7 @@ int Base::Sheetmusic::SmConverter::load(PatternGenerator * pg)
 /// 在遊戲開始前附智一個新的sm，然後把裡面的特效events全部重新轉換一次
 /// We always operate on a clone of the original sm, to not modify it game-wide
 ///	</summary>
-Sm<Event>* SmConverter::convert(Sm<Event>* s)
+Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 {
 	Sm<Event>* sm = new Sm<Event>(s);
 
@@ -58,7 +58,7 @@ Sm<Event>* SmConverter::convert(Sm<Event>* s)
 	return sm;
 }
 
-int Base::Sheetmusic::SmConverter::convert_event(vector<Event*>* es, Event * e, Sm<Event>* s)
+int SmConverter::convert_event(vector<Event*>* es, Event * e, Sm<Event>* s)
 {
 	// 對本來單純的樂譜，生成各種特效，如提示光、落下、其他特效。
 	Pattern* newPattern = patternGenerator->Generate(es, e);

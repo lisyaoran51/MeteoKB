@@ -26,10 +26,10 @@ namespace format {
 
 
 
-	class sm_decoder_t: public singleton_t<sm_decoder_t>
+	class sm_decoder_t: public Singleton<sm_decoder_t>
 	{
 
-		friend class singleton_t<sm_decoder_t>;
+		friend class Singleton<sm_decoder_t>;
 
 		map<string, string> decoders;
 

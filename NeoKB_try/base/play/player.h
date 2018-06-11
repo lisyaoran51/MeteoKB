@@ -3,27 +3,30 @@
 
 #include "../../Util/Update/Updatable.h"
 #include "../../Util/Hierachal/ChildAddable.h"
-#include"../Ruleset/RulesetExecutor.h"
+#include "../Ruleset/RulesetExecutor.h"
+#include "../Sheetmusic/SheetmusicManager.h"
+#include "../Sheetmusic/WorkingSheetmusic.h"
 
 
 
 using namespace Util::Hierachal;
-using namespace Base::Ruleset;
+using namespace Base::Rulesets;
+using namespace Base::Sheetmusics;
 
 namespace Base {
 namespace Play {
 
-	class Player: ChildAddable {
+	class Player: public ChildAddable {
 
 		SmManager* smManager;
 
 		WorkingSm* workingSm;
 
+		Ruleset* ruleset;
+
 		RulesetInfo* rulesetInfo;
 
 		RulesetExecutor<Event>* rulesetExecutor;
-
-		Playfield* playfield;
 
 		/// <summary>
 		/// load in things like sm, Ruleset info. then create Ruleset executor

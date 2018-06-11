@@ -1,6 +1,6 @@
 #include "EventProcessorMaster.h"
 
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 
 

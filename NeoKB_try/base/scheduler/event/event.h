@@ -22,35 +22,32 @@ namespace Events {
 
 	public:
 
-		void Elapse(MTO_FLOAT sec);
+		Event(MTO_FLOAT s, MTO_FLOAT l);
 
-		void is_alive();
-
-		int virtual register_handler(void* h);
+		MTO_FLOAT GetStartTime();
+		MTO_FLOAT GetLifeTime();
 
 	protected:
 
 		int eid;
 
 		EventStartType start_type;
-		EventElapseType elapse_type;
 
-		MTO_FLOAT start_time;
-		MTO_FLOAT life_time;
+		/// <summary>
+		/// 開始時間，如果式即時事件就是-1
+		/// </summary>
+		MTO_FLOAT startTime;
 
-		/// ???
-		(void*)handler(Event* self);
+		/// <summary>
+		/// 結束時間 如果是瞬間事件，就是0，如果是由訊號通知開關，就是-1
+		/// </summary>
+		MTO_FLOAT lifeTime;
+
 	};
 
 	enum EventStartType {
 		Immediate,
 		Reserved
-	};
-
-	enum EventElapseType {
-		OneTime,
-		Longterm,
-		BySignal
 	};
 
 	

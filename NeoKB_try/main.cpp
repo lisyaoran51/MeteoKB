@@ -5,8 +5,21 @@ using namespace Base::Sheetmusic::io;
 using namespace Base::Sheetmusic::format;
 
 
+int main() {
 
-int main(int argc, char *argv[])
+	Game* game = new MeteorGame();
+	game->Async();
+
+	
+	game->Run();
+	
+
+	return 0;
+}
+
+
+
+int main_deprecated(int argc, char *argv[])
 {
 	file_reader_t* reader;
 	

@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Base\Config\ConfigManager.cpp" />
+    <ClCompile Include="Base\Config\FrameworkConfigManager.cpp" />
+    <ClCompile Include="Base\Game.cpp" />
     <ClCompile Include="Base\Graphic\Map\Builder\MapBuilder.cpp" />
     <ClCompile Include="Base\Graphic\Map\Map.cpp" />
     <ClCompile Include="Base\Graphic\Renderer\MapAlgorithm\HardwareMapAlgorithm.cpp" />
@@ -33,7 +35,10 @@
     <ClCompile Include="Base\Play\Player.cpp" />
     <ClCompile Include="Base\Play\Playfield.cpp" />
     <ClCompile Include="Base\Ruleset\Mod\Mod.cpp" />
+    <ClCompile Include="Base\Ruleset\Ruleset.cpp" />
     <ClCompile Include="Base\Ruleset\RulesetExecutor.cpp" />
+    <ClCompile Include="Base\Ruleset\RulesetInfo.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Effect.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\EffectMapper.cpp" />
@@ -47,6 +52,7 @@
     <ClCompile Include="Base\Sheetmusic\Sheetmusic.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RulesetMeteor\MeteorGame.cpp" />
     <ClCompile Include="RulesetMeteor\Play\MeteorPlayfield.cpp" />
     <ClCompile Include="RulesetMeteor\Ruleset\MeteorRuleset.cpp" />
     <ClCompile Include="RulesetMeteor\Ruleset\MeteorRulesetExecutor.cpp" />
@@ -56,12 +62,15 @@
     <ClCompile Include="Util\Hierachal\Loadable.cpp" />
     <ClCompile Include="Util\Hierachal\LoadStateHandler.cpp" />
     <ClCompile Include="Util\InstanceCreator.cpp" />
+    <ClCompile Include="Util\Update\Updater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="DailyLog.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Config\ConfigManager.h" />
+    <ClInclude Include="Base\Config\FrameworkConfigManager.h" />
+    <ClInclude Include="Base\Game.h" />
     <ClInclude Include="Base\Graphic\Map\Builder\MapBuilder.h" />
     <ClInclude Include="Base\Graphic\Map\Map.h" />
     <ClInclude Include="Base\Graphic\Renderer\MapAlgorithm\HardwareMapAlgorithm.h" />
@@ -76,6 +85,7 @@
     <ClInclude Include="Base\LedDriver\ws2811.h" />
     <ClInclude Include="Base\Play\Player.h" />
     <ClInclude Include="Base\Play\Playfield.h" />
+    <ClInclude Include="Base\Play\Session.h" />
     <ClInclude Include="Base\Ruleset\Mod\Mod.h" />
     <ClInclude Include="Base\Ruleset\Ruleset.h" />
     <ClInclude Include="Base\Ruleset\RulesetExecutor.h" />
@@ -103,9 +113,23 @@
     <ClInclude Include="Base\Sheetmusic\SheetmusicMetadata.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocesser.h" />
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h" />
+    <ClInclude Include="Drivers\HardwareInfo.h" />
+    <ClInclude Include="Drivers\LedDriver.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="RulesetMeteor\Config\MeteorConfigManager.h" />
+    <ClInclude Include="RulesetMeteor\MeteorGame.h" />
     <ClInclude Include="RulesetMeteor\Play\MeteorPlayfield.h" />
     <ClInclude Include="RulesetMeteor\Ruleset\MeteorRuleset.h" />
     <ClInclude Include="RulesetMeteor\Ruleset\MeteorRulesetExecutor.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\ExplodeMapAlgorithm.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\FallMapAlgorithm.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\GlowLineMapAlgorithm.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\ExplodeEffect.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\ExplodeEffectMapper.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\FallEffect.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\FallEffectMapper.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffect.h" />
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffectMapper.h" />
     <ClInclude Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.h" />
     <ClInclude Include="Util\Hierachal\Cachable.h" />
     <ClInclude Include="Util\Hierachal\ChildAddable.h" />
@@ -115,6 +139,7 @@
     <ClInclude Include="Util\MtoClock.h" />
     <ClInclude Include="Util\MtoObject.h" />
     <ClInclude Include="Util\MtoType.h" />
+    <ClInclude Include="Util\MtoUtil.h" />
     <ClInclude Include="Util\Singleton.h" />
     <ClInclude Include="Util\TemplateConstraint.h" />
     <ClInclude Include="Util\Update\Updatable.h" />

@@ -184,6 +184,24 @@
     <Filter Include="來源檔案\Base\Schedulers\Events\Effects\Algorithms">
       <UniqueIdentifier>{339a705d-ac74-4ca6-bf20-a3042db46a07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="標頭檔\RulesetMeteor\Config">
+      <UniqueIdentifier>{15fc204a-8721-4697-9cd2-7042222a9c41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\RulesetMeteor\Schedulers">
+      <UniqueIdentifier>{2309dff3-6fe1-4fcb-afd1-c53879dee125}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\RulesetMeteor\Schedulers\Events">
+      <UniqueIdentifier>{54ad6131-8c59-4c6c-905c-5e05582faf69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\RulesetMeteor\Schedulers\Events\Effects">
+      <UniqueIdentifier>{826eb0a8-101a-41f6-ab07-f5ff9363cd66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\RulesetMeteor\Schedulers\Events\Effects\Algorithms">
+      <UniqueIdentifier>{493753c8-ce54-4188-b125-c0068b07f63d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Drivers">
+      <UniqueIdentifier>{ed4650f3-a793-4af0-805a-dbbe8196cad2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -296,6 +314,27 @@
     </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Game.cpp">
+      <Filter>來源檔案\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesetMeteor\MeteorGame.cpp">
+      <Filter>來源檔案\RulesetMeteor</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Update\Updater.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Config\FrameworkConfigManager.cpp">
+      <Filter>來源檔案\Base\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Ruleset\Ruleset.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Ruleset\RulesetInfo.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.cpp">
+      <Filter>來源檔案</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +516,60 @@
     </ClInclude>
     <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.h">
       <Filter>標頭檔\Base\Scheduler\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Config\FrameworkConfigManager.h">
+      <Filter>標頭檔\Base\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Config\MeteorConfigManager.h">
+      <Filter>標頭檔\RulesetMeteor\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\FallEffect.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffect.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\ExplodeEffect.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\ExplodeEffectMapper.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\FallEffectMapper.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffectMapper.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\ExplodeMapAlgorithm.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\FallMapAlgorithm.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\GlowLineMapAlgorithm.h">
+      <Filter>標頭檔\RulesetMeteor\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Game.h">
+      <Filter>標頭檔\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="RulesetMeteor\MeteorGame.h">
+      <Filter>標頭檔\RulesetMeteor</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\HardwareInfo.h">
+      <Filter>標頭檔\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Drivers\LedDriver.h">
+      <Filter>標頭檔\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Play\Session.h">
+      <Filter>標頭檔\Base\play</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\MtoUtil.h">
+      <Filter>標頭檔\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

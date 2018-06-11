@@ -4,20 +4,21 @@
 #include<vector> 
 #include<map> 
 #include "../../Map/Map.h"
+#include "../../../../Util/MtoObject.h"
 
 
 using namespace std;
-using namespace Base::Graphic::Map;
-
+using namespace Base::Graphic::Maps;
+using namespace Util;
 
 
 
 namespace Base {
 namespace Graphic {
-namespace Renderer {
-namespace MapAlgorithm {
+namespace Renderers {
+namespace MapAlgorithms {
 
-	class HardwareMapAlgo {
+	class HardwareMapAlgo: public MtoObject {
 
 		vector<int> compatibleHwVersion;
 
@@ -37,9 +38,9 @@ namespace MapAlgorithm {
 		/// 註冊輸出的對象
 		/// TODO: 還不確定輸出的對象是什麼形態，應該式陣列
 		/// </summary>
-		int RegisterOutput();
+		//int RegisterOutput();
 
-		int CheckHardwareVersion();
+		bool CheckHardwareVersion(int hwVersion);
 
 	protected:
 
