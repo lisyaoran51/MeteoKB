@@ -16,20 +16,31 @@ int EventProcessorMaster::RegisterMap(Map * m)
 	return 0;
 }
 
+int EventProcessorMaster::Clean()
+{
+	eventProcessors->clear();
+	return 0;
+}
+
 int EventProcessorMaster::processEvent(MTO_FLOAT elapsedTime)
 {
 	for (int i = 0; i < eventProcessors->size(); i++) {
-		(*eventProcessors->at(i))->Elapse(elapsedTime);
+		eventProcessors->at(i)->Elapse(elapsedTime);
 	}
 	return 0;
 }
 
 int EventProcessorMaster::cleanEndedEvent()
 {
-	for (int i = 0; i < eventProcessors->size(); i++) {
-		if ((*eventProcessors->at(i))->GetTimeLeft() < 0) {
+
+	for (vector<EventProcessor<Event>*>::iterator i = eventProcessors->begin(); i != eventProcessors->end(); i++)
+	{
+		if ((*i)->GetTimeLeft() <= 0) {
 			// TODO:
 			// eventProcessors erase i 不知道怎麼寫
+			i = eventProcessors->erase(i);
+			// 音未刪除以後會直接跳向下一個元素，所以要先撿回來
+			i--;
 		}
 	}
 
@@ -38,6 +49,12 @@ int EventProcessorMaster::cleanEndedEvent()
 
 int EventProcessorMaster::Elapse(MTO_FLOAT elapsedTime)
 {
+	if (elapsedTime == -1) {
+		currentTime = 0;
+		return;
+	}
+
+
 	processEvent(elapsedTime);
 	cleanEndedEvent();
 	return 0;

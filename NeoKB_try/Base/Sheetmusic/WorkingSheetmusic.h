@@ -7,6 +7,7 @@
 #include "../../Util/TemplateConstraint.h"
 #include "Sheetmusic.h"
 #include "SheetmusicInfo.h"
+#include "Format\SmDecoder.h"
 
 
 
@@ -22,25 +23,31 @@ namespace Sheetmusics {
 	class WorkingSm
 	{
 
-		sm_info_t* sm_info;
+		SmSetInfo* smSetInfo;
 
-		sm_metadata_t* sm_metadata;
+		SmInfo* smInfo;
 
-		vector<ctrl_point>* effects;
+		SmMetadata* smMetadata;
 
-		vector<mod_t*> mods;
+		//vector<ctrl_point>* effects;
+
+		//vector<Mod*> mods;
 
 		Sm<Event>* sm;
 
 	public:
 
+		WorkingSm(SmInfo* s);
+
+		~WorkingSm();
+
 		Sm<Event>* GetSm();
 
 	protected:
 
-		WorkingSm(sm_info_t* s);
+		virtual Sm<Event>* createSm();
 
-		virtual Sm<Event>* create_sm() = 0;
+		string getPathForFile(string fileName);
 
 	};
 

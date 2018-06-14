@@ -24,7 +24,7 @@ int Base::Game::Run()
 {
 	bool running = true;
 	while (running) {
-		updater->update();
+		updater->Update();
 	}
 
 	return 0;

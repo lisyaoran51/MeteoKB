@@ -28,7 +28,7 @@ namespace Hierachal {
 		/// </summary>
 		int AddChild(ChildAddable* child);
 
-		int RegisterOnAdd(int(*action)());
+		int RegisterOnAdd(MTO_FUNC_POINTER func);
 
 
 	};

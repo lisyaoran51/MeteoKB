@@ -41,6 +41,7 @@ namespace Events {
 		virtual int Process() = 0;
 
 		MTO_FLOAT GetStartTime();
+		MTO_FLOAT GetTimeLeft();
 		
 
 	protected:

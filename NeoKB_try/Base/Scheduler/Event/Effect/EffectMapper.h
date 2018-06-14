@@ -30,8 +30,6 @@ namespace Effects {
 
 	protected:
 
-
-
 		T* effect;
 
 		Map* map;

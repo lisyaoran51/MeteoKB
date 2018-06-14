@@ -4,15 +4,19 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "working_sheetmusic.h"
+#include "WorkingSheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
-#include "sheetmusic_info.h"
+#include "SheetmusicInfo.h"
 #include "Sheetmusic.h"
+#include "IO\FileReader.h"
+#include "Format\SmDecoder.h"
 
 
 
 using namespace std;
 using namespace Util;
+using namespace Base::Sheetmusics::IO;
+using namespace Base::Sheetmusics::Format;
 
 namespace Base {
 namespace Sheetmusics {
@@ -21,34 +25,43 @@ namespace Sheetmusics {
 	/// 
 	class SmManager
 	{
-
-		static int copy_to(ifstream* from, ifstream* to);
+		// ??不確定是否需要
+		//static int copyTo(ifstream* from, ifstream* to);
 
 	public:
 
 		SmManager();
 
-		int import(vector<string>* path);
+		~SmManager();
 
-		WorkingSm* get_working_sm(sm_info_t* s);
+		int RegisterRulesetInfo(RulesetInfo* r);
+
+		int Import(vector<string>* paths);
+
+		WorkingSm* GetWorkingSm(SmInfo* s);
 
 	protected:
 
-		vector<sm_info_t*>* sm_info;
+		vector<RulesetInfo*>* rulesetInfos;
 
-		vector<sm_info_t*>* import(ifstream* file_stream);
+		vector<SmInfo*>* smInfos;
 
-		vector<sm_info_t*>* import_to_storage(ifstream* file_stream);
+		/// <summary>
+		/// 會把這些路競裡面的檔案全都讀出來，並且用sm set做成一組一組樂譜，然後佔存到某個地方(資料庫或是?)
+		/// 但是目前沒有做到這個部分，只把樂譜資料先丟進去一個list裡，詳建osu的作法
+		/// </summary>
+		vector<SmInfo*>* import(FileReader& fileReader);
+
+		vector<SmInfo*>* importToStorage(FileReader& fileReader);
 
 		// WorkingSm(sm_info_t* s);
 
-		virtual Sm<effect_group_t>* create_sm() = 0;
+		virtual Sm<Event>* createSm() = 0;
 
 	};
 
 
-}
-}
+}}
 
 
 

@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace Util;
-using namespace Base::Scheduler::Event;
+using namespace Base::Schedulers::Events;
 
 
 
@@ -16,7 +16,7 @@ namespace Base {
 namespace Sheetmusics {
 
 	/// <summary>
-	/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理，例如說把Event重新排序
+	/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理，例如說把Event重新排序，或把重疊的effect修掉
 	///	</summary>
 	class SmPostprocessor
 	{

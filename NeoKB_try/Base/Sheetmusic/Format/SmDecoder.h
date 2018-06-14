@@ -7,13 +7,13 @@
 #include <stdexcept>
 #include "../../../Util/singleton.h"
 #include "../Sheetmusic.h"
-#include "../../Scheduler/Event/effect/effect.h"
+#include "../../Scheduler/Event/Event.h"
 
 
 using namespace std;
 using namespace Util;
-using namespace Base::Sheetmusic;
-using namespace Base::Scheduler::Event::effect;
+using namespace Base::Sheetmusics;
+using namespace Base::Schedulers::Events;
 
 // inlcude path defined by macro
 // https://stackoverflow.com/questions/32066204/construct-path-for-include-directive-with-macro
@@ -21,28 +21,28 @@ using namespace Base::Scheduler::Event::effect;
 
 
 namespace Base {
-namespace Sheetmusic {
-namespace format {
+namespace Sheetmusics {
+namespace Format {
 
 
 
-	class sm_decoder_t: public Singleton<sm_decoder_t>
+	class SmDecoder: public Singleton<SmDecoder>
 	{
 
-		friend class Singleton<sm_decoder_t>;
+		friend class Singleton<SmDecoder>;
 
-		map<string, string> decoders;
+		static map<string, string> decoders;
 
 	public:
 		
-		static int registerDecoder(string version, string type_name);
-		static sm_decoder_t* get_decoder(ifstream* stream);
-		Sm<Effect>* decode(fstream* stream);
+		static int RegisterDecoder(string version, string typeName);
+		static SmDecoder* GetDecoder(ifstream* stream);
+		Sm<Event>* Decode(ifstream* stream);
 
 	protected:
 
-		virtual Sm<Effect>* parse_file(fstream* stream);
-		virtual void parse_file(fstream* stream, Sm<Effect>* sm) = 0;
+		virtual Sm<Event>* parseFile(ifstream* stream);
+		virtual void parseFile(ifstream* stream, Sm<Event>* sm) = 0;
 	};
 
 

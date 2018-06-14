@@ -12,13 +12,11 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 	
 	 
-	class sm_metadata_t
+	struct SmMetadata
 	{
-
-	public:
 
 		string Artist;
 		string ArtistUnicode;
@@ -31,7 +29,8 @@ namespace Sheetmusic {
 		string Title;
 		string TitleUnicode;
 
-
+		SmMetadata();
+		SmMetadata(SmMetadata* sm);
 
 	};
 

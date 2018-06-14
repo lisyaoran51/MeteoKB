@@ -20,8 +20,8 @@ int ChildAddable::AddChild(ChildAddable * child)
 }
 
 
-int Util::Hierachal::ChildAddable::RegisterOnAdd(int (*action)())
+int ChildAddable::RegisterOnAdd(MTO_FUNC_POINTER func)
 {
-	onAdd.push_back(action);
+	onAdd.push_back(func);
 	return 0;
 }

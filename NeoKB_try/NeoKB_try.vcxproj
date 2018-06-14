@@ -47,10 +47,15 @@
     <ClCompile Include="Base\Scheduler\Event\EventProcessorMaster.cpp" />
     <ClCompile Include="Base\Scheduler\Scheduler.cpp" />
     <ClCompile Include="Base\Sheetmusic\ControlPoint\ControlPoint.cpp" />
-    <ClCompile Include="Base\Sheetmusic\Format\sm_decoder.cpp" />
+    <ClCompile Include="Base\Sheetmusic\Format\SmDecoder.cpp" />
     <ClCompile Include="Base\Sheetmusic\IO\FileReader.cpp" />
+    <ClCompile Include="Base\Sheetmusic\Pattern\Pattern.cpp" />
+    <ClCompile Include="Base\Sheetmusic\Pattern\PatternGenerator.cpp" />
     <ClCompile Include="Base\Sheetmusic\Sheetmusic.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp" />
+    <ClCompile Include="Base\Sheetmusic\SheetmusicManager.cpp" />
+    <ClCompile Include="Base\Sheetmusic\SheetmusicMetadata.cpp" />
+    <ClCompile Include="Base\Sheetmusic\WorkingSheetmusic.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RulesetMeteor\MeteorGame.cpp" />
     <ClCompile Include="RulesetMeteor\Play\MeteorPlayfield.cpp" />
@@ -58,10 +63,14 @@
     <ClCompile Include="RulesetMeteor\Ruleset\MeteorRulesetExecutor.cpp" />
     <ClCompile Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.cpp" />
     <ClCompile Include="Util\Cachable.cpp" />
+    <ClCompile Include="Util\FileSystem.c" />
     <ClCompile Include="Util\Hierachal\ChildAddable.cpp" />
+    <ClCompile Include="Util\Hierachal\HasParent.cpp" />
     <ClCompile Include="Util\Hierachal\Loadable.cpp" />
     <ClCompile Include="Util\Hierachal\LoadStateHandler.cpp" />
     <ClCompile Include="Util\InstanceCreator.cpp" />
+    <ClCompile Include="Util\MtoObject.cpp" />
+    <ClCompile Include="Util\Update\Updatable.cpp" />
     <ClCompile Include="Util\Update\Updater.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -93,17 +102,18 @@
     <ClInclude Include="Base\Scheduler\Event\ControlPoints\ControlPoint.h" />
     <ClInclude Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.h" />
     <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.h" />
+    <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.h" />
+    <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapShiftAlgorithm.h" />
     <ClInclude Include="Base\Scheduler\Event\Effect\Effect.h" />
     <ClInclude Include="Base\Scheduler\Event\Effect\EffectMapper.h" />
     <ClInclude Include="Base\Scheduler\Event\Event.h" />
     <ClInclude Include="Base\Scheduler\Event\EventProcessor.h" />
     <ClInclude Include="Base\Scheduler\Event\EventProcessorMaster.h" />
     <ClInclude Include="Base\Scheduler\Scheduler.h" />
-    <ClInclude Include="Base\Sheetmusic\ControlPoint\ControlPoint.h" />
     <ClInclude Include="Base\Sheetmusic\Format\Parser\EventParser.h" />
     <ClInclude Include="Base\Sheetmusic\Format\SmDecoder.h" />
     <ClInclude Include="Base\Sheetmusic\IO\FileReader.h" />
-    <ClInclude Include="Base\Sheetmusic\Pattern\pattern.h" />
+    <ClInclude Include="Base\Sheetmusic\Pattern\Pattern.h" />
     <ClInclude Include="Base\Sheetmusic\Pattern\PatternGenerator.h" />
     <ClInclude Include="Base\Sheetmusic\Sheetmusic.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicConverter.h" />
@@ -112,6 +122,7 @@
     <ClInclude Include="Base\Sheetmusic\SheetmusicManager.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicMetadata.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocesser.h" />
+    <ClInclude Include="Base\Sheetmusic\SheetmusicSetInfo.h" />
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h" />
     <ClInclude Include="Drivers\HardwareInfo.h" />
     <ClInclude Include="Drivers\LedDriver.h" />
@@ -131,6 +142,7 @@
     <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffect.h" />
     <ClInclude Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffectMapper.h" />
     <ClInclude Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.h" />
+    <ClInclude Include="Util\FileSystem.h" />
     <ClInclude Include="Util\Hierachal\Cachable.h" />
     <ClInclude Include="Util\Hierachal\ChildAddable.h" />
     <ClInclude Include="Util\Hierachal\HasParent.h" />

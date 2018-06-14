@@ -6,6 +6,9 @@
 using namespace Util::Hierachal;
 
 
+Cachable::Cachable(): RegisterType("Cachable")
+{
+}
 
 MtoObject* Cachable::getCache(string type)
 {
@@ -16,25 +19,24 @@ MtoObject* Cachable::getCache(string type)
 		MtoObject* c = cache[type];
 		return c;
 	}
-	else {
-		// 沒找到
-		
-		HasParent* h = GetParent();
-		if (!h)
-			return NULL;
-
-		Cachable* c = Cast<Cachable*>(h);
-		return c->GetCache(type);
-	}
+	return NULL;
 }
 
 template<typename T>
 T Cachable::GetCache(string type) {
 
-	MtoObject* o = GetCache(type);
+	MtoObject* o = getCache(type);
 
-	if (!o)
-		return NULL;
+	if (!o) {
+		// 沒找到
+
+		HasParent* h = GetParent();
+		if (!h)
+			return NULL;
+
+		Cachable* c = Cast<Cachable>(h);
+		return c->GetCache<T>(type);
+	}
 
 	T to = Cast<T>(o);
 
@@ -48,6 +50,14 @@ template<typename T>
 int Cachable::Cache(T* o)
 {
 	cache[o->GetTypeName()] = o;
+
+	return 0;
+}
+
+template<typename T>
+int Cachable::Cache(T * o, string typeName)
+{
+	cache[typeName] = o;
 
 	return 0;
 }

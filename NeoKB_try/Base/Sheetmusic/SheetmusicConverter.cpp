@@ -33,32 +33,32 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 	Sm<Event>* sm = new Sm<Event>(s);
 
 	// 從sm讀出來的event
-	vector<Event*>* original_events = sm->get_events();
+	vector<Event*>* originalEvents = sm->GetEvents();
 
 	// 經過處理轉換的event
-	vector<Event*>* new_events = new vector<Event*>();
+	vector<Event*>* newEvents = new vector<Event*>();
 
 	// 轉換中暫存用
-	vector<Event*>* temp_events = new  vector<Event*>();
+	vector<Event*>* tempEvents = new  vector<Event*>();
 
-	for (int i = 0; i < original_events->size(); i++) {
+	for (int i = 0; i < originalEvents->size(); i++) {
 		
-		convert_event(temp_events, original_events->at(i), s);
+		convertEvent(tempEvents, originalEvents->at(i));
 
-		for (int j = 0; j < temp_events->size(); j++) {
-			new_events->push_back( temp_events->at(j) );
+		for (int j = 0; j < tempEvents->size(); j++) {
+			newEvents->push_back( tempEvents->at(j) );
 		}
 	}
 
-	delete temp_events;
+	delete tempEvents;
 	patternGenerator->CleanPatterns();
 
-	sm->set_events(new_events);
+	sm->SetEvents(newEvents);
 
 	return sm;
 }
 
-int SmConverter::convert_event(vector<Event*>* es, Event * e, Sm<Event>* s)
+int SmConverter::convertEvent(vector<Event*>* es, Event * e)
 {
 	// 對本來單純的樂譜，生成各種特效，如提示光、落下、其他特效。
 	Pattern* newPattern = patternGenerator->Generate(es, e);

@@ -131,3 +131,30 @@
 
 6/11	
 	到efect mapper
+	
+	寫sort的方法：
+	https://stackoverflow.com/questions/2758080/how-to-sort-an-stl-vector
+
+	寫到sheet music manager
+
+6/12
+	寫到sm manager的import to storage
+
+6/13
+	拿到資料夾下所有檔案的方法
+	https://stackoverflow.com/questions/306533/how-do-i-get-a-list-of-files-in-a-directory-in-c
+	看linux那段
+	https://stackoverflow.com/questions/612097/how-can-i-get-the-list-of-files-in-a-directory-using-c-or-c
+	寫到file reader要找資料夾下所有檔案，要用c來寫，先去pi上測試看看
+
+	以經在neoKB.cpp裡改好，應該直接傳到pi上compile就知道
+
+6/14
+	側出來的確可以用
+
+	查是否為子類別
+	https://stackoverflow.com/questions/12963294/check-if-the-type-of-an-object-is-inherited-from-a-specific-class
+
+	
+	取得差距時間
+	http://zh.cppreference.com/w/cpp/chrono/system_clock/now

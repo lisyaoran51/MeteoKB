@@ -97,9 +97,6 @@
     <Filter Include="標頭檔\Util">
       <UniqueIdentifier>{8dcdda0b-686c-44eb-8ea2-ba3507645485}</UniqueIdentifier>
     </Filter>
-    <Filter Include="標頭檔\Base\Sheetmusic\ControlPoint">
-      <UniqueIdentifier>{89ca8d74-69a5-4e96-bc1d-0f500b63b1d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\Base\Sheetmusic\ControlPoint">
       <UniqueIdentifier>{7a92ee2b-4f53-4bd0-8fb2-22c08d48d392}</UniqueIdentifier>
     </Filter>
@@ -202,6 +199,15 @@
     <Filter Include="標頭檔\Drivers">
       <UniqueIdentifier>{ed4650f3-a793-4af0-805a-dbbe8196cad2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="來源檔案\Base\Schedulers\Events\ControlPoints">
+      <UniqueIdentifier>{dd1092bb-dd5c-4b59-9a90-811ad03bd182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Util\Update">
+      <UniqueIdentifier>{ff2baf39-c204-479c-bcfb-7aef7c7c49bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Base\Sheetmusic\Pattern">
+      <UniqueIdentifier>{ca2a8f28-3a76-47e8-81dc-52abb4713d41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -264,9 +270,6 @@
     <ClCompile Include="Base\Sheetmusic\IO\FileReader.cpp">
       <Filter>來源檔案\Base\Sheetmusic\IO</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Sheetmusic\Format\sm_decoder.cpp">
-      <Filter>來源檔案\Base\Sheetmusic\Format</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Sheetmusic\ControlPoint\ControlPoint.cpp">
       <Filter>來源檔案\Base\Sheetmusic\ControlPoint</Filter>
     </ClCompile>
@@ -321,20 +324,50 @@
     <ClCompile Include="RulesetMeteor\MeteorGame.cpp">
       <Filter>來源檔案\RulesetMeteor</Filter>
     </ClCompile>
-    <ClCompile Include="Util\Update\Updater.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Config\FrameworkConfigManager.cpp">
       <Filter>來源檔案\Base\Config</Filter>
     </ClCompile>
     <ClCompile Include="Base\Ruleset\Ruleset.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Ruleset\RulesetInfo.cpp">
-      <Filter>來源檔案</Filter>
+      <Filter>來源檔案\Base\Ruleset</Filter>
     </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.cpp">
-      <Filter>來源檔案</Filter>
+      <Filter>來源檔案\Base\Schedulers\Events\ControlPoints</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Ruleset\RulesetInfo.cpp">
+      <Filter>來源檔案\Base\Ruleset</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Update\Updater.cpp">
+      <Filter>來源檔案\Util\Update</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\SheetmusicManager.cpp">
+      <Filter>來源檔案\Base\Sheetmusic</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\Format\SmDecoder.cpp">
+      <Filter>來源檔案\Base\Sheetmusic\Format</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\SheetmusicMetadata.cpp">
+      <Filter>來源檔案\Base\Sheetmusic</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\FileSystem.c">
+      <Filter>來源檔案\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\WorkingSheetmusic.cpp">
+      <Filter>來源檔案\Base\Sheetmusic</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\Pattern\Pattern.cpp">
+      <Filter>來源檔案\Base\Sheetmusic\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\MtoObject.cpp">
+      <Filter>來源檔案\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Hierachal\HasParent.cpp">
+      <Filter>來源檔案\Util\Hierachal</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\Pattern\PatternGenerator.cpp">
+      <Filter>來源檔案\Base\Sheetmusic\Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\Update\Updatable.cpp">
+      <Filter>來源檔案\Util\Update</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -436,17 +469,11 @@
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h">
       <Filter>標頭檔\Base\Sheetmusic</Filter>
     </ClInclude>
-    <ClInclude Include="Base\Sheetmusic\Pattern\pattern.h">
-      <Filter>標頭檔\Base\Sheetmusic\Pattern</Filter>
-    </ClInclude>
     <ClInclude Include="Base\Sheetmusic\IO\FileReader.h">
       <Filter>標頭檔\Base\Sheetmusic\IO</Filter>
     </ClInclude>
     <ClInclude Include="Base\Sheetmusic\Format\Parser\EventParser.h">
       <Filter>標頭檔\Base\Sheetmusic\Format\EventParser</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\Sheetmusic\ControlPoint\ControlPoint.h">
-      <Filter>標頭檔\Base\Sheetmusic\ControlPoint</Filter>
     </ClInclude>
     <ClInclude Include="Util\InstanceCreator.h">
       <Filter>標頭檔\Util</Filter>
@@ -570,6 +597,21 @@
     </ClInclude>
     <ClInclude Include="Util\MtoUtil.h">
       <Filter>標頭檔\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.h">
+      <Filter>標頭檔\Base\Scheduler\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Scheduler\Event\Effect\Algorithm\MapShiftAlgorithm.h">
+      <Filter>標頭檔\Base\Scheduler\Events\Effects\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Sheetmusic\SheetmusicSetInfo.h">
+      <Filter>標頭檔\Base\Sheetmusic</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\FileSystem.h">
+      <Filter>標頭檔\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Sheetmusic\Pattern\Pattern.h">
+      <Filter>標頭檔\Base\Sheetmusic\Pattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

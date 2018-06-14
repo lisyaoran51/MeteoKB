@@ -1,0 +1,46 @@
+#include "FileReader.h"
+#include "../../../Util/FileSystem.h"
+
+
+using namespace Base::Sheetmusics::IO;
+
+
+FileReader::FileReader(string p)
+{
+	path = p;
+}
+
+ifstream * FileReader::GetStream(string name)
+{
+	return new ifstream(path+name);
+}
+
+SmSetInfo * FileReader::GetSmSetInfo()
+{
+	SmSetInfo* smSetInfo = new SmSetInfo();
+	smSetInfo->path = path;
+	return smSetInfo;
+}
+
+vector<string>* FileReader::WhereEndWith(string s)
+{
+
+	char*** fileNames = new char**();
+
+	int fileCount = GetFiles(path.c_str(), fileNames);
+
+	vector<string>* files = new vector<string>();
+
+	for (int i = 0; i < fileCount; i++) {
+		files->push_back((*fileNames)[i]);
+	}
+
+	// delete∞Oæ–≈È
+	for (int i = 0; i < fileCount; i++) {
+		free((*fileNames)[i]);
+	}
+	free(*fileNames);
+	delete fileNames;
+
+	return files;
+}

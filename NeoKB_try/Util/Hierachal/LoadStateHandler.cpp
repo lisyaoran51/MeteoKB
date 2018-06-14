@@ -13,7 +13,7 @@ using namespace Util::Hierachal;
 * https://stackoverflow.com/questions/486099/can-inner-classes-access-private-variables
 */
 
-Util::Hierachal::Loadable::LoadStateHandler::LoadStateHandler(Loadable & l)
+Loadable::LoadStateHandler::LoadStateHandler(Loadable & l): loadable(l)
 {
 }
 
@@ -34,7 +34,7 @@ int Loadable::NoParentHandler::HandleLoad()
 	return -1;
 }
 
-int Util::Hierachal::Loadable::NoParentHandler::Async()
+int Loadable::NoParentHandler::Async()
 {
 	loadable.loadStateHandler = &loadable.loadingHandler;
 	loadable.load();
@@ -42,7 +42,7 @@ int Util::Hierachal::Loadable::NoParentHandler::Async()
 	return 0;
 }
 
-int Util::Hierachal::Loadable::NoParentHandler::SetParent(HasParent * p)
+int Loadable::NoParentHandler::SetParent(HasParent * p)
 {
 	loadable.HasParent::SetParent(p);
 	loadable.loadStateHandler = &loadable.notLoadedHandler;
@@ -68,7 +68,7 @@ int Loadable::NotLoadedHandler::HandleLoad()
 	return 0;
 }
 
-int Util::Hierachal::Loadable::NotLoadedHandler::Async()
+int Loadable::NotLoadedHandler::Async()
 {
 	loadable.loadStateHandler = &loadable.loadingHandler;
 	loadable.load();
@@ -76,7 +76,7 @@ int Util::Hierachal::Loadable::NotLoadedHandler::Async()
 	return 0;
 }
 
-int Util::Hierachal::Loadable::NotLoadedHandler::SetParent(HasParent * p)
+int Loadable::NotLoadedHandler::SetParent(HasParent * p)
 {
 	loadable.HasParent::SetParent(p);
 	return 0;

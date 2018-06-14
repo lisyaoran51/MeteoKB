@@ -54,7 +54,7 @@ namespace Sheetmusics {
 		/// <summary>
 		/// 把event付智，並且轉換成各種特效
 		///	</summary>
-		virtual int convert_event(vector<Event*>* es, Event* e, Sm<Event>* s);
+		virtual int convertEvent(vector<Event*>* es, Event* e);
 
 	};
 

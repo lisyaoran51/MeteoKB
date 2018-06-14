@@ -5,44 +5,43 @@
 #include <fstream>
 #include <vector>
 #include "../../Util/TemplateConstraint.h"
-#include "sheetmusic_metadata.h"
-#include "sheetmusic_difficulty.h"
+#include "SheetmusicMetadata.h"
+#include "SheetmusicDifficulty.h"
 #include "../Ruleset/Ruleset.h"
+#include "SheetmusicSetInfo.h"
 
 
 
 using namespace std;
 using namespace Util;
-using namespace Base::Ruleset;
+using namespace Base::Rulesets;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 	
 	 
-	class sm_info_t
+	struct SmInfo
 	{
-
-	public:
 
 		int id;
 
-		int sm_version;
+		int smVersion;
 
-		sm_metadata_t* metadata;
+		SmMetadata* metadata;
 
-		sm_difficulty_t* difficuty;
+		SmDifficulty* difficuty;
 
 		string path;
 
-		int ruleset_id;
+		int rulesetId;
 
 		int version;
 
-		Ruleset* Ruleset;
+		Ruleset* ruleset;
 
-		RulesetInfo* ruleset_info;
+		RulesetInfo* rulesetInfo;
 
-
+		SmSetInfo* smSetInfo;
 
 	};
 

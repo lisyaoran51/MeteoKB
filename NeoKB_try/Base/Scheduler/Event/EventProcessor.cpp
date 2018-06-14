@@ -16,3 +16,9 @@ MTO_FLOAT EventProcessor<T>::GetStartTime()
 {
 	return event->GetStartTime();
 }
+
+template<class T>
+MTO_FLOAT EventProcessor<T>::GetTimeLeft()
+{
+	return event->GetLifeTime() - currerntTime;
+}

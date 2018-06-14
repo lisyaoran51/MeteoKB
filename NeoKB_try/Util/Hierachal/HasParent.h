@@ -20,6 +20,8 @@ namespace Hierachal {
 
 	public:
 
+		HasParent();
+
 		bool hasParent();
 
 		HasParent* GetParent();

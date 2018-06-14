@@ -67,6 +67,7 @@ Renderer * Renderer::GetRenderer(int hwVersion)
 	return renderer;
 }
 
+/*
 int Renderer::Render()
 {
 	return 0;
@@ -76,3 +77,4 @@ int Renderer::SendToDriver()
 {
 	return 0;
 }
+*/

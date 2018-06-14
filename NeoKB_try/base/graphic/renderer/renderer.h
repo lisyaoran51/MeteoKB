@@ -51,9 +51,9 @@ namespace Renderers {
 
 		static Renderer* GetRenderer(int hwVersion);
 
-		virtual int Render();
+		virtual int Render() = 0;
 
-		virtual int SendToDriver();
+		virtual int SendToDriver() = 0;
 
 	protected:
 

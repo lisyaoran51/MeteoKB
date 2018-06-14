@@ -17,18 +17,18 @@ namespace Patterns {
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class Pattern : public MtoObject
+	class Pattern
 	{
 
 	public:
 
-		int add(Event* e);
+		int Add(Event* e);
 
-		vector<Event*>* get_events();
+		vector<Event*>* GetEvents();
 
 	protected:
 
-		vector<Event*>* events;
+		vector<Event*> events;
 
 	};
 

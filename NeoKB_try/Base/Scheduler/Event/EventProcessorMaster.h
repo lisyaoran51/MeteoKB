@@ -10,10 +10,12 @@
 #include "../../../Util/Update/Updatable.h"
 #include "Event.h"
 #include "EventProcessor.h"
+#include "../../Graphic/Map/Map.h"
 
 
 using namespace std;
 using namespace Util;
+using namespace Base::Graphic::Maps;
 
 /*
 * instantiate a class with its name in string
@@ -52,9 +54,9 @@ namespace Events {
 		int RegisterMap(Map* m);
 
 		/// <summary>
-		/// clean the map, Event, processors
+		/// clean the Event processors
 		/// </summary>
-		int clean();
+		int Clean();
 
 	protected:
 
@@ -63,6 +65,8 @@ namespace Events {
 		int processEvent(MTO_FLOAT elapsedTime);
 
 		int cleanEndedEvent();
+
+		int Elapse(MTO_FLOAT elapsedTime);
 
 		/* 改成擺在rulset executor裡
 		/// <summary>

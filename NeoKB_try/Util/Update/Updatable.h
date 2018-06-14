@@ -18,6 +18,8 @@ namespace Update {
 
 	public:
 
+		Updatable();
+
 		virtual int Elapse(MTO_FLOAT elapsedTime) = 0;
 
 	protected:

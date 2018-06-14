@@ -1,4 +1,5 @@
 #include "EffectMapper.h"
+#include <stdexcept>
 
 using namespace Base::Schedulers::Events::Effects;
 
@@ -27,20 +28,15 @@ int EffectMapper<T>::RegisterMapAlgo(MapAlgorithm<T>* ma)
 }
 
 template<class T>
-int EffectMapper<T>::RegisterShiftAlgo(ShiftAlgorithm * sa)
-{
-	shiftAlgo = sa;
-	return 0;
-}
-
-template<class T>
 int EffectMapper<T>::Process() {
 
-	Map* tempMap = mapAlgo(event);
+	if (!map)
+		throw runtime_error("int EffectMapper::Process() : no map registered!");
 
-	shiftAlgo(map, tempMap);
+	if (!mapAlgo)
+		throw runtime_error("int EffectMapper::Process() : no map algorithm registered!");
 
-	delete tempMap;
+	mapAlgo->Draw(map, this);
 
 	return 0;
 }

@@ -8,7 +8,7 @@
 #include <vector>
 #include "../working_sheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
-#include "../sheetmusic_info.h"
+#include "../SheetmusicInfo.h"
 #include "../Sheetmusic.h"
 #include "../../Scheduler/Event/Event.h"
 #include "pattern.h"
@@ -20,7 +20,7 @@
 using namespace std;
 using namespace Util;
 using namespace Base::Schedulers::Events;
-using namespace Base::Sheetmusic;
+using namespace Base::Sheetmusics;
 
 namespace Base {
 namespace Sheetmusics {
@@ -34,7 +34,15 @@ namespace Patterns {
 
 	public:
 
-		virtual Pattern* generate() = 0;
+		PatternGenerator();
+
+		~PatternGenerator();
+
+		virtual Pattern* Generate(vector<Event*>* es, Event * e) = 0;
+
+		int Add(Pattern* p);
+
+		int CleanPatterns();
 
 	protected:
 
@@ -42,13 +50,11 @@ namespace Patterns {
 
 		int map_height;
 
-		PatternGenerator* previous_pattern;
+		vector<Pattern*> patterns;
 
-		Event* Event;
+		Event* event;
 
-		Sm<Event>* sm;
-
-
+		//Sm<Event>* sm;
 
 	};
 

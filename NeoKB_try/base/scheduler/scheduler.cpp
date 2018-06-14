@@ -40,6 +40,11 @@ int Scheduler::RegisterHandler(function<int(EventProcessor<Event>*)> dh)
 
 int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
+	if (elapsedTime == -1) {
+		// 遊戲還沒開始時事-1，之後變0代表遊戲開始
+		currentTime = 0;
+	}
+	
 	currentTime += elapsedTime;
 
 	while (eventProcessors->back()->GetStartTime() < currentTime) {

@@ -7,6 +7,9 @@
 
 #include <string>
 
+
+using namespace std;
+
 namespace Util {
 
 	class RegisterType {
@@ -32,19 +35,13 @@ namespace Util {
 
 	public:
 
-		MtoObject() : RegisterType("MtoObject") {}
+		MtoObject();
 
 		/// <summary>
 		/// 類似java裡的 (object) as (class)，一種轉型方式
 		/// </summary>
 		template<typename T>
-		static T* Cast(MtoObject* o) {
-			if (typeid(T*) == typeid(o)) {
-				return static_cast<T*>(o);
-			}
-			else
-				return NULL;
-		}
+		static T* Cast(MtoObject* o);
 
 		template<typename T, typename U>
 		static T* Cast(U* o);

@@ -12,33 +12,43 @@ using namespace std;
 using namespace Util;
 
 namespace Base {
-namespace Sheetmusic {
+namespace Sheetmusics {
 	
 	/// where T : effect
 	/// 
-	template <class T>
-	class Sm : TConstraint<T, Effect>
+	template <typename T>
+	class Sm : TConstraint<T, Event>
 	{
 
-		sm_info_t* sm_info;
+		SmInfo* smInfo;
 		
-		ctrl_point_info_t* ctrl_point_info;
+		SmMetadata* smMetadata;
 		
-		sm_metadata_t* sm_metadata;
-		
-		vector<Event*>* events;
+		vector<T*>* events;
+
+		RulesetInfo* rulesetInfo;
 
 	public:
 		
-		Sm(Sm* sm = NULL);
+		Sm(Sm<T>* sm = NULL);
 
-		int set_events(vector<Event*>* e);
+		~Sm();
 
-		vector<Event*>* get_events();
+		int SetSmInfo(SmInfo* si);
+
+		SmInfo* GetSmInfo();
+
+		int SetSmMetadata(SmMetadata* sm);
+
+		SmMetadata* GetSmMetadata();
+
+		int SetEvents(vector<T*>* e);
+
+		vector<T*>* GetEvents();
+
+		int SetRulesetInfo(RulesetInfo* r);
 
 		RulesetInfo* GetRulesetInfo();
-
-	protected:
 
 	};
 

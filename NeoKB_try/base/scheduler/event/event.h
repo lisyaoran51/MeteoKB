@@ -24,8 +24,10 @@ namespace Events {
 
 		Event(MTO_FLOAT s, MTO_FLOAT l);
 
-		MTO_FLOAT GetStartTime();
-		MTO_FLOAT GetLifeTime();
+		MTO_FLOAT GetStartTime() const;
+		MTO_FLOAT GetLifeTime() const;
+
+		bool operator<(const Event &rhs) const;
 
 	protected:
 

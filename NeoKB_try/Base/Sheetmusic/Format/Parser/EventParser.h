@@ -8,7 +8,7 @@
 using namespace std;
 using namespace Util;
 using namespace Base::Sheetmusic;
-using namespace Base::Scheduler::Event::effect;
+using namespace Base::Schedulers::Events::Effects;
 
 
 
@@ -16,15 +16,15 @@ using namespace Base::Scheduler::Event::effect;
 namespace Base {
 namespace Sheetmusic {
 namespace format {
-namespace event_parser {
+namespace Parsers {
 
 
-	class event_parser_t
+	class EventParser
 	{
 
 	public:
 
-		virtual Event* parse(string text) = 0;
+		virtual Event* Parse(string text) = 0;
 
 	};
 

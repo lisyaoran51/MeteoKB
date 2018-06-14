@@ -101,49 +101,49 @@ namespace Hierachal{
 
 		class LoadStateHandler {
 		public:
+			LoadStateHandler(Loadable& l);
 			virtual LoadState GetLoadState() = 0;
 			virtual int HandleLoad() = 0;
 			virtual int Async() = 0;
 			virtual int SetParent(HasParent* p) = 0;
 		protected:
 			Loadable& loadable;
-			LoadStateHandler(Loadable& l);
 		};
 
 		class NoParentHandler : public LoadStateHandler {
 		public:
 			NoParentHandler(Loadable& l);
-			LoadState GetLoadState();
-			int HandleLoad();
-			int Async();
-			int SetParent(HasParent* p);
+			virtual LoadState GetLoadState();
+			virtual int HandleLoad();
+			virtual int Async();
+			virtual int SetParent(HasParent* p);
 		};
 
 		class NotLoadedHandler : public LoadStateHandler {
 		public:
 			NotLoadedHandler(Loadable& l);
-			LoadState GetLoadState();
-			int HandleLoad();
-			int Async();
-			int SetParent(HasParent* p);
+			virtual LoadState GetLoadState();
+			virtual int HandleLoad();
+			virtual int Async();
+			virtual int SetParent(HasParent* p);
 		};
 
 		class LoadingHandler : public LoadStateHandler {
 		public:
 			LoadingHandler(Loadable& l);
-			LoadState GetLoadState();
-			int HandleLoad();
-			int Async();
-			int SetParent(HasParent* p);
+			virtual LoadState GetLoadState();
+			virtual int HandleLoad();
+			virtual int Async();
+			virtual int SetParent(HasParent* p);
 		};
 
 		class ReadyHandler : public LoadStateHandler {
 		public:
 			ReadyHandler(Loadable& l);
-			LoadState GetLoadState();
-			int HandleLoad();
-			int Async();
-			int SetParent(HasParent* p);
+			virtual LoadState GetLoadState();
+			virtual int HandleLoad();
+			virtual int Async();
+			virtual int SetParent(HasParent* p);
 		};
 
 	};

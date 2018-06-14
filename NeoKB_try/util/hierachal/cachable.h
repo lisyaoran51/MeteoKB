@@ -28,11 +28,19 @@ namespace Hierachal{
 
 	public:
 
+		Cachable();
+
 		template<typename T>
 		T* GetCache(string type);
 
 		template<typename T>
 		int Cache(T* o);
+
+		/// <summary>
+		/// 當要cache的物件是多型時，cache進去的型別名稱要先改回覆類別的名稱
+		/// </summary>
+		template<typename T>
+		int Cache(T* o, string typeName);
 
 	protected:
 

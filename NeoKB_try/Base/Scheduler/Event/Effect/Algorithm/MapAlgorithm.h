@@ -25,33 +25,43 @@ namespace Algorithms{
 
 		~MapAlgorithm();
 
-		int RegisterGenerator(GenerateAlgorithm* g);
+		int RegisterGenerator(MapGenerateAlgorithm<T>* g);
 
-		int RegisterShifter(ShiftAlgorithm* s);
+		int RegisterShifter(MapShiftAlgorithm<T>* s);
 
 
 		/// <summary>
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
-		virtual int Draw(Map* m, T* e);
+		//virtual int Draw(Map* m, T* e);
+
+		/// <summary>
+		/// 把evnet的狀態轉成圖案，然後移到他的位置上
+		///	</summary>
+		virtual int Draw(Map* m, EffectMapper<T>* em);
 
 	protected:
 
-		Matrix2D<int>* mat;
+		int width;
+
+		int height;
+
+		static Matrix2D<int>* matrix;
 
 		/// <summary>
 		/// to transform the effect to the map with every parameter relevant.
 		/// </summary>
-		GenerateAlgorithm* genAlgo;
+		MapGenerateAlgorithm<T>* genAlgo;
 
 		/// <summary>
 		/// 把生好的effect移到他該擺的位置上
 		/// </summary>
-		ShiftAlgorithm* shiftAlgo;
+		MapShiftAlgorithm<T>* shiftAlgo;
 
 	};
 
-
+	template<typename T>
+	MapAlgorithm::mat = 0;
 
 	
 
