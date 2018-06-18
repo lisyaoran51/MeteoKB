@@ -29,6 +29,7 @@ namespace Config{
 		Width,
 		Height,
 		BlackKeyHeight,
+		StartPitch,
 
 		FrameSync,
 

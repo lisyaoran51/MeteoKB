@@ -75,7 +75,10 @@ namespace Rulesets {
 		/// 2. apply mods
 		/// 3. register privateLoad()
 		/// </summary>
-		RulesetExecutor(WorkingSm<T>* w);
+		RulesetExecutor();
+
+		int LazyConstruct(WorkingSm<T>* w);
+
 
 	protected:
 
@@ -110,7 +113,7 @@ namespace Rulesets {
 		/// 1. 建立與event對應的processor
 		/// 2. 如果processor是effect mapper，就把map algo加進去
 		/// </summary>
-		virtual EventProcessor* getEventProcessor(T* e) = 0;
+		virtual EventProcessor<T>* getEventProcessor(T* e) = 0;
 	};
 
 

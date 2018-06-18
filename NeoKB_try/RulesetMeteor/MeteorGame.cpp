@@ -1,19 +1,28 @@
 #include"MeteorGame.h"
+#include "Config\MeteorConfigManager.h"
 
 using namespace Meteor;
+using namespace Util::Hierachal;
+using namespace Meteor::Config;
+
 
 int MeteorGame::load()
 {
-	Cache<MeteorConfigManager>(new MeteorConfigManager());
 
-	// 先選歌
-	// Cache 哥曲和規則資料
-	// TODO:....
+	if (!GetCache<FrameworkConfigManager>("FrameworkConfigManager")) {
+		FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
+		fConfigManager->Set(FrameworkSetting::PatternGenerator, "MeteorPatternGenerator");
+		// TODO: 設定....
+		Cache<FrameworkConfigManager>(fConfigManager);
+	}
 
+	
 
-	player = new Player();
-
-	AddChild(Player);
+	
 
 	return 0;
+}
+
+MeteorGame::MeteorGame(): RegisterType("MeteorGame")
+{
 }

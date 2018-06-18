@@ -25,11 +25,15 @@ namespace Rulesets {
 		///</summary>
 		map<string, string> eventProcessorTable;
 
+		virtual SmConverter* createSmConverter(PatternGenerator* pg);
+
+		virtual SmPostprocessor* createSmPostprocessor();
+
 	protected:
 
 		Playfield* create_playfield();
 
-		EventProcessor* getEventProcessor(T* e);
+		EventProcessor<Event>* getEventProcessor(Event* e);
 
 		string GetProcessorType(string eventType);
 

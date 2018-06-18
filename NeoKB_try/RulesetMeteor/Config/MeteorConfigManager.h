@@ -5,9 +5,10 @@
 
 using namespace Util;
 using namespace std;
+using namespace Base::Config;
 
 
-namespace Base {
+namespace Meteor {
 namespace Config{
 
 	class MeteorConfigManager: public ConfigManager<MeteorSetting> {
@@ -26,9 +27,18 @@ namespace Config{
 		ExplodeMapAlgorithm,
 		GlowLineMapAlgorithm,
 
-		StartPitch,
 		PitchCount,
-		TargetLineHeight
+		TargetLineHeight,
+
+		FallSpeed,
+		FallBrightness,
+		ExplodeSpeed,
+		ExplodeBrightness,
+		GlowLineSpeed,
+		GlowLineDuration,
+		GlowLineBrightness,
+
+
 
 	};
 

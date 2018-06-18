@@ -6,7 +6,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "../working_sheetmusic.h"
+#include <functional>
+#include "../WorkingSheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
 #include "../SheetmusicInfo.h"
 #include "../Sheetmusic.h"
@@ -29,8 +30,12 @@ namespace Patterns {
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class PatternGenerator: public MtoObject
+	class PatternGenerator: public Loadable
 	{
+
+		int load();
+
+		int load(FrameworkConfigManager* fConfigManager);
 
 	public:
 
@@ -38,7 +43,7 @@ namespace Patterns {
 
 		~PatternGenerator();
 
-		virtual Pattern* Generate(vector<Event*>* es, Event * e) = 0;
+		virtual Pattern* Generate(vector<Event*> es, Event * e) = 0;
 
 		int Add(Pattern* p);
 
@@ -46,9 +51,13 @@ namespace Patterns {
 
 	protected:
 
-		int map_width;
+		int width;
 
-		int map_height;
+		int height;
+
+		int blackKeyHeight;
+
+		Pitch startPitch;
 
 		vector<Pattern*> patterns;
 

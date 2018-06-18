@@ -12,7 +12,7 @@ using namespace Util;
 using namespace Base::Schedulers::Events::Effects;
 
 
-namespace Base {
+namespace Meteor {
 namespace Schedulers {
 namespace Events {
 namespace Effects {

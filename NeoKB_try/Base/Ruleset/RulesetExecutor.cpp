@@ -30,7 +30,7 @@ int RulesetExecutor<T>::playfieldLoad()
 template<class T>
 int RulesetExecutor<T>::load()
 {
-	MeteorConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+	FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
 
 	return load(f);
 }
@@ -71,17 +71,24 @@ int RulesetExecutor<T>::load(FrameworkConfigManager* f)
 	return 0;
 }
 
+template<class T>
+RulesetExecutor<T>::RulesetExecutor()
+{
+	// 註冊private load (c++才需要)
+	registerLoad(bind(static_cast<int(RulesetExecutor<T>::*)(void)>(&RulesetExecutor<T>::load), this));
+}
 
 template<class T>
-RulesetExecutor<T>::RulesetExecutor(WorkingSm<T>* w)
+int RulesetExecutor<T>::LazyConstruct(WorkingSm<T>* w)
 {
 	workingSm = w;
 
 	mods = w->get_mods();
 
-	// 註冊private load (c++才需要)
-	registerLoad(bind(&RulesetExecutor<T>::load, this));
+	return 0;
 }
+
+
 
 
 

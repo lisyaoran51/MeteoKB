@@ -6,23 +6,12 @@ using namespace Util;
 using namespace Base::Sheetmusics;
 
 
-int SmConverter::load()
-{
-	PatternGenerator* pg = GetCache<PatternGenerator>("PatternGenerator");
 
-	if (!pg)
-		throw runtime_error("int SmConverter::load() : PatternGenerator not found in cache.");
 
-	return load(pg);
-}
-
-int SmConverter::load(PatternGenerator * pg)
+SmConverter::SmConverter(PatternGenerator * pg)
 {
 	patternGenerator = pg;
-	return 0;
 }
-
-
 
 /// <summary>
 /// 在遊戲開始前附智一個新的sm，然後把裡面的特效events全部重新轉換一次
@@ -38,8 +27,11 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 	// 經過處理轉換的event
 	vector<Event*>* newEvents = new vector<Event*>();
 
-	// 轉換中暫存用
-	vector<Event*>* tempEvents = new  vector<Event*>();
+	// 轉換中暫存用，指標指轉換出來的vector是純在pattern裡
+	// 要額外生成一個vector來存暫存的原因是，convert event出來的event可能有的完全沒經過處理糾丟出來
+	// 這個時候如果額外去生成一個vector來裝這一個event，就會不知道這個Vector要在什麼時候刪掉，因為如果是
+	// pattern的話，會統一在clean pattern的時候刪掉，額外生的vector就沒辦法
+	vector<Event*>* tempEvents = new vector<Event*>();
 
 	for (int i = 0; i < originalEvents->size(); i++) {
 		
@@ -50,7 +42,6 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 		}
 	}
 
-	delete tempEvents;
 	patternGenerator->CleanPatterns();
 
 	sm->SetEvents(newEvents);
@@ -63,6 +54,8 @@ int SmConverter::convertEvent(vector<Event*>* es, Event * e)
 	// 對本來單純的樂譜，生成各種特效，如提示光、落下、其他特效。
 	Pattern* newPattern = patternGenerator->Generate(es, e);
 	patternGenerator->Add(newPattern);
+
+
 
 	return 0;
 }

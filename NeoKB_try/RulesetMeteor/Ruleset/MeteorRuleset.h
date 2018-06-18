@@ -3,10 +3,10 @@
 
 #include "../../Base/Ruleset/Ruleset.h"
 
-using namespace Base::Ruleset;
+using namespace Base::Rulesets;
 
 namespace Meteor {
-namespace Ruleset{
+namespace Rulesets{
 
 	class MeteorRuleset: public Ruleset{
 

@@ -1,1 +1,6 @@
-#pragma once
+#include "Base\Game.h"
+#include "RulesetMeteor\MeteorGame.h"
+
+
+int main();
+

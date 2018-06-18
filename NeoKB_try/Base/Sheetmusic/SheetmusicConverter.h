@@ -28,15 +28,14 @@ namespace Sheetmusics {
 	/// <summary>
 	/// when Ruleset executor load in sm, this converter converts the events in sm.
 	///	</summary>
-	class SmConverter: public ChildAddable
+	class SmConverter
 	{
+
+	public:
 		/// <summary>
 		/// Åª¨úpattern generator
 		///	</summary>
-		int load();
-		int load(PatternGenerator* pg);
-
-	public:
+		SmConverter(PatternGenerator* pg);
 
 		/// <summary>
 		/// converts the events in sm

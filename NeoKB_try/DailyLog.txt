@@ -158,3 +158,12 @@
 	
 	取得差距時間
 	http://zh.cppreference.com/w/cpp/chrono/system_clock/now
+
+	寫完base 現在開始從player看遊戲怎麼開啟，然後把meteor那邊補起來，補到meteor ruleset executor
+
+6/15
+	寫到meteor的create sm converter那
+	要沿著ruleset executor的load那寫下去
+
+6/19
+	寫到meteor pattern generator的generate

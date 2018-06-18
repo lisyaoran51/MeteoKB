@@ -28,6 +28,8 @@ namespace Meteor {
 
 	public:
 
+		MeteorGame();
+
 		int Run();
 
 	};

@@ -3,22 +3,23 @@
 
 #include"../../Base/Sheetmusic/SheetmusicConverter.h"
 
-using namespace Base::Sheetmusic;
+using namespace Base::Sheetmusics;
 
 
 namespace Meteor {
-namespace Sheetmusic{
+namespace Sheetmusics{
 
 	class MeteorSmConverter : public SmConverter {
 
+		
+
+	protected:
 		/// <summary>
 		/// 把設定讀進來
 		///	</summary>
-		int load();
+		MeteorSmConverter(PatternGenerator* pg);
 
-	protected:
-
-		int convert_event(vector<Event*>* es, Event* e, Sm<Event>* s);
+		int convertEvent(vector<Event*>* es, Event* e);
 
 	};
 

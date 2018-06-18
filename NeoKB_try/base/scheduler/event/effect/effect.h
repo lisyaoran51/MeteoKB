@@ -33,8 +33,12 @@ namespace Effects {
 			MTO_FLOAT life_t
 		);
 
+		Effect(const Effect&);
+
 		int SetBrightness(MTO_FLOAT b);
 		int SetSpeed(MTO_FLOAT s);
+
+		virtual Effect* Clone();
 
 	protected:
 
@@ -42,6 +46,8 @@ namespace Effects {
 		int y;
 		MTO_FLOAT brightness;	// default as 1.0
 		MTO_FLOAT speed;		// default as 1.0
+
+		Effect(const Effect*);
 	};
 
 

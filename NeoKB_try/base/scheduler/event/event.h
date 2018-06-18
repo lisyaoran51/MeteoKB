@@ -20,14 +20,24 @@ namespace Events {
 	class Event
 	{
 
+
 	public:
 
 		Event(MTO_FLOAT s, MTO_FLOAT l);
+		Event(const Event&);
 
 		MTO_FLOAT GetStartTime() const;
 		MTO_FLOAT GetLifeTime() const;
 
 		bool operator<(const Event &rhs) const;
+
+		template<typename T, typename U>
+		static bool CanCast(U* e);
+
+		template<typename T, typename U>
+		static T* Cast(U* e);
+
+		virtual Event* Clone();
 
 	protected:
 
@@ -45,6 +55,7 @@ namespace Events {
 		/// </summary>
 		MTO_FLOAT lifeTime;
 
+		Event(const Event*);
 	};
 
 	enum EventStartType {
