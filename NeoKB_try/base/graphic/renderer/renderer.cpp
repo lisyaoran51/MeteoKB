@@ -11,6 +11,7 @@ using namespace Drivers;
 
 bool Renderer::initialize()
 {
+	//TODO: 改成讀文件 不要寫在code裡
 	for (int i = 0; i < sizeof(hwInfo) / sizeof(hwInfo[0]); i++) {
 		renderers[hwInfo[i].HwVersion] = hwInfo[i].Renderer;
 	}
@@ -31,11 +32,33 @@ int Renderer::RegisterLedDriver(LedDriver * ld)
 
 int Renderer::load()
 {
+	Updater* u = GetCache<Updater>("Updater");
+	if (!u)
+		throw runtime_error("int EventProcessorMaster::load() : Updater not found in cache.");
+
+	FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+	if (!f)
+		throw runtime_error("int EventProcessorMaster::load() : FrameworkConfigManager not found in cache.");
+
+	return load(u, f);
+}
+
+int Renderer::load(Updater * u, FrameworkConfigManager* f)
+{
+	u->RegisterTask(bind((int(Renderer::*)(MTO_FLOAT))&Renderer::Elapse, this, placeholders::_1));
+
+	if (!f->Get<MTO_FLOAT>(FrameworkSetting::FrameRate, &frameRate))
+		throw runtime_error("int Renderer::load(Updater*, FrameworkConfigManager*) : FrameRate not found in Setting.");
+
+	frameLength = MTO_FLOAT(1) / frameRate;
+	currentFrameLength = 0;
+
 	return 0;
 }
 
 Renderer::Renderer(): RegisterType("Renderer")
 {
+	registerLoad(bind((int(Renderer::*)())&Renderer::load, this));
 	initialized;
 }
 
@@ -65,6 +88,25 @@ Renderer * Renderer::GetRenderer(int hwVersion)
 	renderer->SetHardwareVersion(hwVersion);
 
 	return renderer;
+}
+
+int Renderer::Elapse(MTO_FLOAT elapsedTime)
+{
+	if (elapsedTime == -1) {
+		// 遊戲還沒開始時事-1，之後變0代表遊戲開始
+		currentTime = 0;
+		return 0;
+	}
+
+	// 如果時間超過要render圖的周期時間，就開始render圖
+	currentFrameLength += elapsedTime;
+	if (currentFrameLength > frameLength) {
+		currentFrameLength -= frameLength;
+		Render();
+		SendToDriver();
+	}
+
+	return 0;
 }
 
 /*

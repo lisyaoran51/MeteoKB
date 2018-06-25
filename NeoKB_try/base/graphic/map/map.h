@@ -17,6 +17,8 @@ namespace Maps {
 		int width;
 		int height;
 
+		bool clear;
+
 	public:
 
 		Map(int w, int h);
@@ -24,10 +26,14 @@ namespace Maps {
 		~Map();
 
 		int** GetMatrix();
+		int GetWidth();
+		int GetHeight();
 
 		int Add(int x, int y, int v);
 
 		int Set(int x, int y, int v);
+
+		int Get(int x, int y);
 
 		/// <summary>
 		/// 將m上面x,y位置長寬xLen,yLen的圖案貼到這個map上，用疊加
@@ -43,6 +49,8 @@ namespace Maps {
 		/// 每一次frame都要先把map重置一次再開始畫
 		/// </summary>
 		int Reset();
+
+		bool IsClear();
 
 		/// <summary>
 		/// set the map now as the default map. after reset the map, the default map value would be the map now

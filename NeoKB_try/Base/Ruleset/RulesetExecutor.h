@@ -12,6 +12,8 @@
 #include "../Play/Playfield.h"
 #include "../Sheetmusic/Pattern/PatternGenerator.h"
 #include "../Config/FrameworkConfigManager.h"
+#include "../Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
+#include "../Sheetmusic/WorkingSheetmusic.h"
 
 
 
@@ -30,6 +32,9 @@ using namespace Base::Play;
 using namespace Base::Sheetmusics;
 using namespace Base::Sheetmusics::Patterns;
 using namespace Base::Config;
+using namespace Base::Schedulers::Events::Effects::Algorithms;
+
+
 
 namespace Base {
 namespace Rulesets {
@@ -40,10 +45,6 @@ namespace Rulesets {
 	template<class T>
 	class RulesetExecutor: private TConstraint<T, Event>, public Updatable, public ChildAddable
 	{
-		/// <summary>
-		/// 把每個event processor會用到的algo先讀出來
-		/// </summary>
-		virtual int mapAlgorithmLoad() = 0;
 
 		/// <summary>
 		/// jobs:
@@ -61,7 +62,7 @@ namespace Rulesets {
 		int load();
 		int load(FrameworkConfigManager* m);
 
-		int applyMods(vector<mod*>* m);
+		//int applyMods(vector<mod*>* m);
 
 		virtual SmConverter* createSmConverter(PatternGenerator* pg) = 0;
 
@@ -77,23 +78,20 @@ namespace Rulesets {
 		/// </summary>
 		RulesetExecutor();
 
-		int LazyConstruct(WorkingSm<T>* w);
+		int LazyConstruct(WorkingSm* w);
 
 
 	protected:
 
 		Sm<T>* sm;
 
-		WorkingSm<T>* workingSm;
+		WorkingSm* workingSm;
 
-		vector<mod_t*> mods;
+		//vector<mod_t*> mods;
 
 		Playfield* playfield;
 
-		///<summary>
-		/// 在這邊存了會用到的algo，在getEventProcessor時可以到這邊選擇要用的algo
-		///</summary>
-		map<string, MapAlgorithm*> mapAlgorithms;
+		
 
 		// 移到playfield裡，因為這個是基本功能，不會隨規則變動
 		/*Scheduler* Scheduler;*/

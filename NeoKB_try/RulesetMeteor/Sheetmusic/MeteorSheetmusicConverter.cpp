@@ -25,7 +25,7 @@ int MeteorSmConverter::convertEvent(vector<Event*>* es, Event* e)
 
 	if (Event::CanCast<NoteControlPoint>(e)) {
 		// 對本來單純的樂譜，生成各種特效，如提示光、落下、其他特效。
-		Pattern* newPattern = patternGenerator->Generate(e);
+		Pattern* newPattern = patternGenerator->Generate(es, e);
 		patternGenerator->Add(newPattern);
 
 

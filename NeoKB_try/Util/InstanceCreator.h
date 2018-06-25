@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include"singleton.h"
+#include <functional>
 
 
 /*
@@ -14,6 +15,8 @@
 * another design
 */
 
+using namespace std;
+
 
 namespace Util {
 
@@ -23,7 +26,7 @@ namespace Util {
 	template<typename TBase>
 	class InstanceCreator: public Singleton<InstanceCreator<TBase>> {
 	
-		map<string, function<TBase*(void)> creators;
+		map<string, function<TBase*(void)>> creators;
 
 		template<typename T>
 		T* create();
@@ -35,7 +38,7 @@ namespace Util {
 		template<typename T>
 		int RegisterType(string typeName);
 
-		T_base* CreateInstance(string typeName);
+		TBase* CreateInstance(string typeName);
 
 		/// <summary>
 		/// 回傳之前就自動先把形態轉回原本的形態

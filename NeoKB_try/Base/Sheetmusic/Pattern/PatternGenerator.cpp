@@ -15,11 +15,12 @@ int PatternGenerator::load()
 
 int PatternGenerator::load(FrameworkConfigManager * fConfigManager)
 {
-	width = fConfigManager->Get<int>(FrameworkSetting::Width);
-	height = fConfigManager->Get<int>(FrameworkSetting::Height);
-	startPitch = (Pitch)fConfigManager->Get<int>(FrameworkSetting::StartPitch);
-	blackKeyHeight = fConfigManager->Get<int>(FrameworkSetting::BlackKeyHeight);
-
+	if(fConfigManager->Get<int>(FrameworkSetting::Width, &width));
+	if(fConfigManager->Get<int>(FrameworkSetting::Height, &height));
+	if(fConfigManager->Get<int>(FrameworkSetting::TargetHeight, &targetHeight));
+	if(fConfigManager->Get<int>(FrameworkSetting::BlackKeyHeight, &blackKeyHeight));
+	if(fConfigManager->Get<int>(FrameworkSetting::BlackKeyTargetHeight, &blackKeyTargetHeight));
+	if(fConfigManager->Get<int>(FrameworkSetting::StartPitch, (int*)&startPitch));
 	return 0;
 }
 

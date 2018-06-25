@@ -22,6 +22,8 @@ namespace Update {
 
 		virtual int Elapse(MTO_FLOAT elapsedTime) = 0;
 
+		MTO_FLOAT GetCurrentTime();
+
 	protected:
 
 		MTO_FLOAT currentTime;

@@ -1,8 +1,28 @@
 #include "EventProcessorMaster.h"
 
 using namespace Base::Schedulers::Events;
+using namespace Util::Update;
 
 
+
+int EventProcessorMaster::load()
+{
+	Updater* u = GetCache<Updater>("Updater");
+	if (!u)
+		throw runtime_error("int EventProcessorMaster::load() : Updater not found in cache.");
+	return load(u);
+}
+
+int EventProcessorMaster::load(Updater * u)
+{
+	u->RegisterTask(bind((int(EventProcessorMaster::*)(MTO_FLOAT))&EventProcessorMaster::Elapse, this, placeholders::_1));
+	return 0;
+}
+
+EventProcessorMaster::EventProcessorMaster(): RegisterType("EventProcessorMaster")
+{
+	registerLoad(bind((int(EventProcessorMaster::*)())&EventProcessorMaster::load, this));
+}
 
 int EventProcessorMaster::ReceiveEventProcessor(EventProcessor<Event>* ep)
 {
@@ -51,10 +71,10 @@ int EventProcessorMaster::Elapse(MTO_FLOAT elapsedTime)
 {
 	if (elapsedTime == -1) {
 		currentTime = 0;
-		return;
+		return 0;
 	}
 
-
+	// TODO: 判斷有沒有要render，沒有的話就簡化process event，不用寫入map
 	processEvent(elapsedTime);
 	cleanEndedEvent();
 	return 0;

@@ -7,11 +7,15 @@
 #include "Event/EventProcessor.h"
 #include <functional>
 #include "../../Util/Hierachal/ChildAddable.h"
+#include "../../Util/Update/Updater.h"
+#include "../../Util/Update/Updatable.h"
+#include "../../Util/MtoType.h"
 
 
 using namespace std;
 using namespace Base::Schedulers::Events;
 using namespace Util::Hierachal;
+using namespace Util::Update;
 
 
 namespace Base {
@@ -31,6 +35,10 @@ namespace Schedulers {
 		/// ---(¤£¥Î¤F)int (*deliverHandler)(EventProcessor<Event>* ep);
 		/// </summary>
 		function<int(EventProcessor<Event>*)> deliverHandler;
+
+		int load();
+
+		int load(Updater* u);
 
 	public:
 

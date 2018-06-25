@@ -24,7 +24,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
-		virtual int Shift(Matrix2D* mat, Map* map, EffectMapper<T>* em) = 0;
+		virtual int Shift(Map* bufferMap, Map* map, EffectMapper<T>* em);
 
 	};
 	

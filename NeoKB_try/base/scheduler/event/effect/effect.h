@@ -35,6 +35,12 @@ namespace Effects {
 
 		Effect(const Effect&);
 
+		// 一定要每次都override!!
+		virtual string GetTypeName();
+		int GetX();
+		int GetY();
+		MTO_FLOAT GetSpeed();
+
 		int SetBrightness(MTO_FLOAT b);
 		int SetSpeed(MTO_FLOAT s);
 

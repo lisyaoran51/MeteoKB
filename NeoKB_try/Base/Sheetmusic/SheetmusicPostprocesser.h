@@ -9,6 +9,7 @@
 using namespace std;
 using namespace Util;
 using namespace Base::Schedulers::Events;
+using namespace Base::Sheetmusics;
 
 
 
@@ -26,9 +27,7 @@ namespace Sheetmusics {
 		/// <summary>
 		/// 在遊戲load進歌曲並且轉換以後，這個可以做一些後處理
 		///	</summary>
-		virtual Sm<Event>* postprocess(Sm<Event>* s) {
-			return s;
-		}
+		virtual Sm<Event>* postprocess(Sm<Event>* s);
 
 
 	};

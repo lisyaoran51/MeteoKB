@@ -1,5 +1,5 @@
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef EXPLODE_EFFECT_H
+#define EXPLODE_EFFECT_H
 
 #include <string>
 #include <fstream>
@@ -26,6 +26,16 @@ namespace Effects {
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
+		ExplodeEffect(
+			int xPos,
+			int yPos,
+			MTO_FLOAT sTime,
+			MTO_FLOAT l,
+			MTO_FLOAT sp
+		);
+
+		// 一定要每次都override!!
+		virtual string GetTypeName();
 
 	protected:
 	};

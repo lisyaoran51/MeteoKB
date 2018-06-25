@@ -1,5 +1,5 @@
-#ifndef EFFECT_H
-#define EFFECT_H
+#ifndef GLOW_LINE_EFFECT_H
+#define GLOW_LINE_EFFECT_H
 
 #include <string>
 #include <fstream>
@@ -12,7 +12,7 @@ using namespace Util;
 using namespace Base::Schedulers::Events::Effects;
 
 
-namespace Base {
+namespace Meteor {
 namespace Schedulers {
 namespace Events {
 namespace Effects {
@@ -26,6 +26,17 @@ namespace Effects {
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
+		GlowLineEffect(
+			int xPos,
+			int yPos,
+			MTO_FLOAT sTime,
+			MTO_FLOAT l,
+			MTO_FLOAT sp
+		);
+
+		// 一定要每次都override!!
+		virtual string GetTypeName();
+
 	protected:
 	};
 

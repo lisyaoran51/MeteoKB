@@ -18,7 +18,12 @@ namespace ControlPoints {
 
 		virtual ControlPointType GetControlPointType();
 
+		// 一定要每次都override!!
+		virtual string GetTypeName();
+
 		Pitch GetPitch();
+
+		bool IsWhiteKey();
 
 	};
 

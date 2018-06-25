@@ -11,6 +11,8 @@ using namespace Base::Sheetmusics;
 
 namespace Base {
 namespace Rulesets {
+
+	class RulesetInfo;
 	
 	/// <summary>
 	/// a game rule that designs how the game plays

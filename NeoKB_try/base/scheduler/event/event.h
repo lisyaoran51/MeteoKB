@@ -16,26 +16,34 @@ namespace Base {
 namespace Schedulers {
 namespace Events {
 	
+	enum class EventStartType;
 
 	class Event
 	{
-
 
 	public:
 
 		Event(MTO_FLOAT s, MTO_FLOAT l);
 		Event(const Event&);
 
+		int SetStartTime(MTO_FLOAT s);
+		int SetLifeTime(MTO_FLOAT l);
 		MTO_FLOAT GetStartTime() const;
 		MTO_FLOAT GetLifeTime() const;
 
 		bool operator<(const Event &rhs) const;
 
+		// 一定要每次都override!!
+		virtual string GetTypeName();
+
 		template<typename T, typename U>
 		static bool CanCast(U* e);
 
-		template<typename T, typename U>
-		static T* Cast(U* e);
+		template<typename T>
+		bool CanCast();
+
+		template<typename T>
+		static T* Cast();
 
 		virtual Event* Clone();
 
@@ -43,7 +51,7 @@ namespace Events {
 
 		int eid;
 
-		EventStartType start_type;
+		EventStartType startType;
 
 		/// <summary>
 		/// 開始時間，如果式即時事件就是-1
@@ -58,7 +66,7 @@ namespace Events {
 		Event(const Event*);
 	};
 
-	enum EventStartType {
+	enum class EventStartType {
 		Immediate,
 		Reserved
 	};

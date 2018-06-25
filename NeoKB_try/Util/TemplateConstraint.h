@@ -42,7 +42,7 @@ namespace Util {
 		/// used to automatically check
 		/// https://stackoverflow.com/questions/10332725/how-to-automatically-register-a-class-on-creation
 		/// </summary>
-		static bool check = init();
+		static bool check;
 
 		static bool init()
 		{
@@ -55,7 +55,7 @@ namespace Util {
 		/// <summary>
 		/// never want it really to check. just compile constraint_check_derived_from() is enough.
 		/// </summary>
-		TConstraint{
+		TConstraint(){
 			if(false)
 				check;
 		}
@@ -69,8 +69,8 @@ namespace Util {
 
 	};
 
-
-
+	template<class T_derived, class T_constraint>
+	bool TConstraint<T_derived, T_constraint>::check = init();
 
 }
 

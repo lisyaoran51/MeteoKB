@@ -24,7 +24,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
 		///	</summary>
-		virtual int Generate(Matrix2D* m, EffectMapper<T>* em) = 0;
+		virtual int Generate(Map* m, EffectMapper<T>* em) = 0;
 
 	};
 	

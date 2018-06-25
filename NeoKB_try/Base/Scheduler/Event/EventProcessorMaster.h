@@ -11,11 +11,15 @@
 #include "Event.h"
 #include "EventProcessor.h"
 #include "../../Graphic/Map/Map.h"
+#include "../../../Util/Update/Updater.h"
+#include "../../../Util/Hierachal/ChildAddable.h"
 
 
 using namespace std;
 using namespace Util;
 using namespace Base::Graphic::Maps;
+using namespace Util::Update;
+using namespace Util::Hierachal;
 
 /*
 * instantiate a class with its name in string
@@ -30,12 +34,18 @@ namespace Events {
 	/// <summary>
 	/// a processor center to process every Event including effects, 
 	/// </summary>
-	class EventProcessorMaster : public Updatable
+	class EventProcessorMaster : public Updatable, public ChildAddable
 	{
 		// for thread
 		int tid;
 
+		int load();
+
+		int load(Updater* u);
+
 	public:
+
+		EventProcessorMaster();
 
 		/// <summary>
 		/// 在遊戲進行中來負責接收集將執行的事件， 

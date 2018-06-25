@@ -18,6 +18,7 @@ Map::Map(int w, int h)
 	for (int i = 0; i < h; i++) {
 		matrix[i] = new int[w];
 	}
+	clear = false;
 }
 
 Map::~Map()
@@ -30,21 +31,41 @@ Map::~Map()
 	delete[] defaultMatrix;
 }
 
-int ** Base::Graphic::Maps::Map::GetMatrix()
+int ** Map::GetMatrix()
 {
+	clear = false;
 	return matrix;
+}
+
+int Map::GetWidth()
+{
+	return width;
+}
+
+int Map::GetHeight()
+{
+	return height;
 }
 
 int Map::Add(int x, int y, int v)
 {
+	// TODO: 判斷有沒有超出map範圍
 	matrix[x][y] += v;
+	clear = false;
 	return 0;
 }
 
 int Map::Set(int x, int y, int v)
 {
 	matrix[x][y] = v;
+	clear = false;
 	return 0;
+
+}
+
+int Map::Get(int x, int y)
+{
+	return matrix[x][y];
 }
 
 int Map::PasteAdd(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
@@ -57,6 +78,7 @@ int Map::PasteAdd(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 			matrix[toX + i][toY + j] += fromMatrix[x + i][y + j];
 		}
 	}
+	clear = false;
 	return 0;
 }
 
@@ -71,6 +93,7 @@ int Map::PasteSet(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 			matrix[toX + i][toY + j] = fromMatrix[x + i][y + j];
 		}
 	}
+	clear = false;
 	return 0;
 }
 
@@ -88,8 +111,14 @@ int Map::Reset()
 			matrix[i][j] = defaultMatrix[i][j];
 		}
 	}
+	clear = true;
 
 	return 0;
+}
+
+bool Map::IsClear()
+{
+	return clear;
 }
 
 int Map::SetDefault()
@@ -100,5 +129,6 @@ int Map::SetDefault()
 			defaultMatrix[i][j] = matrix[i][j];
 		}
 	}
+	clear = true;
 	return 0;
 }

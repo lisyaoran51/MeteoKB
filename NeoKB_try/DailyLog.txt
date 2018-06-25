@@ -167,3 +167,37 @@
 
 6/19
 	寫到meteor pattern generator的generate
+
+6/19
+	寫完meteor pattern generator的generate，要從ruleset executor繼續寫下去
+
+6/20
+	overload function pointer設定有兩種方法
+	1. 
+	dddd.registerload(bind(static_cast<int(derived::*)(void)>(&derived::aaa), &dddd));
+	2.
+	dddd.registerload(bind((int(derived::*)())&derived::aaa, dddd));
+	兩個都可以
+
+	謝到meteor playfield 的load，遇到get的時候回傳值無法判斷有沒有這個map的問題
+
+6/21
+	把ruleset executor的load順完
+	現在要寫把scheduler...加入updater裡，這些寫在playfield裡
+	要寫他們的load
+
+6/22
+	寫buffermap的東西(render)
+
+6/23
+	開始寫map algo
+	要改speed在effect裡
+
+6/24
+	int最大直2147483647
+	2147483647 / 8 = 268435456
+
+	check overflow
+	https://stackoverflow.com/questions/199333/how-to-detect-integer-overflow?page=1&tab=votes#tab-top
+	
+	MeteorPatternGenerator 的47行

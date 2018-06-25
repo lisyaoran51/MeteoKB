@@ -31,6 +31,8 @@ template<class T>
 int RulesetExecutor<T>::load()
 {
 	FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+	if (!f)
+		throw runtime_error("int  RulesetExecutor<T>::load() : FrameworkConfigManager not found in cache.");
 
 	return load(f);
 }
@@ -39,7 +41,10 @@ template<class T>
 int RulesetExecutor<T>::load(FrameworkConfigManager* f)
 {
 	// 取pattern generator的名字
-	string pgName = f->Get<string>(FrameworkSetting::PatternGenerator);
+	string pgName;
+	
+	if (!f->Get<string>(FrameworkSetting::PatternGenerator, &pgName))
+		throw runtime_error("int RulesetExecutor<T>::load(FrameworkConfigManager*) : PatternGenerator not found in Setting.");
 
 	// 利用pattern generator的名字建立pattern generator
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
@@ -49,7 +54,7 @@ int RulesetExecutor<T>::load(FrameworkConfigManager* f)
 	SmConverter* converter = createSmConverter(pg);
 	SmPostprocessor* postprocessor = createSmPostprocessor();
 
-	sm = converter->Convert(workingSm->get_sm());
+	sm = converter->Convert(workingSm->GetSm());
 	sm = postprocessor->postprocess(sm);
 
 	delete converter;
@@ -60,10 +65,8 @@ int RulesetExecutor<T>::load(FrameworkConfigManager* f)
 
 	playfield = createPlayfield();
 
+	// 這邊會把map algo讀進去playfield裡面，這件事要記得寫
 	AddChild(playfield);
-
-	// 把每個event processor會用到的algo先讀出來
-	mapAlgorithmLoad();
 
 	// 把Event轉成Event processor擺進去playfield裡
 	playfieldLoad();
@@ -79,11 +82,11 @@ RulesetExecutor<T>::RulesetExecutor()
 }
 
 template<class T>
-int RulesetExecutor<T>::LazyConstruct(WorkingSm<T>* w)
+int RulesetExecutor<T>::LazyConstruct(WorkingSm* w)
 {
 	workingSm = w;
 
-	mods = w->get_mods();
+	//mods = w->get_mods();
 
 	return 0;
 }

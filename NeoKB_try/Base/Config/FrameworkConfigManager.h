@@ -10,6 +10,8 @@ using namespace std;
 namespace Base {
 namespace Config{
 
+	enum class FrameworkSetting;
+
 	class FrameworkConfigManager: public ConfigManager<FrameworkSetting> {
 
 	protected:
@@ -28,10 +30,14 @@ namespace Config{
 
 		Width,
 		Height,
+		TargetHeight,
 		BlackKeyHeight,
+		BlackKeyTargetHeight,
+
 		StartPitch,
 
 		FrameSync,
+		FrameRate,
 
 		CursorSensitivity,
 

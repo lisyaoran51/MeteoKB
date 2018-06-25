@@ -5,11 +5,18 @@
 #include <fstream>
 #include <vector>
 #include "../../Util/TemplateConstraint.h"
+#include "SheetmusicInfo.h"
+#include "SheetmusicMetadata.h"
+#include "../Ruleset/RulesetInfo.h"
+#include "../Scheduler/Event/Event.h"
 
 
 
 using namespace std;
 using namespace Util;
+using namespace Base::Rulesets;
+using namespace Base::Schedulers::Events;
+
 
 namespace Base {
 namespace Sheetmusics {

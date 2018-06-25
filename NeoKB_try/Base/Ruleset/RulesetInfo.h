@@ -2,7 +2,7 @@
 #define RULESET_INFO_H
 
 
-#include<string>
+#include <string>
 #include "Ruleset.h"
 
 

@@ -21,12 +21,14 @@ using namespace std;
 namespace Util {
 namespace Update {
 
+	enum class UpdateState;
+
 	/// <summary>
 	/// to update current time for every object who need to update.
 	/// <summary>
 	class Updater {
 
-		time_point currentTime;
+		system_clock::time_point currentTime;
 
 		vector<function<int(MTO_FLOAT)>> tasks;
 

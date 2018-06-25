@@ -12,11 +12,6 @@ namespace Rulesets {
 
 	class MeteorRulesetExecutor: public RulesetExecutor<Event>{
 
-		/// <summary>
-		/// 把每個event processor會用到的algo先讀出來
-		/// </summary>
-		virtual int mapAlgorithmLoad();
-
 		///<summary>
 		/// 這個試做什麼用的
 		/// 在get event processor時，把這個event要用到的effect mapper擺進去???
@@ -31,9 +26,9 @@ namespace Rulesets {
 
 	protected:
 
-		Playfield* create_playfield();
+		Playfield* createPlayfield();
 
-		EventProcessor<Event>* getEventProcessor(Event* e);
+		virtual EventProcessor<Event>* getEventProcessor(Event* e);
 
 		string GetProcessorType(string eventType);
 

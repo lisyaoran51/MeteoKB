@@ -9,6 +9,8 @@
 #include "../../Config/FrameworkConfigManager.h"
 #include "../../../Drivers/HardwareInfo.h"
 #include "../../../Drivers/LedDriver.h"
+#include "../../../Util/Update/Updater.h"
+#include "../../../Util/Update/Updatable.h"
 
 
 
@@ -18,15 +20,18 @@ using namespace Base::Graphic::Renderers::MapAlgorithms;
 using namespace Util::Hierachal;
 using namespace Base::Config;
 using namespace Drivers;
+using namespace Util::Update;
 
 
 namespace Base {
 namespace Graphic {
 namespace Renderers {
 
-	class Renderer: public ChildAddable {
+	class Renderer : public Updatable,  public ChildAddable{
 
 		int load();
+
+		int load(Updater* u, FrameworkConfigManager* f);
 
 		/// <summary>
 		/// key:硬體版本 value:renderer名稱
@@ -51,6 +56,8 @@ namespace Renderers {
 
 		static Renderer* GetRenderer(int hwVersion);
 
+		virtual int Elapse(MTO_FLOAT elapsedTime);
+
 		virtual int Render() = 0;
 
 		virtual int SendToDriver() = 0;
@@ -67,6 +74,12 @@ namespace Renderers {
 		HardwareMapAlgo* hwMapAlgo;
 
 		LedDriver* ledDriver;
+
+		/// <summary>
+		/// 禎數、針長、目前所經過時間
+		///	</summary>
+		MTO_FLOAT frameRate, frameLength, currentFrameLength;
+
 
 		/// <summary>
 		/// HWMapAlgo應該是和renderer板本綁定

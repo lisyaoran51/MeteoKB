@@ -6,9 +6,9 @@
 #include<vector>
 #include<string>
 #include<functional>
+#include "HasParent.h"
 
 using namespace std;
-using namespace Util;
 
 /*
  * pointer of every variable
@@ -34,10 +34,14 @@ using namespace Util;
  * and then call them
  *
  */
+using namespace Util::Hierachal;
+
+
 
 namespace Util {
 namespace Hierachal{
 
+	enum class LoadState;
 
 	class Loadable: public Cachable {
 
@@ -85,18 +89,6 @@ namespace Hierachal{
 		int Load();
 
 	private:
-
-		class LoadStateHandler;
-		class NoParentHandler;
-		class NotLoadedHandler;
-		class LoadingHandler;
-		class ReadyHandler;
-
-		LoadStateHandler* loadStateHandler;
-		NoParentHandler noParentHandler;
-		NotLoadedHandler notLoadedHandler;
-		LoadingHandler loadingHandler;
-		ReadyHandler readyHandler;
 
 
 		class LoadStateHandler {
@@ -146,32 +138,38 @@ namespace Hierachal{
 			virtual int SetParent(HasParent* p);
 		};
 
+		LoadStateHandler* loadStateHandler;
+		NoParentHandler noParentHandler;
+		NotLoadedHandler notLoadedHandler;
+		LoadingHandler loadingHandler;
+		ReadyHandler readyHandler;
+
 	};
 
 
 	/// <summary>
 	/// Possible states of a <see cref="Drawable"/> within the loading pipeline.
 	/// </summary>
-	enum LoadState {
+	enum class LoadState {
 		/// <summary>
 		/// Not loaded, and no load has been initiated yet.
 		/// </summary>
-		LoadStateNoParent,
+		NoParent,
 		/// <summary>
 		/// Not loaded, and no load has been initiated yet.
 		/// </summary>
-		LoadStateNotLoaded,
+		NotLoaded,
 		/// <summary>
 		/// Currently loading (possibly and usually on a background
 		/// thread via <see cref="Drawable.LoadAsync(Game, Drawable, Action)"/>).
 		/// </summary>
-		LoadStateLoading,
+		Loading,
 		/// <summary>
 		/// Loading is complete, but has not yet been finalized on the update thread
 		/// (<see cref="Drawable.LoadComplete"/> has not been called yet, which
 		/// always runs on the update thread and requires <see cref="Drawable.IsAlive"/>).
 		/// </summary>
-		LoadStateReady
+		Ready
 		/// <summary>
 		/// Loading is fully completed and the Drawable is now part of the scene graph.
 		/// </summary>

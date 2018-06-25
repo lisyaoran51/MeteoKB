@@ -21,6 +21,18 @@ Event::Event(const Event &e)
 	lifeTime = e.lifeTime;
 }
 
+int Event::SetStartTime(MTO_FLOAT s)
+{
+	startTime = s;
+	return 0;
+}
+
+int Event::SetLifeTime(MTO_FLOAT l)
+{
+	lifeTime = l;
+	return 0;
+}
+
 MTO_FLOAT Event::GetStartTime() const
 {
 	return startTime;
@@ -34,6 +46,11 @@ MTO_FLOAT Event::GetLifeTime() const
 bool Event::operator<(const Event & rhs) const
 {
 	return startTime < rhs.GetStartTime();
+}
+
+string Event::GetTypeName()
+{
+	return "Event";
 }
 
 Event * Event::Clone()
@@ -52,8 +69,19 @@ bool Event::CanCast(U * e)
 	}
 }
 
-template<typename T, typename U>
-T * Event::Cast(U * e)
+template<typename T>
+bool Event::CanCast()
 {
-	return dynamic_cast< T* >(e);
+	if (T* t = dynamic_cast< T* >(this)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+template<typename T>
+T * Event::Cast()
+{
+	return dynamic_cast< T* >(this);
 }

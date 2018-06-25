@@ -29,7 +29,7 @@ namespace Config{
 
 		ConfigManager();
 
-		Load();
+		int Load();
 
 		int Set(T lookup, int value);
 
@@ -39,8 +39,12 @@ namespace Config{
 
 		int Set(T lookup, string value);
 
+		// 這個寫法不能判斷是否有資料在map裡
+		//template<typename U>
+		//U Get(T lookup);
+
 		template<typename U>
-		U Get(T lookup);
+		bool Get(T lookup, U* out);
 
 	protected:
 

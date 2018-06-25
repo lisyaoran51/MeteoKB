@@ -7,3 +7,8 @@ Updatable::Updatable()
 {
 	currentTime = -1;
 }
+
+MTO_FLOAT Updatable::GetCurrentTime()
+{
+	return currentTime;
+}

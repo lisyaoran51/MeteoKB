@@ -10,6 +10,8 @@
 #include "Sheetmusic.h"
 #include "IO\FileReader.h"
 #include "Format\SmDecoder.h"
+#include "../Ruleset/Ruleset.h"
+#include "../Ruleset/RulesetInfo.h"
 
 
 
@@ -17,6 +19,9 @@ using namespace std;
 using namespace Util;
 using namespace Base::Sheetmusics::IO;
 using namespace Base::Sheetmusics::Format;
+using namespace Base::Rulesets;
+
+
 
 namespace Base {
 namespace Sheetmusics {

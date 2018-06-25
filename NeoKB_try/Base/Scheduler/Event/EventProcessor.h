@@ -41,8 +41,21 @@ namespace Events {
 		virtual int Process() = 0;
 
 		MTO_FLOAT GetStartTime();
+		MTO_FLOAT GetLifeTime();
 		MTO_FLOAT GetTimeLeft();
+
+		// 一定要每次都override!!
+		virtual string GetTypeName();
 		
+		template<typename U, typename V>
+		static bool CanCast(V* e);
+
+		template<typename U>
+		bool CanCast();
+
+		template<typename U>
+		U* Cast();
+
 
 	protected:
 

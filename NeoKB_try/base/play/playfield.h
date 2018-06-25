@@ -9,6 +9,8 @@
 #include"../Scheduler/Scheduler.h"
 #include "../../Util/Hierachal/ChildAddable.h"
 #include "../Graphic/Renderer/renderer.h"
+#include "../Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
+#include"../../Util/Update/updater.h"
 
 
 
@@ -17,6 +19,9 @@ using namespace Util::Update;
 using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers;
 using namespace Base::Graphic::Renderers;
+using namespace Base::Schedulers::Events::Effects::Algorithms;
+
+
 
 namespace Base {
 namespace Play {
@@ -30,13 +35,14 @@ namespace Play {
 
 		int load();
 
-		int load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f);
+		// 繼承playfield的class，在load的時候一定要寫讀取map algo的工作
+		int load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f, Updater* u);
 
 	public:
 
 		Playfield();
 
-		virtual int OnJudgement(Event* judge_event, Judgement* j);
+		//virtual int OnJudgement(Event* judge_event, Judgement* j);
 
 		/// <summary>
 		/// add events to scheuler
@@ -45,13 +51,24 @@ namespace Play {
 
 	protected:
 
+		int width, height;
+
+		///<summary>
+		/// 在這邊存了會用到的algo，在getEventProcessor時可以到這邊選擇要用的algo
+		///</summary>
+		map<string, MapAlgorithm<Event>*> mapAlgorithms;
+
 		Scheduler* scheduler;
 
 		EventProcessorMaster* eventProcessorMaster;
 
 		Renderer* renderer;
 
+		Updater* updater;
+
 		Map* map;
+
+		Map* bufferMap;
 	};
 
 

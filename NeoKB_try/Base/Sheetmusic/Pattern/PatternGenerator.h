@@ -14,14 +14,18 @@
 #include "../../Scheduler/Event/Event.h"
 #include "pattern.h"
 #include "../../../Util/MtoObject.h"
+#include "../../Config/FrameworkConfigManager.h"
 
 
 
 
 using namespace std;
 using namespace Util;
+using namespace Util::Hierachal;
 using namespace Base::Schedulers::Events;
 using namespace Base::Sheetmusics;
+using namespace Base::Config;
+
 
 namespace Base {
 namespace Sheetmusics {
@@ -43,7 +47,7 @@ namespace Patterns {
 
 		~PatternGenerator();
 
-		virtual Pattern* Generate(vector<Event*> es, Event * e) = 0;
+		virtual Pattern* Generate(vector<Event*>* es, Event * e) = 0;
 
 		int Add(Pattern* p);
 
@@ -52,9 +56,9 @@ namespace Patterns {
 	protected:
 
 		int width;
-
 		int height;
-
+		int targetHeight;
+		int blackKeyTargetHeight;
 		int blackKeyHeight;
 
 		Pitch startPitch;

@@ -21,7 +21,7 @@ int Loadable::load()
 	return 0;
 }
 
-Loadable::Loadable(): RegisterType("Loadable")
+Loadable::Loadable(): RegisterType("Loadable"), Cachable(), noParentHandler(*this), notLoadedHandler(*this), loadingHandler(*this), readyHandler(*this)
 {
 	loadStateHandler = &noParentHandler;
 }

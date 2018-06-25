@@ -2,13 +2,28 @@
 
 
 using namespace Base::Schedulers;
+using namespace Util;
 
 
 
 
+int Scheduler::load()
+{
+	Updater* u = GetCache<Updater>("Updater");
+	if (!u)
+		throw runtime_error("int EventProcessorMaster::load() : Updater not found in cache.");
+	return load(u);
+}
+
+int Scheduler::load(Updater * u)
+{
+	u->RegisterTask(bind((int(Scheduler::*)(MTO_FLOAT))&Scheduler::Elapse, this, placeholders::_1));
+	return 0;
+}
 
 Scheduler::Scheduler(): RegisterType("Scheduler")
 {
+	registerLoad(bind((int(Scheduler::*)())&Scheduler::load, this));
 	eventProcessors = new vector<EventProcessor<Event>*>();
 }
 
@@ -43,11 +58,14 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 	if (elapsedTime == -1) {
 		// 遊戲還沒開始時事-1，之後變0代表遊戲開始
 		currentTime = 0;
+		return 0;
 	}
 	
 	currentTime += elapsedTime;
 
 	while (eventProcessors->back()->GetStartTime() < currentTime) {
+
+		//TODO: 應該先把超過的時間給減回去，避免多扣life time
 		deliverHandler(eventProcessors->back());
 		eventProcessors->pop_back();
 	}

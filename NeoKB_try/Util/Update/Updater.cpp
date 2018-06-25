@@ -30,10 +30,12 @@ int Updater::RegisterTask(function<int(MTO_FLOAT)> t)
 void Updater::Update()
 {
 	if (updateState == UpdateState::Started) {
-		chrono::system_clock::time_point temp = system_clock::now();
+		system_clock::time_point temp = system_clock::now();
 		
-		chrono::duration<double> difference = temp - currentTime;
+		duration<double> difference = temp - currentTime;
 		MTO_FLOAT elapsedTime = difference.count();
+
+		currentTime = system_clock::now();
 
 		update(elapsedTime);
 		return;

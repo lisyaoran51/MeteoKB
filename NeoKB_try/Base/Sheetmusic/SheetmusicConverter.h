@@ -4,13 +4,13 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "working_sheetmusic.h"
+#include "WorkingSheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
-#include "sheetmusic_info.h"
+#include "SheetmusicInfo.h"
 #include "Sheetmusic.h"
 #include "../Scheduler/Event/Event.h"
 #include "../../Util/MtoObject.h"
-#include "Pattern\PatternGenerator.h"
+#include "Pattern/PatternGenerator.h"
 #include "../../Util/Hierachal/ChildAddable.h"
 
 

@@ -11,6 +11,8 @@ using namespace Base::Config;
 namespace Meteor {
 namespace Config{
 
+	enum class MeteorSetting;
+
 	class MeteorConfigManager: public ConfigManager<MeteorSetting> {
 
 	protected:

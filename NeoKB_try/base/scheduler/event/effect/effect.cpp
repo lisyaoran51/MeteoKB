@@ -24,6 +24,26 @@ Effect::Effect(const Effect &e): Event(e)
 	speed = e.speed;
 }
 
+string Effect::GetTypeName()
+{
+	return "Effect";
+}
+
+int Effect::GetX()
+{
+	return x;
+}
+
+int Effect::GetY()
+{
+	return y;
+}
+
+MTO_FLOAT Effect::GetSpeed()
+{
+	return speed;
+}
+
 int Effect::SetBrightness(MTO_FLOAT b)
 {
 	brightness = b;

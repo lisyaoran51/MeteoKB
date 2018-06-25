@@ -37,7 +37,7 @@ namespace Patterns {
 
 		MeteorPatternGenerator();
 
-		virtual Pattern* Generate(vector<Event*> es, Event * e);
+		virtual Pattern* Generate(vector<Event*>* es, Event * e);
 
 	protected:
 

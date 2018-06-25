@@ -25,7 +25,7 @@ Loadable::NoParentHandler::NoParentHandler(Loadable & l): LoadStateHandler(l)
 
 LoadState Loadable::NoParentHandler::GetLoadState()
 {
-	return LoadStateNoParent;
+	return LoadState::NoParent;
 }
 
 int Loadable::NoParentHandler::HandleLoad()
@@ -57,7 +57,7 @@ Loadable::NotLoadedHandler::NotLoadedHandler(Loadable & l) : LoadStateHandler(l)
 
 LoadState Loadable::NotLoadedHandler::GetLoadState()
 {
-	return LoadStateNotLoaded;
+	return LoadState::NotLoaded;
 }
 
 int Loadable::NotLoadedHandler::HandleLoad()
@@ -88,24 +88,24 @@ Loadable::LoadingHandler::LoadingHandler(Loadable & l) : LoadStateHandler(l)
 {
 }
 
-LoadState Util::Hierachal::Loadable::LoadingHandler::GetLoadState()
+LoadState Loadable::LoadingHandler::GetLoadState()
 {
-	return LoadStateLoading;
+	return LoadState::Loading;
 }
 
-int Util::Hierachal::Loadable::LoadingHandler::HandleLoad()
-{
-	// 讀取中，不能重複讀取
-	return -1;
-}
-
-int Util::Hierachal::Loadable::LoadingHandler::Async()
+int Loadable::LoadingHandler::HandleLoad()
 {
 	// 讀取中，不能重複讀取
 	return -1;
 }
 
-int Util::Hierachal::Loadable::LoadingHandler::SetParent(HasParent * p)
+int Loadable::LoadingHandler::Async()
+{
+	// 讀取中，不能重複讀取
+	return -1;
+}
+
+int Loadable::LoadingHandler::SetParent(HasParent * p)
 {
 	// 已讀取中
 	return -1;
@@ -117,24 +117,24 @@ Loadable::ReadyHandler::ReadyHandler(Loadable & l) : LoadStateHandler(l)
 {
 }
 
-LoadState Util::Hierachal::Loadable::ReadyHandler::GetLoadState()
+LoadState Loadable::ReadyHandler::GetLoadState()
 {
-	return LoadStateReady;
+	return LoadState::Ready;
 }
 
-int Util::Hierachal::Loadable::ReadyHandler::HandleLoad()
-{
-	// TODO: 要寫重複利用的方法
-	return -1;
-}
-
-int Util::Hierachal::Loadable::ReadyHandler::Async()
+int Loadable::ReadyHandler::HandleLoad()
 {
 	// TODO: 要寫重複利用的方法
 	return -1;
 }
 
-int Util::Hierachal::Loadable::ReadyHandler::SetParent(HasParent * p)
+int Loadable::ReadyHandler::Async()
+{
+	// TODO: 要寫重複利用的方法
+	return -1;
+}
+
+int Loadable::ReadyHandler::SetParent(HasParent * p)
 {
 	// TODO: 要寫重複利用的方法
 	return -1;

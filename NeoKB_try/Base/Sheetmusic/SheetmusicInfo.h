@@ -9,6 +9,7 @@
 #include "SheetmusicDifficulty.h"
 #include "../Ruleset/Ruleset.h"
 #include "SheetmusicSetInfo.h"
+#include "../Ruleset/RulesetInfo.h"
 
 
 

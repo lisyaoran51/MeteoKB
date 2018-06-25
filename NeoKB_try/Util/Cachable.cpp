@@ -23,7 +23,7 @@ MtoObject* Cachable::getCache(string type)
 }
 
 template<typename T>
-T Cachable::GetCache(string type) {
+T* Cachable::GetCache(string type) {
 
 	MtoObject* o = getCache(type);
 
@@ -38,7 +38,7 @@ T Cachable::GetCache(string type) {
 		return c->GetCache<T>(type);
 	}
 
-	T to = Cast<T>(o);
+	T* to = Cast<T>(o);
 
 	if (!to) 
 		throw invalid_argument("Cachable::GetCache<T>(string): cast to wrong class type.");

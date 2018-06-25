@@ -23,26 +23,47 @@ int Playfield::load()
 	if (!f)
 		throw runtime_error("int Playfield::load() : FrameworkConfigManager not found in cache.");
 
-	return load(s, e, f);
+	Updater* u = GetCache<Updater>("Updater");
+	if (!u)
+		throw runtime_error("int Playfield::load() : Updater not found in cache.");
+
+	return load(s, e, f, u);
 }
 
-int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f) {
+int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f, Updater* u) {
 	scheduler = s;
 	eventProcessorMaster = e;
+	updater = u;
 
-	int hwVersion = f->Get<int>(FrameworkSetting::HardwareVersion);
-	renderer = Renderer::GetRenderer(hwVersion);
+	int hwVersion;
+	if (f->Get<int>(FrameworkSetting::HardwareVersion, &hwVersion)) {
+		renderer = Renderer::GetRenderer(hwVersion);
+	}
+	else
+		throw runtime_error("int Playfield::load() : HardwareVersion not found in Setting.");
+	
 
 	// 根據遊戲大小，建一個map
-	int width = f->Get<int>(FrameworkSetting::Width);
-	int height = f->Get<int>(FrameworkSetting::Height);
-	map = new Map(width, height);
+	if (f->Get<int>(FrameworkSetting::Width, &width) &&
+		f->Get<int>(FrameworkSetting::Height, &height))
+	{
+		map = new Map(width, height);
+		bufferMap = new Map(width * 2, height * 2);
+	}
+	else
+		throw runtime_error("int Playfield::load() : Width and Height not found in Setting.");
+	
 
 	eventProcessorMaster->RegisterMap(map);
 	renderer->RegisterMap(map);
-
 	scheduler->RegisterHandler(e->ReceiveEventProcessor);
 
+	// 這一步是讓他們去抓updater
+	AddChild(scheduler);
+	AddChild(eventProcessorMaster);
+	AddChild(renderer);
+
+	// 最後也要把playfield加進updater裡，但是應該不能寫在這，要寫在繼承的class上
 }
 
 Playfield::Playfield():RegisterType("Playfield")
@@ -56,8 +77,20 @@ int Playfield::Add(EventProcessor<Event> * ep)
 {
 	scheduler->Add(ep);
 
-	// 這邊要判斷這個event是不是effect，式的話就把map加進去
+	// 這邊要把Map Algo加進去
+	if (ep->CanCast<EffectMapper<Event>>()) {
+
+		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
+		string processorType = ep->GetTypeName();
+
+		MapAlgorithm<Event>* mapAlgo = mapAlgorithms[processorType];
+		if (mapAlgo)
+			ep->Cast<EffectMapper<Event>>()->RegisterMapAlgorithm(mapAlgo);
+
+	}
+
 	if (CanCast<EffectMapper<Effect>, EventProcessor<Event>>(ep)) {
+		// 這邊要判斷這個event是不是effect，式的話就把map加進去
 		EffectMapper<Effect>* em = Cast<EffectMapper<Effect>, EventProcessor<Event>>(ep);
 		em->RegisterMap(map);
 	}

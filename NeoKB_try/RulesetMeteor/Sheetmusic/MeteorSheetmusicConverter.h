@@ -11,13 +11,13 @@ namespace Sheetmusics{
 
 	class MeteorSmConverter : public SmConverter {
 
-		
-
-	protected:
+	public:
 		/// <summary>
 		/// 把設定讀進來
 		///	</summary>
 		MeteorSmConverter(PatternGenerator* pg);
+
+	protected:
 
 		int convertEvent(vector<Event*>* es, Event* e);
 
