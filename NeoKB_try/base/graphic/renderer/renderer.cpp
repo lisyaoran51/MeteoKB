@@ -56,7 +56,7 @@ int Renderer::load(Updater * u, FrameworkConfigManager* f)
 	return 0;
 }
 
-Renderer::Renderer(): RegisterType("Renderer")
+Renderer::Renderer(): RegisterType("Renderer"), ChildAddable()
 {
 	registerLoad(bind((int(Renderer::*)())&Renderer::load, this));
 	initialized;

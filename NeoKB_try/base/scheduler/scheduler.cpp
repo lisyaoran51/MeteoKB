@@ -21,7 +21,7 @@ int Scheduler::load(Updater * u)
 	return 0;
 }
 
-Scheduler::Scheduler(): RegisterType("Scheduler")
+Scheduler::Scheduler(): RegisterType("Scheduler"), ChildAddable()
 {
 	registerLoad(bind((int(Scheduler::*)())&Scheduler::load, this));
 	eventProcessors = new vector<EventProcessor<Event>*>();

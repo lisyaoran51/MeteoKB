@@ -39,9 +39,12 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 	string processorType = GetProcessorType(e->GetTypeName());
 
-	InstanceCreator<MtoObject>& iCreator = InstanceCreator<MtoObject>::GetInstance();
-	EventProcessor<Event>* eventProcessor = iCreator.CreateInstance<EventProcessor<Event>>(processorType);
-
+	//InstanceCreator<MtoObject>& iCreator = InstanceCreator<MtoObject>::GetInstance();
+	//EventProcessor<Event>* eventProcessor = iCreator.CreateInstance<EventProcessor<Event>>(processorType);
+	switch (processorType) {
+	case "FallEffectMapper":
+		return new FallEffectMapper()
+	}
 	
 
 	return eventProcessor;

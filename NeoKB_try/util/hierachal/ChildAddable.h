@@ -23,6 +23,8 @@ namespace Hierachal {
 
 	public:
 
+		ChildAddable();
+
 		/// <summary>
 		/// when add child, automatically call every privateLoad() to load in parent's configuration
 		/// </summary>

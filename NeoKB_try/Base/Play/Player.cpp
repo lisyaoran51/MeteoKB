@@ -31,7 +31,7 @@ int Player::load()
 	return 0;
 }
 
-Player::Player(): RegisterType("Player")
+Player::Player(): RegisterType("Player"), ChildAddable()
 {
 }
 

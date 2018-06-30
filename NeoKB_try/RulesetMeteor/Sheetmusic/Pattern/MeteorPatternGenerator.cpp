@@ -44,7 +44,11 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	Pattern* pattern = new Pattern();
 
 	// 所有的event都要複製一個新的來用，才不會動到原本讀好的譜
-	NoteControlPoint* note = (NoteControlPoint*)e->Cast<NoteControlPoint>()->Clone();
+	NoteControlPoint* note = e->Clone()->Cast<NoteControlPoint>();
+	
+	if(!note)
+		throw runtime_error("Pattern* MeteorPatternGenerator::Generate(vector<Event*>*, Event*) : event cannot cast to NoteControlPoint.");
+
 	Pitch pitch = note->GetPitch();
 
 	// 公式： (鍵盤高度-打擊點高度) / 速度

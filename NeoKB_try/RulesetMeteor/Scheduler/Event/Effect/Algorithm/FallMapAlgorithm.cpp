@@ -1,8 +1,12 @@
 #include "FallMapAlgorithm.h"
 
 
+
 using namespace Meteor::Schedulers::Events::Effects::Algorithms; 
 using namespace Meteor::Schedulers::Events::Effects;
+using namespace Base::Schedulers::Events::Effects;
+
+
 
 FallMapAlgorithm::FallMapAlgorithm(): RegisterType("FallMapAlgorithm"), MapAlgorithm()
 {

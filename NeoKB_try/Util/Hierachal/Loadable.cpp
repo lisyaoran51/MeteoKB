@@ -46,6 +46,7 @@ int Loadable::registerLoad(function<int(void)> l) {
 	// find every parent class's private load() function
 	// https://stackoverflow.com/questions/16262338/get-Base-class-for-a-type-in-class-hierarchy
 	loaders.push_back(l);
+	return 0;
 }
 
 int Loadable::Load()

@@ -6,7 +6,7 @@ using namespace Base::Schedulers::Events::Effects::Algorithms;
 
 
 template<typename T>
-int MapShiftAlgorithm<T>::Shift(Map * bufferMap, Map * map, EffectMapper<T>* em)
+int MapShiftAlgorithm<T>::ImplementShift(Map * bufferMap, Map * map, EffectMapper<T>* em)
 {
 	// TODO:
 	MTO_FLOAT x = em->GetX();
@@ -24,6 +24,17 @@ int MapShiftAlgorithm<T>::Shift(Map * bufferMap, Map * map, EffectMapper<T>* em)
 		}
 	}
 	return 0;
+}
+
+template<typename T>
+int MapShiftAlgorithm<T>::Shift(Map * bufferMap, Map * map, EventProcessor<Event>* em)
+{
+	if (em->CanCast<EffectMapper<T>>()) {
+		return ImplementShift(bufferMap, map, em->Cast<EffectMapper<T>>());
+	}
+
+	// TODO: throw error or not?
+	return -1;
 }
 
 

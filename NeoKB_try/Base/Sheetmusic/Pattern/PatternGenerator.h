@@ -7,14 +7,12 @@
 #include <fstream>
 #include <vector>
 #include <functional>
-#include "../WorkingSheetmusic.h"
 #include "../../Util/TemplateConstraint.h"
-#include "../SheetmusicInfo.h"
-#include "../Sheetmusic.h"
 #include "../../Scheduler/Event/Event.h"
-#include "pattern.h"
+#include "Pattern.h"
 #include "../../../Util/MtoObject.h"
 #include "../../Config/FrameworkConfigManager.h"
+#include "../../../Util/Hierachal/Loadable.h"
 
 
 

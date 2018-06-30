@@ -18,6 +18,7 @@ using namespace Util;
 using namespace Base::Schedulers::Events;
 using namespace Base::Sheetmusics;
 using namespace Meteor::Config;
+using namespace Base::Sheetmusics::Patterns;
 
 namespace Meteor {
 namespace Sheetmusics {

@@ -56,7 +56,7 @@ namespace Play {
 		///<summary>
 		/// 在這邊存了會用到的algo，在getEventProcessor時可以到這邊選擇要用的algo
 		///</summary>
-		map<string, MapAlgorithm<Event>*> mapAlgorithms;
+		map<string, MapAlgorithmInterface*> mapAlgorithms;
 
 		Scheduler* scheduler;
 

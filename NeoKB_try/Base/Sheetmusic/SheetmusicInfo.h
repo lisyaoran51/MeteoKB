@@ -7,7 +7,6 @@
 #include "../../Util/TemplateConstraint.h"
 #include "SheetmusicMetadata.h"
 #include "SheetmusicDifficulty.h"
-#include "../Ruleset/Ruleset.h"
 #include "SheetmusicSetInfo.h"
 #include "../Ruleset/RulesetInfo.h"
 
@@ -15,6 +14,16 @@
 
 using namespace std;
 using namespace Util;
+
+
+namespace Base {
+namespace Rulesets {
+
+	class Ruleset;
+
+}}
+
+
 using namespace Base::Rulesets;
 
 namespace Base {

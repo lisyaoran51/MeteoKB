@@ -15,10 +15,41 @@ namespace Base {
 namespace Schedulers {
 namespace Events {
 namespace Effects {
+
+	template<typename T>
+	class EffectMapper;
+
+}}}}
+
+using namespace Base::Schedulers::Events::Effects;
+
+
+namespace Base {
+namespace Schedulers {
+namespace Events {
+namespace Effects {
 namespace Algorithms{
 	
+
+	class MapAlgorithmInterface {
+
+	public:
+
+		virtual int RegisterBufferMap(Map* b) = 0;
+
+		virtual int RegisterGenerator(MapGenerateAlgorithmInterface* g) = 0;
+
+		virtual int RegisterShifter(MapShiftAlgorithmInterface* s) = 0;
+
+		/// <summary>
+		/// 把evnet的狀態轉成圖案，然後移到他的位置上
+		///	</summary>
+		virtual int Draw(Map* m, EventProcessor<Event>* em) = 0;
+	};
+
+
 	template<typename T>
-	class MapAlgorithm: public MtoObject
+	class MapAlgorithm: public MapAlgorithmInterface, public MtoObject
 	{
 
 		bool constructed;
@@ -39,11 +70,11 @@ namespace Algorithms{
 
 		~MapAlgorithm();
 
-		int RegisterBufferMap(Map* b);
+		virtual int RegisterBufferMap(Map* b);
 
-		int RegisterGenerator(MapGenerateAlgorithm<T>* g);
+		virtual int RegisterGenerator(MapGenerateAlgorithmInterface* g);
 
-		int RegisterShifter(MapShiftAlgorithm<T>* s);
+		virtual int RegisterShifter(MapShiftAlgorithmInterface* s);
 
 
 		/// <summary>
@@ -54,7 +85,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
-		virtual int Draw(Map* m, EffectMapper<T>* em);
+		virtual int Draw(Map* m, EventProcessor<Event>* em);
 
 	protected:
 
@@ -75,6 +106,21 @@ namespace Algorithms{
 		/// 把生好的effect移到他該擺的位置上
 		/// </summary>
 		MapShiftAlgorithm<T>* shiftAlgo;
+
+		int ImplementRegisterGenerator(MapGenerateAlgorithm<T>* g);
+
+		int ImplementRegisterShifter(MapShiftAlgorithm<T>* s);
+
+
+		/// <summary>
+		/// 把evnet的狀態轉成圖案，然後移到他的位置上
+		///	</summary>
+		//virtual int Draw(Map* m, T* e);
+
+		/// <summary>
+		/// 把evnet的狀態轉成圖案，然後移到他的位置上
+		///	</summary>
+		virtual int ImplementDraw(Map* m, EffectMapper<T>* em);
 
 	};
 

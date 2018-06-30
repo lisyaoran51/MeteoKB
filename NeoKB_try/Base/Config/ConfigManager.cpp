@@ -12,8 +12,11 @@ ConfigManager<T>::ConfigManager(): RegisterType("ConfigManager")
 }
 
 template<typename T>
-ConfigManager<T>::Load()
+int ConfigManager<T>::Load()
 {
+	// 這個式要做什麼?
+	// 讀文件嗎?
+	return 0;
 }
 
 template<typename T>

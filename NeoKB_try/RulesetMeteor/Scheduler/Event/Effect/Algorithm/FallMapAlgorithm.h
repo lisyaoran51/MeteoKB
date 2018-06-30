@@ -4,9 +4,8 @@
 #include"../../../../../Base/Graphic/Map/Map.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapGenerateAlgorithm.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
-#include "../FallEffect.h"
-#include "../FallEffectMapper.h"
-
+#include "../../../../../Base/Scheduler/Event/Effect/Effect.h"
+#include "../../../../../Base/Scheduler/Event/Effect/EffectMapper.h"
 
 
 

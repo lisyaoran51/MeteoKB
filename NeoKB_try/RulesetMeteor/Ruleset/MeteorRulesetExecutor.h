@@ -24,6 +24,10 @@ namespace Rulesets {
 
 		virtual SmPostprocessor* createSmPostprocessor();
 
+	public:
+
+		MeteorRulesetExecutor();
+
 	protected:
 
 		Playfield* createPlayfield();

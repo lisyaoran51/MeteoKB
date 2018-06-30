@@ -2,10 +2,23 @@
 #define MAP_SHIFT_ALGORITHM_H
 
 #include"../../../../Graphic/Map/Map.h"
-#include "../EffectMapper.h"
+#include "../../Event.h"
+#include "../../EventProcessor.h"
 
 using namespace Base::Graphic::Maps;
 
+namespace Base {
+namespace Schedulers {
+namespace Events {
+namespace Effects {
+
+	template<typename T>
+	class EffectMapper;
+
+}}}}
+
+using namespace Base::Schedulers::Events::Effects;
+using namespace Base::Schedulers::Events;
 
 namespace Base {
 namespace Schedulers {
@@ -13,18 +26,40 @@ namespace Events {
 namespace Effects {
 namespace Algorithms{
 	
+	class MapShiftAlgorithmInterface {
+
+	public:
+
+		// EventProcessor<Event> = EffectMapper<T>
+		// 因為template不能做多型，所以多切一層interface出來
+		/// <summary>
+		/// 移動到指定位置上
+		///	</summary>
+		virtual int Shift(Map* bufferMap, Map* map, EventProcessor<Event>* em) = 0;
+
+
+	};
+
+
 	/// <summary>
-	/// 畫出特效
+	/// 移動特效的位置
 	///	</summary>
 	template<typename T>
-	class MapShiftAlgorithm
+	class MapShiftAlgorithm: public MapShiftAlgorithmInterface
 	{
 
 	public:
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
-		virtual int Shift(Map* bufferMap, Map* map, EffectMapper<T>* em);
+		virtual int Shift(Map* bufferMap, Map* map, EventProcessor<Event>* em);
+
+	protected:
+
+		/// <summary>
+		/// 移動到指定位置上
+		///	</summary>
+		virtual int ImplementShift(Map* bufferMap, Map* map, EffectMapper<T>* em);
 
 	};
 	

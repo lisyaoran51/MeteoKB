@@ -19,7 +19,7 @@ int EventProcessorMaster::load(Updater * u)
 	return 0;
 }
 
-EventProcessorMaster::EventProcessorMaster(): RegisterType("EventProcessorMaster")
+EventProcessorMaster::EventProcessorMaster(): RegisterType("EventProcessorMaster"), ChildAddable(), Updatable()
 {
 	registerLoad(bind((int(EventProcessorMaster::*)())&EventProcessorMaster::load, this));
 }

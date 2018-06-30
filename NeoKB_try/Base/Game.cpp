@@ -24,7 +24,7 @@ int Game::load()
 	return 0;
 }
 
-Game::Game(): RegisterType("Game")
+Game::Game(): RegisterType("Game"), ChildAddable()
 {
 	registerLoad(bind(&Game::load,this));
 }

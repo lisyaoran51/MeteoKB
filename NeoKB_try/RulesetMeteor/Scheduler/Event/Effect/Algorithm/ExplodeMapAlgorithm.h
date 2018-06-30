@@ -1,12 +1,14 @@
 #ifndef EXPLODE_MAP_ALGORITHM_H
 #define EXPLODE_MAP_ALGORITHM_H
 
-#include"../../../../Graphic/Map/Map.h"
+#include "../../../../../Base/Graphic/Map/Map.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
 #include "../../../../../Base/Scheduler/Event/Event.h"
 #include "../ExplodeEffectMapper.h"
 #include "../ExplodeEffect.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapGenerateAlgorithm.h"
+#include "../../../../../Base/Scheduler/Event/Effect/Effect.h"
+#include "../../../../../Base/Scheduler/Event/Effect/EffectMapper.h"
 
 
 using namespace Base::Graphic::Maps;

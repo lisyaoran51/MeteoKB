@@ -62,8 +62,9 @@ namespace Util {
 
 		/// <summary>
 		/// make a constraint for template. User have to design his own checking workflow. 
+		/// 有需要的時候再覆寫
 		/// </summary>
-		virtual void constraint_check() = 0;
+		virtual void constraint_check() {}
 
 		
 

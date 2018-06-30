@@ -1,7 +1,7 @@
 #ifndef CACHABLE_H
 #define CACHABLE_H
 
-#include"Loadable.h"
+//#include"Loadable.h"
 #include<map>
 #include"HasParent.h"
 
@@ -17,7 +17,7 @@ using namespace std;
 namespace Util {
 namespace Hierachal{
 
-	class Loadable;
+	//class Loadable;
 
 	/// <summary>
 	/// to make a cache of the whole game for some configuration and common data

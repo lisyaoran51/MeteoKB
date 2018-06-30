@@ -201,3 +201,11 @@
 	https://stackoverflow.com/questions/199333/how-to-detect-integer-overflow?page=1&tab=votes#tab-top
 	
 	MeteorPatternGenerator 的47行
+
+6/28
+	解不完的circular dependency
+
+6/30
+	childaddable的建構子和registerload都要檢查一次
+	meteor ruleset executor的get processor那邊要寫
+	effect mapper裡面都還沒寫

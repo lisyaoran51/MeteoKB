@@ -426,6 +426,9 @@
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\GlowLineMapAlgorithm.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects\MapAlgorithms</Filter>
     </ClCompile>
+    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.cpp">
+      <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="DailyLog.txt">

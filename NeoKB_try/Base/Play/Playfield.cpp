@@ -56,7 +56,7 @@ int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManage
 
 	eventProcessorMaster->RegisterMap(map);
 	renderer->RegisterMap(map);
-	scheduler->RegisterHandler(e->ReceiveEventProcessor);
+	scheduler->RegisterHandler(&(e->ReceiveEventProcessor));
 
 	// 這一步是讓他們去抓updater
 	AddChild(scheduler);

@@ -3,6 +3,10 @@
 using namespace Util::Hierachal;
 
 
+ChildAddable::ChildAddable(): Loadable(), RegisterType("ChildAddable")
+{
+}
+
 int ChildAddable::AddChild(ChildAddable * child)
 {
 	if (child->SetParent(this) == 0) {

@@ -12,7 +12,7 @@ namespace Schedulers {
 namespace Events {
 namespace Effects {
 
-	class ExplodeEffectMapper :public EffectMapper<Event> {
+	class ExplodeEffectMapper :public EffectMapper<ExplodeEffect> {
 
 		ExplodeEffectMapper(int w, int h);
 

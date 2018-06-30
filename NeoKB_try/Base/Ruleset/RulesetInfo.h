@@ -3,7 +3,6 @@
 
 
 #include <string>
-#include "Ruleset.h"
 
 
 using namespace std;
@@ -12,6 +11,8 @@ using namespace std;
 namespace Base {
 namespace Rulesets {
 	
+	class Ruleset;
+
 	/// <summary>
 	/// a game rule that designs how the game plays
 	///	</summary>

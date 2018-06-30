@@ -1,7 +1,10 @@
 #include "RulesetInfo.h"
+#include "../../Util/InstanceCreator.h"
+#include "../../Util/MtoObject.h"
 
 
 using namespace Base::Rulesets;
+using namespace Util;
 
 
 RulesetInfo::RulesetInfo(int i, string n)

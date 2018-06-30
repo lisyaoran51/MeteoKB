@@ -69,7 +69,7 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 		RulesetInfo* rulesetInfo;
 
 		for (int i = 0; i < rulesetInfos->size(); i++){
-			if (rulesetInfos->at(i)->GetId() == sm->GetSmInfo->rulesetId) {
+			if (rulesetInfos->at(i)->GetId() == sm->GetSmInfo()->rulesetId) {
 				rulesetInfo = rulesetInfos->at(i);
 				break;
 			}

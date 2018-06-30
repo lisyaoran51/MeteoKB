@@ -40,6 +40,7 @@
     <ClCompile Include="Base\Ruleset\RulesetInfo.cpp" />
     <ClCompile Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapShiftAlgorithm.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Effect.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\EffectMapper.cpp" />

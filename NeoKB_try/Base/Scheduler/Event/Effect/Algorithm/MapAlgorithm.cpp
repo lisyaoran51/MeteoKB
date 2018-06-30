@@ -49,21 +49,49 @@ int MapAlgorithm<T>::RegisterBufferMap(Map * b)
 }
 
 template<typename T>
-int MapAlgorithm<T>::RegisterGenerator(MapGenerateAlgorithm<T>* g)
+int MapAlgorithm<T>::RegisterGenerator(MapGenerateAlgorithmInterface * g)
+{
+	if (CanCast<MapGenerateAlgorithm<T>>(g))
+		return ImplementRegisterGenerator(Cast<MapGenerateAlgorithm<T>>(g));
+	// throw error
+	return -1;
+}
+
+template<typename T>
+int MapAlgorithm<T>::RegisterShifter(MapShiftAlgorithmInterface * s)
+{
+	if (CanCast<MapShiftAlgorithm<T>>(s))
+		return ImplementRegisterShifter(Cast<MapShiftAlgorithm<T>>(s));
+	// throw error
+	return -1;
+}
+
+template<typename T>
+int MapAlgorithm<T>::Draw(Map * m, EventProcessor<Event>* em)
+{
+	// TODO: compiler should select if compile this line or not(debug level)
+	//if (CanCast<EffectMapper<T>>(em))
+		return Draw(m, Cast<EffectMapper<T>>(em));
+	// throw error
+	// return -1;
+}
+
+template<typename T>
+int MapAlgorithm<T>::ImplementRegisterGenerator(MapGenerateAlgorithm<T>* g)
 {
 	genAlgo = g;
 	return 0;
 }
 
 template<typename T>
-int MapAlgorithm<T>::RegisterShifter(MapShiftAlgorithm<T>* s)
+int MapAlgorithm<T>::ImplementRegisterShifter(MapShiftAlgorithm<T>* s)
 {
 	shiftAlgo = s;
 	return 0;
 }
 
 template<typename T>
-int MapAlgorithm<T>::Draw(Map * m, EffectMapper<T>* em)
+int MapAlgorithm<T>::ImplementDraw(Map * m, EffectMapper<T>* em)
 {
 
 	if (!bufferMap->clear)
