@@ -65,7 +65,7 @@ extern "C" {
 
 struct ws2811_device;
 
-typedef uint32_t ws2811_led_t;                   //< 0xWWRRGGBB
+typedef uint8_t ws2811_led_t;                   //< 0xWWRRGGBB
 typedef struct
 {
     int gpionum;                                 //< GPIO Pin with PWM alternate function, 0 if unused

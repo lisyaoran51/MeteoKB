@@ -1,5 +1,6 @@
 #include "Map.h"
 
+#include <cstring>
 
 using namespace Base::Graphic::Maps;
 
@@ -14,9 +15,9 @@ Map::Map(int w, int h)
 	width = w;
 	height = h;
 
-	matrix = new int*[h];
+	matrix = new uint8_t*[h];
 	for (int i = 0; i < h; i++) {
-		matrix[i] = new int[w];
+		matrix[i] = new uint8_t[w];
 	}
 	clear = false;
 }
@@ -31,7 +32,7 @@ Map::~Map()
 	delete[] defaultMatrix;
 }
 
-int ** Map::GetMatrix()
+uint8_t ** Map::GetMatrix()
 {
 	clear = false;
 	return matrix;
@@ -49,8 +50,11 @@ int Map::GetHeight()
 
 int Map::Add(int x, int y, int v)
 {
-	// TODO: 判斷有沒有超出map範圍
-	matrix[x][y] += v;
+	int brightness = matrix[x][y] + v;
+	if (brightness > BRIGHTNESS_MAX)
+		matrix[x][y] = BRIGHTNESS_MAX;
+	else
+		matrix[x][y] = brightness;
 	clear = false;
 	return 0;
 }
@@ -58,24 +62,31 @@ int Map::Add(int x, int y, int v)
 int Map::Set(int x, int y, int v)
 {
 	matrix[x][y] = v;
+	if (v > BRIGHTNESS_MAX)
+		matrix[x][y] = BRIGHTNESS_MAX;
 	clear = false;
 	return 0;
 
 }
 
-int Map::Get(int x, int y)
+uint8_t Map::Get(int x, int y)
 {
 	return matrix[x][y];
 }
 
 int Map::PasteAdd(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 {
-	int** fromMatrix = m->GetMatrix();
+	uint8_t** fromMatrix = m->GetMatrix();
 	for (int i = 0; i < xLen; i++) {
 		if (i + toX >= width) break;
 		for (int j = 0; j < yLen; j++) {
 			if (j + toY >= height) break;
-			matrix[toX + i][toY + j] += fromMatrix[x + i][y + j];
+
+			int brightness = matrix[toX + i][toY + j] + fromMatrix[x + i][y + j];
+			if (brightness > BRIGHTNESS_MAX)
+				matrix[toX + i][toY + j] = BRIGHTNESS_MAX;
+			else
+				matrix[toX + i][toY + j] = brightness;
 		}
 	}
 	clear = false;
@@ -85,7 +96,7 @@ int Map::PasteAdd(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 int Map::PasteSet(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 {
 	// TODO: 用std::copy寫
-	int** fromMatrix = m->GetMatrix();
+	uint8_t** fromMatrix = m->GetMatrix();
 	for (int i = 0; i < xLen; i++) {
 		if (i + toX >= width) break;
 		for (int j = 0; j < yLen; j++) {
@@ -104,13 +115,18 @@ int Map::PasteSet(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 /// </summary>
 int Map::Reset()
 {
-
-	// TODO: 應該用memory copy之類技術比較快
+	/*
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			matrix[i][j] = defaultMatrix[i][j];
 		}
 	}
+	*/
+
+	memcpy(
+		matrix[0],
+		defaultMatrix[0],
+		width * height);
 	clear = true;
 
 	return 0;
@@ -123,12 +139,18 @@ bool Map::IsClear()
 
 int Map::SetDefault()
 {
-	// TODO: 應該用memory copy之類技術比較快
+	/*
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			defaultMatrix[i][j] = matrix[i][j];
 		}
 	}
+	*/
+
+	memcpy(
+		defaultMatrix[0],
+		matrix[0],
+		width * height);
 	clear = true;
 	return 0;
 }

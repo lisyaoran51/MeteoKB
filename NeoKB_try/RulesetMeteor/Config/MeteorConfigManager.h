@@ -29,10 +29,10 @@ namespace Config{
 		ExplodeMapAlgorithm,
 		GlowLineMapAlgorithm,
 
-		PitchCount,
-		TargetLineHeight,
+		//PitchCount,
+		//TargetLineHeight,
 
-		FallSpeed,
+		FallSpeed,				// ¨C¬í²¾°Ê´XÁû
 		FallBrightness,
 		ExplodeSpeed,
 		ExplodeBrightness,

@@ -5,12 +5,30 @@ using namespace Base::Schedulers::Events::Effects;
 
 
 template<class T>
-EffectMapper<T>::EffectMapper(int w, int h): EventProcessor<Event>()
+EffectMapper<T>::EffectMapper(int w, int h): EffectMapperInterface(w, h)
 {
 	width = w;
 	hieght = h;
 	// 把effect的功能打開，擺在effect
 	&effect = (T**)&event;
+}
+
+template<class T>
+int EffectMapper<T>::Elapse(MTO_FLOAT elapsedTime)
+{
+
+	if (!map)
+		throw runtime_error("int EffectMapper::Process() : no map registered!");
+
+	if (!mapAlgo)
+		throw runtime_error("int EffectMapper::Process() : no map algorithm registered!");
+
+	// current time從effect開始播放時，從0開始計算，直到current time超過life time時，特效結束
+	currentTime += elapsedTime;
+
+	mapAlgo->Draw(map, this);
+
+	return 0;
 }
 
 template<class T>
@@ -22,11 +40,16 @@ int EffectMapper<T>::RegisterMap(Map * m)
 }
 
 template<class T>
-int EffectMapper<T>::RegisterMapAlgorithm(MapAlgorithm<T>* ma)
+int EffectMapper<T>::RegisterMapAlgorithm(MapAlgorithmInterface* ma)
 {
-	mapAlgo = ma;
-
-	return 0;
+	if (MtoObject::CanCast<MapAlgorithm<T>>(ma)) {
+		mapAlgo = MtoObject::Cast<MapAlgorithm<T>>(ma);
+		return 0;
+	}
+	else {
+		// TODO: 怎麼噴錯誤?
+		return -1;
+	}
 }
 
 template<class T>
@@ -59,6 +82,8 @@ MTO_FLOAT EffectMapper<T>::GetSpeed()
 	return effect->GetSpeed();
 }
 
+/*
+// ?????
 template<class T>
 int EffectMapper<T>::Process() {
 
@@ -71,4 +96,9 @@ int EffectMapper<T>::Process() {
 	mapAlgo->Draw(map, this);
 
 	return 0;
+}
+*/
+
+EffectMapperInterface::EffectMapperInterface(int w, int h): EventProcessor<Event>()
+{
 }

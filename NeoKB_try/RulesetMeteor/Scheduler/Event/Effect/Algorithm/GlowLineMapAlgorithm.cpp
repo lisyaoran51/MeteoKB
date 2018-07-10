@@ -23,7 +23,7 @@ GlowLineMapAlgorithm::GlowLineMapAlgorithm(int w, int h) : RegisterType("GlowLin
 	constructed = true;
 }
 
-int GlowLineMapGenerateAlgorithm::Generate(Map * m, EffectMapper<GlowLineEffect>* em)
+int GlowLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<GlowLineEffect>* em)
 {
 	// TODO: Ãi±o¼g ¤U¦¸¼g
 	return 0;

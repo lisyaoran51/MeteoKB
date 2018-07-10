@@ -1,7 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <stdint.h>
 
+#define BRIGHTNESS_MAX 256
 
 
 namespace Base {
@@ -10,9 +12,9 @@ namespace Maps {
 
 	class Map {
 
-		int** matrix;
+		uint8_t** matrix;
 
-		int** defaultMatrix;
+		uint8_t** defaultMatrix;
 
 		int width;
 		int height;
@@ -25,7 +27,7 @@ namespace Maps {
 
 		~Map();
 
-		int** GetMatrix();
+		uint8_t** GetMatrix();
 		int GetWidth();
 		int GetHeight();
 
@@ -33,7 +35,7 @@ namespace Maps {
 
 		int Set(int x, int y, int v);
 
-		int Get(int x, int y);
+		uint8_t Get(int x, int y);
 
 		/// <summary>
 		/// 將m上面x,y位置長寬xLen,yLen的圖案貼到這個map上，用疊加
@@ -58,6 +60,7 @@ namespace Maps {
 		virtual int SetDefault();
 	};
 
+	/*
 	template<typename T>
 	struct Matrix2D {
 		T** mat;
@@ -66,6 +69,7 @@ namespace Maps {
 		Matrix2D(int w, int h);
 		int Clean();
 	};
+	*/
 
 
 }}}

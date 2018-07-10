@@ -36,6 +36,13 @@ bool EventProcessor<T>::CanCast(V * e)
 }
 
 template<class T>
+template<typename U, typename V>
+U * EventProcessor<T>::Cast(V * e)
+{
+	return dynamic_cast< U* >(e);
+}
+
+template<class T>
 template<typename U>
 bool EventProcessor<T>::CanCast()
 {

@@ -209,3 +209,47 @@
 	childaddable的建構子和registerload都要檢查一次
 	meteor ruleset executor的get processor那邊要寫
 	effect mapper裡面都還沒寫
+
+7/8
+	WS2812裡 陣列第一個再din，陣列最後一個再dout
+
+	   |
+	   |
+	 ^ |
+	 | |
+	   |
+	   Ｌ_____________
+
+	         -->
+
+	  Dout	Dout
+	   o	 o
+	   o	 o
+	   o	 o
+	   o	Din
+	   o	
+	   o
+	  Din
+
+
+	debug level:
+	https://stackoverflow.com/questions/6168107/how-to-implement-a-good-debug-logging-feature-in-a-project
+
+	現在再想辦法把\working sm擺進去遊戲裡讓ruleset executor讀，應該是player再load的時候去讀已經cache的東西裡面的working sm
+	應該是sm manager?
+
+7/9
+	working sm是一開始就存在session裡
+
+	用成員的函數擺進function裡
+	https://zh.cppreference.com/w/cpp/utility/functional/function
+
+	先學會make file ，之後再把剩下的程式補完，巷是instance creator
+	https://blog.jaycetyle.com/2015/01/linux-gcc-makefile-2/
+
+7/10
+	 * 切字串的方法
+	 * https://blog.csdn.net/Vincentlmeng/article/details/73201188
+	 * https://www.cnblogs.com/MikeZhang/archive/2012/03/24/MySplitFunCPP.html
+
+	 再寫decoder

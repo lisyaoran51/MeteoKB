@@ -37,8 +37,9 @@ namespace Events {
 
 		/// <summary>
 		/// the work to do with this Event, such as stop the game, slow down...
+		/// 結果應該是用elapse來跑，不試用process??
 		/// </summary>
-		virtual int Process() = 0;
+		// virtual int Process() = 0;
 
 		MTO_FLOAT GetStartTime();
 		MTO_FLOAT GetLifeTime();
@@ -49,6 +50,9 @@ namespace Events {
 		
 		template<typename U, typename V>
 		static bool CanCast(V* e);
+
+		template<typename U, typename V>
+		static U* Cast(V* e);
 
 		template<typename U>
 		bool CanCast();

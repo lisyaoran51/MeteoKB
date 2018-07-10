@@ -4,16 +4,21 @@
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/ExplodeMapAlgorithm.h"
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/FallMapAlgorithm.h"
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/GlowLineMapAlgorithm.h"
+#include "../../Util/Log.h"
+
 
 
 using namespace Meteor::Play;
 using namespace Meteor::Config;
 using namespace Base::Schedulers::Events::Effects::Algorithms;
 using namespace Meteor::Schedulers::Events::Effects::Algorithms;
+using namespace Util;
 
 
 int MeteorPlayfield::load()
 {
+	log(logINFO) << "MeteorPlayfield::load() : 開始載入遊戲場景";
+
 	MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
 
 	if (!m)
@@ -29,7 +34,6 @@ int MeteorPlayfield::load()
 
 int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 {
-
 	if(f->Get<int>(FrameworkSetting::StartPitch, (int*)&startPitch)){}
 	if(f->Get<int>(FrameworkSetting::Width, &pitchCount)){}
 

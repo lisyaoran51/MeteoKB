@@ -1156,13 +1156,15 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
 
         for (i = 0; i < channel->count; i++)                // Led
         {
+			/*
             uint8_t color[] =
             {
-                channel->gamma[(((channel->leds[i] >> channel->rshift) & 0xff) * scale) >> 8], // red
-                channel->gamma[(((channel->leds[i] >> channel->gshift) & 0xff) * scale) >> 8], // green
-                channel->gamma[(((channel->leds[i] >> channel->bshift) & 0xff) * scale) >> 8], // blue
-                channel->gamma[(((channel->leds[i] >> channel->wshift) & 0xff) * scale) >> 8], // white
+                channel->leds[i], // red
+                channel->leds[i], // green
+                channel->leds[i], // blue
+                channel->leds[i], // white
             };
+			*/
 
             for (j = 0; j < array_size; j++)               // Color
             {
@@ -1172,7 +1174,7 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
                     uint8_t symbol = SYMBOL_LOW;
                     if ((driver_mode != PWM) && channel->invert) symbol = SYMBOL_LOW_INV;
 
-                    if (color[j] & (1 << k))
+                    if (channel->leds[i] & (1 << k))
                     {
                         symbol = SYMBOL_HIGH;
                         if ((driver_mode != PWM) && channel->invert) symbol = SYMBOL_HIGH_INV;

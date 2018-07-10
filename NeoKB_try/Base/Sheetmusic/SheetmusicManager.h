@@ -43,6 +43,8 @@ namespace Sheetmusics {
 
 		int Import(vector<string>* paths);
 
+		vector<SmInfo*>* GetSmInfos();
+
 		WorkingSm* GetWorkingSm(SmInfo* s);
 
 	protected:
@@ -61,7 +63,7 @@ namespace Sheetmusics {
 
 		// WorkingSm(sm_info_t* s);
 
-		virtual Sm<Event>* createSm() = 0;
+		//virtual Sm<Event>* createSm() = 0;
 
 	};
 

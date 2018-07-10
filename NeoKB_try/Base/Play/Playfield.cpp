@@ -1,16 +1,28 @@
 #include "Playfield.h"
 #include "../Scheduler/Event/Effect/EffectMapper.h"
+#include "../../Util/Log.h"
+#include <functional>
 
 
 using namespace Base::Play;
 using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers;
 using namespace Base::Schedulers::Events::Effects;
+using namespace Util;
+using namespace std;
+
+
+/*
+ * 用成員的函數擺進function裡
+ * https://zh.cppreference.com/w/cpp/utility/functional/function
+ */
 
 
 
 int Playfield::load()
 {
+	log(logINFO) << "Playfield::load() : 開始載入遊戲場景";
+
 	Scheduler* s = GetCache<Scheduler>("Scheduler");
 	if (!s)
 		throw runtime_error("int Playfield::load() : Scheduler not found in cache.");
@@ -31,6 +43,9 @@ int Playfield::load()
 }
 
 int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f, Updater* u) {
+
+	
+
 	scheduler = s;
 	eventProcessorMaster = e;
 	updater = u;
@@ -56,7 +71,7 @@ int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManage
 
 	eventProcessorMaster->RegisterMap(map);
 	renderer->RegisterMap(map);
-	scheduler->RegisterHandler(&(e->ReceiveEventProcessor));
+	scheduler->RegisterHandler(bind(&EventProcessorMaster::ReceiveEventProcessor, e, placeholders::_1));
 
 	// 這一步是讓他們去抓updater
 	AddChild(scheduler);
@@ -83,9 +98,9 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 		string processorType = ep->GetTypeName();
 
-		MapAlgorithm<Event>* mapAlgo = mapAlgorithms[processorType];
+		MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
 		if (mapAlgo)
-			ep->Cast<EffectMapper<Event>>()->RegisterMapAlgorithm(mapAlgo);
+			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
 
 	}
 
@@ -96,4 +111,14 @@ int Playfield::Add(EventProcessor<Event> * ep)
 	}
 
 	return 0;
+}
+
+int Playfield::GetWidth()
+{
+	return width;
+}
+
+int Playfield::GetHeight()
+{
+	return height;
 }

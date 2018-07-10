@@ -34,9 +34,6 @@
     <Filter Include="來源檔案\Base\Graphic\Renderer">
       <UniqueIdentifier>{b9660b82-fee8-41ee-9798-a7ecfbfed1eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="來源檔案\Base\LedDriver">
-      <UniqueIdentifier>{ae8710b1-77bd-414d-89cd-4b1734e15b6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\Base\Ruleset">
       <UniqueIdentifier>{e98acdf5-b1ff-496d-b526-489a31d12475}</UniqueIdentifier>
     </Filter>
@@ -196,9 +193,6 @@
     <Filter Include="標頭檔\RulesetMeteor\Schedulers\Events\Effects\Algorithms">
       <UniqueIdentifier>{493753c8-ce54-4188-b125-c0068b07f63d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="標頭檔\Drivers">
-      <UniqueIdentifier>{ed4650f3-a793-4af0-805a-dbbe8196cad2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="來源檔案\Base\Schedulers\Events\ControlPoints">
       <UniqueIdentifier>{dd1092bb-dd5c-4b59-9a90-811ad03bd182}</UniqueIdentifier>
     </Filter>
@@ -229,11 +223,32 @@
     <Filter Include="來源檔案\RulesetMeteor\Schedulers\Events\Effects\MapAlgorithms">
       <UniqueIdentifier>{5ca852d5-a4ab-4bfe-a4fe-1a145f4c6aaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="標頭檔\Devices">
+      <UniqueIdentifier>{8b0c3a2a-6175-4932-a764-822cf9902e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Devices\Graphic">
+      <UniqueIdentifier>{47d0bc52-d70b-4dd4-8dc4-393ba6f0d0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Devices\LedDrivers">
+      <UniqueIdentifier>{97a5b2f0-5cd4-4d20-9f46-eaa3d39eebbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Devices">
+      <UniqueIdentifier>{36ffe022-d5df-40f5-a2db-0e2217408aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Devices\Graphic">
+      <UniqueIdentifier>{62fc6a94-5e45-426e-a228-196953f1ecef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Devices\LedDrivers">
+      <UniqueIdentifier>{24feaef1-d649-4f77-8af8-55c5244539d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Devices\Graphic\Renderers">
+      <UniqueIdentifier>{b9b9f7dd-1236-4a2a-90da-9fb4907518b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Devices\Graphic\Renderers">
+      <UniqueIdentifier>{dbc80f8f-8434-46e4-80b4-399e3d3848c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Config\ConfigManager.cpp">
       <Filter>來源檔案\Base\Config</Filter>
     </ClCompile>
@@ -245,24 +260,6 @@
     </ClCompile>
     <ClCompile Include="Base\Graphic\Map\Builder\MapBuilder.cpp">
       <Filter>來源檔案\Base\Graphic\Map\Builder</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\dma.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\mailbox.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\pcm.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\pwm.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\rpihw.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\LedDriver\ws2811.c">
-      <Filter>來源檔案\Base\LedDriver</Filter>
     </ClCompile>
     <ClCompile Include="Base\Ruleset\RulesetExecutor.cpp">
       <Filter>來源檔案\Base\Ruleset</Filter>
@@ -428,6 +425,45 @@
     </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\FallEffectMapper.cpp">
+      <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\ExplodeEffectMapper.cpp">
+      <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffectMapper.cpp">
+      <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Play\Session.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\Graphic\Renderers\WS2812v10Renderer.cpp">
+      <Filter>來源檔案\Devices\Graphic\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\dma.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\mailbox.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\neomatrix.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\pcm.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\pwm.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\rpihw.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Devices\LedDriver\ws2811.c">
+      <Filter>來源檔案\Devices\LedDrivers</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Sheetmusic\Format\SimpleSmDecoder.cpp">
+      <Filter>來源檔案\Base\Sheetmusic\Format</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -643,12 +679,6 @@
     <ClInclude Include="Program.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="Drivers\HardwareInfo.h">
-      <Filter>標頭檔\Drivers</Filter>
-    </ClInclude>
-    <ClInclude Include="Drivers\LedDriver.h">
-      <Filter>標頭檔\Drivers</Filter>
-    </ClInclude>
     <ClInclude Include="Base\Play\Session.h">
       <Filter>標頭檔\Base\play</Filter>
     </ClInclude>
@@ -669,6 +699,42 @@
     </ClInclude>
     <ClInclude Include="RulesetMeteor\Sheetmusic\Pattern\MeteorPatternGenerator.h">
       <Filter>標頭檔\RulesetMeteor\Sheetmusic\Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\HardwareInfo.h">
+      <Filter>標頭檔\Devices</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\Graphic\Renderers\WS2812v10Renderer.h">
+      <Filter>標頭檔\Devices\Graphic\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\clk.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\dma.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\gpio.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\mailbox.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\pcm.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\pwm.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\rpihw.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Devices\LedDriver\ws2811.h">
+      <Filter>標頭檔\Devices\LedDrivers</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Log.h">
+      <Filter>標頭檔\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Sheetmusic\Format\SimpleSmDecoder.h">
+      <Filter>標頭檔\Base\Sheetmusic\Format</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

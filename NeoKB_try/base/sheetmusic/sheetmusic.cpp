@@ -8,10 +8,17 @@ template<typename T>
 Sm<T>::Sm(Sm<T>* sm = NULL)
 {
 	if (sm) {
+		// TODO: 應該是要附置一份，而不是直接指過去
 		SetSmInfo(sm->GetSmInfo());
 		SetSmMetadata(sm->GetSmMetadata());
 		SetEvents(sm->GetEvents());
 		SetRulesetInfo(sm->GetRulesetInfo());
+	}
+	else {
+		SetSmInfo(new SmInfo());
+		SetSmMetadata(new SmMetadata());
+		SetEvents(new vector<T*>());
+		// SetRulesetInfo
 	}
 }
 

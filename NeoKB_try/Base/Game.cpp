@@ -1,14 +1,20 @@
 #include"Game.h"
+
 #include"Config\FrameworkConfigManager.h"
 #include"../Util/Update/Updater.h"
+#include "../Util/Log.h"
 
 using namespace Base;
 using namespace Base::Config;
 using namespace Util::Update;
 using namespace Util::Hierachal;
+using namespace Util;
+
 
 int Game::load()
 {
+	log(logINFO) << "Game::load : 開始讀取遊戲，建立updater";
+
 	// FrameworkConfigManager不該自己產生，應該是從外部cache
 	// Cache<FrameworkConfigManager>(new FrameworkConfigManager());
 	Cache<Updater>(updater = new Updater());
@@ -26,7 +32,7 @@ int Game::load()
 
 Game::Game(): RegisterType("Game"), ChildAddable()
 {
-	registerLoad(bind(&Game::load,this));
+	registerLoad(bind((int(Game::*)())&Game::load, this));
 }
 
 int Game::Run()

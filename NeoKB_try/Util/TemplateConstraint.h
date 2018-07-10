@@ -33,9 +33,10 @@ namespace Util {
 		/// <summary>
 		/// to check if the template class is derived from T_constraint
 		/// </summary>
-		void constraint_check_derived_from() {
-			T_derived* d;
-			TConstraint* c = d;
+		static void constraint_check_derived_from() {
+			// TODO: 有問題，暫時放棄
+			// T_derived* d = new T_derived();
+			// T_constraint* c = d;
 		}
 
 		/// <summary>

@@ -48,11 +48,14 @@ namespace Algorithms{
 
 	class ExplodeMapGenerateAlgorithm : public MapGenerateAlgorithm<ExplodeEffect> {
 		
+
+	public:
+
+	protected:
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
 		///	</summary>
-		virtual int Generate(Map* m, EffectMapper<ExplodeEffect>* em);
-
+		virtual int ImplementGenerate(Map* m, EffectMapper<ExplodeEffect>* em);
 	};
 	
 

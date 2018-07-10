@@ -38,6 +38,11 @@ int SmManager::Import(vector<string>* paths)
 	return 0;
 }
 
+vector<SmInfo*>* SmManager::GetSmInfos()
+{
+	return smInfos;
+}
+
 WorkingSm * SmManager::GetWorkingSm(SmInfo * s)
 {
 	return new WorkingSm(s);
@@ -55,8 +60,10 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 	smNames = fileReader.WhereEndWith(".sm");
 
 	for (int i = 0; i < smNames->size(); i++) {
+
 		ifstream* stream = fileReader.GetStream(smNames->at(i));
 
+		// 每一個要用的decoder會在程式開始的時候註冊
 		SmDecoder* smDecoder = SmDecoder::GetDecoder(stream);
 
 		Sm<Event>* sm = smDecoder->Decode(stream);
@@ -66,7 +73,7 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 		sm->GetSmInfo()->smSetInfo = fileReader.GetSmSetInfo();
 
 		// 寫到這邊 不知道怎麼建ruleset---> 在建立sm  manager時手動把ruleset info加入
-		RulesetInfo* rulesetInfo;
+		RulesetInfo* rulesetInfo = NULL;
 
 		for (int i = 0; i < rulesetInfos->size(); i++){
 			if (rulesetInfos->at(i)->GetId() == sm->GetSmInfo()->rulesetId) {
@@ -75,7 +82,11 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 			}
 		}
 
-		sm->GetSmInfo()->rulesetInfo = rulesetInfo;
+		if(rulesetInfo)
+			sm->GetSmInfo()->rulesetInfo = rulesetInfo;
+		else{
+			// TODO: 噴錯誤
+		}
 
 		smInfos->push_back(sm->GetSmInfo());
 	}

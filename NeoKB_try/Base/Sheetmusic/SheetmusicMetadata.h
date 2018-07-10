@@ -21,7 +21,7 @@ namespace Sheetmusics {
 		string Artist;
 		string ArtistUnicode;
 		string AudioFile;
-		string AuthorString;
+		string Author;
 		int OnlineSheetmusic;
 		int PreviewTime;
 		string Source;

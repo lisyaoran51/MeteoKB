@@ -3,6 +3,12 @@
 #include "../Sheetmusic/MeteorSheetmusicConverter.h"
 #include "../Play/MeteorPlayfield.h"
 #include "../../Base/Scheduler/Event/Effect/EffectMapper.h"
+#include "../Scheduler/Event/Effect/FallEffect.h"
+#include "../Scheduler/Event/Effect/ExplodeEffect.h"
+#include "../Scheduler/Event/Effect/GlowLineEffect.h"
+#include "../Scheduler/Event/Effect/FallEffectMapper.h"
+#include "../Scheduler/Event/Effect/ExplodeEffectMapper.h"
+#include "../Scheduler/Event/Effect/GlowLineEffectMapper.h"
 
 using namespace Meteor::Rulesets;
 using namespace Base::Schedulers::Events;
@@ -10,6 +16,7 @@ using namespace Base::Sheetmusics;
 using namespace Meteor::Sheetmusics;
 using namespace Meteor::Play;
 using namespace Base::Schedulers::Events::Effects;
+using namespace Meteor::Schedulers::Events::Effects;
 
 
 
@@ -21,6 +28,22 @@ SmConverter * MeteorRulesetExecutor::createSmConverter(PatternGenerator * pg)
 SmPostprocessor * MeteorRulesetExecutor::createSmPostprocessor()
 {
 	return new SmPostprocessor();
+}
+
+int MeteorRulesetExecutor::load()
+{
+	// 讀config
+	return 0;
+}
+
+MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecutor"), RulesetExecutor()
+{
+	eventProcessorTable["FallEffect"] = "FallEffectMapper";
+	eventProcessorTable["ExplodeEffect"] = "ExplodeEffectMapper";
+	eventProcessorTable["GlowLineEffect"] = "GlowLineEffectMapper";
+
+	// 註冊private load (c++才需要)
+	registerLoad(bind(static_cast<int(MeteorRulesetExecutor::*)(void)>(&MeteorRulesetExecutor::load), this));
 }
 
 Playfield* MeteorRulesetExecutor::createPlayfield()
@@ -37,16 +60,39 @@ Playfield* MeteorRulesetExecutor::createPlayfield()
 EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 {
 	// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
-	string processorType = GetProcessorType(e->GetTypeName());
+	string processorType = GetProcessorType(e->GetTypeName()); // .c_str();
+
 
 	//InstanceCreator<MtoObject>& iCreator = InstanceCreator<MtoObject>::GetInstance();
 	//EventProcessor<Event>* eventProcessor = iCreator.CreateInstance<EventProcessor<Event>>(processorType);
-	switch (processorType) {
-	case "FallEffectMapper":
-		return new FallEffectMapper()
+	if (processorType == "FallEffectMapper") {
+		int width = playfield->GetWidth();
+		int height = playfield->GetHeight();
+		return new FallEffectMapper(width, height);
+	}
+	else if (processorType == "GlowLineEffectMapper") {
+		int width = playfield->GetWidth();
+		int height = playfield->GetHeight();
+		return new GlowLineEffectMapper(width, height);
+	}
+	else if (processorType == "ExplodeEffectMapper") {
+		int width = playfield->GetWidth();
+		int height = playfield->GetHeight();
+		return new ExplodeEffectMapper(width, height);
 	}
 	
+	// TODO:吐錯誤訊息
+	return NULL;
+}
 
-	return eventProcessor;
+string MeteorRulesetExecutor::GetProcessorType(string eventType)
+{
+	map<string, string>::iterator iter = eventProcessorTable.find(eventType);
+	if (iter != eventProcessorTable.end())
+	{
+		return eventProcessorTable[eventType];
+	}
+	// TODO: 吐一些錯誤訊息
+	return string("");
 }
 

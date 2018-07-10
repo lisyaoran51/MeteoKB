@@ -14,6 +14,10 @@ namespace Config{
 
 	class FrameworkConfigManager: public ConfigManager<FrameworkSetting> {
 
+	public:
+
+		FrameworkConfigManager();
+
 	protected:
 
 		int InitializeDefault();
@@ -42,8 +46,8 @@ namespace Config{
 		CursorSensitivity,
 
 		PatternGenerator,
-		Renderer,
-		HardwareMapAlgorithm,
+		//Renderer,//?
+		//HardwareMapAlgorithm,//?
 		LedDriver,
 		HardwareVersion
 

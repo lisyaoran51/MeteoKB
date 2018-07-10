@@ -1,7 +1,10 @@
 #include "EventProcessorMaster.h"
 
+#include "../../../Util/Log.h"
+
 using namespace Base::Schedulers::Events;
 using namespace Util::Update;
+using namespace Util;
 
 
 
@@ -15,6 +18,8 @@ int EventProcessorMaster::load()
 
 int EventProcessorMaster::load(Updater * u)
 {
+	log(logINFO) << "EventProcessorMaster::load(Updater*) : 將process任務註冊至updater";
+
 	u->RegisterTask(bind((int(EventProcessorMaster::*)(MTO_FLOAT))&EventProcessorMaster::Elapse, this, placeholders::_1));
 	return 0;
 }

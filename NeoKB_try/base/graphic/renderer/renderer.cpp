@@ -1,12 +1,15 @@
 #include "renderer.h"
 #include "../../../Util/InstanceCreator.h"
 #include "../../../Util/MtoObject.h"
+#include "../../../Util/Log.h"
+
 
 
 
 using namespace Base::Graphic::Renderers;
 using namespace Util;
-using namespace Drivers;
+using namespace Devices;
+using namespace std;
 
 
 bool Renderer::initialize()
@@ -18,6 +21,7 @@ bool Renderer::initialize()
 	return true;;
 }
 
+/*
 int Renderer::RegisterHWMapAlgo(HardwareMapAlgo * hwma)
 {
 	hwMapAlgo = hwma;
@@ -29,6 +33,7 @@ int Renderer::RegisterLedDriver(LedDriver * ld)
 	ledDriver = ld;
 	return 0;
 }
+*/
 
 int Renderer::load()
 {
@@ -45,6 +50,8 @@ int Renderer::load()
 
 int Renderer::load(Updater * u, FrameworkConfigManager* f)
 {
+	log(logINFO) << "Renderer::load(Updater*, FrameworkConfigManager*) : 將render任務註冊至updater";
+
 	u->RegisterTask(bind((int(Renderer::*)(MTO_FLOAT))&Renderer::Elapse, this, placeholders::_1));
 
 	if (!f->Get<MTO_FLOAT>(FrameworkSetting::FrameRate, &frameRate))
@@ -87,6 +94,8 @@ Renderer * Renderer::GetRenderer(int hwVersion)
 
 	renderer->SetHardwareVersion(hwVersion);
 
+	log(logINFO) << "Renderer::GetRenderer : 硬體版本為 " << hwVersion << " ，取得Renderer板本為 " << rendererName;
+
 	return renderer;
 }
 
@@ -108,15 +117,3 @@ int Renderer::Elapse(MTO_FLOAT elapsedTime)
 
 	return 0;
 }
-
-/*
-int Renderer::Render()
-{
-	return 0;
-}
-
-int Renderer::SendToDriver()
-{
-	return 0;
-}
-*/

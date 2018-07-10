@@ -16,7 +16,8 @@ int Player::load()
 	Session* s = GetCache<Session>("Session");
 
 	rulesetInfo = s->GetRulesetInfo();
-	workingSm = s->GetWorkingSm();
+	workingSm = s->GetWorkingSm();			// workingSm要在遊戲結束以後刪掉
+	
 
 	Sm<Event>* sm = workingSm->GetSm();
 
@@ -39,4 +40,5 @@ Base::Play::Player::~Player()
 {
 	delete ruleset;
 	delete rulesetExecutor;
+	delete workingSm;
 }

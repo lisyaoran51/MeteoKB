@@ -71,7 +71,7 @@ int MapAlgorithm<T>::Draw(Map * m, EventProcessor<Event>* em)
 {
 	// TODO: compiler should select if compile this line or not(debug level)
 	//if (CanCast<EffectMapper<T>>(em))
-		return Draw(m, Cast<EffectMapper<T>>(em));
+		return ImplementDraw(m, Cast<EffectMapper<T>>(em));
 	// throw error
 	// return -1;
 }
@@ -93,7 +93,6 @@ int MapAlgorithm<T>::ImplementRegisterShifter(MapShiftAlgorithm<T>* s)
 template<typename T>
 int MapAlgorithm<T>::ImplementDraw(Map * m, EffectMapper<T>* em)
 {
-
 	if (!bufferMap->clear)
 		bufferMap->Clean();
 

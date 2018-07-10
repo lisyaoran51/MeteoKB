@@ -45,6 +45,8 @@ namespace Sheetmusics {
 
 		int rulesetId;
 
+		int audioLeadIn;
+
 		int version;
 
 		Ruleset* ruleset;

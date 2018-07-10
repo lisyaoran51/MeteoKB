@@ -7,8 +7,7 @@
 #include "MapAlgorithm\HardwareMapAlgorithm.h"
 #include "../../../Util/Hierachal/ChildAddable.h"
 #include "../../Config/FrameworkConfigManager.h"
-#include "../../../Drivers/HardwareInfo.h"
-#include "../../../Drivers/LedDriver.h"
+#include "../../../Devices/HardwareInfo.h"
 #include "../../../Util/Update/Updater.h"
 #include "../../../Util/Update/Updatable.h"
 
@@ -19,7 +18,7 @@ using namespace Base::Graphic::Maps;
 using namespace Base::Graphic::Renderers::MapAlgorithms;
 using namespace Util::Hierachal;
 using namespace Base::Config;
-using namespace Drivers;
+using namespace Devices;
 using namespace Util::Update;
 
 
@@ -73,8 +72,6 @@ namespace Renderers {
 
 		HardwareMapAlgo* hwMapAlgo;
 
-		LedDriver* ledDriver;
-
 		/// <summary>
 		/// 禎數、針長、目前所經過時間
 		///	</summary>
@@ -82,14 +79,14 @@ namespace Renderers {
 
 
 		/// <summary>
-		/// HWMapAlgo應該是和renderer板本綁定
+		/// HWMapAlgo應該是和renderer板本綁定 先不用
 		///	</summary>
-		int RegisterHWMapAlgo(HardwareMapAlgo* hwma);
+		//int RegisterHWMapAlgo(HardwareMapAlgo* hwma);
 
 		/// <summary>
-		/// 應該也和版本綁定?
+		/// 應該也和版本綁定? 先不用
 		///	</summary>
-		int RegisterLedDriver(LedDriver* ld);
+		//int RegisterLedDriver(LedDriver* ld);
 	};
 
 	bool Renderer::initialized = Renderer::initialize();

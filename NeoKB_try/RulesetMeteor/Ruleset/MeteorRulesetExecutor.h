@@ -24,6 +24,8 @@ namespace Rulesets {
 
 		virtual SmPostprocessor* createSmPostprocessor();
 
+		int load();
+
 	public:
 
 		MeteorRulesetExecutor();

@@ -49,6 +49,10 @@ namespace Play {
 		/// </summary>
 		virtual int Add(EventProcessor<Event>* ep);
 
+		int GetWidth();
+
+		int GetHeight();
+
 	protected:
 
 		int width, height;
@@ -68,6 +72,9 @@ namespace Play {
 
 		Map* map;
 
+		///<summary>
+		/// 佔存剛建完的影像，還沒位移到正確位置上
+		///</summary>
 		Map* bufferMap;
 	};
 

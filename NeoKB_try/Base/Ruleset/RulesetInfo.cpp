@@ -7,9 +7,8 @@ using namespace Base::Rulesets;
 using namespace Util;
 
 
-RulesetInfo::RulesetInfo(int i, string n)
+RulesetInfo::RulesetInfo(string n)
 {
-	id = i;
 	name = n;
 }
 

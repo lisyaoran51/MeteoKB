@@ -12,13 +12,13 @@
 
 using namespace std;
 
-namespace Drivers {
+namespace Devices {
 	
 	struct HarewareInfo {
 		int HwVersion;
 		string Renderer;
-		string HwMapAlgo;
-		string LedDriver;
+		//string HwMapAlgo;
+		//string LedDriver;
 		string InputManager;
 		string InputDriver;
 	};
@@ -27,8 +27,8 @@ namespace Drivers {
 		{
 			10,
 			WS2812_VER_10_RENDERER,
-			WS2812_VER_10_HW_MAP_ALGO,
-			WS2812_VER_10_LED_DRIVER,
+			//WS2812_VER_10_HW_MAP_ALGO,
+			//WS2812_VER_10_LED_DRIVER,
 			WS2812_VER_10_INPUT_MANAGER,
 			WS2812_VER_10_INPUT_DRIVER
 		}

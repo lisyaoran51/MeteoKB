@@ -6,6 +6,7 @@
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Effect.h"
 #include "../../../../../Base/Scheduler/Event/Effect/EffectMapper.h"
+#include "../FallEffect.h"
 
 
 
@@ -45,11 +46,13 @@ namespace Algorithms{
 
 	class FallMapGenerateAlgorithm : public MapGenerateAlgorithm<FallEffect> {
 
+	public:
+
+	protected:
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
 		///	</summary>
-		virtual int Generate(Map* m, EffectMapper<FallEffect>* em);
-
+		virtual int ImplementGenerate(Map* m, EffectMapper<FallEffect>* em);
 	};
 	
 

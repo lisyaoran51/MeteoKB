@@ -45,11 +45,14 @@ namespace Algorithms{
 
 	class GlowLineMapGenerateAlgorithm : public MapGenerateAlgorithm<GlowLineEffect> {
 
+
+	public:
+
+	protected:
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
 		///	</summary>
-		virtual int Generate(Map* m, EffectMapper<GlowLineEffect>* em);
-
+		virtual int ImplementGenerate(Map* m, EffectMapper<GlowLineEffect>* em);
 	};
 
 	

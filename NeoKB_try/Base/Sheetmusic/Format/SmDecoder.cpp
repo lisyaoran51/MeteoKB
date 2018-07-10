@@ -15,13 +15,21 @@ using namespace Util;
 
 
 
-int SmDecoder::RegisterDecoder(string version, string typeName)
+template<typename T>
+SmDecoder<T>::SmDecoder(): RegisterType("SmDecoder")
+{
+	setSectionMap();
+}
+
+template<typename T>
+int SmDecoder<T>::RegisterDecoder(string version, string typeName)
 {
 	decoders[version] = typeName;
 	return 0;
 }
 
-SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
+template<typename T>
+SmDecoder<T>* SmDecoder::GetDecoder(ifstream * stream)
 {
 	
 	string line;
@@ -36,20 +44,53 @@ SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 		throw invalid_argument("sm_decoder_t:input stream has no decoder version in first line.");
 	}
 
-	// TODO: 改調singleton錯誤
 	InstanceCreator<SmDecoder> &instance_creater =
 		InstanceCreator<SmDecoder>::GetInstance();
 
 	return instance_creater.CreateInstance(decoders[line]);
 }
 
-Sm<Event>* SmDecoder::Decode(ifstream * stream)
+template<typename T>
+Sm<Event>* SmDecoder<T>::Decode(ifstream * stream)
 {
 	return parseFile(stream);
 }
 
+template<typename T>
+T SmDecoder<T>::GetSectionEnum(string section)
+{
+	// 如果還沒註冊，先註冊
+	if (sectionMap.size() == 0)
+		setSectionMap();
 
-Sm<Event>* SmDecoder::parseFile(ifstream * stream)
+	map<T, string>::iterator i;
+
+	for (i = sectionMap.begin(); i != sectionMap.end(); i++)
+	{
+		if (i->second == section)
+			return it->first;
+	}
+	return 0;
+}
+
+template<typename T>
+string SmDecoder<T>::GetSectionString(T section)
+{
+	// 如果還沒註冊，先註冊
+	if (sectionMap.size() == 0)
+		setSectionMap();
+
+	map<T, string>::iterator i = sectionMap.find(section);
+
+	if (i != sectionMap.end())
+		return sectionMap[section];
+	else
+		return "";
+}
+
+
+template<typename T>
+Sm<Event>* SmDecoder<T>::parseFile(ifstream * stream)
 {
 	Sm<Event>* sm = new Sm<Event>();
 
