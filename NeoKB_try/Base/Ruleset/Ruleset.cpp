@@ -4,7 +4,7 @@ using namespace Base::Rulesets;
 
 
 
-Ruleset::Ruleset(RulesetInfo * r)
+Ruleset::Ruleset(RulesetInfo * r): RegisterType("Ruleset")
 {
 	rulesetInfo = r;
 }

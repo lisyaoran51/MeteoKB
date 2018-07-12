@@ -253,3 +253,14 @@
 	 * https://www.cnblogs.com/MikeZhang/archive/2012/03/24/MySplitFunCPP.html
 
 	 再寫decoder
+
+7/11
+	要寫initializer，但是卡在instance creator沒辦法註冊，要找正確寫法，很難查
+	int RegisterType(string typeName) {
+		creators[typeName] = bind(static_cast<base(InstanceCreator::*)()>(&InstanceCreator::create<T>), this);
+
+		return 0;
+	}
+
+	解決，結果不要Static cast就好
+	creators[typeName] = bind(&InstanceCreator::create<T>, this);

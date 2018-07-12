@@ -1,10 +1,12 @@
 ﻿#include "SimpleSmDecoder.h"
 
+#include "../../Scheduler/Event/ControlPoints/NoteControlPoint.h"
 
 
 using namespace Base::Sheetmusics::Format;
 using namespace std;
 using namespace Base::Sheetmusics;
+using namespace Base::Schedulers::Events::ControlPoints;
 
 
 /*
@@ -82,7 +84,7 @@ int SimpleSmDecoder::handleMetadata(Sm<Event>* sm, string & line)
 		sm->GetSmInfo()->version = atoi(pair.at(1).c_str());
 	}
 	else if (pair.at(0) == "Source") {
-		//metadata->AudioFile = pair.at(1);
+		metadata->Source = pair.at(1);
 	}
 	else if (pair.at(0) == "Tags") {
 		sm->GetSmInfo()->rulesetId = atoi(pair.at(1).c_str());
@@ -94,50 +96,118 @@ int SimpleSmDecoder::handleMetadata(Sm<Event>* sm, string & line)
 		//metadata->AudioFile = pair.at(1);
 	}
 
-	switch (pair.Key) {
-        case @"Title":
-            metadata.Title = pair.Value;
-            break;
-        case @"TitleUnicode":
-            metadata.TitleUnicode = pair.Value;
-            break;
-        case @"Artist":
-            metadata.Artist = pair.Value;
-            break;
-        case @"ArtistUnicode":
-            metadata.ArtistUnicode = pair.Value;
-            break;
-        case @"Creator":
-            metadata.AuthorString = pair.Value;
-            break;
-        case @"Version":
-            sheetmusic.SheetmusicInfo.Version = pair.Value;
-            break;
-        case @"Source":
-            sheetmusic.SheetmusicInfo.Metadata.Source = pair.Value;
-            break;
-        case @"Tags":
-            sheetmusic.SheetmusicInfo.Metadata.Tags = pair.Value;
-            break;
-        case @"SheetmusicID":
-            sheetmusic.SheetmusicInfo.OnlineSheetmusicID = int.Parse(pair.Value);
-            break;
-        case @"SheetmusicSetID":
-            sheetmusic.SheetmusicInfo.OnlineSheetmusicSetID = int.Parse(pair.Value);
-            metadata.OnlineSheetmusicSetID = int.Parse(pair.Value);
-            break;
-    }
 
 	return 0;
 }
 
 int SimpleSmDecoder::handleDifficulty(Sm<Event>* sm, string & line)
 {
+	vector<string> pair = split(line, ":");
+
+	SmMetadata* metadata = sm->GetSmInfo()->metadata;
+	/*
+	switch (pair.Key) {
+                case @"HPDrainRate":
+                    difficulty.DrainRate = float.Parse(pair.Value);
+                    break;
+                case @"OverallDifficulty":
+                    difficulty.OverallDifficulty = float.Parse(pair.Value);
+                    break;
+                case @"ApproachRate":
+                    difficulty.ApproachRate = float.Parse(pair.Value);
+                    break;
+                case @"SliderMultiplier":
+                    difficulty.SliderMultiplier = float.Parse(pair.Value);
+                    break;
+                case @"SliderTickRate":
+                    difficulty.SliderTickRate = float.Parse(pair.Value);
+                    break;
+            }
+
+			*/
+
 	return 0;
 }
 
 int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 {
+	// 音 時間 長度 加速 三分/四分 音量 時間改變
+	vector<string> splitLine = split(line, ",");
+
+	Pitch pitch = static_cast<Pitch>(atoi(splitLine.at(0).c_str()));
+	MTO_FLOAT time = stof(splitLine.at(1).c_str());
+	MTO_FLOAT noteLength = stof(splitLine.at(2).c_str());
+	//MTO_FLOAT speedMultiplier = noteLength < 0 ? 100f / -noteLength : 1;
+	//
+	//TimeSignatures timeSignature = TimeSignatures.SimpleQuadruple;
+	//if (split.Length >= 4)
+	//	timeSignature = split[3][0] == '0' ? TimeSignatures.SimpleQuadruple : (TimeSignatures)int.Parse(split[2]);
+
+	//LegacySampleBank sampleSet = defaultSampleBank;
+	//if (split.Length >= 4)
+	//    sampleSet = (LegacySampleBank)int.Parse(split[3]);
+
+	//SampleBank sampleBank = SampleBank.Default;
+	//if (split.Length >= 5)
+	//    sampleBank = (SampleBank)int.Parse(split[4]);
+
+	int sampleVolume = defaultSampleVolume;
+	if (splitLine.size() >= 5)
+		sampleVolume = atoi(splitLine.at(4).c_str());
+
+	bool timingChange = true;
+	if (splitLine.size() >= 6)
+		timingChange = atoi(splitLine.at(5).c_str()) == 1;
+
+	//bool kiaiMode = false;
+	//bool omitFirstBarSignature = false;
+	//if (split.Length >= 8) {
+	//    int effectFlags = int.Parse(split[7]);
+	//    kiaiMode = (effectFlags & 1) > 0;
+	//    omitFirstBarSignature = (effectFlags & 8) > 0;
+	//}
+
+	//string stringSampleSet = sampleSet.ToString().ToLower();
+	//if (stringSampleSet == @"none")
+	//    stringSampleSet = @"normal";
+
+	//DifficultyControlPoint difficultyPoint = beatmap.ControlPointInfo.DifficultyPointAt(time);
+	//SoundControlPoint soundPoint = beatmap.ControlPointInfo.SoundPointAt(time);
+	//EffectControlPoint effectPoint = beatmap.ControlPointInfo.EffectPointAt(time);
+
+	if (timingChange) {
+
+		sm->GetEvents()->push_back(new NoteControlPoint(
+			pitch,
+			time,
+			noteLength
+		));
+		
+	}
+
+	//if (speedMultiplier != difficultyPoint.SpeedMultiplier) {
+	//    beatmap.ControlPointInfo.DifficultyPoints.RemoveAll(x => x.Time == time);
+	//    beatmap.ControlPointInfo.DifficultyPoints.Add(new DifficultyControlPoint {
+	//        Time = time,
+	//        SpeedMultiplier = speedMultiplier
+	//    });
+	//}
+
+	//if (stringSampleSet != soundPoint.SampleBank || sampleVolume != soundPoint.SampleVolume) {
+	//    beatmap.ControlPointInfo.SoundPoints.Add(new SoundControlPoint {
+	//        Time = time,
+	//        SampleBank = stringSampleSet,
+	//        SampleVolume = sampleVolume
+	//    });
+	//}
+
+	//if (kiaiMode != effectPoint.KiaiMode || omitFirstBarSignature != effectPoint.OmitFirstBarLine) {
+	//    beatmap.ControlPointInfo.EffectPoints.Add(new EffectControlPoint {
+	//        Time = time,
+	//        KiaiMode = kiaiMode,
+	//        OmitFirstBarLine = omitFirstBarSignature
+	//    });
+	//}
 	return 0;
 }
 
@@ -161,13 +231,24 @@ vector<string> SimpleSmDecoder::split(string s, string pattern)
      return result;
 }
 
-SimpleSmDecoder::SimpleSmDecoder(): RegisterType("SimpleSmDecoder")
+SimpleSmDecoder::SimpleSmDecoder(): SmDecoderWithSection(), RegisterType("SimpleSmDecoder")
 {
+	setSectionMap();
 }
 
 int SimpleSmDecoder::setSectionMap()
 {
+
+	sectionMap[SimpleSmDecoderSection::None] = "None";
+	sectionMap[SimpleSmDecoderSection::General] = "General";
+	sectionMap[SimpleSmDecoderSection::Editor] = "Editor";
+	sectionMap[SimpleSmDecoderSection::Metadata] = "Metadata";
+	sectionMap[SimpleSmDecoderSection::Difficulty] = "None";
+	sectionMap[SimpleSmDecoderSection::Events] = "Events";
+	sectionMap[SimpleSmDecoderSection::NoteControlPoints] = "NoteControlPoints";
+	sectionMap[SimpleSmDecoderSection::Variables] = "Variables";
 	return 0;
+
 }
 
 int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
@@ -200,6 +281,7 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
             continue;
 
         if (line.find("simple file format v") == 0) {
+			// 這個寫法好巷不general?
 			sm->GetSmInfo()->smVersion = atoi(line.substr(20, line.size() - 20).c_str());
             continue;
         }
@@ -246,10 +328,9 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
         }
     }
 
-    foreach (var hitObject in sheetmusic.HitObjects)
-        hitObject.ApplyDefaults(sheetmusic.ControlPointInfo, sheetmusic.SheetmusicInfo.BaseDifficulty);
-
-
+	// 不確定下面這行的用途，之後應該要回去osu看
+    //foreach (var hitObject in sheetmusic.HitObjects)
+    //    hitObject.ApplyDefaults(sheetmusic.ControlPointInfo, sheetmusic.SheetmusicInfo.BaseDifficulty);
 
 	return 0;
 }

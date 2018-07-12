@@ -17,7 +17,7 @@ namespace Rulesets {
 	/// <summary>
 	/// a game rule that designs how the game plays
 	///	</summary>
-	class Ruleset
+	class Ruleset: public MtoObject
 	{
 
 	public:

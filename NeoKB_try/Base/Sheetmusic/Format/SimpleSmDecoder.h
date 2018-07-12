@@ -20,8 +20,10 @@ namespace Format {
 	/// <summary>
 	/// simple易死是只將一般曲譜有哪些音標計出來，不會去讀這個譜裡面要額外加入什麼特效或動畫
 	/// </summary>
-	class SimpleSmDecoder: public SmDecoder<SimpleSmDecoderSection>
+	class SimpleSmDecoder: public SmDecoderWithSection<SimpleSmDecoderSection>
 	{
+
+		int defaultSampleVolume = 100;
 
 		int handleGeneral(Sm<Event>* sm, string& line);
 		int handleMetadata(Sm<Event>* sm, string& line);

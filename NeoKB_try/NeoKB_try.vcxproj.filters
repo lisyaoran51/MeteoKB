@@ -70,9 +70,6 @@
     <Filter Include="標頭檔\Base\Graphic\Renderer">
       <UniqueIdentifier>{dd2cc401-e926-4c0f-8705-fb842c966ce0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="標頭檔\Base\LedDriver">
-      <UniqueIdentifier>{d7d69f68-c3af-4120-ae96-74174d600029}</UniqueIdentifier>
-    </Filter>
     <Filter Include="標頭檔\Base\Ruleset">
       <UniqueIdentifier>{84536ac4-1aeb-4147-9996-d843bc60286c}</UniqueIdentifier>
     </Filter>
@@ -108,9 +105,6 @@
     </Filter>
     <Filter Include="標頭檔\Base\Sheetmusic\Pattern">
       <UniqueIdentifier>{5e4fb93a-ba6a-4be6-b91f-4f5aa8c64f8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="來源檔案\Base\Sheetmusic\Format\Parser">
-      <UniqueIdentifier>{8b5fb90a-e9a6-41c2-be2e-d33ee248af3c}</UniqueIdentifier>
     </Filter>
     <Filter Include="來源檔案\Base\Play">
       <UniqueIdentifier>{7637adda-0945-49e7-926a-23c375bfb868}</UniqueIdentifier>
@@ -246,6 +240,9 @@
     </Filter>
     <Filter Include="來源檔案\Devices\Graphic\Renderers">
       <UniqueIdentifier>{dbc80f8f-8434-46e4-80b4-399e3d3848c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="來源檔案\Base\Sheetmusic\Format\EventParser">
+      <UniqueIdentifier>{8b5fb90a-e9a6-41c2-be2e-d33ee248af3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -465,6 +462,9 @@
     <ClCompile Include="Base\Sheetmusic\Format\SimpleSmDecoder.cpp">
       <Filter>來源檔案\Base\Sheetmusic\Format</Filter>
     </ClCompile>
+    <ClCompile Include="Util\ProgramInitializer.cpp">
+      <Filter>來源檔案\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="DailyLog.txt">
@@ -483,30 +483,6 @@
     </ClInclude>
     <ClInclude Include="Base\Graphic\Map\Builder\MapBuilder.h">
       <Filter>標頭檔\Base\Graphic\Map\Builder</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\clk.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\dma.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\gpio.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\mailbox.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\pcm.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\pwm.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\rpihw.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\LedDriver\ws2811.h">
-      <Filter>標頭檔\Base\LedDriver</Filter>
     </ClInclude>
     <ClInclude Include="Base\Play\Player.h">
       <Filter>標頭檔\Base\play</Filter>
@@ -735,6 +711,9 @@
     </ClInclude>
     <ClInclude Include="Base\Sheetmusic\Format\SimpleSmDecoder.h">
       <Filter>標頭檔\Base\Sheetmusic\Format</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\ProgramInitializer.h">
+      <Filter>標頭檔\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

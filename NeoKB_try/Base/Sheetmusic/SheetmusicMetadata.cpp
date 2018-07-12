@@ -11,7 +11,7 @@ SmMetadata::SmMetadata(SmMetadata * sm)
 	Artist = sm->Artist;
 	ArtistUnicode = sm->ArtistUnicode;
 	AudioFile = sm->AudioFile;
-	AuthorString = sm->AuthorString;
+	Author = sm->Author;
 
 	OnlineSheetmusic = sm->OnlineSheetmusic;
 	PreviewTime = sm->PreviewTime;

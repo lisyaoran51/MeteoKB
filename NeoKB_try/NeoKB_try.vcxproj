@@ -89,6 +89,7 @@
     <ClCompile Include="Util\Hierachal\LoadStateHandler.cpp" />
     <ClCompile Include="Util\InstanceCreator.cpp" />
     <ClCompile Include="Util\MtoObject.cpp" />
+    <ClCompile Include="Util\ProgramInitializer.cpp" />
     <ClCompile Include="Util\Update\Updatable.cpp" />
     <ClCompile Include="Util\Update\Updater.cpp" />
   </ItemGroup>
@@ -103,14 +104,6 @@
     <ClInclude Include="Base\Graphic\Map\Map.h" />
     <ClInclude Include="Base\Graphic\Renderer\MapAlgorithm\HardwareMapAlgorithm.h" />
     <ClInclude Include="Base\Graphic\Renderer\renderer.h" />
-    <ClInclude Include="Base\LedDriver\clk.h" />
-    <ClInclude Include="Base\LedDriver\dma.h" />
-    <ClInclude Include="Base\LedDriver\gpio.h" />
-    <ClInclude Include="Base\LedDriver\mailbox.h" />
-    <ClInclude Include="Base\LedDriver\pcm.h" />
-    <ClInclude Include="Base\LedDriver\pwm.h" />
-    <ClInclude Include="Base\LedDriver\rpihw.h" />
-    <ClInclude Include="Base\LedDriver\ws2811.h" />
     <ClInclude Include="Base\Play\Player.h" />
     <ClInclude Include="Base\Play\Playfield.h" />
     <ClInclude Include="Base\Play\Session.h" />
@@ -180,6 +173,7 @@
     <ClInclude Include="Util\Log.h" />
     <ClInclude Include="Util\MtoObject.h" />
     <ClInclude Include="Util\MtoType.h" />
+    <ClInclude Include="Util\ProgramInitializer.h" />
     <ClInclude Include="Util\Singleton.h" />
     <ClInclude Include="Util\TemplateConstraint.h" />
     <ClInclude Include="Util\Update\Updatable.h" />

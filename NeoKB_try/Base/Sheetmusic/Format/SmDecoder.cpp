@@ -15,21 +15,17 @@ using namespace Util;
 
 
 
-template<typename T>
-SmDecoder<T>::SmDecoder(): RegisterType("SmDecoder")
+SmDecoder::SmDecoder(): RegisterType("SmDecoder")
 {
-	setSectionMap();
 }
 
-template<typename T>
-int SmDecoder<T>::RegisterDecoder(string version, string typeName)
+int SmDecoder::RegisterDecoder(string version, string typeName)
 {
 	decoders[version] = typeName;
 	return 0;
 }
 
-template<typename T>
-SmDecoder<T>* SmDecoder::GetDecoder(ifstream * stream)
+SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 {
 	
 	string line;
@@ -50,14 +46,30 @@ SmDecoder<T>* SmDecoder::GetDecoder(ifstream * stream)
 	return instance_creater.CreateInstance(decoders[line]);
 }
 
-template<typename T>
-Sm<Event>* SmDecoder<T>::Decode(ifstream * stream)
+Sm<Event>* SmDecoder::Decode(ifstream * stream)
 {
 	return parseFile(stream);
 }
 
+Sm<Event>* SmDecoder::parseFile(ifstream * stream)
+{
+	Sm<Event>* sm = new Sm<Event>();
+
+	parseFile(stream, sm);
+
+	return sm;
+}
+
+
+
+
 template<typename T>
-T SmDecoder<T>::GetSectionEnum(string section)
+SmDecoderWithSection<T>::SmDecoderWithSection(): SmDecoder(), RegisterType("SmDecoderWithSection")
+{
+}
+
+template<typename T>
+T SmDecoderWithSection<T>::GetSectionEnum(string section)
 {
 	// 쫜찱줄쮁딩쩤좥�壎豊U
 	if (sectionMap.size() == 0)
@@ -74,7 +86,7 @@ T SmDecoder<T>::GetSectionEnum(string section)
 }
 
 template<typename T>
-string SmDecoder<T>::GetSectionString(T section)
+string SmDecoderWithSection<T>::GetSectionString(T section)
 {
 	// 쫜찱줄쮁딩쩤좥�壎豊U
 	if (sectionMap.size() == 0)
@@ -86,17 +98,6 @@ string SmDecoder<T>::GetSectionString(T section)
 		return sectionMap[section];
 	else
 		return "";
-}
-
-
-template<typename T>
-Sm<Event>* SmDecoder<T>::parseFile(ifstream * stream)
-{
-	Sm<Event>* sm = new Sm<Event>();
-
-	parseFile(stream, sm);
-
-	return sm;
 }
 
 

@@ -35,8 +35,8 @@ namespace Util {
 		/// </summary>
 		static void constraint_check_derived_from() {
 			// TODO: 有問題，暫時放棄
-			// T_derived* d = new T_derived();
-			// T_constraint* c = d;
+			T_derived* d = new T_derived;
+			T_constraint* c = d;
 		}
 
 		/// <summary>

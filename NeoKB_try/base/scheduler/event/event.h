@@ -23,6 +23,7 @@ namespace Events {
 
 	public:
 
+		Event();
 		Event(MTO_FLOAT s, MTO_FLOAT l);
 		Event(const Event&);
 

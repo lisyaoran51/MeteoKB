@@ -1,15 +1,20 @@
 #include "Program.h"
+
 #include "Base\Play\Session.h"
+#include "Util\ProgramInitializer.h"
 
 using namespace Base;
 using namespace Meteor;
 using namespace Base::Play;
+using namespace Util;
+
 
 
 
 int main() {
 
-	// TODO: 建立instance creator
+	// 建立instance creator和sm decoder
+	ProgramInitializer::Initialize();
 
 
 	Game* game = new MeteorGame();

@@ -25,7 +25,6 @@ namespace Sheetmusics {
 namespace Format {
 
 
-	template<typename T>
 	class SmDecoder: public MtoObject
 	{
 		// sm decoder 不是singleton
@@ -35,13 +34,25 @@ namespace Format {
 
 	public:
 
-		SmDecoder();
-
 		static int RegisterDecoder(string version, string typeName);
 		static SmDecoder* GetDecoder(ifstream* stream);
 		Sm<Event>* Decode(ifstream* stream);
 
 	protected:
+
+		SmDecoder();
+
+		virtual Sm<Event>* parseFile(ifstream* stream);
+		virtual int parseFile(ifstream* stream, Sm<Event>* sm) = 0;
+	};
+
+
+	template<typename T>
+	class SmDecoderWithSection : public SmDecoder {
+
+	protected:
+
+		SmDecoderWithSection();
 
 		// 因為c++不支援enum直接轉string，所以要自己寫
 		map<T, string> sectionMap;
@@ -51,11 +62,7 @@ namespace Format {
 		T GetSectionEnum(string section);
 		string GetSectionString(T section);
 
-		virtual Sm<Event>* parseFile(ifstream* stream);
-		virtual int parseFile(ifstream* stream, Sm<Event>* sm) = 0;
 	};
-
-
 
 }}}
 
