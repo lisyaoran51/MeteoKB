@@ -6,6 +6,7 @@ using namespace Base::Rulesets;
 using namespace Util;
 using namespace Base::Sheetmusics;
 using namespace Base::Sheetmusics::Patterns;
+using namespace Base::Schedulers::Events;
 
 
 template<class T>
