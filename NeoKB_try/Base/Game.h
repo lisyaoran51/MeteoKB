@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Play\Player.h"
+#include "Play/Player.h"
 #include "../Util/Update/Updater.h"
 #include "../Util/Hierachal/ChildAddable.h"
 
