@@ -1,9 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../Util/Hierachal/ChildAddable.h"
 #include "Play\Player.h"
 #include "../Util/Update/Updater.h"
+#include "../Util/Hierachal/ChildAddable.h"
 
 using namespace Util::Hierachal;
 using namespace Base::Play;
