@@ -1,5 +1,6 @@
 #include "WS2812v10Renderer.h"
 
+#include <cstring>
 
 
 // defaults for cmdline options
