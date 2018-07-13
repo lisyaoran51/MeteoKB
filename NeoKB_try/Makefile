@@ -52,10 +52,10 @@ $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $@ 
 	
 .c.o:
-	$(CC) $(INCLUDE) $(CFLAGS) -c $@ $< 	
+	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 	
 	
 .cpp.o:
-	$(CC) $(INCLUDE) $(CFLAGS) -c $@ $< 
+	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 
 
 clean:
 	rm -f *.o $(TARGET)
