@@ -67,7 +67,7 @@
 	幾乎寫完event proc master了，下次打開之前先把所有檔案改名
 
 5/26
-	Ruleset executor會註冊updater的執行順序，應該是：
+	Ruleset executor會註冊Updater的執行順序，應該是：
 	1. map reset
 	2. scheduler 
 	3. event master
@@ -183,7 +183,7 @@
 
 6/21
 	把ruleset executor的load順完
-	現在要寫把scheduler...加入updater裡，這些寫在playfield裡
+	現在要寫把scheduler...加入Updater裡，這些寫在playfield裡
 	要寫他們的load
 
 6/22

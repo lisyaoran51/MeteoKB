@@ -2,7 +2,7 @@
 #define PLAYFIELD_H
 
 
-#include"../../Util/Update/updatable.h"
+#include"../../Util/Update/Updatable.h"
 #include"../Scheduler/Event/Event.h"
 #include"../Scheduler/Event/EventProcessor.h"
 #include"../Scheduler/Event/EventProcessorMaster.h"
@@ -10,7 +10,7 @@
 #include "../../Util/Hierachal/ChildAddable.h"
 #include "../Graphic/Renderer/renderer.h"
 #include "../Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
-#include"../../Util/Update/updater.h"
+#include"../../Util/Update/Updater.h"
 
 
 
@@ -27,7 +27,7 @@ namespace Base {
 namespace Play {
 
 	/// <summary>
-	/// when playfield start, it should connect Scheduler, master, renderer with updater.
+	/// when playfield start, it should connect Scheduler, master, renderer with Updater.
 	/// So that these objects could be updated on each frame.
 	/// should they be connected in this class????
 	/// </summary>
