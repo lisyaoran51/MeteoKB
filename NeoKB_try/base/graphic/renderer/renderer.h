@@ -15,7 +15,7 @@
 
 using namespace std;
 using namespace Base::Graphic::Maps;
-using namespace Base::Graphic::Renderers::MapAlgorithms;
+//using namespace Base::Graphic::Renderers::MapAlgorithms;
 using namespace Util::Hierachal;
 using namespace Base::Config;
 using namespace Devices;

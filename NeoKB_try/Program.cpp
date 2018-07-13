@@ -11,7 +11,7 @@ using namespace Util;
 
 
 
-int main() {
+int main(int argc, char *argv[]) {
 
 	// «Ø¥ßinstance creator©Msm decoder
 	ProgramInitializer::Initialize();
