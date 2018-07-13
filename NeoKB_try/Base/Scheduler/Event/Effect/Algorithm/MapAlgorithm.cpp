@@ -94,7 +94,7 @@ template<typename T>
 int MapAlgorithm<T>::ImplementDraw(Map * m, EffectMapper<T>* em)
 {
 	if (!bufferMap->clear)
-		bufferMap->Clean();
+		bufferMap->Reset();
 
 	genAlgo->Generate(bufferMap, em);
 

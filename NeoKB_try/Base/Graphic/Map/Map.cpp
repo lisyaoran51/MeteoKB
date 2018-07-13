@@ -19,6 +19,11 @@ Map::Map(int w, int h)
 	for (int i = 0; i < h; i++) {
 		matrix[i] = new uint8_t[w];
 	}
+
+	defaultMatrix = new uint8_t*[h];
+	for (int i = 0; i < h; i++) {
+		defaultMatrix[i] = new uint8_t[w];
+	}
 	clear = false;
 }
 
