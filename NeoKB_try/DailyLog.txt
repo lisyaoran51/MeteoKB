@@ -272,3 +272,6 @@
 7/13
 	makefile基本技巧
 	http://hsian-studio.blogspot.com/2008/09/makefile_08.html
+
+	include多個路競
+	https://stackoverflow.com/questions/4134764/how-to-define-several-include-path-in-makefile
