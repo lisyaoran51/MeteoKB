@@ -77,7 +77,7 @@ int Renderer::SetHardwareVersion(int hwVersion)
 
 int Renderer::RegisterMap(Map * m)
 {
-	map = m;
+	lightMap = m;
 	return 0;
 }
 

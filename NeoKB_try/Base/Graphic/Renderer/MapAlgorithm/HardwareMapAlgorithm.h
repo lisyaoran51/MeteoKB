@@ -44,7 +44,7 @@ namespace MapAlgorithms {
 
 	protected:
 
-		Map* map;
+		Map* lightMap;
 
 	};
 

@@ -37,7 +37,7 @@ int EventProcessorMaster::ReceiveEventProcessor(EventProcessor<Event>* ep)
 
 int EventProcessorMaster::RegisterMap(Map * m)
 {
-	map = m;
+	lightMap = m;
 	return 0;
 }
 

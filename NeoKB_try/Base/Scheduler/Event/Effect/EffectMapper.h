@@ -68,7 +68,7 @@ namespace Effects {
 
 		T* effect;
 
-		Map* map;
+		Map* lightMap;
 
 		MapAlgorithm<T>* mapAlgo;
 

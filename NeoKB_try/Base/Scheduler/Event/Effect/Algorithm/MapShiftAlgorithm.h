@@ -35,7 +35,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
-		virtual int Shift(Map* bufferMap, Map* map, EventProcessor<Event>* em) = 0;
+		virtual int Shift(Map* bufferMap, Map* lightMap, EventProcessor<Event>* em) = 0;
 
 
 	};
@@ -52,14 +52,14 @@ namespace Algorithms{
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
-		virtual int Shift(Map* bufferMap, Map* map, EventProcessor<Event>* em);
+		virtual int Shift(Map* bufferMap, Map* lightMap, EventProcessor<Event>* em);
 
 	protected:
 
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
-		virtual int ImplementShift(Map* bufferMap, Map* map, EffectMapper<T>* em);
+		virtual int ImplementShift(Map* bufferMap, Map* lightMap, EffectMapper<T>* em);
 
 	};
 	

@@ -98,7 +98,7 @@ int MapAlgorithm<T>::ImplementDraw(Map * m, EffectMapper<T>* em)
 
 	genAlgo->Generate(bufferMap, em);
 
-	shiftAlgo->Shift(bufferMap, map, em);
+	shiftAlgo->Shift(bufferMap, m, em);
 
 	mat->Clean();
 

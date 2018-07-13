@@ -70,7 +70,7 @@ namespace Play {
 
 		Updater* updater;
 
-		Map* map;
+		Map* lightMap;
 
 		///<summary>
 		/// 佔存剛建完的影像，還沒位移到正確位置上

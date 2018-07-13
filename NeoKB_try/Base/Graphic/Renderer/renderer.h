@@ -68,7 +68,7 @@ namespace Renderers {
 		///	</summary>
 		int hardwareVersion;
 
-		Map* map;
+		Map* lightMap;
 
 		//先不用這個東西，感覺沒有什麼用
 		//HardwareMapAlgo* hwMapAlgo;

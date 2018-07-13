@@ -72,7 +72,7 @@ int WS2812v10Renderer::Render()
 	// 陣列中的目前位置
 	int tempPos = 0;
 
-	uint8_t** matrix = map->GetMatrix();
+	uint8_t** matrix = lightMap->GetMatrix();
 
 	for (int i = 0; i < width; i++) {
 

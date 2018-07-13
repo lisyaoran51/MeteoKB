@@ -87,7 +87,7 @@ namespace Events {
 
 		vector<EventProcessor<Event>*> event_processors;
 
-		Map* map;
+		Map* lightMap;
 
 	};
 

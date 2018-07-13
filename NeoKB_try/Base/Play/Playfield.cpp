@@ -62,15 +62,15 @@ int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManage
 	if (f->Get<int>(FrameworkSetting::Width, &width) &&
 		f->Get<int>(FrameworkSetting::Height, &height))
 	{
-		map = new Map(width, height);
+		lightMap = new Map(width, height);
 		bufferMap = new Map(width * 2, height * 2);
 	}
 	else
 		throw runtime_error("int Playfield::load() : Width and Height not found in Setting.");
 	
 
-	eventProcessorMaster->RegisterMap(map);
-	renderer->RegisterMap(map);
+	eventProcessorMaster->RegisterMap(lightMap);
+	renderer->RegisterMap(lightMap);
 	scheduler->RegisterHandler(bind(&EventProcessorMaster::ReceiveEventProcessor, e, placeholders::_1));
 
 	// 這一步是讓他們去抓updater
@@ -107,7 +107,7 @@ int Playfield::Add(EventProcessor<Event> * ep)
 	if (CanCast<EffectMapper<Effect>, EventProcessor<Event>>(ep)) {
 		// 這邊要判斷這個event是不是effect，式的話就把map加進去
 		EffectMapper<Effect>* em = Cast<EffectMapper<Effect>, EventProcessor<Event>>(ep);
-		em->RegisterMap(map);
+		em->RegisterMap(lightMap);
 	}
 
 	return 0;

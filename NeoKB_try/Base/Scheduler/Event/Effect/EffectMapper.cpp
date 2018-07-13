@@ -17,7 +17,7 @@ template<class T>
 int EffectMapper<T>::Elapse(MTO_FLOAT elapsedTime)
 {
 
-	if (!map)
+	if (!lightMap)
 		throw runtime_error("int EffectMapper::Process() : no map registered!");
 
 	if (!mapAlgo)
@@ -26,7 +26,7 @@ int EffectMapper<T>::Elapse(MTO_FLOAT elapsedTime)
 	// current time從effect開始播放時，從0開始計算，直到current time超過life time時，特效結束
 	currentTime += elapsedTime;
 
-	mapAlgo->Draw(map, this);
+	mapAlgo->Draw(lightMap, this);
 
 	return 0;
 }
@@ -34,7 +34,7 @@ int EffectMapper<T>::Elapse(MTO_FLOAT elapsedTime)
 template<class T>
 int EffectMapper<T>::RegisterMap(Map * m)
 {
-	map = m;
+	lightMap = m;
 
 	return 0;
 }

@@ -15,7 +15,7 @@ HardwareMapAlgo::HardwareMapAlgo(): RegisterType("HardwareMapAlgo")
 
 int HardwareMapAlgo::RegisterMap(Map * m)
 {
-	map = m;
+	lightMap = m;
 	return 0;
 }
 

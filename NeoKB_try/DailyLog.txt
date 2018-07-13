@@ -13,7 +13,7 @@
 	
 	寫了Event effect，現在要寫Scheduler
 
-	寫了Scheduler、Event、Event processor，現在要寫map
+	寫了Scheduler、Event、Event processor，現在要寫lightMap
 
 5/19
 	cachable -> loadable -> child_addable
@@ -68,13 +68,13 @@
 
 5/26
 	Ruleset executor會註冊Updater的執行順序，應該是：
-	1. map reset
+	1. lightMap reset
 	2. scheduler 
 	3. event master
 	4. renderer
 
 	再effect mapper裡面擺了兩個algo，用策略來把功能放進去。
-	map 和 effect mapper寫完，可以寫renderer
+	lightMap 和 effect mapper寫完，可以寫renderer
 
 	renderer很難寫，因為太容易變換，每換一次硬體就換要一個renderer，要想辦法用最簡單的方法抽換
 	應該要拿decoder的方法
@@ -190,7 +190,7 @@
 	寫buffermap的東西(render)
 
 6/23
-	開始寫map algo
+	開始寫lightMap algo
 	要改speed在effect裡
 
 6/24
