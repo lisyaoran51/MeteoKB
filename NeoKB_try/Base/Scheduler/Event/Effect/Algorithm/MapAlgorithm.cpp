@@ -100,7 +100,7 @@ int MapAlgorithm<T>::ImplementDraw(Map * m, EffectMapper<T>* em)
 
 	shiftAlgo->Shift(bufferMap, m, em);
 
-	mat->Clean();
+	bufferMap->Reset();
 
 	return 0;
 }
