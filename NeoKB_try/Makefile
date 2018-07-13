@@ -5,8 +5,16 @@ Base/Sheetmusic:Base/Sheetmusic/Format:Base/Sheetmusic/IO:Base/Sheetmusic/Patter
 Devices:Devices/Graphic/Renderers:Devices/LedDriver:\
 RulesetMeteor:RulesetMeteor/Config:RulesetMeteor/Graphic:RulesetMeteor/Graphic/Renderer:\
 RulesetMeteor/Play:RulesetMeteor/Scheduler/Event/Effect:RulesetMeteor/Scheduler/Event/Effect/Algorithm:\
-RulesetMeteor/Sheetmusic:RulesetMeteor/Sheetmusic/Pattern\
+RulesetMeteor/Sheetmusic:RulesetMeteor/Sheetmusic/Pattern:\
 Util:Util/Hierachal:Util/Update
+
+INCLUDE = -I./Base -I./Base/Config -I./Base/Graphic -I./Base/Graphic/Map -I./Base/Graphic/Renderer -I./Base/Play:Base/Ruleset \
+-I./Base/Scheduler -I./Base/Scheduler/Event -I./Base/Scheduler/Event/ControlPoints -I./Base/Scheduler/Event/Effect \
+-I./RulesetMeteor -I./RulesetMeteor/Config -I./RulesetMeteor/Graphic -I./RulesetMeteor/Graphic/Renderer \
+-I./RulesetMeteor/Play -I./RulesetMeteor/Scheduler/Event/Effect -I./RulesetMeteor/Scheduler/Event/Effect/Algorithm \
+-I./RulesetMeteor/Sheetmusic -I./RulesetMeteor/Sheetmusic/Pattern \
+-I./Util -I./Util/Hierachal -I./Util/Update
+
 
 
 TARGET  = MeteoKB
@@ -38,10 +46,10 @@ $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $@ 
 	
 .c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< 	
+	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 	
 	
 .cpp.o:
-	$(CC) $(CFLAGS) -c -o $@ $< 
+	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 
 
 clean:
 	rm -f *.o $(TARGET)
