@@ -1,7 +1,7 @@
 #include "Program.h"
 
-#include "Base\Play\Session.h"
-#include "Util\ProgramInitializer.h"
+#include "Base/Play/Session.h"
+#include "Util/ProgramInitializer.h"
 
 using namespace Base;
 using namespace Meteor;
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
 	SmManager* smManager = new SmManager();
 
-	smManager->Import(new vector<string>{"Resources\Sms"});
+	smManager->Import(new vector<string>{"Resources/Sms"});
 
 	session->Cache(new RulesetInfo("Meteor"));
 

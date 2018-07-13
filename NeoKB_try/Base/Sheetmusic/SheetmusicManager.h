@@ -8,8 +8,8 @@
 #include "../../Util/TemplateConstraint.h"
 #include "SheetmusicInfo.h"
 #include "Sheetmusic.h"
-#include "IO\FileReader.h"
-#include "Format\SmDecoder.h"
+#include "IO/FileReader.h"
+#include "Format/SmDecoder.h"
 #include "../Ruleset/Ruleset.h"
 #include "../Ruleset/RulesetInfo.h"
 

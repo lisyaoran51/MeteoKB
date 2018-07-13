@@ -1,5 +1,5 @@
 #include"MeteorGame.h"
-#include "Config\MeteorConfigManager.h"
+#include "Config/MeteorConfigManager.h"
 
 using namespace Meteor;
 using namespace Util::Hierachal;

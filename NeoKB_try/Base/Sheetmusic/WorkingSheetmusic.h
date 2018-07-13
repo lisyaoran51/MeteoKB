@@ -7,7 +7,7 @@
 #include "../../Util/TemplateConstraint.h"
 #include "Sheetmusic.h"
 #include "SheetmusicInfo.h"
-#include "Format\SmDecoder.h"
+#include "Format/SmDecoder.h"
 
 
 

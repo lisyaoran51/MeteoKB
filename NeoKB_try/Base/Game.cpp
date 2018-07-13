@@ -1,6 +1,6 @@
 #include"Game.h"
 
-#include"Config\FrameworkConfigManager.h"
+#include"Config/FrameworkConfigManager.h"
 #include"../Util/Update/Updater.h"
 #include "../Util/Log.h"
 
