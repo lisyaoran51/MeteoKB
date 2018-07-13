@@ -3,7 +3,7 @@
 
 #include <string>
 #include <map>
-#include"singleton.h"
+#include "Singleton.h"
 #include <functional>
 
 
