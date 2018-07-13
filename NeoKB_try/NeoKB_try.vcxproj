@@ -33,6 +33,7 @@
     <ClCompile Include="Base\Ruleset\Ruleset.cpp" />
     <ClCompile Include="Base\Ruleset\RulesetExecutor.cpp" />
     <ClCompile Include="Base\Ruleset\RulesetInfo.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\ControlPoints\ControlPoint.cpp" />
     <ClCompile Include="Base\Scheduler\Event\ControlPoints\NoteControlPoint.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp" />
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.cpp" />
@@ -43,7 +44,6 @@
     <ClCompile Include="Base\Scheduler\Event\EventProcessor.cpp" />
     <ClCompile Include="Base\Scheduler\Event\EventProcessorMaster.cpp" />
     <ClCompile Include="Base\Scheduler\Scheduler.cpp" />
-    <ClCompile Include="Base\Sheetmusic\ControlPoint\ControlPoint.cpp" />
     <ClCompile Include="Base\Sheetmusic\Format\SimpleSmDecoder.cpp" />
     <ClCompile Include="Base\Sheetmusic\Format\SmDecoder.cpp" />
     <ClCompile Include="Base\Sheetmusic\IO\FileReader.cpp" />

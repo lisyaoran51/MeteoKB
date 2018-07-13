@@ -285,9 +285,6 @@
     <ClCompile Include="Base\Sheetmusic\IO\FileReader.cpp">
       <Filter>來源檔案\Base\Sheetmusic\IO</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Sheetmusic\ControlPoint\ControlPoint.cpp">
-      <Filter>來源檔案\Base\Sheetmusic\ControlPoint</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Play\Playfield.cpp">
       <Filter>來源檔案\Base\Play</Filter>
     </ClCompile>
@@ -464,6 +461,9 @@
     </ClCompile>
     <ClCompile Include="Util\Hierachal\Cachable.cpp">
       <Filter>來源檔案\Util\Hierachal</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Scheduler\Event\ControlPoints\ControlPoint.cpp">
+      <Filter>來源檔案\Base\Schedulers\Events\ControlPoints</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

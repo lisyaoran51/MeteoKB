@@ -18,9 +18,21 @@ MTO_FLOAT EventProcessor<T>::GetStartTime()
 }
 
 template<class T>
+MTO_FLOAT EventProcessor<T>::GetLifeTime()
+{
+	return event->GetLifeTime();
+}
+
+template<class T>
 MTO_FLOAT EventProcessor<T>::GetTimeLeft()
 {
-	return event->GetLifeTime() - currerntTime;
+	return event->GetLifeTime() - currentTime;
+}
+
+template<class T>
+string EventProcessor<T>::GetTypeName()
+{
+	return string("EventProcessor");
 }
 
 template<class T>
