@@ -75,7 +75,7 @@ T SmDecoderWithSection<T>::GetSectionEnum(string section)
 	if (sectionMap.size() == 0)
 		setSectionMap();
 
-	map<T, string>::iterator i;
+	typename map<T, string>::iterator i;
 
 	for (i = sectionMap.begin(); i != sectionMap.end(); i++)
 	{
@@ -92,7 +92,7 @@ string SmDecoderWithSection<T>::GetSectionString(T section)
 	if (sectionMap.size() == 0)
 		setSectionMap();
 
-	map<T, string>::iterator i = sectionMap.find(section);
+	typename map<T, string>::iterator i = sectionMap.find(section);
 
 	if (i != sectionMap.end())
 		return sectionMap[section];

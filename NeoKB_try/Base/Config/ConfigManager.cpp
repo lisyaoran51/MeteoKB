@@ -76,7 +76,7 @@ bool ConfigManager<T>::Get(T lookup, U * out)
 {
 	if (typeid(U) == typeid(int))
 	{
-		map<T, int>::iterator iter = configStoreInt.find(lookup);
+		typename map<T, int>::iterator iter = configStoreInt.find(lookup);
 		if (iter != configStoreInt.end())
 		{
 			*out = configStoreInt[lookup];
@@ -86,7 +86,7 @@ bool ConfigManager<T>::Get(T lookup, U * out)
 
 	if (typeid(U) == typeid(MTO_FLOAT))
 	{
-		map<T, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
+		typename map<T, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
 		if (iter != configStoreFloat.end())
 		{
 			*out = configStoreFloat[lookup];
@@ -96,7 +96,7 @@ bool ConfigManager<T>::Get(T lookup, U * out)
 
 	if (typeid(U) == typeid(bool))
 	{
-		map<T, bool>::iterator iter = configStoreBool.find(lookup);
+		typename map<T, bool>::iterator iter = configStoreBool.find(lookup);
 		if (iter != configStoreBool.end())
 		{
 			*out = configStoreBool[lookup];
@@ -106,7 +106,7 @@ bool ConfigManager<T>::Get(T lookup, U * out)
 
 	if (typeid(U) == typeid(string))
 	{
-		map<T, string>::iterator iter = configStoreString.find(lookup);
+		typename map<T, string>::iterator iter = configStoreString.find(lookup);
 		if (iter != configStoreString.end())
 		{
 			*out = configStoreString[lookup];
