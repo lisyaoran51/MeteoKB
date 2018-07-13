@@ -37,7 +37,7 @@ namespace Sheetmusics {
 
 	public:
 		
-		Sm(Sm<T>* sm = NULL);
+		Sm(Sm<T>* sm);
 
 		~Sm();
 
