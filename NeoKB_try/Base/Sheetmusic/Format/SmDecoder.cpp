@@ -80,7 +80,7 @@ T SmDecoderWithSection<T>::GetSectionEnum(string section)
 	for (i = sectionMap.begin(); i != sectionMap.end(); i++)
 	{
 		if (i->second == section)
-			return it->first;
+			return i->first;
 	}
 	return 0;
 }
