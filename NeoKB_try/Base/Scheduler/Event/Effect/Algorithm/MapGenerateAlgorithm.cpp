@@ -8,7 +8,7 @@ template<typename T>
 int MapGenerateAlgorithm<T>::Generate(Map * m, EventProcessor<Event>* em)
 {
 	if (em->CanCast<EffectMapper<T>>()) {
-		return ImplementGenerate(bufferMap, m, em->Cast<EffectMapper<T>>());
+		return ImplementGenerate(m, em->Cast<EffectMapper<T>>());
 	}
 	// TODO: throw error or not?
 	return -1;
