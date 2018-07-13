@@ -37,14 +37,11 @@ namespace Events {
 		// 一定要每次都override!!
 		virtual string GetTypeName();
 
-		template<typename T, typename U>
-		static bool CanCast(U* e);
-
 		template<typename T>
 		bool CanCast();
 
 		template<typename T>
-		static T* Cast();
+		T* Cast();
 
 		virtual Event* Clone();
 
