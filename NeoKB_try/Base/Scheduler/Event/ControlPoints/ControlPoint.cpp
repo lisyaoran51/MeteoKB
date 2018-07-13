@@ -1,4 +1,4 @@
-#include "..\..\Scheduler\Event\ControlPoints\ControlPoint.h"
+#include "ControlPoint.h"
 
 using namespace Base::Schedulers::Events::ControlPoints;
 

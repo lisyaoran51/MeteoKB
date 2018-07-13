@@ -264,3 +264,7 @@
 
 	解決，結果不要Static cast就好
 	creators[typeName] = bind(&InstanceCreator::create<T>, this);
+
+7/12
+	make file 多個資料夾問題
+	https://blog.csdn.net/luckywang1103/article/details/42061971

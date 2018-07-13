@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 #include "../Map/Map.h"
-#include "MapAlgorithm\HardwareMapAlgorithm.h"
+//#include "MapAlgorithm\HardwareMapAlgorithm.h"
 #include "../../../Util/Hierachal/ChildAddable.h"
 #include "../../Config/FrameworkConfigManager.h"
 #include "../../../Devices/HardwareInfo.h"
@@ -70,7 +70,8 @@ namespace Renderers {
 
 		Map* map;
 
-		HardwareMapAlgo* hwMapAlgo;
+		//先不用這個東西，感覺沒有什麼用
+		//HardwareMapAlgo* hwMapAlgo;
 
 		/// <summary>
 		/// 禎數、針長、目前所經過時間

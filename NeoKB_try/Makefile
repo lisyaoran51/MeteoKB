@@ -1,29 +1,47 @@
-all: NeoKB.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o
-	g++ -o NeoKB NeoKB.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o -Wall
+VPATH=Base:Base/Config:Base/Graphic:Base/Graphic/Map:Base/Graphic/Renderer:Base/Play:Base/Ruleset:\
+Base/Scheduler:Base/Scheduler/Event:Base/Scheduler/Event/ControlPoints:Base/Scheduler/Event/Effect:\
+Base/Scheduler/Event/Effect/Algorithm:\
+Base/Sheetmusic:Base/Sheetmusic/Format:Base/Sheetmusic/IO:Base/Sheetmusic/Pattern:\
+Devices:Devices/Graphic/Renderers:Devices/LedDriver:\
+RulesetMeteor:RulesetMeteor/Config:RulesetMeteor/Graphic:RulesetMeteor/Graphic/Renderer:\
+RulesetMeteor/Play:RulesetMeteor/Scheduler/Event/Effect:RulesetMeteor/Scheduler/Event/Effect/Algorithm:\
+RulesetMeteor/Sheetmusic:RulesetMeteor/Sheetmusic/Pattern\
+Util:Util/Hierachal:Util/Update
 
-NeoKB.o: NeoKB.cpp NeoKB.h clk.h gpio.h dma.h pwm.h ws2811.h
-	g++ -c NeoKB.cpp 
-	#dma.o pwm.o ws2811.o
 
-dma.o: dma.c dma.h
-	g++ -c dma.c
+TARGET  = MeteoKB
+#compiler 
+CC = g++
+#cflags 
+CFLAGS = -Wall -ansi -s
+#object 
+OBJS = Program.o Game.o \
+ConfigManager.o FrameworkConfigManager.o \
+Map.o renderer.o \
+Player.o Playfield.o Session.o Ruleset.o RulesetExecutor.o RulesetInfo.o \
+Scheduler.o Event.o EventProcessor.o EventProcessorMaster.o ControlPoint.o NoteControlPoint.o Effect.o EffectMapper.o MapAlgorithm.o MapGenerateAlgorithm.o MapShiftAlgorithm.o \
+Sheetmusic.o SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocesser.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
+SmDecoder.o SimpleSmDecoder.o FileReader.o Pattern.o PatternGenerator.o \
+WS2812v10Renderer.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o \
+MeteorGame.o MeteorConfigManager.o MeteorPlayfield.o MeteorRuleset.o MeteorRulesetExecutor.o \
+ExplodeEffect.o ExplodeEffectMapper.o FallEffect.o FallEffectMapper.o GlowLineEffect.o GlowLineEffectMapper.o \
+ExplodeMapAlgorithm.o FallMapAlgorithm.o GlowLineMapAlgorithm.o \
+MeteorSheetmusicConverter.o MeteorPatternGenerator.o \
+FileSystem.o InstanceCreator.o MtoObject.o ProgramInitializer.o \
+Cachable.o ChildAddable.o HasParent.o Loadable.o LoadStateHandler.o
 
-pwm.o: pwm.c pwm.h ws2811.h
-	g++ -c pwm.c 
-	#ws2811.o
 
-ws2811.o: ws2811.c pwm.c pcm.c ws2811.h mailbox.h clk.h gpio.h dma.h pwm.h pcm.h rpihw.h
-	g++ -c ws2811.c
-	#mailbox.o dma.o pwm.o pcm.o rpihw.o
 
-mailbox.o: mailbox.c mailbox.h
-	g++ -c mailbox.c
+all:$(TARGET)
 
-pcm.o: pcm.c pcm.h
-	g++ -c pcm.c
-
-rpihw.o: rpihw.c rpihw.h
-	g++ -c rpihw.c
+$(TARGET): $(OBJS) 
+	$(CC) $(OBJS) -o $@ 
+	
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< 	
+	
+.cpp.o:
+	$(CC) $(CFLAGS) -c -o $@ $< 
 
 clean:
-	rm -f *.o
+	rm -f *.o $(TARGET)
