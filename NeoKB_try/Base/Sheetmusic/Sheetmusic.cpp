@@ -5,7 +5,7 @@ using namespace Base::Sheetmusics;
 using namespace std;
 
 template<typename T>
-Sm<T>::Sm(Sm<T>* sm = NULL)
+Sm<T>::Sm(Sm<T>* sm)
 {
 	if (sm) {
 		// TODO: 應該是要附置一份，而不是直接指過去
