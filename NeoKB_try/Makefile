@@ -8,13 +8,19 @@ RulesetMeteor/Play:RulesetMeteor/Scheduler/Event/Effect:RulesetMeteor/Scheduler/
 RulesetMeteor/Sheetmusic:RulesetMeteor/Sheetmusic/Pattern:\
 Util:Util/Hierachal:Util/Update
 
-INCLUDE = -I./Base -I./Base/Config -I./Base/Graphic -I./Base/Graphic/Map -I./Base/Graphic/Renderer -I./Base/Play:Base/Ruleset \
--I./Base/Scheduler -I./Base/Scheduler/Event -I./Base/Scheduler/Event/ControlPoints -I./Base/Scheduler/Event/Effect \
--I./RulesetMeteor -I./RulesetMeteor/Config -I./RulesetMeteor/Graphic -I./RulesetMeteor/Graphic/Renderer \
--I./RulesetMeteor/Play -I./RulesetMeteor/Scheduler/Event/Effect -I./RulesetMeteor/Scheduler/Event/Effect/Algorithm \
--I./RulesetMeteor/Sheetmusic -I./RulesetMeteor/Sheetmusic/Pattern \
--I./Util -I./Util/Hierachal -I./Util/Update
+INCLUDE = -IBase -IBase/Config -IBase/Graphic -IBase/Graphic/Map -IBase/Graphic/Renderer -IBase/Play:Base/Ruleset \
+-IBase/Scheduler -IBase/Scheduler/Event -IBase/Scheduler/Event/ControlPoints -IBase/Scheduler/Event/Effect \
+-IRulesetMeteor -IRulesetMeteor/Config -IRulesetMeteor/Graphic -IRulesetMeteor/Graphic/Renderer \
+-IRulesetMeteor/Play -IRulesetMeteor/Scheduler/Event/Effect -IRulesetMeteor/Scheduler/Event/Effect/Algorithm \
+-IRulesetMeteor/Sheetmusic -IRulesetMeteor/Sheetmusic/Pattern \
+-IUtil -IUtil/Hierachal -IUtil/Update
 
+#INCLUDE = -IBase -IBase/Config -IBase/Graphic -I./Base/Graphic/Map -I./Base/Graphic/Renderer -I./Base/Play:Base/Ruleset \
+#-I./Base/Scheduler -I./Base/Scheduler/Event -I./Base/Scheduler/Event/ControlPoints -I./Base/Scheduler/Event/Effect \
+#-I./RulesetMeteor -I./RulesetMeteor/Config -I./RulesetMeteor/Graphic -I./RulesetMeteor/Graphic/Renderer \
+#-I./RulesetMeteor/Play -I./RulesetMeteor/Scheduler/Event/Effect -I./RulesetMeteor/Scheduler/Event/Effect/Algorithm \
+#-I./RulesetMeteor/Sheetmusic -I./RulesetMeteor/Sheetmusic/Pattern \
+#-I./Util -I./Util/Hierachal -I./Util/Update
 
 
 TARGET  = MeteoKB
