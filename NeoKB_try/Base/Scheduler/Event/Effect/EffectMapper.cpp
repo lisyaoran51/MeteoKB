@@ -8,7 +8,7 @@ template<class T>
 EffectMapper<T>::EffectMapper(int w, int h): EffectMapperInterface(w, h)
 {
 	width = w;
-	hieght = h;
+	height = h;
 	// 把effect的功能打開，擺在effect
 	&effect = (T**)&event;
 }
