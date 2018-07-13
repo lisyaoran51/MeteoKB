@@ -16,7 +16,7 @@ int RulesetExecutor<T>::playfieldLoad()
 	// 把Event轉成Event processor擺進去playfield裡
 	for (int i = 0; i < sm->events->size(); i++) {
 		
-		EventProcessor* ep = getEventProcessor(sm->events->at(i));
+		EventProcessor<Event>* ep = getEventProcessor(sm->events->at(i));
 
 		playfield->Add(ep);
 
