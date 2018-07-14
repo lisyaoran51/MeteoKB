@@ -20,13 +20,17 @@ using namespace std;
 
 namespace Util {
 
+
 	/// <summary>
 	/// instantiate a class with its name in string
 	/// </summary>
 	template<typename TBase>
 	class InstanceCreator: public Singleton<InstanceCreator<TBase>> {
 	
-		typename map<string, function<TBase*(void)>> creators;
+
+		typedef function<TBase*(void)> CallBackFunc;
+
+		typename map<string, CallBackFunc> creators;
 
 		template<typename T>
 		T* create();
