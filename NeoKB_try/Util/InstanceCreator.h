@@ -28,9 +28,7 @@ namespace Util {
 	class InstanceCreator: public Singleton<InstanceCreator<TBase>> {
 	
 
-		typedef function<TBase*(void)> CallBackFunc;
-
-		typename map<string, CallBackFunc> creators;
+		typename map<string, typename function<TBase*(void)>> creators;
 
 		template<typename T>
 		T* create();
