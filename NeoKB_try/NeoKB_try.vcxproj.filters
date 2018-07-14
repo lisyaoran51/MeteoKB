@@ -399,9 +399,6 @@
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffect.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Sheetmusic\SheetmusicPostprocesser.cpp">
-      <Filter>來源檔案\RulesetMeteor\Sheetmusic</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapShiftAlgorithm.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
     </ClCompile>
@@ -533,9 +530,6 @@
       <Filter>標頭檔\Base\Sheetmusic</Filter>
     </ClInclude>
     <ClInclude Include="Base\Sheetmusic\SheetmusicMetadata.h">
-      <Filter>標頭檔\Base\Sheetmusic</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocesser.h">
       <Filter>標頭檔\Base\Sheetmusic</Filter>
     </ClInclude>
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h">
@@ -714,6 +708,9 @@
     </ClInclude>
     <ClInclude Include="Util\ProgramInitializer.h">
       <Filter>標頭檔\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocessor.h">
+      <Filter>標頭檔\Base\Sheetmusic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

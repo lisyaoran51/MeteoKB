@@ -53,7 +53,6 @@
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicManager.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicMetadata.cpp" />
-    <ClCompile Include="Base\Sheetmusic\SheetmusicPostprocesser.cpp" />
     <ClCompile Include="Base\Sheetmusic\SheetmusicPostprocessor.cpp" />
     <ClCompile Include="Base\Sheetmusic\WorkingSheetmusic.cpp" />
     <ClCompile Include="Devices\Graphic\Renderers\WS2812v10Renderer.cpp" />
@@ -134,7 +133,7 @@
     <ClInclude Include="Base\Sheetmusic\SheetmusicInfo.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicManager.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicMetadata.h" />
-    <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocesser.h" />
+    <ClInclude Include="Base\Sheetmusic\SheetmusicPostprocessor.h" />
     <ClInclude Include="Base\Sheetmusic\SheetmusicSetInfo.h" />
     <ClInclude Include="Base\Sheetmusic\WorkingSheetmusic.h" />
     <ClInclude Include="Devices\Graphic\Renderers\WS2812v10Renderer.h" />

@@ -26,7 +26,7 @@ namespace Util {
 	template<typename TBase>
 	class InstanceCreator: public Singleton<InstanceCreator<TBase>> {
 	
-		map<string, function<TBase*(void)>> creators;
+		typename map<string, function<TBase*(void)>> creators;
 
 		template<typename T>
 		T* create();
