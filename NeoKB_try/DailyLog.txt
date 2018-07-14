@@ -275,3 +275,5 @@
 
 	include多個路競
 	https://stackoverflow.com/questions/4134764/how-to-define-several-include-path-in-makefile
+
+	make 到一半 meteor ruleset.o跑不出來

@@ -4,7 +4,7 @@ Base/Scheduler/Event/Effect/Algorithm:\
 Base/Sheetmusic:Base/Sheetmusic/Format:Base/Sheetmusic/IO:Base/Sheetmusic/Pattern:\
 Devices:Devices/Graphic/Renderers:Devices/LedDriver:\
 RulesetMeteor:RulesetMeteor/Config:RulesetMeteor/Graphic:RulesetMeteor/Graphic/Renderer:\
-RulesetMeteor/Play:RulesetMeteor/Scheduler/Event/Effect:RulesetMeteor/Scheduler/Event/Effect/Algorithm:\
+RulesetMeteor/Play:RulesetMeteor/Ruleset:RulesetMeteor/Scheduler/Event/Effect:RulesetMeteor/Scheduler/Event/Effect/Algorithm:\
 RulesetMeteor/Sheetmusic:RulesetMeteor/Sheetmusic/Pattern:\
 Util:Util/Hierachal:Util/Update
 
