@@ -42,7 +42,7 @@ T* InstanceCreator<TBase>::CreateInstanceWithT(string typeName)
 	if (iter != creators.end())
 	{
 		TBase* temp = creators[typeName]();
-		T temp2 = temp->Cast<T>();
+		T temp2 = temp->template Cast<T>();
 		return temp2;
 	}
 
