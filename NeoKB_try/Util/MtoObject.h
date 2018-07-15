@@ -41,13 +41,37 @@ namespace Util {
 		/// 類似java裡的 (object) as (class)，一種轉型方式
 		/// </summary>
 		template<typename T>
-		static T* Cast(MtoObject* o);
+		static T* Cast(MtoObject* o) {
+			if (typeid(T*) == typeid(o)) {
+				return static_cast<T*>(o);
+			}
+			else if (T* t = dynamic_cast< T* >(o))
+				return dynamic_cast< T* >(o);
+			return NULL;
+		}
 
+		/// <summary>
+		/// 類似java裡的 (object) as (class)，一種轉型方式
+		/// </summary>
 		template<typename T, typename U>
-		static T* Cast(U* o);
+		static T* Cast(U* o) {
+			if (T* t = dynamic_cast< T* >(o))
+				return dynamic_cast< T* >(o);
+			return NULL;
+		}
 
+		/// <summary>
+		/// 類似java裡的 (object) as (class)，一種轉型方式
+		/// </summary>
 		template<typename T, typename U>
-		static bool CanCast(U* o);
+		static bool CanCast(U* o) {
+			if (T* t = dynamic_cast< T* >(o)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 	};
 }

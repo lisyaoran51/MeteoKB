@@ -14,6 +14,7 @@
 #include "../Config/FrameworkConfigManager.h"
 #include "../Scheduler/Event/Effect/Algorithm/MapAlgorithm.h"
 #include "../Sheetmusic/WorkingSheetmusic.h"
+#include "../../Util/MtoObject.h"
 
 
 
@@ -33,7 +34,7 @@ using namespace Base::Sheetmusics;
 using namespace Base::Sheetmusics::Patterns;
 using namespace Base::Config;
 using namespace Base::Schedulers::Events::Effects::Algorithms;
-
+using namespace Base::Rulesets;
 
 
 namespace Base {
@@ -51,7 +52,19 @@ namespace Rulesets {
 		/// 1. find the objects in sm?
 		/// 2. add them to playfield?
 		/// </summary>
-		int playfieldLoad();
+		int playfieldLoad() {
+
+			// 把Event轉成Event processor擺進去playfield裡
+			for (int i = 0; i < sm->events->size(); i++) {
+
+				EventProcessor<Event>* ep = getEventProcessor(sm->events->at(i));
+
+				playfield->Add(ep);
+
+			}
+
+			return 0;
+		}
 
 		/// <summary>
 		/// jobs:
@@ -59,8 +72,51 @@ namespace Rulesets {
 		/// 2. add playfield as child
 		/// 3. ??? load objects?
 		/// </summary>
-		int load();
-		int load(FrameworkConfigManager* m);
+		int load() {
+			FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+			if (!f)
+				throw runtime_error("int  RulesetExecutor<T>::load() : FrameworkConfigManager not found in cache.");
+
+			return load(f);
+		}
+
+		/// <summary>
+		/// load入遊戲狀態
+		/// </summary>
+		int load(FrameworkConfigManager* m) {
+			// 取pattern generator的名字
+			string pgName;
+
+			if (!f->Get<string>(FrameworkSetting::PatternGenerator, &pgName))
+				throw runtime_error("int RulesetExecutor<T>::load(FrameworkConfigManager*) : PatternGenerator not found in Setting.");
+
+			// 利用pattern generator的名字建立pattern generator
+			InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
+			PatternGenerator* pg = iCreator.CreateInstanceWithT<PatternGenerator>(pgName);
+
+			// 要把converter和postprocessor擺到load()裡，因為pattern Generator是擺在cache裡的
+			SmConverter* converter = createSmConverter(pg);
+			SmPostprocessor* postprocessor = createSmPostprocessor();
+
+			sm = converter->Convert(workingSm->GetSm());
+			sm = postprocessor->postprocess(sm);
+
+			delete converter;
+			delete postprocessor;
+
+			// Add mods, should always be the last thing applied to give full control to mods
+			// applyMods(mods);
+
+			playfield = createPlayfield();
+
+			// 這邊會把map algo讀進去playfield裡面，這件事要記得寫
+			AddChild(playfield);
+
+			// 把Event轉成Event processor擺進去playfield裡
+			playfieldLoad();
+
+			return 0;
+		}
 
 		//int applyMods(vector<mod*>* m);
 
@@ -76,9 +132,18 @@ namespace Rulesets {
 		/// 2. apply mods
 		/// 3. register privateLoad()
 		/// </summary>
-		RulesetExecutor();
+		RulesetExecutor(): RegisterType("RulesetExecutor") {
+			// 註冊private load (c++才需要)
+			registerLoad(bind(static_cast<int(RulesetExecutor<T>::*)(void)>(&RulesetExecutor<T>::load), this));
+		}
 
-		int LazyConstruct(WorkingSm* w);
+		int LazyConstruct(WorkingSm* w) {
+			workingSm = w;
+
+			//mods = w->get_mods();
+
+			return 0;
+		}
 
 
 	protected:

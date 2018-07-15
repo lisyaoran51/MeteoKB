@@ -32,18 +32,18 @@ CC = g++
 CFLAGS = -Wall -ansi -s -std=c++14
 #object 
 OBJS = Program.o Game.o \
-ConfigManager.o FrameworkConfigManager.o \
+FrameworkConfigManager.o \
 Map.o renderer.o \
-Player.o Playfield.o Session.o Ruleset.o RulesetExecutor.o RulesetInfo.o \
-Scheduler.o Event.o EventProcessor.o EventProcessorMaster.o ControlPoint.o NoteControlPoint.o Effect.o EffectMapper.o MapAlgorithm.o MapGenerateAlgorithm.o MapShiftAlgorithm.o \
-Sheetmusic.o SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
+Player.o Playfield.o Session.o Ruleset.o RulesetInfo.o \
+Scheduler.o Event.o EventProcessorMaster.o ControlPoint.o NoteControlPoint.o Effect.o \
+SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
 SmDecoder.o SimpleSmDecoder.o FileReader.o Pattern.o PatternGenerator.o \
 WS2812v10Renderer.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o \
 MeteorGame.o MeteorConfigManager.o MeteorPlayfield.o MeteorRuleset.o MeteorRulesetExecutor.o \
 ExplodeEffect.o ExplodeEffectMapper.o FallEffect.o FallEffectMapper.o GlowLineEffect.o GlowLineEffectMapper.o \
 ExplodeMapAlgorithm.o FallMapAlgorithm.o GlowLineMapAlgorithm.o \
 MeteorSheetmusicConverter.o MeteorPatternGenerator.o \
-FileSystem.o InstanceCreator.o MtoObject.o ProgramInitializer.o \
+FileSystem.o MtoObject.o ProgramInitializer.o \
 Cachable.o ChildAddable.o HasParent.o Loadable.o LoadStateHandler.o
 
 

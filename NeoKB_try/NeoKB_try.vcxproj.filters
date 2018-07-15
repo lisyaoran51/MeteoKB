@@ -258,9 +258,6 @@
     <ClCompile Include="Base\Graphic\Map\Builder\MapBuilder.cpp">
       <Filter>來源檔案\Base\Graphic\Map\Builder</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Ruleset\RulesetExecutor.cpp">
-      <Filter>來源檔案\Base\Ruleset</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Ruleset\Mod\Mod.cpp">
       <Filter>來源檔案\Base\Ruleset\Mod</Filter>
     </ClCompile>
@@ -296,9 +293,6 @@
     </ClCompile>
     <ClCompile Include="Base\Graphic\Renderer\MapAlgorithm\HardwareMapAlgorithm.cpp">
       <Filter>來源檔案\Base\Graphic\Renderer\MapAlgorithm</Filter>
-    </ClCompile>
-    <ClCompile Include="Util\InstanceCreator.cpp">
-      <Filter>來源檔案\Util</Filter>
     </ClCompile>
     <ClCompile Include="Util\Hierachal\Loadable.cpp">
       <Filter>來源檔案\Util\Hierachal</Filter>

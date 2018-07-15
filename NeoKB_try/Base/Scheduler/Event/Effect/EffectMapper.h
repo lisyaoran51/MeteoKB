@@ -5,6 +5,7 @@
 #include "../../../Scheduler/Event/EventProcessor.h"
 #include "../../../Scheduler/Event/Effect/Effect.h"
 #include "Algorithm/MapAlgorithm.h"
+#include <stdexcept>
 
 
 using namespace Base::Schedulers::Events;
@@ -21,7 +22,9 @@ namespace Effects {
 
 	public:
 
-		EffectMapperInterface(int w, int h);
+		EffectMapperInterface(int w, int h): EventProcessor<Event>()
+		{
+		}
 
 		/// <summary>
 		/// after registering the map to mapper, the mapper can apply effect to map.
@@ -47,22 +50,54 @@ namespace Effects {
 
 	public:
 
-		EffectMapper(int w, int h);
+		EffectMapper(int w, int h) {
+			width = w;
+			height = h;
+			// 把effect的功能打開，擺在effect
+			&effect = (T**)&event;
+		}
 
-		virtual int Elapse(MTO_FLOAT elaspedTime);
+		virtual int Elapse(MTO_FLOAT elaspedTime) {
+
+			if (!lightMap)
+				throw runtime_error("int EffectMapper::Process() : no map registered!");
+
+			if (!mapAlgo)
+				throw runtime_error("int EffectMapper::Process() : no map algorithm registered!");
+
+			// current time從effect開始播放時，從0開始計算，直到current time超過life time時，特效結束
+			currentTime += elapsedTime;
+
+			mapAlgo->Draw(lightMap, this);
+
+			return 0;
+		}
 
 		/// <summary>
 		/// after registering the map to mapper, the mapper can apply effect to map.
 		/// </summary>
-		int RegisterMap(Map* m);
+		int RegisterMap(Map* m) {
+			lightMap = m;
 
-		virtual int RegisterMapAlgorithm(MapAlgorithmInterface* ma);
+			return 0;
+		}
 
-		virtual int GetWidth();
-		virtual int GetHeight();
-		virtual int GetX();
-		virtual int GetY();
-		virtual MTO_FLOAT GetSpeed();
+		virtual int RegisterMapAlgorithm(MapAlgorithmInterface* ma) {
+			if (MtoObject::CanCast<MapAlgorithm<T>>(ma)) {
+				mapAlgo = MtoObject::Cast<MapAlgorithm<T>>(ma);
+				return 0;
+			}
+			else {
+				// TODO: 怎麼噴錯誤?
+				return -1;
+			}
+		}
+
+		virtual int GetWidth() { return width; }
+		virtual int GetHeight() { return height; }
+		virtual int GetX(){ return effect->GetX(); }
+		virtual int GetY(){ return effect->GetY(); }
+		virtual MTO_FLOAT GetSpeed(){ return effect->GetSpeed(); }
 
 	protected:
 

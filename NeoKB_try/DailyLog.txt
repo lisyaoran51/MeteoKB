@@ -277,3 +277,7 @@
 	https://stackoverflow.com/questions/4134764/how-to-define-several-include-path-in-makefile
 
 	make 到一半 meteor ruleset.o跑不出來
+
+7/15
+	最後link不出來，好像是因為template不可以放在cpp?
+	http://www.cplusplus.com/forum/beginner/143965/

@@ -59,22 +59,55 @@ namespace Algorithms{
 		/// <summary>
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
-		MapAlgorithm();
+		MapAlgorithm() {
+			constructed = false;
+		}
 
-		int LazyConstruct(int w, int h);
+		int LazyConstruct(int w, int h) {
+			// if not constructed
+			width = w;
+			height = h;
+			constructed = true;
+			return 0;
+		}
 
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		MapAlgorithm(int w, int h);
+		MapAlgorithm(int w, int h) : RegisterType("MapAlgorithm")
+		{
+			width = w;
+			height = h;
+			constructed = true;
+		}
 
-		~MapAlgorithm();
+		~MapAlgorithm() {
+			// TODO: 應該是要計算目前有幾個map algo，如果剩0個才把matrix刪掉
+		}
 
-		virtual int RegisterBufferMap(Map* b);
+		virtual int RegisterBufferMap(Map* b) {
+			if (b->GetWidth() / 2 == width && b->GetHeight() / 2 == height)
+			{
+				bufferMap = b;
+				return 0;
+			}
+			// TODO: debug log
+			return -1;
+		}
 
-		virtual int RegisterGenerator(MapGenerateAlgorithmInterface* g);
+		virtual int RegisterGenerator(MapGenerateAlgorithmInterface* g) {
+			if (CanCast<MapGenerateAlgorithm<T>>(g))
+				return ImplementRegisterGenerator(Cast<MapGenerateAlgorithm<T>>(g));
+			// throw error
+			return -1;
+		}
 
-		virtual int RegisterShifter(MapShiftAlgorithmInterface* s);
+		virtual int RegisterShifter(MapShiftAlgorithmInterface* s) {
+			if (CanCast<MapShiftAlgorithm<T>>(s))
+				return ImplementRegisterShifter(Cast<MapShiftAlgorithm<T>>(s));
+			// throw error
+			return -1;
+		}
 
 
 		/// <summary>
@@ -85,7 +118,13 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
-		virtual int Draw(Map* m, EventProcessor<Event>* em);
+		virtual int Draw(Map* m, EventProcessor<Event>* em) {
+			// TODO: compiler should select if compile this line or not(debug level)
+			//if (CanCast<EffectMapper<T>>(em))
+			return ImplementDraw(m, Cast<EffectMapper<T>>(em));
+			// throw error
+			// return -1;
+		}
 
 	protected:
 
@@ -107,9 +146,15 @@ namespace Algorithms{
 		/// </summary>
 		MapShiftAlgorithm<T>* shiftAlgo;
 
-		int ImplementRegisterGenerator(MapGenerateAlgorithm<T>* g);
+		int ImplementRegisterGenerator(MapGenerateAlgorithm<T>* g) {
+			genAlgo = g;
+			return 0;
+		}
 
-		int ImplementRegisterShifter(MapShiftAlgorithm<T>* s);
+		int ImplementRegisterShifter(MapShiftAlgorithm<T>* s) {
+			shiftAlgo = s;
+			return 0;
+		}
 
 
 		/// <summary>
@@ -120,7 +165,18 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
-		virtual int ImplementDraw(Map* m, EffectMapper<T>* em);
+		virtual int ImplementDraw(Map* m, EffectMapper<T>* em) {
+			if (!bufferMap->clear)
+				bufferMap->Reset();
+
+			genAlgo->Generate(bufferMap, em);
+
+			shiftAlgo->Shift(bufferMap, m, em);
+
+			bufferMap->Reset();
+
+			return 0;
+		}
 
 	};
 

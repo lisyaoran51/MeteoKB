@@ -5,6 +5,7 @@
 #include <map>
 #include "Singleton.h"
 #include <functional>
+#include "Log.h"
 
 
 /*
@@ -33,23 +34,51 @@ namespace Util {
 		map<string, MtoFunc> creators;
 
 		template<typename T>
-		T* create();
+		T* create() {
+			return new T;
+		}
 
 	public:
 
 		InstanceCreator() = default;
 
 		template<typename T>
-		int RegisterType(string typeName);
+		int RegisterType(string typeName) {
+			creators[typeName] = bind(&InstanceCreator::create<T>, this);
 
-		TBase* CreateInstance(string typeName);
+			return 0;
+		}
+
+		TBase* CreateInstance(string typeName) {
+
+			typename map<string, MtoFunc>::iterator iter = creators.find(typeName);
+			if (iter != creators.end())
+			{
+				return creators[typeName]();
+			}
+		}
 
 		/// <summary>
 		/// 回傳之前就自動先把形態轉回原本的形態
 		/// TODO: 設計一個判斷轉型態有沒有成功的程式
 		/// </summary>
 		template<typename T>
-		T* CreateInstanceWithT(string typeName);
+		T* CreateInstanceWithT(string typeName) {
+			typename map<string, MtoFunc>::iterator iter = creators.find(typeName);
+			if (iter != creators.end())
+			{
+				TBase* temp = creators[typeName]();
+				T temp2 = temp->template Cast<T>();
+				return temp2;
+			}
+
+			// TODO: 噴錯誤？
+			log(logERROR) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
+
+			throw runtime_error("int InstanceCreator::CreateInstanceWithT() : 出現錯誤，未找到該typename的建立者");
+			return NULL;
+
+		}
 
 	};
 

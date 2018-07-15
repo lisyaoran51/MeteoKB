@@ -33,7 +33,10 @@ namespace Events {
 		/// <summary>
 		/// register the Event to be processed.
 		/// </summary>
-		int RegisterEvent(T* e);
+		int RegisterEvent(T* e) {
+			event = e;
+			return 0;
+		}
 
 		/// <summary>
 		/// the work to do with this Event, such as stop the game, slow down...
@@ -41,24 +44,42 @@ namespace Events {
 		/// </summary>
 		// virtual int Process() = 0;
 
-		MTO_FLOAT GetStartTime();
-		MTO_FLOAT GetLifeTime();
-		MTO_FLOAT GetTimeLeft();
+		MTO_FLOAT GetStartTime(){ return event->GetStartTime(); }
+		MTO_FLOAT GetLifeTime(){ return event->GetLifeTime(); }
+		MTO_FLOAT GetTimeLeft(){ return event->GetLifeTime() - currentTime; }
 
 		// 一定要每次都override!!
-		virtual string GetTypeName();
+		virtual string GetTypeName(){ return string("EventProcessor"); }
 		
 		template<typename U, typename V>
-		static bool CanCast(V* e);
+		static bool CanCast(V* e) {
+			if (U* t = dynamic_cast< U* >(e)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 		template<typename U, typename V>
-		static U* Cast(V* e);
+		static U* Cast(V* e) {
+			return dynamic_cast< U* >(e);
+		}
 
 		template<typename U>
-		bool CanCast();
+		bool CanCast() {
+			if (U* t = dynamic_cast< U* >(this)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 		template<typename U>
-		U* Cast();
+		U* Cast() {
+			return dynamic_cast< U* >(this);
+		}
 
 
 	protected:

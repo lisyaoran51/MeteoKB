@@ -52,7 +52,13 @@ namespace Algorithms{
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
 		///	</summary>
-		virtual int Generate(Map* m, EventProcessor<Event>* em);
+		virtual int Generate(Map* m, EventProcessor<Event>* em) {
+			if (em->CanCast<EffectMapper<T>>()) {
+				return ImplementGenerate(m, em->Cast<EffectMapper<T>>());
+			}
+			// TODO: throw error or not?
+			return -1;
+		}
 
 	protected:
 		/// <summary>

@@ -13,7 +13,9 @@ MtoObject::MtoObject() : RegisterType("MtoObject")
 }
 
 
-
+/*
+ * 因為template不能放在cpp裡面，改放header
+ *
 template<typename T>
 T * MtoObject::Cast(MtoObject * o) {
 	if (typeid(T*) == typeid(o)) {
@@ -42,3 +44,6 @@ bool MtoObject::CanCast(U * o)
 		return false;
 	}
 }
+ *
+ * 因為template不能放在cpp裡面，改放header
+ */

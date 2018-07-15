@@ -52,15 +52,42 @@ namespace Format {
 
 	protected:
 
-		SmDecoderWithSection();
+		SmDecoderWithSection() : SmDecoder(), RegisterType("SmDecoderWithSection")
+		{
+		}
 
 		// 因為c++不支援enum直接轉string，所以要自己寫
 		map<T, string> sectionMap;
 
 		virtual int setSectionMap() = 0;
 
-		T GetSectionEnum(string section);
-		string GetSectionString(T section);
+		T GetSectionEnum(string section) {
+			// 如果還沒註冊，先註冊
+			if (sectionMap.size() == 0)
+				setSectionMap();
+
+			typename map<T, string>::iterator i;
+
+			for (i = sectionMap.begin(); i != sectionMap.end(); i++)
+			{
+				if (i->second == section)
+					return i->first;
+			}
+			return 0;
+		}
+
+		string GetSectionString(T section) {
+			// 如果還沒註冊，先註冊
+			if (sectionMap.size() == 0)
+				setSectionMap();
+
+			typename map<T, string>::iterator i = sectionMap.find(section);
+
+			if (i != sectionMap.end())
+				return sectionMap[section];
+			else
+				return "";
+		}
 
 	};
 
