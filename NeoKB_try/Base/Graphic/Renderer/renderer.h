@@ -90,7 +90,6 @@ namespace Renderers {
 		//int RegisterLedDriver(LedDriver* ld);
 	};
 
-	bool Renderer::initialized = Renderer::initialize();
 	
 
 

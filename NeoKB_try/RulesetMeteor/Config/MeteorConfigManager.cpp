@@ -5,6 +5,10 @@ using namespace Meteor::Config;
 using namespace Base::Config;
 
 
+MeteorConfigManager::MeteorConfigManager(): ConfigManager(), RegisterType("MeteorConfigManager")
+{
+}
+
 int MeteorConfigManager::InitializeDefault()
 {
 	Set(MeteorSetting::PatternGenerator, "MeteorPatternGenerator");

@@ -1,4 +1,4 @@
-#include"ConfigManager.h"
+#include "ConfigManager.h"
 
 
 using namespace Base::Config;
@@ -8,6 +8,8 @@ using namespace std;
 template<typename T>
 ConfigManager<T>::ConfigManager(): RegisterType("ConfigManager")
 {
+	// TODO: 照裡來說應該是每次建立時，強制執行InitializeDefault，但是在c++裡建構子不能執行virtual函式
+	// 這個問題要找別的方法解決
 	InitializeDefault();
 }
 

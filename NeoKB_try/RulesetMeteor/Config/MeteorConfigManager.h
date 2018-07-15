@@ -15,6 +15,10 @@ namespace Config{
 
 	class MeteorConfigManager: public ConfigManager<MeteorSetting> {
 
+	public:
+
+		MeteorConfigManager();
+
 	protected:
 
 		int InitializeDefault();

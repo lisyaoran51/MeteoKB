@@ -36,7 +36,7 @@ ConfigManager.o FrameworkConfigManager.o \
 Map.o renderer.o \
 Player.o Playfield.o Session.o Ruleset.o RulesetExecutor.o RulesetInfo.o \
 Scheduler.o Event.o EventProcessor.o EventProcessorMaster.o ControlPoint.o NoteControlPoint.o Effect.o EffectMapper.o MapAlgorithm.o MapGenerateAlgorithm.o MapShiftAlgorithm.o \
-Sheetmusic.o SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocesser.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
+Sheetmusic.o SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
 SmDecoder.o SimpleSmDecoder.o FileReader.o Pattern.o PatternGenerator.o \
 WS2812v10Renderer.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o \
 MeteorGame.o MeteorConfigManager.o MeteorPlayfield.o MeteorRuleset.o MeteorRulesetExecutor.o \

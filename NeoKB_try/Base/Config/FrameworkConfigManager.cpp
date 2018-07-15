@@ -3,7 +3,7 @@
 using namespace Base::Config;
 
 
-FrameworkConfigManager::FrameworkConfigManager(): RegisterType("FrameworkConfigManager")
+FrameworkConfigManager::FrameworkConfigManager(): ConfigManager(), RegisterType("FrameworkConfigManager")
 {
 }
 

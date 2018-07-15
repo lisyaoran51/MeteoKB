@@ -12,6 +12,8 @@ using namespace Devices;
 using namespace std;
 
 
+bool Renderer::initialized = Renderer::initialize();
+
 bool Renderer::initialize()
 {
 	//TODO: 改成讀文件 不要寫在code裡
