@@ -71,7 +71,7 @@ namespace Config{
 				typename map<T, int>::iterator iter = configStoreInt.find(lookup);
 				if (iter != configStoreInt.end())
 				{
-					*out = static_cast<int*>(configStoreInt[lookup]);
+					*out = static_cast<int>(configStoreInt[lookup]);
 					return true;
 				}
 			}
@@ -81,7 +81,7 @@ namespace Config{
 				typename map<T, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
 				if (iter != configStoreFloat.end())
 				{
-					*out = static_cast<MTO_FLOAT*>(configStoreFloat[lookup]);
+					*out = static_cast<MTO_FLOAT>(configStoreFloat[lookup]);
 					return true;
 				}
 			}
@@ -89,7 +89,7 @@ namespace Config{
 			if (typeid(U) == typeid(bool))
 			{
 				typename map<T, bool>::iterator iter = configStoreBool.find(lookup);
-				if (iter != static_cast<bool*>(configStoreBool.end()))
+				if (iter != static_cast<bool>(configStoreBool.end()))
 				{
 					*out = configStoreBool[lookup];
 					return true;
@@ -101,7 +101,7 @@ namespace Config{
 				typename map<T, string>::iterator iter = configStoreString.find(lookup);
 				if (iter != configStoreString.end())
 				{
-					*out = static_cast<string*>(configStoreString[lookup]);
+					*out = static_cast<string>(configStoreString[lookup]);
 					return true;
 				}
 			}

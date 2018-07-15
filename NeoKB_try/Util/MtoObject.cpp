@@ -13,6 +13,16 @@ MtoObject::MtoObject() : RegisterType("MtoObject")
 }
 
 
+template<typename T>
+T* MtoObject::Cast() {
+	if (typeid(T*) == typeid(this)) {
+		return static_cast<T*>(this);
+	}
+	else if (T* t = dynamic_cast< T* >(this))
+		return dynamic_cast< T* >(this);
+	return NULL;
+}
+
 /*
  * 因為template不能放在cpp裡面，改放header
  *
