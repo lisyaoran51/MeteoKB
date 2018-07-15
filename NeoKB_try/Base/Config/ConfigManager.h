@@ -89,9 +89,9 @@ namespace Config{
 			if (typeid(U) == typeid(bool))
 			{
 				typename map<T, bool>::iterator iter = configStoreBool.find(lookup);
-				if (iter != static_cast<bool>(configStoreBool.end()))
+				if (iter != configStoreBool.end())
 				{
-					*out = configStoreBool[lookup];
+					*out = static_cast<bool>(configStoreBool[lookup]);
 					return true;
 				}
 			}
