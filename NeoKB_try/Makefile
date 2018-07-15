@@ -51,7 +51,7 @@ Cachable.o ChildAddable.o HasParent.o Loadable.o LoadStateHandler.o
 all:$(TARGET)
 
 $(TARGET): $(OBJS) 
-	$(CC) $(OBJS) -o $@ 
+	$(CC) $(OBJS) -v -o $@ 
 	
 .c.o:
 	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 	
