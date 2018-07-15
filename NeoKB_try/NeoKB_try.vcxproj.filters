@@ -273,9 +273,6 @@
     <ClCompile Include="Base\Scheduler\Event\Effect\Effect.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Sheetmusic\Sheetmusic.cpp">
-      <Filter>來源檔案\Base\Sheetmusic</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Sheetmusic\SheetmusicConverter.cpp">
       <Filter>來源檔案\Base\Sheetmusic</Filter>
     </ClCompile>
@@ -284,9 +281,6 @@
     </ClCompile>
     <ClCompile Include="Base\Play\Playfield.cpp">
       <Filter>來源檔案\Base\Play</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Scheduler\Event\EventProcessor.cpp">
-      <Filter>來源檔案\Base\Schedulers\Events</Filter>
     </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\Effect\EffectMapper.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\Effects</Filter>
@@ -317,9 +311,6 @@
     </ClCompile>
     <ClCompile Include="RulesetMeteor\Sheetmusic\MeteorSheetmusicConverter.cpp">
       <Filter>來源檔案\RulesetMeteor\Sheetmusic</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapAlgorithm.cpp">
-      <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
     </ClCompile>
     <ClCompile Include="Base\Game.cpp">
       <Filter>來源檔案\Base</Filter>
@@ -393,9 +384,6 @@
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffect.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapShiftAlgorithm.cpp">
-      <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
-    </ClCompile>
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\ExplodeMapAlgorithm.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects\MapAlgorithms</Filter>
     </ClCompile>
@@ -404,9 +392,6 @@
     </ClCompile>
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\Algorithm\GlowLineMapAlgorithm.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects\MapAlgorithms</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Scheduler\Event\Effect\Algorithm\MapGenerateAlgorithm.cpp">
-      <Filter>來源檔案\Base\Schedulers\Events\Effects\Algorithms</Filter>
     </ClCompile>
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\FallEffectMapper.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>

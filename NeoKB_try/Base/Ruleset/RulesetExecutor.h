@@ -83,7 +83,7 @@ namespace Rulesets {
 		/// <summary>
 		/// load入遊戲狀態
 		/// </summary>
-		int load(FrameworkConfigManager* m) {
+		int load(FrameworkConfigManager* f) {
 			// 取pattern generator的名字
 			string pgName;
 

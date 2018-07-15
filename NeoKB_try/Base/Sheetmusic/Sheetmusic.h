@@ -37,25 +37,66 @@ namespace Sheetmusics {
 
 	public:
 		
-		Sm(Sm<T>* sm = NULL);
+		Sm(Sm<T>* sm = NULL) {
+			if (sm) {
+				// TODO: 應該是要附置一份，而不是直接指過去
+				SetSmInfo(sm->GetSmInfo());
+				SetSmMetadata(sm->GetSmMetadata());
+				SetEvents(sm->GetEvents());
+				SetRulesetInfo(sm->GetRulesetInfo());
+			}
+			else {
+				SetSmInfo(new SmInfo());
+				SetSmMetadata(new SmMetadata());
+				SetEvents(new vector<T*>());
+				// SetRulesetInfo
+			}
+		}
 
-		~Sm();
+		~Sm() {
+			delete smInfo;
+			delete smMetadata;
+			delete events;
+			delete rulesetInfo;
+		}
 
-		int SetSmInfo(SmInfo* si);
+		int SetSmInfo(SmInfo* si) {
+			smInfo = si;
+			return 0;
+		}
 
-		SmInfo* GetSmInfo();
+		SmInfo* GetSmInfo() {
+			return smInfo;
+		}
 
-		int SetSmMetadata(SmMetadata* sm);
+		int SetSmMetadata(SmMetadata* sm) {
+			smMetadata = sm;
+			return 0;
+		}
 
-		SmMetadata* GetSmMetadata();
+		SmMetadata* GetSmMetadata() {
+			return smMetadata;
+		}
 
-		int SetEvents(vector<T*>* e);
+		int SetEvents(vector<T*>* e) {
+			events = e;
+			// TODO: sort
+			sort(e->begin(), e->end());
+			return 0;
+		}
 
-		vector<T*>* GetEvents();
+		vector<T*>* GetEvents() {
+			return events;
+		}
 
-		int SetRulesetInfo(RulesetInfo* r);
+		int SetRulesetInfo(RulesetInfo* r) {
+			rulesetInfo = r;
+			return 0;
+		}
 
-		RulesetInfo* GetRulesetInfo();
+		RulesetInfo* GetRulesetInfo() {
+			return rulesetInfo;
+		}
 
 	};
 

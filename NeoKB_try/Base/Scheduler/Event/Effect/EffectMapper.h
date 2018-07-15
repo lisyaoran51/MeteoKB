@@ -57,7 +57,7 @@ namespace Effects {
 			&effect = (T**)&event;
 		}
 
-		virtual int Elapse(MTO_FLOAT elaspedTime) {
+		virtual int Elapse(MTO_FLOAT elapsedTime) {
 
 			if (!lightMap)
 				throw runtime_error("int EffectMapper::Process() : no map registered!");
