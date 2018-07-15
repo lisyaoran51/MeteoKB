@@ -20,10 +20,12 @@ namespace Config{
 	template<typename T>
 	class ConfigManager: public MtoObject {
 
-		typename map<T, int> configStoreInt;
-		typename map<T, MTO_FLOAT> configStoreFloat;
-		typename map<T, bool> configStoreBool;
-		typename map<T, string> configStoreString;
+		typedef T Setting;
+
+		map<Setting, int> configStoreInt;
+		map<Setting, MTO_FLOAT> configStoreFloat;
+		map<Setting, bool> configStoreBool;
+		map<Setting, string> configStoreString;
 
 	public:
 
@@ -68,7 +70,7 @@ namespace Config{
 		bool Get(T lookup, U* out) {
 			if (typeid(U) == typeid(int))
 			{
-				typename map<T, int>::iterator iter = configStoreInt.find(lookup);
+				typename map<Setting, int>::iterator iter = configStoreInt.find(lookup);
 				if (iter != configStoreInt.end())
 				{
 					*out = configStoreInt[lookup];
@@ -78,7 +80,7 @@ namespace Config{
 
 			if (typeid(U) == typeid(MTO_FLOAT))
 			{
-				typename map<T, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
+				typename map<Setting, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
 				if (iter != configStoreFloat.end())
 				{
 					*out = configStoreFloat[lookup];
@@ -88,7 +90,7 @@ namespace Config{
 
 			if (typeid(U) == typeid(bool))
 			{
-				typename map<T, bool>::iterator iter = configStoreBool.find(lookup);
+				typename map<Setting, bool>::iterator iter = configStoreBool.find(lookup);
 				if (iter != configStoreBool.end())
 				{
 					*out = configStoreBool[lookup];
@@ -98,7 +100,7 @@ namespace Config{
 
 			if (typeid(U) == typeid(string))
 			{
-				typename map<T, string>::iterator iter = configStoreString.find(lookup);
+				typename map<Setting, string>::iterator iter = configStoreString.find(lookup);
 				if (iter != configStoreString.end())
 				{
 					*out = configStoreString[lookup];
