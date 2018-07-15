@@ -1,5 +1,6 @@
 #include "MtoObject.h"
 
+#include <typeinfo>
 
 
 using namespace Util;
