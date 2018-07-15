@@ -30,7 +30,7 @@ namespace Util {
 		typedef function<TBase*(void)> MtoFunc;
 		//typename function<TBase*(void)> aaaa;
 
-		typename map<string, MtoFunc> creators;
+		map<string, MtoFunc> creators;
 
 		template<typename T>
 		T* create();
