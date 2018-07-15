@@ -27,7 +27,7 @@ template<typename TBase>
 TBase* InstanceCreator<TBase>::CreateInstance(string typeName)
 {
 
-	map<string, MtoFunc>::iterator iter = creators.find(typeName);
+	typename map<string, MtoFunc>::iterator iter = creators.find(typeName);
 	if (iter != creators.end())
 	{
 		return creators[typeName]();
@@ -38,7 +38,7 @@ template<typename TBase>
 template<typename T>
 T* InstanceCreator<TBase>::CreateInstanceWithT(string typeName)
 {
-	map<string, MtoFunc>::iterator iter = creators.find(typeName);
+	typename map<string, MtoFunc>::iterator iter = creators.find(typeName);
 	if (iter != creators.end())
 	{
 		TBase* temp = creators[typeName]();
