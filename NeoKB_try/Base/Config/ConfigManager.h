@@ -20,10 +20,10 @@ namespace Config{
 	template<typename T>
 	class ConfigManager: public MtoObject {
 
-		map<T, int> configStoreInt;
-		map<T, MTO_FLOAT> configStoreFloat;
-		map<T, bool> configStoreBool;
-		map<T, string> configStoreString;
+		typename map<T, int> configStoreInt;
+		typename map<T, MTO_FLOAT> configStoreFloat;
+		typename map<T, bool> configStoreBool;
+		typename map<T, string> configStoreString;
 
 	public:
 
@@ -71,7 +71,7 @@ namespace Config{
 				typename map<T, int>::iterator iter = configStoreInt.find(lookup);
 				if (iter != configStoreInt.end())
 				{
-					*out = static_cast<int>(configStoreInt[lookup]);
+					*out = configStoreInt[lookup];
 					return true;
 				}
 			}
@@ -81,7 +81,7 @@ namespace Config{
 				typename map<T, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
 				if (iter != configStoreFloat.end())
 				{
-					*out = static_cast<MTO_FLOAT>(configStoreFloat[lookup]);
+					*out = configStoreFloat[lookup];
 					return true;
 				}
 			}
@@ -91,7 +91,7 @@ namespace Config{
 				typename map<T, bool>::iterator iter = configStoreBool.find(lookup);
 				if (iter != configStoreBool.end())
 				{
-					*out = static_cast<bool>(configStoreBool[lookup]);
+					*out = configStoreBool[lookup];
 					return true;
 				}
 			}
@@ -101,11 +101,10 @@ namespace Config{
 				typename map<T, string>::iterator iter = configStoreString.find(lookup);
 				if (iter != configStoreString.end())
 				{
-					*out = static_cast<string>(configStoreString[lookup]);
+					*out = configStoreString[lookup];
 					return true;
 				}
 			}
-
 			return false;
 		}
 

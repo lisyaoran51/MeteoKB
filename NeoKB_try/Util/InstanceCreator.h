@@ -68,7 +68,7 @@ namespace Util {
 			if (iter != creators.end())
 			{
 				TBase* temp = creators[typeName]();
-				T temp2 = temp->template Cast<T>();
+				T* temp2 = temp->template Cast<T>();
 				return temp2;
 			}
 
