@@ -78,6 +78,16 @@ namespace Config{
 				}
 			}
 
+			if (typeid(U) == typeid(string))
+			{
+				typename map<Setting, string>::iterator iter = configStoreString.find(lookup);
+				if (iter != configStoreString.end())
+				{
+					*out = configStoreString[lookup];
+					return true;
+				}
+			}
+
 			if (typeid(U) == typeid(MTO_FLOAT))
 			{
 				typename map<Setting, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
@@ -98,15 +108,7 @@ namespace Config{
 				}
 			}
 
-			if (typeid(U) == typeid(string))
-			{
-				typename map<Setting, string>::iterator iter = configStoreString.find(lookup);
-				if (iter != configStoreString.end())
-				{
-					*out = configStoreString[lookup];
-					return true;
-				}
-			}
+			
 			return false;
 		}
 
