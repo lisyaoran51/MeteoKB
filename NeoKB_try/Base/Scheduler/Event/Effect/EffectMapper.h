@@ -22,7 +22,7 @@ namespace Effects {
 
 	public:
 
-		EffectMapperInterface(int w, int h): EventProcessor<Event>()
+		EffectMapperInterface(): EventProcessor<Event>()
 		{
 		}
 
@@ -50,7 +50,7 @@ namespace Effects {
 
 	public:
 
-		EffectMapper(int w, int h) {
+		EffectMapper(int w, int h): EffectMapperInterface(){
 			width = w;
 			height = h;
 			// 把effect的功能打開，擺在effect
