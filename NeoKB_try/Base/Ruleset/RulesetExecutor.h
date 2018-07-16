@@ -87,7 +87,7 @@ namespace Rulesets {
 			// 取pattern generator的名字
 			string pgName;
 
-			if (!f->Get<string>(FrameworkSetting::PatternGenerator, &pgName))
+			if (!f->Get(FrameworkSetting::PatternGenerator, &pgName))
 				throw runtime_error("int RulesetExecutor<T>::load(FrameworkConfigManager*) : PatternGenerator not found in Setting.");
 
 			// 利用pattern generator的名字建立pattern generator

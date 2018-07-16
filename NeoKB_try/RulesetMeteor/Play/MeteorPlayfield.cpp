@@ -34,8 +34,8 @@ int MeteorPlayfield::load()
 
 int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 {
-	if(f->Get<int>(FrameworkSetting::StartPitch, (int*)&startPitch)){}
-	if(f->Get<int>(FrameworkSetting::Width, &pitchCount)){}
+	if(f->Get(FrameworkSetting::StartPitch, (int*)&startPitch)){}
+	if(f->Get(FrameworkSetting::Width, &pitchCount)){}
 
 
 	// 利用map algo的名字建立map algo
@@ -43,7 +43,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	string mapAlgoName;
 
 	// FallEffect map algo
-	if (m->Get<string>(MeteorSetting::FallMapAlgorithm, &mapAlgoName)) {
+	if (m->Get(MeteorSetting::FallMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 		
 		mapAlgo->LazyConstruct(width, height);
@@ -56,7 +56,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	mapAlgorithms["FallEffect"]->RegisterBufferMap(bufferMap);
 
 	// ExplodeEffect map algo
-	if (m->Get<string>(MeteorSetting::ExplodeMapAlgorithm, &mapAlgoName)) {
+	if (m->Get(MeteorSetting::ExplodeMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 		
 		mapAlgo->LazyConstruct(width, height);
@@ -69,7 +69,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	mapAlgorithms["ExplodeEffect"]->RegisterBufferMap(bufferMap);
 
 	// GlowLineEffect map algo
-	if (m->Get<string>(MeteorSetting::GlowLineMapAlgorithm, &mapAlgoName)) {
+	if (m->Get(MeteorSetting::GlowLineMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 
 		mapAlgo->LazyConstruct(width, height);

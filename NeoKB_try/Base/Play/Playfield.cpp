@@ -51,7 +51,7 @@ int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManage
 	updater = u;
 
 	int hwVersion;
-	if (f->Get<int>(FrameworkSetting::HardwareVersion, &hwVersion)) {
+	if (f->Get(FrameworkSetting::HardwareVersion, &hwVersion)) {
 		renderer = Renderer::GetRenderer(hwVersion);
 	}
 	else
@@ -59,8 +59,8 @@ int Playfield::load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManage
 	
 
 	// 根據遊戲大小，建一個map
-	if (f->Get<int>(FrameworkSetting::Width, &width) &&
-		f->Get<int>(FrameworkSetting::Height, &height))
+	if (f->Get(FrameworkSetting::Width, &width) &&
+		f->Get(FrameworkSetting::Height, &height))
 	{
 		lightMap = new Map(width, height);
 		bufferMap = new Map(width * 2, height * 2);

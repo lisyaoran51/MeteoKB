@@ -22,13 +22,13 @@ int MeteorPatternGenerator::load()
 int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 {
 	// TODO: throw error
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::FallSpeed, &fallSpeed));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::FallBrightness, &fallBrightness));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::ExplodeSpeed, &explodeSpeed));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::ExplodeBrightness, &explodeBrightness));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::GlowLineSpeed, &glowLineSpeed));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::GlowLineDuration, &glowLineDuration));
-	if( mcf->Get<MTO_FLOAT>(MeteorSetting::GlowLineBrightness, &glowLineBrightness));
+	if( mcf->Get(MeteorSetting::FallSpeed, &fallSpeed));
+	if( mcf->Get(MeteorSetting::FallBrightness, &fallBrightness));
+	if( mcf->Get(MeteorSetting::ExplodeSpeed, &explodeSpeed));
+	if( mcf->Get(MeteorSetting::ExplodeBrightness, &explodeBrightness));
+	if( mcf->Get(MeteorSetting::GlowLineSpeed, &glowLineSpeed));
+	if( mcf->Get(MeteorSetting::GlowLineDuration, &glowLineDuration));
+	if( mcf->Get(MeteorSetting::GlowLineBrightness, &glowLineBrightness));
 
 	return 0;
 }

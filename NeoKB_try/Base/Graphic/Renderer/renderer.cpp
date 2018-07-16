@@ -56,7 +56,7 @@ int Renderer::load(Updater * u, FrameworkConfigManager* f)
 
 	u->RegisterTask(bind((int(Renderer::*)(MTO_FLOAT))&Renderer::Elapse, this, placeholders::_1));
 
-	if (!f->Get<MTO_FLOAT>(FrameworkSetting::FrameRate, &frameRate))
+	if (!f->Get(FrameworkSetting::FrameRate, &frameRate))
 		throw runtime_error("int Renderer::load(Updater*, FrameworkConfigManager*) : FrameRate not found in Setting.");
 
 	frameLength = MTO_FLOAT(1) / frameRate;

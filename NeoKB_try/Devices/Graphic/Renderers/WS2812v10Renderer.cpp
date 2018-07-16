@@ -24,10 +24,10 @@ int WS2812v10Renderer::load()
 
 int WS2812v10Renderer::load(FrameworkConfigManager * f)
 {
-	if (f->Get<int>(FrameworkSetting::Width, &width)) {}
-	if (f->Get<int>(FrameworkSetting::StartPitch, &startPitch)) {}
-	if (f->Get<int>(FrameworkSetting::Height, &height)) {}
-	if (f->Get<int>(FrameworkSetting::BlackKeyHeight, &blackKeyHeight)) {}
+	if (f->Get(FrameworkSetting::Width, &width)) {}
+	if (f->Get(FrameworkSetting::StartPitch, &startPitch)) {}
+	if (f->Get(FrameworkSetting::Height, &height)) {}
+	if (f->Get(FrameworkSetting::BlackKeyHeight, &blackKeyHeight)) {}
 
 	
 	int arraySize = 0;
