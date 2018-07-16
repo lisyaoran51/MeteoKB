@@ -59,7 +59,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
-		MapAlgorithm() {
+		MapAlgorithm(): RegisterType("MapAlgorithm") {
 			constructed = false;
 		}
 
