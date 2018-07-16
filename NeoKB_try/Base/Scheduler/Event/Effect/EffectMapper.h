@@ -54,7 +54,7 @@ namespace Effects {
 			width = w;
 			height = h;
 			// 把effect的功能打開，擺在effect
-			&effect = (T**)&event;
+			effect = dynamic_cast<T*>(event);
 		}
 
 		virtual int Elapse(MTO_FLOAT elapsedTime) {
