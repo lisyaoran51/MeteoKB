@@ -55,7 +55,7 @@ namespace Rulesets {
 		int playfieldLoad() {
 
 			// 把Event轉成Event processor擺進去playfield裡
-			for (int i = 0; i < sm->events->size(); i++) {
+			for (int i = 0; i < sm->GetEvents()->size(); i++) {
 
 				EventProcessor<Event>* ep = getEventProcessor(sm->GetEvents()->at(i));
 
