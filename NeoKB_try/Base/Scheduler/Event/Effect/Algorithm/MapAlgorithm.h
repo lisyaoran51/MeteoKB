@@ -166,7 +166,7 @@ namespace Algorithms{
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
 		virtual int ImplementDraw(Map* m, EffectMapper<T>* em) {
-			if (!bufferMap->clear)
+			if (!bufferMap->IsClear())
 				bufferMap->Reset();
 
 			genAlgo->Generate(bufferMap, em);
