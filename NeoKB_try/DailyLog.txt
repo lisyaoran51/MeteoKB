@@ -281,3 +281,5 @@
 7/15
 	最後link不出來，好像是因為template不可以放在cpp?
 	http://www.cplusplus.com/forum/beginner/143965/
+
+	config那邊不可以寫判斷型態再回，compile不會過

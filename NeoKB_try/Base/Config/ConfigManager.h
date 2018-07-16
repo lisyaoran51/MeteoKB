@@ -63,52 +63,66 @@ namespace Config{
 		}
 
 		// 這個寫法不能判斷是否有資料在map裡
-		//template<typename U>
-		//U Get(T lookup);
+		// template<typename U>
+		// U Get(T lookup);
 
-		template<typename U>
-		bool Get(T lookup, U* out) {
-			if (typeid(U) == typeid(int))
-			{
-				typename map<Setting, int>::iterator iter = configStoreInt.find(lookup);
-				if (iter != configStoreInt.end())
-				{
-					*out = dynamic_cast<U>(configStoreInt[lookup]);
-					return true;
-				}
-			}
+		/// <summary>
+		/// 用來get設定的內容，因為c++不允許不是先確定型態就直接塞數值進去，所以把get分成4個函示
+		/// </summary>
+		bool Get(T lookup, int* out) {
 
-			if (typeid(U) == typeid(MTO_FLOAT))
+			typename map<Setting, int>::iterator iter = configStoreInt.find(lookup);
+			if (iter != configStoreInt.end())
 			{
-				typename map<Setting, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
-				if (iter != configStoreFloat.end())
-				{
-					*out = dynamic_cast<U>(configStoreFloat[lookup]);
-					return true;
-				}
-			}
-
-			if (typeid(U) == typeid(bool))
-			{
-				typename map<Setting, bool>::iterator iter = configStoreBool.find(lookup);
-				if (iter != configStoreBool.end())
-				{
-					*out = dynamic_cast<U>(configStoreBool[lookup]);
-					return true;
-				}
-			}
-
-			if (typeid(U) == typeid(string))
-			{
-				typename map<Setting, string>::iterator iter = configStoreString.find(lookup);
-				if (iter != configStoreString.end())
-				{
-					*out = dynamic_cast<U>(configStoreString[lookup]);
-					return true;
-				}
+				*out = configStoreInt[lookup];
+				return true;
 			}
 			return false;
 		}
+
+		/// <summary>
+		/// 用來get設定的內容，因為c++不允許不是先確定型態就直接塞數值進去，所以把get分成4個函示
+		/// </summary>
+		bool Get(T lookup, MTO_FLOAT* out) {
+
+			typename map<Setting, MTO_FLOAT>::iterator iter = configStoreFloat.find(lookup);
+			if (iter != configStoreFloat.end())
+			{
+				*out = configStoreFloat[lookup];
+				return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// 用來get設定的內容，因為c++不允許不是先確定型態就直接塞數值進去，所以把get分成4個函示
+		/// </summary>
+		bool Get(T lookup, bool* out) {
+
+			typename map<Setting, bool>::iterator iter = configStoreBool.find(lookup);
+			if (iter != configStoreBool.end())
+			{
+				*out = configStoreBool[lookup];
+				return true;
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// 用來get設定的內容，因為c++不允許不是先確定型態就直接塞數值進去，所以把get分成4個函示
+		/// </summary>
+		bool Get(T lookup, string* out) {
+
+			typename map<Setting, string>::iterator iter = configStoreString.find(lookup);
+			if (iter != configStoreString.end())
+			{
+				*out = configStoreString[lookup];
+				return true;
+			}
+			return false;
+		}
+
+
 
 	protected:
 
