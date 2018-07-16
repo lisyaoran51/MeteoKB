@@ -73,7 +73,7 @@ namespace Format {
 				if (i->second == section)
 					return i->first;
 			}
-			return 0;
+			return static_cast<T>(0);
 		}
 
 		string GetSectionString(T section) {
