@@ -74,8 +74,7 @@ int Map::Set(int x, int y, int v)
 
 }
 
-uint8_t Map::
-(int x, int y)
+uint8_t Map::Get(int x, int y)
 {
 	return matrix[x][y];
 }
