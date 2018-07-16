@@ -50,6 +50,13 @@ namespace Effects {
 
 	public:
 
+		/// <summary>
+		/// 這個建構子不是用來執行的，指示用來給TConstraint來確認繼承關係用
+		///	</summary>
+		EffectMapper() : EffectMapperInterface() {
+			throw logic_error("EffectMapper() : This constructor is only for compile-time assurance. Not available to execute.");
+		}
+
 		EffectMapper(int w, int h): EffectMapperInterface(){
 			width = w;
 			height = h;

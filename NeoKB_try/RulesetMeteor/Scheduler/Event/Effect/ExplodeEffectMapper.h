@@ -17,6 +17,13 @@ namespace Effects {
 
 	public:
 
+		/// <summary>
+		/// 這個建構子不是用來執行的，指示用來給TConstraint來確認繼承關係用
+		///	</summary>
+		ExplodeEffectMapper() : EffectMapper() {
+			throw logic_error("ExplodeEffectMapper() : This constructor is only for compile-time assurance. Not available to execute.");
+		}
+
 		ExplodeEffectMapper(int w, int h);
 
 	};
