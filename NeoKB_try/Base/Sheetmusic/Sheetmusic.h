@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <algorithm>    // std::sort
 #include "../../Util/TemplateConstraint.h"
 #include "SheetmusicInfo.h"
 #include "SheetmusicMetadata.h"
