@@ -11,7 +11,7 @@ Event::Event(const Event* e) {
 
 Event::Event()
 {
-	throw runtime_error("int Event::Event : 這個建構函式是用來做template constraint用的，不可以實際執行。");
+	throw logic_error("int Event::Event : 這個建構函式是用來做template constraint用的，不可以實際執行。");
 }
 
 Event::Event(MTO_FLOAT s, MTO_FLOAT l)

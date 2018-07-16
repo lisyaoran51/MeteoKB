@@ -3,6 +3,11 @@
 
 using namespace Base::Schedulers::Events::Effects;
 
+
+Effect::Effect(): Event() {
+	throw logic_error("Effect() : This constructor is only for compile-time assurance. Not available to execute.");
+}
+
 Effect::Effect(const Effect* e): Event(e) {
 	brightness = e->brightness;
 	speed = e->speed;
