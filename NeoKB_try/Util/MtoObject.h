@@ -37,6 +37,8 @@ namespace Util {
 
 		MtoObject();
 
+		virtual ~MtoObject() = default;
+
 		/// <summary>
 		/// 類似java裡的 (object) as (class)，一種轉型方式
 		/// </summary>
