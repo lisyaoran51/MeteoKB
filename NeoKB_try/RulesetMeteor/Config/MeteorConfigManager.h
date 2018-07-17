@@ -19,6 +19,8 @@ namespace Config{
 
 		MeteorConfigManager();
 
+		virtual ~MeteorConfigManager() = default;
+
 	protected:
 
 		int InitializeDefault();

@@ -42,6 +42,8 @@ namespace Update {
 
 		Updater();
 
+		virtual ~Updater() = default;
+
 		int RegisterTask(function<int(MTO_FLOAT)> t);
 
 		// int RemoveTask(MTO_FUNC_POINTER t);

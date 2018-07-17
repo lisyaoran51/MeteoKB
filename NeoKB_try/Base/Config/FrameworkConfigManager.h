@@ -18,6 +18,8 @@ namespace Config{
 
 		FrameworkConfigManager();
 
+		virtual ~FrameworkConfigManager() = default;
+
 	protected:
 
 		int InitializeDefault();
