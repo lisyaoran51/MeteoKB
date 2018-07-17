@@ -28,7 +28,7 @@ namespace Update {
 	/// <summary>
 	/// to update current time for every object who need to update.
 	/// <summary>
-	class Updater: MtoObject{
+	class Updater: public MtoObject{
 
 		system_clock::time_point currentTime;
 
