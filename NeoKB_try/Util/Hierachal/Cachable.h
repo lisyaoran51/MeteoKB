@@ -30,6 +30,8 @@ namespace Hierachal{
 
 		Cachable();
 
+		virtual ~Cachable() = default;
+
 		template<typename T>
 		T* GetCache(string type) {
 

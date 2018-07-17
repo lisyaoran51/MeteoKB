@@ -25,6 +25,8 @@ namespace Hierachal {
 
 		ChildAddable();
 
+		virtual ~ChildAddable() = default;
+
 		/// <summary>
 		/// when add child, automatically call every privateLoad() to load in parent's configuration
 		/// </summary>

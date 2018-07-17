@@ -22,6 +22,8 @@ namespace Hierachal {
 
 		HasParent();
 
+		virtual ~HasParent() = default;
+
 		bool hasParent();
 
 		HasParent* GetParent();

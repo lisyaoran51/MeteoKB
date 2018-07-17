@@ -287,3 +287,6 @@
 7/17
 	互相參考的解法
 	http://www.cplusplus.com/forum/general/19494/
+
+	無法cast到child class的問題
+	https://stackoverflow.com/questions/15114093/getting-source-type-is-not-polymorphic-when-trying-to-use-dynamic-cast

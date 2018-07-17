@@ -58,6 +58,8 @@ namespace Hierachal{
 
 		Loadable();
 
+		virtual ~Loadable() = default;
+
 		/// <summary>
 		/// call every parent class's private load() function
 		/// 1. take out all loaders and all parameters
