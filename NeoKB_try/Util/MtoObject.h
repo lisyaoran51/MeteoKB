@@ -45,7 +45,7 @@ namespace Util {
 		template<typename T>
 		static T* Cast(MtoObject* o) {
 			if (typeid(T*) == typeid(o)) {
-				return static_cast<T*>(o);
+				return dynamic_cast<T*>(o);
 			}
 			else if (T* t = dynamic_cast< T* >(o))
 				return dynamic_cast< T* >(o);

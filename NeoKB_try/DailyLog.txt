@@ -290,3 +290,6 @@
 
 	無法cast到child class的問題
 	https://stackoverflow.com/questions/15114093/getting-source-type-is-not-polymorphic-when-trying-to-use-dynamic-cast
+
+	downcast到virtual class的方法
+	https://stackoverflow.com/questions/3747066/c-cannot-convert-from-base-a-to-derived-type-b-via-virtual-base-a
