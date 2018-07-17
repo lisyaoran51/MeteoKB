@@ -1,6 +1,7 @@
 #include "RulesetInfo.h"
 #include "../../Util/InstanceCreator.h"
 #include "../../Util/MtoObject.h"
+#include "Ruleset.h"
 
 
 using namespace Base::Rulesets;

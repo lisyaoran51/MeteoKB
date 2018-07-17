@@ -283,3 +283,7 @@
 	http://www.cplusplus.com/forum/beginner/143965/
 
 	config那邊不可以寫判斷型態再回，compile不會過
+
+7/17
+	互相參考的解法
+	http://www.cplusplus.com/forum/general/19494/
