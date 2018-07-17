@@ -73,7 +73,7 @@ namespace Util {
 			}
 
 			// TODO: 噴錯誤？
-			Log(logERROR) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
+			Log(LogLevel::LogERROR) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
 
 			throw runtime_error("int InstanceCreator::CreateInstanceWithT() : 出現錯誤，未找到該typename的建立者");
 			return NULL;
