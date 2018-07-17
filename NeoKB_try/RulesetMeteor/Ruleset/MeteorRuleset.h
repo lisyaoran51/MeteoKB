@@ -10,7 +10,15 @@ namespace Rulesets{
 
 	class MeteorRuleset: public Ruleset{
 
+		bool constructed;
+
 	public:
+
+		MeteorRuleset();
+
+		MeteorRuleset(RulesetInfo* r);
+
+		virtual int LazyConstruct(RulesetInfo* r);
 
 		RulesetExecutor<Event>* CreateRulesetExecutor(WorkingSm* sm);
 

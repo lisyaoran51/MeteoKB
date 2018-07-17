@@ -3,6 +3,24 @@
 
 using namespace Meteor::Rulesets;
 
+MeteorRuleset::MeteorRuleset() : RegisterType("Ruleset")
+{
+	constructed = false;
+}
+
+MeteorRuleset::MeteorRuleset(RulesetInfo * r): RegisterType("Ruleset")
+{
+	rulesetInfo = r;
+	constructed = true;
+}
+
+int MeteorRuleset::LazyConstruct(RulesetInfo * r)
+{
+	Ruleset::LazyConstruct(r);
+	constructed = true;
+	return 0;
+}
+
 RulesetExecutor<Event>* MeteorRuleset::CreateRulesetExecutor(WorkingSm * sm)
 {
 	InstanceCreator<MtoObject>& iCreator = InstanceCreator<MtoObject>::GetInstance();

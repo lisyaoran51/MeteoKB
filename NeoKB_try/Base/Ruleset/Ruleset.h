@@ -19,10 +19,18 @@ namespace Rulesets {
 	///	</summary>
 	class Ruleset: public MtoObject
 	{
+		/// <summary>
+		/// 判斷這個物建有沒有被建構，建構後才可使用
+		///	</summary>
+		bool constructed;
 
 	public:
 
+		Ruleset();
+
 		Ruleset(RulesetInfo* r);
+
+		virtual int LazyConstruct(RulesetInfo* r);
 
 		~Ruleset();
 

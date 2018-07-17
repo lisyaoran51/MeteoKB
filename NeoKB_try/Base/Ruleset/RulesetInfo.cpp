@@ -16,6 +16,7 @@ Ruleset* RulesetInfo::CreateRuleset()
 {
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 	Ruleset* r = iCreator.CreateInstanceWithT<Ruleset>(name);
+	r->LazyConstruct(this);
 	return r;
 }
 
