@@ -35,23 +35,15 @@ int main(int argc, char *argv[]) {
 	// 1. cache session
 	// TODO: 之後把session改成我要的
 
-	Session* session = new Session();
-
 	SmManager* smManager = new SmManager();
 
-	smManager->Import(new vector<string>{"Resources/Sms"});
+	smManager->Import(new vector<string>{ "Resources/Sms" });
 
-	session->Cache(new RulesetInfo("Meteor"));
-
-	session->Cache<SmManager>(smManager);
-
-	session->Async();
+	Session* session = new Session(new RulesetInfo("Meteor"), smManager);
 
 	game->Cache<Session>(session);
 
-
 	game->Async();
-
 
 	game->Run();
 

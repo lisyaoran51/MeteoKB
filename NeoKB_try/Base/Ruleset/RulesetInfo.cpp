@@ -26,7 +26,7 @@ int RulesetInfo::GetId()
 	return id;
 }
 
-string RulesetInfo::GetName()
+string RulesetInfo::GetTypeName()
 {
 	return name;
 }

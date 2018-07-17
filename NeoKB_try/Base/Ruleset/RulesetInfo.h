@@ -33,7 +33,7 @@ namespace Rulesets {
 
 		int GetId();
 
-		string GetName();
+		string GetTypeName();
 
 
 	};

@@ -15,13 +15,13 @@ namespace Play {
 
 	class Session : public ChildAddable {
 
-		int load();
-
-		int load(RulesetInfo* r, SmManager* s);
+		//int load();
+		
+		//int load(RulesetInfo* r, SmManager* s);
 
 	public:
 
-		Session();
+		Session(RulesetInfo* r, SmManager* s);
 
 		RulesetInfo* GetRulesetInfo();
 
