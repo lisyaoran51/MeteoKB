@@ -48,6 +48,11 @@ namespace Rulesets {
 	{
 
 		/// <summary>
+		/// 判斷這個物建有沒有被建構，建構後才可使用
+		///	</summary>
+		bool constructed;
+
+		/// <summary>
 		/// jobs:
 		/// 1. find the objects in sm?
 		/// 2. add them to playfield?
@@ -135,12 +140,16 @@ namespace Rulesets {
 		RulesetExecutor(): RegisterType("RulesetExecutor") {
 			// 註冊private load (c++才需要)
 			registerLoad(bind(static_cast<int(RulesetExecutor<T>::*)(void)>(&RulesetExecutor<T>::load), this));
+			constructed = false;
 		}
 
-		int LazyConstruct(WorkingSm* w) {
+		virtual int LazyConstruct(WorkingSm* w) {
+
 			workingSm = w;
 
 			//mods = w->get_mods();
+
+			constructed = true;
 
 			return 0;
 		}
@@ -155,17 +164,6 @@ namespace Rulesets {
 		//vector<mod_t*> mods;
 
 		Playfield* playfield;
-
-		
-
-		// 移到playfield裡，因為這個是基本功能，不會隨規則變動
-		/*Scheduler* Scheduler;*/
-
-		// 移到playfield裡，因為這個是基本功能，不會隨規則變動
-		/*EventProcessorMaster* EventProcessorMaster;*/
-
-		// 移到playfield裡，因為這個是基本功能，不會隨規則變動
-		/*renderer_t* renderer;*/
 
 		vector<void*> on_judgement;
 

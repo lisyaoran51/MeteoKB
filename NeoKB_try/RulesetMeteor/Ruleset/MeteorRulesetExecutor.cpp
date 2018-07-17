@@ -44,6 +44,20 @@ MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecu
 
 	// 註冊private load (c++才需要)
 	registerLoad(bind(static_cast<int(MeteorRulesetExecutor::*)(void)>(&MeteorRulesetExecutor::load), this));
+	constructed = false;
+}
+
+int MeteorRulesetExecutor::LazyConstruct(WorkingSm * w)
+{
+	RulesetExecutor::LazyConstruct(w);
+	constructed = true;
+	return 0;
+}
+
+int MeteorRulesetExecutor::Elapse(MTO_FLOAT elapsedTime)
+{
+	// 之後可用來讀取輸入??先留著
+	return 0;
 }
 
 Playfield* MeteorRulesetExecutor::createPlayfield()

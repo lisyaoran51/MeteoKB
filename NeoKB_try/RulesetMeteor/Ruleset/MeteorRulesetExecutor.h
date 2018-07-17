@@ -12,6 +12,11 @@ namespace Rulesets {
 
 	class MeteorRulesetExecutor: public RulesetExecutor<Event>{
 
+		/// <summary>
+		/// 判斷這個物建有沒有被建構，建構後才可使用
+		///	</summary>
+		bool constructed;
+
 		///<summary>
 		/// 這個試做什麼用的
 		/// 在get event processor時，把這個event要用到的effect mapper擺進去???
@@ -29,6 +34,10 @@ namespace Rulesets {
 	public:
 
 		MeteorRulesetExecutor();
+
+		virtual int LazyConstruct(WorkingSm* w);
+
+		virtual int Elapse(MTO_FLOAT elapsedTime);
 
 	protected:
 

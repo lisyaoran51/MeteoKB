@@ -91,7 +91,6 @@ int ProgramInitializer::Initialize()
 
 	// Base/Play
 	iCreator.RegisterType<Player>("Player");
-	iCreator.RegisterType<Playfield>("Playfield");
 	iCreator.RegisterType<Session>("Session");
 
 	// Base/Scheduler
