@@ -31,16 +31,45 @@ namespace Hierachal{
 		Cachable();
 
 		template<typename T>
-		T* GetCache(string type);
+		T* GetCache(string type) {
+
+			MtoObject* o = getCache(type);
+
+			if (!o) {
+				// 沒找到
+
+				HasParent* h = GetParent();
+				if (!h)
+					return NULL;
+
+				Cachable* c = Cast<Cachable>(h);
+				return c->GetCache<T>(type);
+			}
+
+			T* to = Cast<T>(o);
+
+			if (!to)
+				throw invalid_argument("Cachable::GetCache<T>(string): cast to wrong class type.");
+
+			return to;
+		}
 
 		template<typename T>
-		int Cache(T* o);
+		int Cache(T* o) {
+			cache[o->GetTypeName()] = o;
+
+			return 0;
+		}
 
 		/// <summary>
 		/// 當要cache的物件是多型時，cache進去的型別名稱要先改回覆類別的名稱
 		/// </summary>
 		template<typename T>
-		int Cache(T* o, string typeName);
+		int Cache(T* o, string typeName) {
+			cache[typeName] = o;
+
+			return 0;
+		}
 
 	protected:
 
