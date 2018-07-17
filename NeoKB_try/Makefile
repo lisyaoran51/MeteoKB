@@ -44,7 +44,8 @@ ExplodeEffect.o ExplodeEffectMapper.o FallEffect.o FallEffectMapper.o GlowLineEf
 ExplodeMapAlgorithm.o FallMapAlgorithm.o GlowLineMapAlgorithm.o \
 MeteorSheetmusicConverter.o MeteorPatternGenerator.o \
 FileSystem.o MtoObject.o ProgramInitializer.o \
-Cachable.o ChildAddable.o HasParent.o Loadable.o LoadStateHandler.o
+Cachable.o ChildAddable.o HasParent.o Loadable.o LoadStateHandler.o \
+Updater.o Updatable.o
 
 
 
