@@ -13,7 +13,7 @@ using namespace Util;
 
 int Game::load()
 {
-	log(logINFO) << "Game::load : 開始讀取遊戲，建立updater";
+	Log(LogLevel::LogINFO) << "Game::load : 開始讀取遊戲，建立updater";
 
 	// FrameworkConfigManager不該自己產生，應該是從外部cache
 	// Cache<FrameworkConfigManager>(new FrameworkConfigManager());

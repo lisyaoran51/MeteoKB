@@ -34,6 +34,7 @@ int Player::load()
 
 Player::Player(): RegisterType("Player"), ChildAddable()
 {
+	registerLoad(bind((int(Player::*)())&Player::load, this));
 }
 
 Base::Play::Player::~Player()

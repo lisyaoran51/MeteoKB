@@ -21,7 +21,7 @@ using namespace std;
 
 int Playfield::load()
 {
-	log(logINFO) << "Playfield::load() : 開始載入遊戲場景";
+	Log(LogLevel::LogINFO) << "Playfield::load() : 開始載入遊戲場景";
 
 	Scheduler* s = GetCache<Scheduler>("Scheduler");
 	if (!s)

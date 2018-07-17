@@ -16,31 +16,31 @@
 
 namespace Util {
 
-	enum loglevel_e
+	enum class LogLevel
 	{
-		logERROR, logWARNING, logINFO, logDEBUG, logDEBUG1, logDEBUG2, logDEBUG3, logDEBUG4
+		LogERROR, LogWARNING, LogINFO, LogDEBUG, LogDEBUG1, LogDEBUG2, LogDEBUG3, LogDEBUG4
 	};
 
-	class logIt
+	class LogIt
 	{
 	public:
-		logIt(loglevel_e _loglevel = logERROR) {
-			_buffer << _loglevel << " :"
+		LogIt(LogLevel _loglevel = LogLevel::LogERROR) {
+			_buffer << static_cast<int>(_loglevel) << " :"
 				<< std::string(
-					_loglevel > logDEBUG
-					? (_loglevel - logDEBUG) * 4
+					_loglevel > LogLevel::LogDEBUG
+					? (static_cast<int>(_loglevel) - static_cast<int>(LogLevel::LogDEBUG)) * 4
 					: 1
 					, ' ');
 		}
 
 		template <typename T>
-		logIt & operator<<(T const & value)
+		LogIt & operator<<(T const & value)
 		{
 			_buffer << value;
 			return *this;
 		}
 
-		~logIt()
+		~LogIt()
 		{
 			_buffer << std::endl;
 			// This is atomic according to the POSIX standard
@@ -52,11 +52,11 @@ namespace Util {
 		std::ostringstream _buffer;
 	};
 
-	extern loglevel_e loglevel;
+	extern LogLevel logLevel;
 
-#define log(level) \
-if (level > loglevel) ; \
-else logIt(level)
+#define Log(level) \
+if (level > logLevel) ; \
+else LogIt(level)
 
 }
 

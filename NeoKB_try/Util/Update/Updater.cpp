@@ -15,7 +15,7 @@ void Updater::update(MTO_FLOAT elapsedTime)
 	}
 }
 
-Updater::Updater()
+Updater::Updater(): MtoObject(), RegisterType("Updater")
 {
 	updateState = UpdateState::NotStarted;
 }

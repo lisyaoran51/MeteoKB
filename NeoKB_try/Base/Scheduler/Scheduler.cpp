@@ -19,7 +19,7 @@ int Scheduler::load()
 
 int Scheduler::load(Updater * u)
 {
-	log(logINFO) << "Scheduler::load(Updater*) : 將schedule任務註冊至updater";
+	Log(LogLevel::LogINFO) << "Scheduler::load(Updater*) : 將schedule任務註冊至updater";
 
 	u->RegisterTask(bind((int(Scheduler::*)(MTO_FLOAT))&Scheduler::Elapse, this, placeholders::_1));
 	return 0;

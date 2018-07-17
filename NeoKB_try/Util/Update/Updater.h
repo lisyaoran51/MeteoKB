@@ -5,9 +5,11 @@
 #include <vector>
 #include <chrono>
 #include"../MtoType.h"
+#include "../MtoObject.h"
 
 using namespace std::chrono;
 using namespace std;
+using namespace Util;
 
 
 
@@ -26,7 +28,7 @@ namespace Update {
 	/// <summary>
 	/// to update current time for every object who need to update.
 	/// <summary>
-	class Updater {
+	class Updater: MtoObject{
 
 		system_clock::time_point currentTime;
 
