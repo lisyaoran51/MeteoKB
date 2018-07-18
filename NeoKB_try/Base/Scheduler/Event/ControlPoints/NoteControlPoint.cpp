@@ -43,3 +43,8 @@ bool NoteControlPoint::IsWhiteKey()
 	}
 	return false;
 }
+
+Event* NoteControlPoint::Clone()
+{
+	return new NoteControlPoint(pitch, startTime, lifeTime);
+}

@@ -69,7 +69,6 @@ int Renderer::load(Updater * u, FrameworkConfigManager* f)
 Renderer::Renderer(): RegisterType("Renderer"), ChildAddable()
 {
 	registerLoad(bind((int(Renderer::*)())&Renderer::load, this));
-	initialized;
 }
 
 int Renderer::SetHardwareVersion(int hwVersion)
@@ -84,9 +83,10 @@ int Renderer::RegisterMap(Map * m)
 	return 0;
 }
 
-
 Renderer * Renderer::GetRenderer(int hwVersion)
 {
+	initialized;
+
 	string rendererName = renderers[hwVersion];
 
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();

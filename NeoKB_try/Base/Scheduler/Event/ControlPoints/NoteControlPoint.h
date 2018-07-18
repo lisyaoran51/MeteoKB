@@ -25,6 +25,8 @@ namespace ControlPoints {
 
 		bool IsWhiteKey();
 
+		virtual Event* Clone();
+
 	};
 
 
