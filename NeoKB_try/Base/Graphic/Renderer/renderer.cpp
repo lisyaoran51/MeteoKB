@@ -12,8 +12,8 @@ using namespace Devices;
 using namespace std;
 
 
-map<int, string> Renderer::renderers = {};
-bool Renderer::initialized = Renderer::initialize();
+map<int, string> Base::Graphic::Renderers::Renderer::renderers;
+bool Base::Graphic::Renderers::Renderer::initialized = Base::Graphic::Renderers::Renderer::initialize();
 
 bool Renderer::initialize()
 {

@@ -8,6 +8,7 @@
 
 using namespace Meteor::Sheetmusics::Patterns;
 using namespace Meteor::Config;
+using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers::Events::ControlPoints;
 using namespace Meteor::Schedulers::Events::Effects;
 
