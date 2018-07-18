@@ -35,6 +35,8 @@ namespace Rulesets {
 
 		MeteorRulesetExecutor();
 
+		virtual ~MeteorRulesetExecutor() = default;
+
 		virtual int LazyConstruct(WorkingSm* w);
 
 		virtual int Elapse(MTO_FLOAT elapsedTime);

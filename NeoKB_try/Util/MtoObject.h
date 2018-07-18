@@ -63,7 +63,14 @@ namespace Util {
 		}
 
 		template<typename T>
-		T* Cast();
+		T* Cast() {
+			if (typeid(T*) == typeid(this)) {
+				return static_cast<T*>(this);
+			}
+			else if (T* t = dynamic_cast< T* >(this))
+				return dynamic_cast< T* >(this);
+			return NULL;
+		}
 
 		/// <summary>
 		/// 類似java裡的 (object) as (class)，一種轉型方式

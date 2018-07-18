@@ -143,6 +143,8 @@ namespace Rulesets {
 			constructed = false;
 		}
 
+		virtual ~RulesetExecutor() = default;
+
 		virtual int LazyConstruct(WorkingSm* w) {
 
 			workingSm = w;

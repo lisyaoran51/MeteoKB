@@ -12,6 +12,7 @@ using namespace Devices;
 using namespace std;
 
 
+map<int, string> Renderer::renderers = {};
 bool Renderer::initialized = Renderer::initialize();
 
 bool Renderer::initialize()
