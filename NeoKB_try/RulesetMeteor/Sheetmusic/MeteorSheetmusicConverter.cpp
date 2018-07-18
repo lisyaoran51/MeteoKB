@@ -3,6 +3,7 @@
 #include "../../Base/Scheduler/Event/ControlPoints/NoteControlPoint.h"
 
 using namespace Meteor::Sheetmusics;
+using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers::Events::Effects;
 using namespace Base::Schedulers::Events::ControlPoints;
 

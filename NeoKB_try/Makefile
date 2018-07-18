@@ -10,8 +10,9 @@ Util:Util/Hierachal:Util/Update
 
 #INCLUDE =  
 
-INCLUDE = -IBase -IBase/Config -IBase/Graphic -IBase/Graphic/Map -IBase/Graphic/Renderer -IBase/Play:Base/Ruleset \
+INCLUDE = -IBase -IBase/Config -IBase/Graphic -IBase/Graphic/Map -IBase/Graphic/Renderer -IBase/Play -IBase/Ruleset \
 -IBase/Scheduler -IBase/Scheduler/Event -IBase/Scheduler/Event/ControlPoints -IBase/Scheduler/Event/Effect \
+-IBase/Sheetmusic -IBase/Sheetmusic/Pattern -IBase/Sheetmusic/IO -IBase/Sheetmusic/Format \
 -IRulesetMeteor -IRulesetMeteor/Config -IRulesetMeteor/Graphic -IRulesetMeteor/Graphic/Renderer \
 -IRulesetMeteor/Play -IRulesetMeteor/Scheduler/Event/Effect -IRulesetMeteor/Scheduler/Event/Effect/Algorithm \
 -IRulesetMeteor/Sheetmusic -IRulesetMeteor/Sheetmusic/Pattern \

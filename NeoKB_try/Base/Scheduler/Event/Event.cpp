@@ -63,19 +63,4 @@ Event * Event::Clone()
 	return new Event(this);
 }
 
-template<typename T>
-bool Event::CanCast()
-{
-	if (T* t = dynamic_cast< T* >(this)) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
-template<typename T>
-T * Event::Cast()
-{
-	return dynamic_cast< T* >(this);
-}

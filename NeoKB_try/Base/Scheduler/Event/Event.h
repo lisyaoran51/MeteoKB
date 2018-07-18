@@ -38,10 +38,21 @@ namespace Events {
 		virtual string GetTypeName();
 
 		template<typename T>
-		bool CanCast();
+		bool CanCast()
+		{
+			if (T* t = dynamic_cast< T* >(this)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 
 		template<typename T>
-		T* Cast();
+		T* Cast() 
+		{
+			return dynamic_cast< T* >(this);
+		}
 
 		virtual Event* Clone();
 
