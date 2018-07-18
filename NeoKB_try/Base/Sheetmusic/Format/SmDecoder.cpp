@@ -13,7 +13,7 @@ using namespace Util;
 */
 
 
-
+map<string, string> SmDecoder::decoders;
 
 SmDecoder::SmDecoder(): RegisterType("SmDecoder")
 {
