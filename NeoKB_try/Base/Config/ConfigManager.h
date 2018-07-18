@@ -1,7 +1,7 @@
 #ifndef CONFIG_MANAGER_H
 #define CONFIG_MANAGER_H
 
-#include"../../Util/MtoObject.h"
+#include"../../Util/Hierachal/Loadable.h"
 #include"../../Util/MtoType.h"
 #include<string>
 #include<map>
@@ -10,7 +10,7 @@
 #define CONFIG_PATH 
 
 
-using namespace Util;
+using namespace Util::Hierachal;
 using namespace std;
 
 
@@ -18,7 +18,7 @@ namespace Base {
 namespace Config{
 
 	template<typename T>
-	class ConfigManager: public MtoObject {
+	class ConfigManager: public Loadable {
 
 		typedef T Setting;
 
@@ -29,16 +29,17 @@ namespace Config{
 
 	public:
 
-		ConfigManager(): RegisterType("ConfigManager")
+		ConfigManager(): Loadable(), RegisterType("ConfigManager")
 		{
 			// TODO: 照裡來說應該是每次建立時，強制執行InitializeDefault，但是在c++裡建構子不能執行virtual函式
 			// 這個問題要找別的方法解決
-			InitializeDefault();
+			registerLoad(bind((int(ConfigManager<T>::*)())&ConfigManager<T>::load, this));
 		}
 
 		int Load() {
 			// 這個式要做什麼?
 			// 讀文件嗎?
+			InitializeDefault();
 			return 0;
 		}
 

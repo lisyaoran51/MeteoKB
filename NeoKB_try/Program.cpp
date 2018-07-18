@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
 	Game* game = new MeteorGame();
 
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
+	fConfigManager->Async();
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, "MeteorPatternGenerator");
 	fConfigManager->Set(FrameworkSetting::HardwareVersion, 10);
 	fConfigManager->Set(FrameworkSetting::Width, 12); //нnзя
