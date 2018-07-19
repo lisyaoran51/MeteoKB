@@ -35,6 +35,8 @@ SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 
 		getline(*stream, line);
 
+		LOG(LogLevel::Finer) << "SmDecoder* SmDecoder::GetDecoder(ifstream*) : read sm file [" << line << "].";
+
 	} while (!stream->eof() && line.empty());
 
 	if (!decoders.count(line)) {
