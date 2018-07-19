@@ -49,7 +49,7 @@ SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 	InstanceCreator<SmDecoder> &instance_creater =
 		InstanceCreator<SmDecoder>::GetInstance();
 
-	return instance_creater.CreateInstance(decoders[line]);
+	return instance_creater.CreateInstanceWithT<SmDecoder>(decoders[line]);
 }
 
 Sm<Event>* SmDecoder::Decode(ifstream * stream)
