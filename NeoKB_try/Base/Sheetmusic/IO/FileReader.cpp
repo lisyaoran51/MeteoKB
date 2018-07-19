@@ -70,5 +70,6 @@ vector<string>* FileReader::WhereEndWith(string s)
 	free(*fileNames);
 	delete fileNames;
 
+	LOG(LogLevel::Finer) << "FileReader::WhereEndWith : function ends.";
 	return files;
 }

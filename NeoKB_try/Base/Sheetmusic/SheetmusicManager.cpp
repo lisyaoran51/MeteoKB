@@ -61,11 +61,15 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 
 	for (int i = 0; i < smNames->size(); i++) {
 
+		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Getting stream of [" << smNames->at(i) << "].";
+
 		ifstream* stream = fileReader.GetStream(smNames->at(i));
 
 		// 每一個要用的decoder會在程式開始的時候註冊
+		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Getting decoder of [" << smNames->at(i) << "].";
 		SmDecoder* smDecoder = SmDecoder::GetDecoder(stream);
 
+		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Decode [" << smNames->at(i) << "] ...";
 		Sm<Event>* sm = smDecoder->Decode(stream);
 		sm->GetSmInfo()->path = smNames->at(i);
 
