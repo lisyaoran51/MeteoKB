@@ -17,7 +17,9 @@ using namespace Util;
 
 int Loadable::load()
 {
+	LOG(LogLevel::Fine) << "int Loadable::load() : [" << GetTypeName() << "] object is loading.";
 	for (int i = 0; i < loaders.size(); i++) {
+		LOG(LogLevel::Finer) << "int Loadable::load() : [" << GetTypeName() << "] object is loading #" << i << " loader function.";
 		loaders[i]();
 	}
 	return 0;
