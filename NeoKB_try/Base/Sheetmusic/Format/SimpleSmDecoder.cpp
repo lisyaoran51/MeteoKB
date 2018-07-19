@@ -258,6 +258,7 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
 	do {
 
 		getline(*stream, line);
+		LOG(LogLevel::Finer) << "int SimpleSmDecoder::parseFile(ifstream*, Sm<Event>*) : read line [" << line << "].";
 
 	} while (!stream->eof() && line.empty());
 
@@ -274,6 +275,8 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
     while (!stream->eof()) {
 		getline(*stream, line);
 
+		LOG(LogLevel::Finer) << "int SimpleSmDecoder::parseFile(ifstream*, Sm<Event>*) : read line [" << line << "].";
+
         if (line==" " || line.empty())
             continue;
 
@@ -287,7 +290,9 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
         }
 
         if (line.find("[") == 0 && line.rfind("]") == line.size() - 1) {
+
             section = GetSectionEnum(line.substr(1, line.size()-2));
+			LOG(LogLevel::Finer) << "int SimpleSmDecoder::parseFile(ifstream*, Sm<Event>*) : set section [" << section << "].";
             continue;
         }
 

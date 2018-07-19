@@ -69,6 +69,8 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Getting decoder of [" << smNames->at(i) << "].";
 		SmDecoder* smDecoder = SmDecoder::GetDecoder(stream);
 
+
+
 		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Decode [" << smNames->at(i) << "] ...";
 		Sm<Event>* sm = smDecoder->Decode(stream);
 		sm->GetSmInfo()->path = smNames->at(i);

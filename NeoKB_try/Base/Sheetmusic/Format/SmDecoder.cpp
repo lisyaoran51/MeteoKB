@@ -39,9 +39,12 @@ SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 
 	} while (!stream->eof() && line.empty());
 
+	stream->seekg(0, ios::beg);
+
 	if (!decoders.count(line)) {
 		throw invalid_argument("sm_decoder_t:input stream has no decoder version in first line.");
 	}
+	LOG(LogLevel::Info) << "SmDecoder* SmDecoder::GetDecoder(ifstream*) : Get decoder [" << decoders[line] << "].";
 
 	InstanceCreator<SmDecoder> &instance_creater =
 		InstanceCreator<SmDecoder>::GetInstance();
