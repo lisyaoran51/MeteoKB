@@ -37,6 +37,8 @@ vector<string>* FileReader::WhereEndWith(string s)
 
 	vector<string>* files = new vector<string>();
 
+	for (int i = 0; i < fileCount; i++) { LOG(LogLevel::Debug) << (*fileNames)[i]; }
+
 	for (int i = 0; i < fileCount; i++) {
 
 		int len = strlen((*fileNames)[i]);
