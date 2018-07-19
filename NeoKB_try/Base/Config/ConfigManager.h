@@ -27,6 +27,13 @@ namespace Config{
 		map<Setting, bool> configStoreBool;
 		map<Setting, string> configStoreString;
 
+		int load() {
+			// 這個式要做什麼?
+			// 讀文件嗎?
+			InitializeDefault();
+			return 0;
+		}
+
 	public:
 
 		ConfigManager(): Loadable(), RegisterType("ConfigManager")
@@ -36,12 +43,7 @@ namespace Config{
 			registerLoad(bind((int(ConfigManager<T>::*)())&ConfigManager<T>::load, this));
 		}
 
-		int Load() {
-			// 這個式要做什麼?
-			// 讀文件嗎?
-			InitializeDefault();
-			return 0;
-		}
+		
 
 		int Set(T lookup, int value) {
 			configStoreInt[lookup] = value;
