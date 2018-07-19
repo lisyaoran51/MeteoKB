@@ -3,10 +3,12 @@
 #include "../../../Util/FileSystem.h"
 #include "../../../Util/Log.h"
 #include <string.h>
+#include <iostream>
 
 
 using namespace Base::Sheetmusics::IO;
 using namespace Util;
+using namespace std;
 
 
 FileReader::FileReader(string p)
@@ -37,7 +39,9 @@ vector<string>* FileReader::WhereEndWith(string s)
 
 	vector<string>* files = new vector<string>();
 
-	for (int i = 0; i < fileCount; i++) { LOG(LogLevel::Debug) << (*fileNames)[i]; }
+
+
+	for (int i = 0; i < fileCount; i++) { cout << (*fileNames)[i] << endl; }
 
 	for (int i = 0; i < fileCount; i++) {
 
