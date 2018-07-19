@@ -17,7 +17,7 @@ using namespace Util;
 
 int MeteorPlayfield::load()
 {
-	Log(LogLevel::LogINFO) << "MeteorPlayfield::load() : 開始載入遊戲場景";
+	LOG(LogLevel::Info) << "MeteorPlayfield::load() : 開始載入遊戲場景";
 
 	MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
 

@@ -53,7 +53,7 @@ int Renderer::load()
 
 int Renderer::load(Updater * u, FrameworkConfigManager* f)
 {
-	Log(LogLevel::LogINFO) << "Renderer::load(Updater*, FrameworkConfigManager*) : 將render任務註冊至updater";
+	LOG(LogLevel::Info) << "Renderer::load(Updater*, FrameworkConfigManager*) : 將render任務註冊至updater";
 
 	u->RegisterTask(bind((int(Renderer::*)(MTO_FLOAT))&Renderer::Elapse, this, placeholders::_1));
 
@@ -97,7 +97,7 @@ Renderer * Renderer::GetRenderer(int hwVersion)
 
 	renderer->SetHardwareVersion(hwVersion);
 
-	Log(LogLevel::LogINFO) << "Renderer::GetRenderer : 硬體版本為 " << hwVersion << " ，取得Renderer板本為 " << rendererName;
+	LOG(LogLevel::Info) << "Renderer::GetRenderer : 硬體版本為 " << hwVersion << " ，取得Renderer板本為 " << rendererName;
 
 	return renderer;
 }

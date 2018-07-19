@@ -18,7 +18,7 @@ int EventProcessorMaster::load()
 
 int EventProcessorMaster::load(Updater * u)
 {
-	Log(LogLevel::LogINFO) << "EventProcessorMaster::load(Updater*) : 將process任務註冊至updater";
+	LOG(LogLevel::Info) << "EventProcessorMaster::load(Updater*) : 將process任務註冊至updater";
 
 	u->RegisterTask(bind((int(EventProcessorMaster::*)(MTO_FLOAT))&EventProcessorMaster::Elapse, this, placeholders::_1));
 	return 0;

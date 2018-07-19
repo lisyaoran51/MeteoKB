@@ -21,6 +21,7 @@ SmDecoder::SmDecoder(): RegisterType("SmDecoder")
 
 int SmDecoder::RegisterDecoder(string version, string typeName)
 {
+	LOG(LogLevel::Fine) << "int SmDecoder::RegisterDecoder(string,string) : Registering Sm decoder: [" << typeName << "] to version [" << version << "].";
 	decoders[version] = typeName;
 	return 0;
 }

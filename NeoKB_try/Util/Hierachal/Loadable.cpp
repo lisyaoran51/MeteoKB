@@ -1,8 +1,10 @@
 #include "Loadable.h"
 
+#include "../Log.h"
+
 using namespace Util::Hierachal;
 using namespace std;
-
+using namespace Util;
 
 
 /*
@@ -28,6 +30,7 @@ Loadable::Loadable(): RegisterType("Loadable"), Cachable(), noParentHandler(*thi
 
 int Loadable::Async()
 {
+	LOG(LogLevel::Fine) << "int Loadable::Async() : A [" << GetTypeName() << "] object is asyncing.";
 	return loadStateHandler -> Async();
 }
 

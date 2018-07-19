@@ -71,12 +71,14 @@ using namespace Meteor::Sheetmusics::Patterns;
 
 using namespace Util;
 
-LogLevel Util::logLevel = LogLevel::LogWARNING;
+LogLevel Util::logLevel = LogLevel::Info;
 
 int ProgramInitializer::Initialize()
 {
 	// TODO: 讀取文件決定要用什麼level
-	Util::logLevel = LogLevel::LogINFO;
+	Util::logLevel = LogLevel::Fine;
+
+	LOG(LogLevel::Fine) << "int ProgramInitializer::Initialize() : Start initializing program...";
 
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 

@@ -44,8 +44,8 @@ namespace Util {
 
 		template<typename T>
 		int RegisterType(string typeName) {
+			LOG(LogLevel::Fine) << "int InstanceCreator::RegisterType(string) : Registering instance creator: [" << typeName << "].";
 			creators[typeName] = bind(&InstanceCreator::create<T>, this);
-
 			return 0;
 		}
 
@@ -73,7 +73,7 @@ namespace Util {
 			}
 
 			// TODO: 噴錯誤？
-			Log(LogLevel::LogERROR) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
+			LOG(LogLevel::Info) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
 
 			throw runtime_error("int InstanceCreator::CreateInstanceWithT() : 出現錯誤，未找到該typename的建立者");
 			return NULL;

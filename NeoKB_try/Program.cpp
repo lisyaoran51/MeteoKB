@@ -13,12 +13,15 @@ using namespace Util::Hierachal;
 
 int main(int argc, char *argv[]) {
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Program start.";
+
 	// 建立instance creator和sm decoder
 	ProgramInitializer::Initialize();
 
-
+	LOG(LogLevel::Info) << "int main(int,char*) : Create game [MeteorGame].";
 	Game* game = new MeteorGame();
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Create Config Manager [FrameworkConfigManager].";
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
 	fConfigManager->Async();
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, "MeteorPatternGenerator");
@@ -36,16 +39,20 @@ int main(int argc, char *argv[]) {
 	// 1. cache session
 	// TODO: 之後把session改成我要的
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Create Sm Manager.";
 	SmManager* smManager = new SmManager();
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Importing Sheetmusics.";
 	smManager->Import(new vector<string>{ "Resources/Sms" });
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Create Session with Meteor ruleset and Sm manager.";
 	Session* session = new Session(new RulesetInfo("Meteor"), smManager);
 
 	game->Cache<Session>(session);
 
 	game->Async();
 
+	LOG(LogLevel::Info) << "int main(int,char*) : Run the game.";
 	game->Run();
 
 

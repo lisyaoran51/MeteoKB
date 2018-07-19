@@ -18,17 +18,35 @@ namespace Util {
 
 	enum class LogLevel
 	{
-		LogERROR, LogWARNING, LogINFO, LogDEBUG, LogDEBUG1, LogDEBUG2, LogDEBUG3, LogDEBUG4
+		None,		// 無
+		Error, 		// 錯誤
+		Warning, 	// 警告
+		Info, 		// 一般資訊 (建立的物建)
+		Debug, 		// 除錯用資訊
+		Fine, 		// 細捷資訊 (執行的function)
+		Finer, 		// 更細捷資訊 (function的細節)
+		Finest, 	// 最細捷資訊 (運算的細節)
+		All			// 所有資訊
 	};
+
+#define LOG_NONE LogLevel::None
+#define LOG_ERROR LogLevel::Error
+#define LOG_WARNING LogLevel::Warning
+#define LOG_INFO LogLevel::Info
+#define LOG_DEBUG LogLevel::Debug
+#define LOG_FINE LogLevel::Fine
+#define LOG_FINER LogLevel::Finer
+#define LOG_FINEST LogLevel::Finest
+#define LOG_ALL LogLevel::All
 
 	class LogIt
 	{
 	public:
-		LogIt(LogLevel _loglevel = LogLevel::LogERROR) {
+		LogIt(LogLevel _loglevel = LogLevel::Error) {
 			_buffer << static_cast<int>(_loglevel) << " :"
 				<< std::string(
-					_loglevel > LogLevel::LogDEBUG
-					? (static_cast<int>(_loglevel) - static_cast<int>(LogLevel::LogDEBUG)) * 4
+					_loglevel > LogLevel::Debug
+					? (static_cast<int>(_loglevel) - static_cast<int>(LogLevel::Debug)) * 4
 					: 1
 					, ' ');
 		}
@@ -54,7 +72,8 @@ namespace Util {
 
 	extern LogLevel logLevel;
 
-#define Log(level) \
+	// TODO: 作log category，如system、kernel、bluetooth、game...
+#define LOG(level) \
 if (level > logLevel) ; \
 else LogIt(level)
 

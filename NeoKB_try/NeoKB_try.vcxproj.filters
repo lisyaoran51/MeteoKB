@@ -402,9 +402,6 @@
     <ClCompile Include="RulesetMeteor\Scheduler\Event\Effect\GlowLineEffectMapper.cpp">
       <Filter>來源檔案\RulesetMeteor\Schedulers\Events\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Play\Session.cpp">
-      <Filter>來源檔案</Filter>
-    </ClCompile>
     <ClCompile Include="Devices\Graphic\Renderers\WS2812v10Renderer.cpp">
       <Filter>來源檔案\Devices\Graphic\Renderers</Filter>
     </ClCompile>
@@ -440,6 +437,9 @@
     </ClCompile>
     <ClCompile Include="Base\Scheduler\Event\ControlPoints\ControlPoint.cpp">
       <Filter>來源檔案\Base\Schedulers\Events\ControlPoints</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Play\Session.cpp">
+      <Filter>來源檔案\Base\Play</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
