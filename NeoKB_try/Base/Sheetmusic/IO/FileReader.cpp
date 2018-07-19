@@ -45,9 +45,9 @@ vector<string>* FileReader::WhereEndWith(string s)
 
 		int len = strlen((*fileNames)[i]);
 		
-		LOG(LogLevel::Debug) << (*fileNames)[i];
+		LOG(LogLevel::Debug) << "FileReader::WhereEndWith : check if [" << (*fileNames)[i] << "] is .sm ";
 
-		if (len >= 3 && strcmp((*fileNames)[i] + len - 3, ".sm") == 1) {
+		if (len >= 3 && strcmp((*fileNames)[i] + len - 3, ".sm") == 0) {
 
 			LOG(LogLevel::Info) << "FileReader::WhereEndWith : sheetmusic read : [" << (*fileNames)[i] << "]";
 			files->push_back((*fileNames)[i]);
@@ -59,11 +59,14 @@ vector<string>* FileReader::WhereEndWith(string s)
 		}
 	}
 
-	// delete記憶體
-	for (int i = 0; i < fileCount; i++) {
-		LOG(LogLevel::Debug) << "FileReader::WhereEndWith : free [" << (*fileNames)[i] << "]";
-		free((*fileNames)[i]);
-	}
+	// delete記憶體，但其實記憶體是連在一起的，應該只要free第一個元素就好
+	//for (int i = 0; i < fileCount; i++) {
+	//	free((*fileNames)[i]);
+	//}
+	if(fileCount > 0)
+		free((*fileNames)[0]);
+
+
 	free(*fileNames);
 	delete fileNames;
 
