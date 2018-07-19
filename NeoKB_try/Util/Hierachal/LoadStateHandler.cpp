@@ -1,9 +1,10 @@
 ﻿#include "Loadable.h"
-#include <stdexcept>
 
+#include <stdexcept>
+#include "../Log.h"
 
 using namespace Util::Hierachal;
-
+using namespace Util;
 
 /*
 * stdexcept種類
@@ -36,6 +37,7 @@ int Loadable::NoParentHandler::HandleLoad()
 
 int Loadable::NoParentHandler::Async()
 {
+	LOG(LogLevel::Finer) << "int Loadable::NoParentHandler::Async() : [" << loadable.GetTypeName() << "] is asyncing.";
 	loadable.loadStateHandler = &loadable.loadingHandler;
 	loadable.load();
 	loadable.loadStateHandler = &loadable.readyHandler;
@@ -70,6 +72,7 @@ int Loadable::NotLoadedHandler::HandleLoad()
 
 int Loadable::NotLoadedHandler::Async()
 {
+	LOG(LogLevel::Finer) << "int Loadable::NotLoadedHandler::Async() : [" << loadable.GetTypeName() << "] is asyncing.";
 	loadable.loadStateHandler = &loadable.loadingHandler;
 	loadable.load();
 	loadable.loadStateHandler = &loadable.readyHandler;
