@@ -41,7 +41,7 @@ vector<string>* FileReader::WhereEndWith(string s)
 
 
 
-	for (int i = 0; i < fileCount; i++) { cout << (*fileNames)[i] << endl; }
+	for (int i = 0; i < fileCount; i++) { cout << &(*fileNames)[i] << endl; }
 
 	for (int i = 0; i < fileCount; i++) {
 
