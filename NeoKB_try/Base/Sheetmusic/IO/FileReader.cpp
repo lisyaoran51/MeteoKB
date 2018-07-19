@@ -55,12 +55,13 @@ vector<string>* FileReader::WhereEndWith(string s)
 		}
 		else if (len >= 3){
 			LOG(LogLevel::Debug) << "FileReader::WhereEndWith : not sm : [" << (*fileNames)[i] << "]. the last words are ["
-				<< (*fileNames)[i] + len - 3 << "]";
+				<< (*fileNames)[i] + len - 3 << "], the return of strcmp is [" << strcmp((*fileNames)[i] + len - 3, ".sm") << "]";
 		}
 	}
 
 	// delete°O¾ÐÅé
 	for (int i = 0; i < fileCount; i++) {
+		LOG(LogLevel::Debug) << "FileReader::WhereEndWith : free [" << (*fileNames)[i] << "]";
 		free((*fileNames)[i]);
 	}
 	free(*fileNames);
