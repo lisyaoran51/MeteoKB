@@ -35,6 +35,7 @@ namespace Util {
 
 		template<typename T>
 		T* create() {
+			cout << "debug... create new T" << endl;
 			return new T;
 		}
 
