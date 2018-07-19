@@ -1,6 +1,7 @@
 #ifndef TEMPLATE_CONSTRAINT_T
 #define TEMPLATE_CONSTRAINT_T
 
+#include <string>
 
 /*
  * http://www.stroustrup.com/bs_faq2.html#constraints
@@ -10,7 +11,7 @@
  * https://stackoverflow.com/questions/10332725/how-to-automatically-register-a-class-on-creation
  */
 
-
+using namespace std;
 
 
 namespace Util {
