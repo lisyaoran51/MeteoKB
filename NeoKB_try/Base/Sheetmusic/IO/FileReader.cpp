@@ -18,7 +18,7 @@ FileReader::FileReader(string p)
 
 ifstream * FileReader::GetStream(string name)
 {
-	return new ifstream(path+name);
+	return new ifstream(path + "/" + name);
 }
 
 SmSetInfo * FileReader::GetSmSetInfo()
