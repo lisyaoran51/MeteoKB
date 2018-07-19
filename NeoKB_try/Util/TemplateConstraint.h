@@ -1,7 +1,7 @@
 #ifndef TEMPLATE_CONSTRAINT_T
 #define TEMPLATE_CONSTRAINT_T
 
-#include <string>
+#include <iostream>
 
 /*
  * http://www.stroustrup.com/bs_faq2.html#constraints
