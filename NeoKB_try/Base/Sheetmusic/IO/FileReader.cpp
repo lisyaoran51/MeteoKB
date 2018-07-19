@@ -41,23 +41,21 @@ vector<string>* FileReader::WhereEndWith(string s)
 
 
 
-	for (int i = 0; i < fileCount; i++) { cout << &(*fileNames)[i] << endl; }
-
 	for (int i = 0; i < fileCount; i++) {
 
 		int len = strlen((*fileNames)[i]);
 		
 		LOG(LogLevel::Debug) << (*fileNames)[i];
 
-		if (len >= 2 && strcmp((*fileNames)[i] + len - 2, ".sm") == 1) {
+		if (len >= 3 && strcmp((*fileNames)[i] + len - 3, ".sm") == 1) {
 
 			LOG(LogLevel::Info) << "FileReader::WhereEndWith : sheetmusic read : [" << (*fileNames)[i] << "]";
 			files->push_back((*fileNames)[i]);
 
 		}
-		else if (len >= 2){
+		else if (len >= 3){
 			LOG(LogLevel::Debug) << "FileReader::WhereEndWith : not sm : [" << (*fileNames)[i] << "]. the last words are ["
-				<< (*fileNames)[i] + len - 2 << "]";
+				<< (*fileNames)[i] + len - 3 << "]";
 		}
 	}
 
