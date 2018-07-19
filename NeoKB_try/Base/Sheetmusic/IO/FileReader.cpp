@@ -2,6 +2,7 @@
 
 #include "../../../Util/FileSystem.h"
 #include "../../../Util/Log.h"
+#include <string.h>
 
 
 using namespace Base::Sheetmusics::IO;
