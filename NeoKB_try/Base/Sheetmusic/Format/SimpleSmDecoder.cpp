@@ -292,7 +292,7 @@ int SimpleSmDecoder::parseFile(ifstream * stream, Sm<Event>* sm)
         if (line.find("[") == 0 && line.rfind("]") == line.size() - 1) {
 
             section = GetSectionEnum(line.substr(1, line.size()-2));
-			LOG(LogLevel::Finer) << "int SimpleSmDecoder::parseFile(ifstream*, Sm<Event>*) : set section [" << section << "].";
+			LOG(LogLevel::Finer) << "int SimpleSmDecoder::parseFile(ifstream*, Sm<Event>*) : set section [" << line.substr(1, line.size() - 2) << "].";
             continue;
         }
 
