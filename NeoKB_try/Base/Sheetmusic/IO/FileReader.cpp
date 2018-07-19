@@ -40,6 +40,9 @@ vector<string>* FileReader::WhereEndWith(string s)
 	for (int i = 0; i < fileCount; i++) {
 
 		int len = strlen((*fileNames)[i]);
+		
+		LOG(LogLevel::Debug) << (*fileNames)[i];
+
 		if (len >= 2 && strcmp((*fileNames)[i] + len - 2, ".sm") == 1) {
 
 			LOG(LogLevel::Info) << "FileReader::WhereEndWith : sheetmusic read : [" << (*fileNames)[i] << "]";
