@@ -46,6 +46,10 @@ vector<string>* FileReader::WhereEndWith(string s)
 			files->push_back((*fileNames)[i]);
 
 		}
+		else if (len >= 2){
+			LOG(LogLevel::Debug) << "FileReader::WhereEndWith : not sm : [" << (*fileNames)[i] << "]. the last words are ["
+				<< (*fileNames)[i] + len - 2 << "]";
+		}
 	}
 
 	// delete°O¾ÐÅé
