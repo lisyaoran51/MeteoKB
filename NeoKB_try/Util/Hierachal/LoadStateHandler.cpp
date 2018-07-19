@@ -2,7 +2,6 @@
 
 #include <stdexcept>
 #include "../Log.h"
-#include <unistd.h>
 
 using namespace Util::Hierachal;
 using namespace Util;
@@ -39,9 +38,8 @@ int Loadable::NoParentHandler::HandleLoad()
 int Loadable::NoParentHandler::Async()
 {
 	LOG(LogLevel::Finer) << "int Loadable::NoParentHandler::Async() : [" << loadable.GetTypeName() << "] is asyncing.";
-	//loadable.loadStateHandler = &loadable.loadingHandler;
+	loadable.loadStateHandler = &loadable.loadingHandler;
 	loadable.load();
-	usleep(100000000);
 	loadable.loadStateHandler = &loadable.readyHandler;
 	return 0;
 }
