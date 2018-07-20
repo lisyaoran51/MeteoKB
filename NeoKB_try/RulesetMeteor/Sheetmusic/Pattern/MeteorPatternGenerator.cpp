@@ -23,13 +23,26 @@ int MeteorPatternGenerator::load()
 int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 {
 	// TODO: throw error
-	if( mcf->Get(MeteorSetting::FallSpeed, &fallSpeed));
-	if( mcf->Get(MeteorSetting::FallBrightness, &fallBrightness));
-	if( mcf->Get(MeteorSetting::ExplodeSpeed, &explodeSpeed));
-	if( mcf->Get(MeteorSetting::ExplodeBrightness, &explodeBrightness));
-	if( mcf->Get(MeteorSetting::GlowLineSpeed, &glowLineSpeed));
-	if( mcf->Get(MeteorSetting::GlowLineDuration, &glowLineDuration));
-	if( mcf->Get(MeteorSetting::GlowLineBrightness, &glowLineBrightness));
+	if( !mcf->Get(MeteorSetting::FallSpeed, &fallSpeed))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : FallSpeed not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::FallBrightness, &fallBrightness))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : FallBrightness not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::ExplodeSpeed, &explodeSpeed))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : ExplodeSpeed not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::ExplodeBrightness, &explodeBrightness))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : ExplodeBrightness not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::GlowLineSpeed, &glowLineSpeed))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : GlowLineSpeed not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::GlowLineDuration, &glowLineDuration))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : GlowLineDuration not found in Setting.");
+
+	if( !mcf->Get(MeteorSetting::GlowLineBrightness, &glowLineBrightness))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : GlowLineBrightness not found in Setting.");
 
 	return 0;
 }

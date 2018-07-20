@@ -16,12 +16,12 @@ int MeteorConfigManager::InitializeDefault()
 	Set(MeteorSetting::ExplodeMapAlgorithm, "ExplodeMapAlgorithm");
 	Set(MeteorSetting::GlowLineMapAlgorithm, "GlowLineMapAlgorithm");
 
-	Set(MeteorSetting::FallSpeed, 16.f);
-	Set(MeteorSetting::FallBrightness, 1.f);
-	Set(MeteorSetting::ExplodeSpeed, 16.f);
-	Set(MeteorSetting::FallBrightness, 1.f);
-	Set(MeteorSetting::GlowLineSpeed, 1.f);
-	Set(MeteorSetting::GlowLineBrightness, 1.f);
-	Set(MeteorSetting::GlowLineDuration, 1.f);
+	Set(MeteorSetting::FallSpeed, MTO_FLOAT(16.f));
+	Set(MeteorSetting::FallBrightness, MTO_FLOAT(1.f));
+	Set(MeteorSetting::ExplodeSpeed, MTO_FLOAT(16.f));
+	Set(MeteorSetting::FallBrightness, MTO_FLOAT(1.f));
+	Set(MeteorSetting::GlowLineSpeed, MTO_FLOAT(1.f));
+	Set(MeteorSetting::GlowLineBrightness, MTO_FLOAT(1.f));
+	Set(MeteorSetting::GlowLineDuration, MTO_FLOAT(1.f));
 	return 0;
 }
