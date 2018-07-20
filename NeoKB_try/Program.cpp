@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 	smManager->Import(new vector<string>{ "Resources/Sms" });
 
 	LOG(LogLevel::Info) << "int main(int,char*) : Create Session with Meteor ruleset and Sm manager.";
-	Session* session = new Session(new RulesetInfo("Meteor"), smManager);
+	Session* session = new Session(new RulesetInfo("MeteorRuleset"), smManager);
 
 	game->Cache<Session>(session);
 

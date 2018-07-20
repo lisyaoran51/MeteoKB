@@ -75,9 +75,9 @@ namespace Util {
 			}
 
 			// TODO: 噴錯誤？
-			LOG(LogLevel::Error) << "InstanceCreator::CreateInstanceWithT : 出現錯誤，未找到 " << typeName << " 的建立者";
+			LOG(LogLevel::Error) << "InstanceCreator::CreateInstanceWithT : error. constructor of " << typeName << " not found.";
 
-			throw runtime_error("int InstanceCreator::CreateInstanceWithT() : error. constructor of this typename not found");
+			throw runtime_error("int InstanceCreator::CreateInstanceWithT() : error. constructor of this typename not found.");
 			return NULL;
 
 		}

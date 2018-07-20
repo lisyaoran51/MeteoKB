@@ -12,6 +12,7 @@ using namespace Base::Sheetmusics;
 
 int Player::load()
 {
+	LOG(LogLevel::Info) << "Player::load : start loading the player and reading the sm and ruleset from session.";
 
 	Session* s = GetCache<Session>("Session");
 
