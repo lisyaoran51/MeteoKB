@@ -64,6 +64,8 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 		currentTime = 0;
 		return 0;
 	}
+
+	LOG(LogLevel::Finest) << "Scheduler::Elapse() : update frame - " << elapsedTime;
 	
 	currentTime += elapsedTime;
 

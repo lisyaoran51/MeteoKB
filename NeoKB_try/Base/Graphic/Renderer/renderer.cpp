@@ -110,6 +110,8 @@ int Renderer::Elapse(MTO_FLOAT elapsedTime)
 		return 0;
 	}
 
+	LOG(LogLevel::Finest) << "Renderer::Elapse() : update frame - " << elapsedTime;
+
 	// 如果時間超過要render圖的周期時間，就開始render圖
 	currentFrameLength += elapsedTime;
 	if (currentFrameLength > frameLength) {

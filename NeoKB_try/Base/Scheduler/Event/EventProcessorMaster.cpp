@@ -79,6 +79,8 @@ int EventProcessorMaster::Elapse(MTO_FLOAT elapsedTime)
 		return 0;
 	}
 
+	LOG(LogLevel::Finest) << "EventProcessorMaster::Elapse() : update frame - " << elapsedTime;
+
 	// TODO: 判斷有沒有要render，沒有的話就簡化process event，不用寫入map
 	processEvent(elapsedTime);
 	cleanEndedEvent();
