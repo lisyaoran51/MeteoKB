@@ -27,6 +27,9 @@ ExplodeMapAlgorithm::ExplodeMapAlgorithm(int w, int h): RegisterType("ExplodeMap
 
 int ExplodeMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<ExplodeEffect>* em)
 {
+
+	LOG(LogLevel::Finest) << "ExplodeMapGenerateAlgorithm::ImplementGenerate() : Generate Effect [" << em->GetStartTime() << "] on [" << em->GetCurrentTime() << "].";
+
 	MTO_FLOAT currentTime = em->GetCurrentTime();
 	MTO_FLOAT lifeTime = em->GetLifeTime();
 	MTO_FLOAT speed = em->GetSpeed();

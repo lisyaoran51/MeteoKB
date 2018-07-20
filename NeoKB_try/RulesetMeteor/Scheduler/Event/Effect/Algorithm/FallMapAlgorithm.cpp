@@ -31,6 +31,9 @@ FallMapAlgorithm::FallMapAlgorithm(int w, int h) : RegisterType("FallMapAlgorith
 
 int FallMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<FallEffect>* em)
 {
+
+	LOG(LogLevel::Finest) << "FallMapGenerateAlgorithm::ImplementGenerate() : Generate Effect [" << em->GetStartTime() << "] on [" << em->GetCurrentTime() << "].";
+
 	MTO_FLOAT currentTime = em->GetCurrentTime();
 	// MTO_FLOAT lifeTime = em->GetLifeTime();
 	MTO_FLOAT speed = em->GetSpeed();
