@@ -167,13 +167,13 @@ namespace Rulesets {
 
 	protected:
 
-		Sm<T>* sm;
+		Sm<T>* sm = NULL;
 
-		WorkingSm* workingSm;
+		WorkingSm* workingSm = NULL;
 
 		//vector<mod_t*> mods;
 
-		Playfield* playfield;
+		Playfield* playfield = NULL;
 
 		vector<void*> on_judgement;
 

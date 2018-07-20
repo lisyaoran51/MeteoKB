@@ -23,17 +23,17 @@ namespace Sheetmusics {
 	class WorkingSm
 	{
 
-		SmSetInfo* smSetInfo;
+		SmSetInfo* smSetInfo = NULL;
 
-		SmInfo* smInfo;
+		SmInfo* smInfo = NULL;
 
-		SmMetadata* smMetadata;
+		SmMetadata* smMetadata = NULL;
 
 		//vector<ctrl_point>* effects;
 
 		//vector<Mod*> mods;
 
-		Sm<Event>* sm;
+		Sm<Event>* sm = NULL;
 
 	public:
 

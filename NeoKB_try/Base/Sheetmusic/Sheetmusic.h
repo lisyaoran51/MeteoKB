@@ -28,13 +28,13 @@ namespace Sheetmusics {
 	class Sm : TConstraint<T, Event>
 	{
 
-		SmInfo* smInfo;
+		SmInfo* smInfo = NULL;
 		
-		SmMetadata* smMetadata;
+		SmMetadata* smMetadata = NULL;
 		
-		vector<T*>* events;
+		vector<T*>* events = NULL;
 
-		RulesetInfo* rulesetInfo;
+		RulesetInfo* rulesetInfo = NULL;
 
 	public:
 		

@@ -7,6 +7,7 @@ using namespace Base::Sheetmusics::Format;
 
 WorkingSm::WorkingSm(SmInfo * s)
 {
+
 	smInfo = s;
 	if (s->metadata)
 		smMetadata = new SmMetadata(s->metadata);
@@ -24,6 +25,7 @@ WorkingSm::~WorkingSm()
 
 Sm<Event>* WorkingSm::GetSm()
 {
+	cout << sm << endl;
 	if (sm)
 		return sm;
 
