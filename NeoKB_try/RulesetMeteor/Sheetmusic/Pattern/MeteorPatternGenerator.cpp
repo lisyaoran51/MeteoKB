@@ -44,6 +44,9 @@ int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 	if( !mcf->Get(MeteorSetting::GlowLineBrightness, &glowLineBrightness))
 		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : GlowLineBrightness not found in Setting.");
 
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::load() : Fall speed is [" << fallSpeed << "], GlowLine speed is [" << glowLineSpeed << "].";
+
+	while (1);
 	return 0;
 }
 
