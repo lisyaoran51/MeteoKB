@@ -108,7 +108,7 @@ int Playfield::Add(EventProcessor<Event> * ep)
 	if (ep->CanCast<EffectMapperInterface>()) {
 
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
-		string processorType = ep->GetTypeName();
+		string processorType = ep->GetEventTypeName();
 
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
 		if (iter != mapAlgorithms.end())

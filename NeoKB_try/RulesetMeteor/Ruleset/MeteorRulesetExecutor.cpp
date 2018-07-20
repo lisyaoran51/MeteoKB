@@ -38,7 +38,7 @@ int MeteorRulesetExecutor::load()
 
 MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecutor"), RulesetExecutor()
 {
-	// TODO: 這個table可以社繼承自訂
+	// 如果要自定效果，要直接從config那裡改map algo，這邊不能動。
 	eventProcessorTable["FallEffect"] = "FallEffectMapper";
 	eventProcessorTable["ExplodeEffect"] = "ExplodeEffectMapper";
 	eventProcessorTable["GlowLineEffect"] = "GlowLineEffectMapper";

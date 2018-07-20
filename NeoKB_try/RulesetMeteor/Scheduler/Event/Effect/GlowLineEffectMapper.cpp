@@ -9,8 +9,3 @@ using namespace std;
 GlowLineEffectMapper::GlowLineEffectMapper(int w, int h): EffectMapper<GlowLineEffect>(w,h)
 {
 }
-
-string GlowLineEffectMapper::GetTypeName()
-{
-	return string("GlowLineEffectMapper");
-}

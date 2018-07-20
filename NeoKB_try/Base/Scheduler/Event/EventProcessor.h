@@ -49,7 +49,7 @@ namespace Events {
 		MTO_FLOAT GetTimeLeft(){ return event->GetLifeTime() - currentTime; }
 
 		// 一定要每次都override!!
-		virtual string GetTypeName(){ return string("EventProcessor"); }
+		virtual string GetEventTypeName(){ return event->GetTypeName(); }
 		
 		template<typename U, typename V>
 		static bool CanCast(V* e) {

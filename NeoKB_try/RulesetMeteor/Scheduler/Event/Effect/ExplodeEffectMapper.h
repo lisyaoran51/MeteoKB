@@ -26,8 +26,6 @@ namespace Effects {
 
 		ExplodeEffectMapper(int w, int h);
 
-		virtual string GetTypeName();
-
 	};
 
 
