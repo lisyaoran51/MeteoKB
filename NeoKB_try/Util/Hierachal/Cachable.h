@@ -4,8 +4,12 @@
 //#include"Loadable.h"
 #include<map>
 #include"HasParent.h"
+#include <iostream>
+#include "../Log.h"
 
 using namespace std;
+using namespace Util;
+
 /*
 * mutual including two classes:
 * http://squall.cs.ntou.edu.tw/cpp/1042/labtest/test2/MutualReferences.html
@@ -35,6 +39,8 @@ namespace Hierachal{
 		template<typename T>
 		T* GetCache(string type) {
 
+			LOG(LogLevel::Finest) << "T* GetCache(string) : getting cache [" << type << "] from hierachy object [" << GetTypeName() << "].";
+
 			MtoObject* o = getCache(type);
 
 			if (!o) {
@@ -45,6 +51,7 @@ namespace Hierachal{
 					return NULL;
 
 				Cachable* c = Cast<Cachable>(h);
+				cout << "cast to cachable" << endl;
 				return c->GetCache<T>(type);
 			}
 
