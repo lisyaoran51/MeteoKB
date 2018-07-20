@@ -52,6 +52,8 @@ void Updater::Update()
 	}
 	else {
 
+		LOG(LogLevel::Finest) << "Updater::Update() : Update start.";
+
 		updateState = UpdateState::Started;
 		currentTime = system_clock::now();
 		startTime = currentTime;
