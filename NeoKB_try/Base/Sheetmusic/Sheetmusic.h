@@ -48,6 +48,8 @@ namespace Sheetmusics {
 			}
 			else {
 				SetSmInfo(new SmInfo());
+				smInfo->metadata = new SmMetadata();
+				// TODO: metadata¨ì©³­n¦s­þ¡H
 				SetSmMetadata(new SmMetadata());
 				SetEvents(new vector<T*>());
 				// SetRulesetInfo

@@ -27,6 +27,7 @@ int SimpleSmDecoder::handleGeneral(Sm<Event>* sm, string & line)
     SmMetadata* metadata = sm->GetSmInfo()->metadata;
 
 	if (pair.at(0) == "AudioFilename") {
+		LOG(LogLevel::Finer) << "int SimpleSmDecoder::handleGeneral(Sm<Event>*,string) : tag [AudioFilename] chosen.";
 		metadata->AudioFile = pair.at(1);
 	}
 	else if (pair.at(0) == "AudioLeadIn") {
