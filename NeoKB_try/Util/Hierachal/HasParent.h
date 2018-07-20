@@ -16,7 +16,7 @@ namespace Hierachal {
 	/// </summary>
 	class HasParent: virtual public MtoObject {
 
-		HasParent* parent;
+		HasParent* parent = NULL;
 
 	public:
 
