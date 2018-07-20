@@ -105,7 +105,7 @@ int Playfield::Add(EventProcessor<Event> * ep)
 	scheduler->Add(ep);
 
 	// 這邊要把Map Algo加進去
-	if (ep->CanCast<EffectMapper<Event>>()) {
+	if (ep->CanCast<EffectMapperInterface>()) {
 
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 		string processorType = ep->GetTypeName();
