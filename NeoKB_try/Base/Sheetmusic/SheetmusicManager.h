@@ -59,6 +59,9 @@ namespace Sheetmusics {
 		/// </summary>
 		vector<SmInfo*>* import(FileReader& fileReader);
 
+		/// <summary>
+		/// 這個的功能指示把sm裡面的投檔資料讀出來，裡面的event還不需要，裡面的event要等到遊戲開始時再讀
+		/// </summary>
 		vector<SmInfo*>* importToStorage(FileReader& fileReader);
 
 		// WorkingSm(sm_info_t* s);

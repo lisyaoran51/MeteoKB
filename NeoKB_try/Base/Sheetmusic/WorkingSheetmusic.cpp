@@ -27,6 +27,7 @@ Sm<Event>* WorkingSm::GetSm()
 	if (sm)
 		return sm;
 
+	LOG(LogLevel::Fine) << "Sm<Event>* WorkingSm::GetSm() : creating Sm ...";
 	sm = createSm();
 
 	// use the database-backed info.
@@ -50,7 +51,8 @@ Sm<Event>* WorkingSm::createSm()
 
 string WorkingSm::getPathForFile(string fileName)
 {
-	string s = smSetInfo->path + fileName;
+	string s = smSetInfo->path + "/" + fileName;
+	LOG(LogLevel::Finer) << "string WorkingSm::getPathForFile(string) : creating Sm from path [" << s << "] ...";
 	return s;
 }
 
