@@ -36,6 +36,9 @@ int main(int argc, char *argv[]) {
 	// TODO: 設定....
 	game->Cache<FrameworkConfigManager>(fConfigManager);
 
+	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
+	mConfigManager->Async();
+
 
 	// 1. cache session
 	// TODO: 之後把session改成我要的
