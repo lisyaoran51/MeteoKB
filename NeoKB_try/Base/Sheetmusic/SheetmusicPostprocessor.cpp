@@ -10,6 +10,7 @@ using namespace Base::Sheetmusics;
 
 Sm<Event>* SmPostprocessor::postprocess(Sm<Event>* s)
 {
+	sort(s->GetEvents()->begin(), s->GetEvents()->end());
 	return s;
 }
 
