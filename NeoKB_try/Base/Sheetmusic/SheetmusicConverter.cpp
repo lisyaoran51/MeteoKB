@@ -19,9 +19,12 @@ SmConverter::SmConverter(PatternGenerator * pg)
 ///	</summary>
 Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 {
+
+	LOG(LogLevel::Finer) << "Sm<Event>* SmConverter::Convert(Sm<Event>*) : Cloning sm ...";
 	Sm<Event>* sm = new Sm<Event>(s);
 
 	// 從sm讀出來的event
+	LOG(LogLevel::Finer) << "Sm<Event>* SmConverter::Convert(Sm<Event>*) : Getting events ...";
 	vector<Event*>* originalEvents = sm->GetEvents();
 
 	// 經過處理轉換的event
@@ -34,7 +37,8 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 	vector<Event*>* tempEvents = new vector<Event*>();
 
 	for (int i = 0; i < originalEvents->size(); i++) {
-		
+
+		LOG(LogLevel::Finest) << "Sm<Event>* SmConverter::Convert(Sm<Event>*) : converting #" << i << " event ...";
 		convertEvent(tempEvents, originalEvents->at(i));
 
 		for (int j = 0; j < tempEvents->size(); j++) {
@@ -45,6 +49,7 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 	
 	}
 
+	LOG(LogLevel::Finer) << "Sm<Event>* SmConverter::Convert(Sm<Event>*) : Clean patterns ...";
 	patternGenerator->CleanPatterns();
 
 	sm->SetEvents(newEvents);
