@@ -22,6 +22,8 @@ int SimpleSmDecoder::handleGeneral(Sm<Event>* sm, string & line)
 {
 	vector<string> pair = split(line, ":");
 
+	LOG(LogLevel::Finer) << "int SimpleSmDecoder::handleGeneral(Sm<Event>*,string) : tag is[" << pair.at(0) << "]. value is [" << pair.at(1) << "].";
+
     SmMetadata* metadata = sm->GetSmInfo()->metadata;
 
 	if (pair.at(0) == "AudioFilename") {
