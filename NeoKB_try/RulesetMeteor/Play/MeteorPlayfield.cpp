@@ -53,7 +53,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	else
 		mapAlgorithms["FallEffect"] = new FallMapAlgorithm(width, height);
 
-	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : FallMapAlgorithm [" << mapAlgorithms["FallEffect"] << "] loaded.";
+	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : FallMapAlgorithm [" << mapAlgorithms["FallEffect"]->GetTypeName() << "] loaded.";
 
 	mapAlgorithms["FallEffect"]->RegisterBufferMap(bufferMap);
 
@@ -68,7 +68,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	else
 		mapAlgorithms["ExplodeEffect"] = new ExplodeMapAlgorithm(width, height);
 
-	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : ExplodeMapAlgorithm [" << mapAlgorithms["ExplodeEffect"] << "] loaded.";
+	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : ExplodeMapAlgorithm [" << mapAlgorithms["ExplodeEffect"]->GetTypeName() << "] loaded.";
 
 	mapAlgorithms["ExplodeEffect"]->RegisterBufferMap(bufferMap);
 
@@ -83,7 +83,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	else
 		mapAlgorithms["GlowLineEffect"] = new GlowLineMapAlgorithm(width, height);
 
-	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : GlowLineMapAlgorithm [" << mapAlgorithms["GlowLineEffect"] << "] loaded.";
+	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : GlowLineMapAlgorithm [" << mapAlgorithms["GlowLineEffect"]->GetTypeName() << "] loaded.";
 
 	mapAlgorithms["GlowLineEffect"]->RegisterBufferMap(bufferMap);
 
