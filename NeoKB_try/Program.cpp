@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 	LOG(LogLevel::Info) << "int main(int,char*) : Create Config Manager [FrameworkConfigManager].";
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
 	fConfigManager->Async();
-	fConfigManager->Set(FrameworkSetting::PatternGenerator, "MeteorPatternGenerator");
+	fConfigManager->Set(FrameworkSetting::PatternGenerator, string("MeteorPatternGenerator"));
 	fConfigManager->Set(FrameworkSetting::HardwareVersion, 10);
 	fConfigManager->Set(FrameworkSetting::Width, 12); //нnзя
 	fConfigManager->Set(FrameworkSetting::Height, 24);
