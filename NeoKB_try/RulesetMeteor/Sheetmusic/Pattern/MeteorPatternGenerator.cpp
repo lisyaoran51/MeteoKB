@@ -67,12 +67,16 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		(targetHeight) : (blackKeyTargetHeight)
 	) / glowLineSpeed;
 
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], time [" << e->GetStartTime() - glowLineTime << "].";
+
 	GlowLineEffect* glow = new GlowLineEffect(
 		(int)pitch, 
 		0, 
 		e->GetStartTime() - glowLineTime, 
 		fallTime + glowLineDuration,
 		glowLineSpeed);
+
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], time [" << e->GetStartTime() - fallTime << "].";
 
 	FallEffect* fall = new FallEffect(
 		(int)pitch, 

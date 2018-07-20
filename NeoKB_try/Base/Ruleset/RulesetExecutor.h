@@ -114,6 +114,8 @@ namespace Rulesets {
 			sm = converter->Convert(workingSm->GetSm());
 			sm = postprocessor->postprocess(sm);
 
+			while (1);
+
 			delete converter;
 			delete postprocessor;
 
