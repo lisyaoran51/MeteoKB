@@ -78,6 +78,9 @@ namespace Rulesets {
 		/// 3. ??? load objects?
 		/// </summary>
 		int load() {
+
+			LOG(LogLevel::Info) << "RulesetExecutor::load : start loading the executor and building the sm and playfield.";
+
 			FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
 			if (!f)
 				throw runtime_error("int  RulesetExecutor<T>::load() : FrameworkConfigManager not found in cache.");
@@ -96,13 +99,16 @@ namespace Rulesets {
 				throw runtime_error("int RulesetExecutor<T>::load(FrameworkConfigManager*) : PatternGenerator not found in Setting.");
 
 			// 利用pattern generator的名字建立pattern generator
+			LOG(LogLevel::Info) << "RulesetExecutor::load : creating [" << pgName << "] ...";
 			InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 			PatternGenerator* pg = iCreator.CreateInstanceWithT<PatternGenerator>(pgName);
 
 			// 要把converter和postprocessor擺到load()裡，因為pattern Generator是擺在cache裡的
+			LOG(LogLevel::Fine) << "RulesetExecutor::load : creating Sm Converter ...";
 			SmConverter* converter = createSmConverter(pg);
 			SmPostprocessor* postprocessor = createSmPostprocessor();
 
+			LOG(LogLevel::Fine) << "RulesetExecutor::load : Converting sm ...";
 			sm = converter->Convert(workingSm->GetSm());
 			sm = postprocessor->postprocess(sm);
 
@@ -112,12 +118,14 @@ namespace Rulesets {
 			// Add mods, should always be the last thing applied to give full control to mods
 			// applyMods(mods);
 
+			LOG(LogLevel::Info) << "RulesetExecutor::load : creating playfield ...";
 			playfield = createPlayfield();
 
 			// 這邊會把map algo讀進去playfield裡面，這件事要記得寫
 			AddChild(playfield);
 
 			// 把Event轉成Event processor擺進去playfield裡
+			LOG(LogLevel::Info) << "RulesetExecutor::load : loading events into playfield ...";
 			playfieldLoad();
 
 			return 0;
