@@ -73,6 +73,11 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		(height - targetHeight) : (blackKeyHeight - blackKeyTargetHeight)
 	) / fallSpeed;
 
+	MTO_FLOAT fallLifeTime = MTO_FLOAT( 
+		note->IsWhiteKey() ?
+		height : blackKeyHeight
+		) / fallSpeed;
+
 	MTO_FLOAT glowLineTime = fallTime + MTO_FLOAT(1) / glowLineSpeed + glowLineDuration;
 
 	MTO_FLOAT noteLifeTime = MTO_FLOAT(
@@ -80,9 +85,9 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		(targetHeight) : (blackKeyTargetHeight)
 	) / glowLineSpeed;
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Fall speed is [" << fallSpeed << "], GlowLine speed is [" << glowLineSpeed << "].";
+	LOG(LogLevel::Finest) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Fall speed is [" << fallSpeed << "], GlowLine speed is [" << glowLineSpeed << "].";
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], time [" << e->GetStartTime() - glowLineTime << "].";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], start time [" << e->GetStartTime() - glowLineTime << "], life time [" << fallTime + glowLineDuration << "].";
 
 	GlowLineEffect* glow = new GlowLineEffect(
 		(int)pitch, 
@@ -91,13 +96,13 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		fallTime + glowLineDuration,
 		glowLineSpeed);
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], time [" << e->GetStartTime() - fallTime << "].";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << e->GetStartTime() - fallTime << "], life time [" << ;
 
 	FallEffect* fall = new FallEffect(
 		(int)pitch, 
 		0, 
 		e->GetStartTime() - fallTime,
-		0,
+		fallLifeTime,
 		fallSpeed);
 
 	note->SetLifeTime(noteLifeTime);
