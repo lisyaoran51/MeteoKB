@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	LOG(LogLevel::Info) << "int main(int,char*) : Create game [MeteorGame].";
 	Game* game = new MeteorGame();
 
-	LOG(LogLevel::Info) << "int main(int,char*) : Create Config Manager [FrameworkConfigManager].";
+	LOG(LogLevel::Fine) << "int main(int,char*) : Create Config Manager [FrameworkConfigManager].";
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
 	fConfigManager->Async();
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, string("MeteorPatternGenerator"));
@@ -36,9 +36,10 @@ int main(int argc, char *argv[]) {
 	// TODO: 設定....
 	game->Cache<FrameworkConfigManager>(fConfigManager);
 
+	LOG(LogLevel::Fine) << "int main(int,char*) : Create Config Manager [MeteorConfigManager].";
 	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
 	mConfigManager->Async();
-
+	game->Cache<MeteorConfigManager>(mConfigManager);
 
 	// 1. cache session
 	// TODO: 之後把session改成我要的
