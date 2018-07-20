@@ -76,7 +76,6 @@ int Playfield::load(FrameworkConfigManager* f, Updater* u) {
 	else
 		throw runtime_error("int Playfield::load() : Width and Height not found in Setting.");
 	
-
 	LOG(LogLevel::Fine) << "Playfield::load() : Registering map ...";
 	eventProcessorMaster->RegisterMap(lightMap);
 	renderer->RegisterMap(lightMap);

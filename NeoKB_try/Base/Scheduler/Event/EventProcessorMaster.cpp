@@ -29,6 +29,11 @@ EventProcessorMaster::EventProcessorMaster(): RegisterType("EventProcessorMaster
 	registerLoad(bind((int(EventProcessorMaster::*)())&EventProcessorMaster::load, this));
 }
 
+EventProcessorMaster::~EventProcessorMaster()
+{
+	delete eventProcessors;
+}
+
 int EventProcessorMaster::ReceiveEventProcessor(EventProcessor<Event>* ep)
 {
 	eventProcessors->push_back(ep);

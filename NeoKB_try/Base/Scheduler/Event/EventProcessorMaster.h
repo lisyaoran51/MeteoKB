@@ -47,6 +47,8 @@ namespace Events {
 
 		EventProcessorMaster();
 
+		~EventProcessorMaster();
+
 		/// <summary>
 		/// 在遊戲進行中來負責接收集將執行的事件， 
 		/// </summary>
@@ -70,7 +72,7 @@ namespace Events {
 
 	protected:
 
-		vector<EventProcessor<Event>*>* eventProcessors;
+		vector<EventProcessor<Event>*>* eventProcessors = new vector<EventProcessor<Event>*>();
 
 		int processEvent(MTO_FLOAT elapsedTime);
 
@@ -84,8 +86,6 @@ namespace Events {
 		/// </summary>
 		InstanceCreator<EventProcessor<Event>> event_processor_creator;
 		*/
-
-		vector<EventProcessor<Event>*> event_processors;
 
 		Map* lightMap;
 
