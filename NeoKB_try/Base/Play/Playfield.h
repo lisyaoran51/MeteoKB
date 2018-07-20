@@ -36,7 +36,7 @@ namespace Play {
 		int load();
 
 		// 繼承playfield的class，在load的時候一定要寫讀取map algo的工作
-		int load(Scheduler* s, EventProcessorMaster* e, FrameworkConfigManager* f, Updater* u);
+		int load(FrameworkConfigManager* f, Updater* u);
 
 	public:
 
