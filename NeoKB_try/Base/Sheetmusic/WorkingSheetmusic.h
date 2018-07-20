@@ -22,8 +22,8 @@ namespace Sheetmusics {
 	/// 
 	class WorkingSm
 	{
-
-		SmSetInfo* smSetInfo = NULL;
+		// 這個直接拿sm info裡的舊好
+		//SmSetInfo* smSetInfo = NULL;
 
 		SmInfo* smInfo = NULL;
 

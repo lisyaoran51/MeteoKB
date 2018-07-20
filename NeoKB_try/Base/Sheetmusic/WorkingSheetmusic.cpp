@@ -52,7 +52,7 @@ Sm<Event>* WorkingSm::createSm()
 
 string WorkingSm::getPathForFile(string fileName)
 {
-	string s = smSetInfo->path + "/" + fileName;
+	string s = smInfo->smSetInfo->path + "/" + fileName;
 	LOG(LogLevel::Finer) << "string WorkingSm::getPathForFile(string) : creating Sm from path [" << s << "] ...";
 	return s;
 }
