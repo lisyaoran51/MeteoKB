@@ -42,13 +42,13 @@ namespace Patterns {
 
 	protected:
 
-		MTO_FLOAT fallSpeed;
-		MTO_FLOAT fallBrightness;
-		MTO_FLOAT explodeSpeed;
-		MTO_FLOAT explodeBrightness;
-		MTO_FLOAT glowLineSpeed;
-		MTO_FLOAT glowLineDuration;
-		MTO_FLOAT glowLineBrightness;
+		MTO_FLOAT fallSpeed = 0;
+		MTO_FLOAT fallBrightness = 0;
+		MTO_FLOAT explodeSpeed = 0;
+		MTO_FLOAT explodeBrightness = 0;
+		MTO_FLOAT glowLineSpeed = 0;
+		MTO_FLOAT glowLineDuration = 0;
+		MTO_FLOAT glowLineBrightness = 0;
 	};
 
 

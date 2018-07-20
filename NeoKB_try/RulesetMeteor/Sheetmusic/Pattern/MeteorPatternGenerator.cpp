@@ -50,7 +50,7 @@ int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 	return 0;
 }
 
-MeteorPatternGenerator::MeteorPatternGenerator(): RegisterType("MeteorPatternGenerator")
+MeteorPatternGenerator::MeteorPatternGenerator(): PatternGenerator(), RegisterType("MeteorPatternGenerator")
 {
 	registerLoad(bind(static_cast<int(MeteorPatternGenerator::*)(void)>(&MeteorPatternGenerator::load), this));
 }

@@ -71,8 +71,6 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	LOG(LogLevel::Finest) << "Scheduler::Elapse() : processors size is " << eventProcessors->size();
 
-	LOG(LogLevel::Finest) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
-
 	while (eventProcessors->back()->GetStartTime() < currentTime) {
 
 		LOG(LogLevel::Finest) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
