@@ -104,6 +104,7 @@ namespace Rulesets {
 			LOG(LogLevel::Info) << "RulesetExecutor::load : creating [" << pgName << "] ...";
 			InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 			PatternGenerator* pg = iCreator.CreateInstanceWithT<PatternGenerator>(pgName);
+			AddChild(pg);
 
 			// 要把converter和postprocessor擺到load()裡，因為pattern Generator是擺在cache裡的
 			LOG(LogLevel::Fine) << "RulesetExecutor::load : creating Sm Converter ...";
