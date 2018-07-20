@@ -96,7 +96,7 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		fallTime + glowLineDuration,
 		glowLineSpeed);
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << e->GetStartTime() - fallTime << "], life time [" << ;
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << e->GetStartTime() - fallTime << "], life time [" << fallLifeTime << "].";
 
 	FallEffect* fall = new FallEffect(
 		(int)pitch, 
