@@ -133,6 +133,8 @@ int ProgramInitializer::Initialize()
 	// Meteor/Sheetmusics/Patterns
 	iCreator.RegisterType<MeteorPatternGenerator>("MeteorPatternGenerator");
 
+	iCreator.PrintCreators();
+
 	// ===============================================
 
 

@@ -82,6 +82,16 @@ namespace Util {
 
 		}
 
+		int PrintCreators() {
+			map<string, MtoFunc>::iterator iter;
+			int i = 0;
+			for (iter = creators.begin(); iter != creators.end(); iter++, i++)
+			{
+				LOG(LogLevel::Info) << "int InstanceCreator::PrintCreators() : #" << i << " type registered [" << iter.first;
+			}
+			return 0;
+		}
+
 	};
 
 
