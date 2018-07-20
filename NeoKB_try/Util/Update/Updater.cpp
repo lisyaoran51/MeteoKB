@@ -1,8 +1,11 @@
 #include "Updater.h"
 
+#include "../Log.h"
+
 using namespace Util::Update;
 using namespace std::chrono;
 using namespace std;
+using namespace Util;
 
 
 void Updater::update(MTO_FLOAT elapsedTime)
@@ -29,6 +32,9 @@ int Updater::RegisterTask(function<int(MTO_FLOAT)> t)
 
 void Updater::Update()
 {
+
+	LOG(LogLevel::Finest) << "Updater::Update() : update frame - " << currentTime;
+
 	if (updateState == UpdateState::Started) {
 		system_clock::time_point temp = system_clock::now();
 		
