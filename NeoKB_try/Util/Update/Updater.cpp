@@ -33,9 +33,11 @@ int Updater::RegisterTask(function<int(MTO_FLOAT)> t)
 void Updater::Update()
 {
 
-	LOG(LogLevel::Finest) << "Updater::Update() : update frame - " << currentTime;
 
 	if (updateState == UpdateState::Started) {
+
+		LOG(LogLevel::Finest) << "Updater::Update() : update frame - " << (currentTime - startTime).count();
+
 		system_clock::time_point temp = system_clock::now();
 		
 		duration<double> difference = temp - currentTime;
@@ -47,8 +49,10 @@ void Updater::Update()
 		return;
 	}
 	else {
+
 		updateState = UpdateState::Started;
 		currentTime = system_clock::now();
+		startTime = currentTime;
 
 		update(-1);
 	}

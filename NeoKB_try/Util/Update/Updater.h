@@ -32,6 +32,8 @@ namespace Update {
 
 		system_clock::time_point currentTime;
 
+		system_clock::time_point startTime;
+
 		vector<function<int(MTO_FLOAT)>> tasks;
 
 		void update(MTO_FLOAT elapsedTime);
