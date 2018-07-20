@@ -69,7 +69,7 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 	
 	currentTime += elapsedTime;
 
-	LOG(LogLevel::Finest) << "Scheduler::Elapse() : processors size is [" << eventProcessors->size();
+	LOG(LogLevel::Finest) << "Scheduler::Elapse() : processors size is " << eventProcessors->size();
 
 	while (eventProcessors->back()->GetStartTime() < currentTime) {
 

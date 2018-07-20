@@ -59,6 +59,10 @@ namespace Rulesets {
 		/// </summary>
 		int playfieldLoad() {
 
+			LOG(LogLevel::Fine) << "RulesetExecutor::playfieldLoad : loading [" << sm->GetEvents()->size() << "] events into playfield ... ";
+
+			while (1);
+
 			// 把Event轉成Event processor擺進去playfield裡
 			for (int i = 0; i < sm->GetEvents()->size(); i++) {
 
