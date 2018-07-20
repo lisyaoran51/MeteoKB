@@ -23,18 +23,23 @@ int Playfield::load()
 {
 	LOG(LogLevel::Info) << "Playfield::load() : Start loading game scene";
 
+
+	LOG(LogLevel::Finer) << "Playfield::load() : getting scheduler";
 	Scheduler* s = GetCache<Scheduler>("Scheduler");
 	if (!s)
 		throw runtime_error("int Playfield::load() : Scheduler not found in cache.");
 
+	LOG(LogLevel::Finer) << "Playfield::load() : getting EventProcessorMaster";
 	EventProcessorMaster* e = GetCache<EventProcessorMaster>("EventProcessorMaster");
 	if (!e)
 		throw runtime_error("int Playfield::load() : EventProcessorMaster not found in cache.");
 
+	LOG(LogLevel::Finer) << "Playfield::load() : getting FrameworkConfigManager";
 	FrameworkConfigManager* f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
 	if (!f)
 		throw runtime_error("int Playfield::load() : FrameworkConfigManager not found in cache.");
 
+	LOG(LogLevel::Finer) << "Playfield::load() : getting Updater";
 	Updater* u = GetCache<Updater>("Updater");
 	if (!u)
 		throw runtime_error("int Playfield::load() : Updater not found in cache.");
