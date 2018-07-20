@@ -61,6 +61,14 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	if (elapsedTime == -1) {
 		// 遊戲還沒開始時事-1，之後變0代表遊戲開始
+
+		LOG(LogLevel::Finest) << [](vector<EventProcessor<Event>*>* eps) {
+			for (int i = 0; i < eps->size(); i++) {
+				LOG(LogLevel::Finest) << "int Scheduler::Elapse(MTO_FLOAT) : Processor #" << i << " start time is [" << eps->at(i)->GetStartTime() << "].";
+			} 
+			return 0;
+		}(eventProcessors);
+
 		currentTime = 0;
 		return 0;
 	}
