@@ -47,7 +47,7 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	// 所有的event都要複製一個新的來用，才不會動到原本讀好的譜
 	NoteControlPoint* note = e->Clone()->Cast<NoteControlPoint>();
 	
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Start converting [" << note->GetPitch() << "," << note->GetStartTime() << "] to pattern...";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Start converting [" << static_cast<int>(note->GetPitch()) << "," << note->GetStartTime() << "] to pattern...";
 
 	if(!note)
 		throw runtime_error("Pattern* MeteorPatternGenerator::Generate(vector<Event*>*, Event*) : event cannot cast to NoteControlPoint.");
