@@ -82,7 +82,7 @@ int Playfield::load(FrameworkConfigManager* f, Updater* u) {
 	renderer->RegisterMap(lightMap);
 
 	LOG(LogLevel::Fine) << "Playfield::load() : Registering event process master to scheduler ...";
-	scheduler->RegisterHandler(bind(&EventProcessorMaster::ReceiveEventProcessor, e, placeholders::_1));
+	scheduler->RegisterHandler(bind(&EventProcessorMaster::ReceiveEventProcessor, eventProcessorMaster, placeholders::_1));
 
 	// 這一步是讓他們去抓updater
 	LOG(LogLevel::Fine) << "Playfield::load() : Adding scheduler, event proessor master and ernderer ...";
