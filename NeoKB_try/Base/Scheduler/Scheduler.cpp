@@ -77,6 +77,8 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	LOG(LogLevel::Finest) << "Scheduler::Elapse() : elapsed time - [" << elapsedTime << "], current time - [" << currentTime << "]";
 
+	LOG(LogLevel::Finest) << "Scheduler::Elapse() : The start time of first event is [" << eventProcessors->front()->GetStartTime() << "].";
+
 	while (eventProcessors->front()->GetStartTime() < currentTime) {
 
 		LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
