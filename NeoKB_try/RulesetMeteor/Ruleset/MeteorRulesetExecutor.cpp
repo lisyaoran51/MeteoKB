@@ -90,8 +90,11 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	else if (processorType == "GlowLineEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
+		LOG(LogLevel::Fine) << "1";
 		GlowLineEffectMapper* g = new GlowLineEffectMapper(width, height);
 		g->RegisterEvent(e);
+		LOG(LogLevel::Fine) << "2";
+
 		return g;
 	}
 	else if (processorType == "ExplodeEffectMapper") {
