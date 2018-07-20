@@ -36,6 +36,7 @@ void Updater::Update()
 
 	if (updateState == UpdateState::Started) {
 
+
 		LOG(LogLevel::Finest) << "Updater::Update() : update frame - " << (currentTime - startTime).count();
 
 		system_clock::time_point temp = system_clock::now();

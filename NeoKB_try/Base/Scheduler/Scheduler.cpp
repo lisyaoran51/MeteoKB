@@ -77,11 +77,9 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 	
 	currentTime += elapsedTime;
 
-	LOG(LogLevel::Finest) << "Scheduler::Elapse() : processors size is " << eventProcessors->size();
-
 	while (eventProcessors->back()->GetStartTime() < currentTime) {
 
-		LOG(LogLevel::Finest) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
+		LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
 
 		//TODO: 應該先把超過的時間給減回去，避免多扣life time
 		deliverHandler(eventProcessors->back());
