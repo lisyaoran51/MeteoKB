@@ -97,7 +97,7 @@ Renderer * Renderer::GetRenderer(int hwVersion)
 
 	renderer->SetHardwareVersion(hwVersion);
 
-	LOG(LogLevel::Info) << "Renderer::GetRenderer : 硬體版本為 " << hwVersion << " ，取得Renderer板本為 " << rendererName;
+	LOG(LogLevel::Info) << "Renderer::GetRenderer : Hardware version: [" << hwVersion << "]. Renderer version: [" << rendererName << "].";
 
 	return renderer;
 }
