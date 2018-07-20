@@ -127,8 +127,8 @@ int ProgramInitializer::Initialize()
 
 	// Meteor/Schedulers/Events/Effects/Algorithms
 	iCreator.RegisterType<ExplodeMapAlgorithm>("ExplodeMapAlgorithm");
-	iCreator.RegisterType<ExplodeMapAlgorithm>("FallMapAlgorithm");
-	iCreator.RegisterType<ExplodeMapAlgorithm>("GlowLineMapAlgorithm");
+	iCreator.RegisterType<FallMapAlgorithm>("FallMapAlgorithm");
+	iCreator.RegisterType<GlowLineMapAlgorithm>("GlowLineMapAlgorithm");
 
 	// Meteor/Sheetmusics/Patterns
 	iCreator.RegisterType<MeteorPatternGenerator>("MeteorPatternGenerator");
