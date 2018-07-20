@@ -37,6 +37,9 @@ Session::Session(RulesetInfo* r, SmManager* s): RegisterType("Session"), ChildAd
 
 	smManager = s;
 
+	LOG(LogLevel::Finer) << "Session::Session(RulesetInfo*, SmManager*) : sm manager has [" << smManager->GetSmInfos()->size() << "] sm infos.";
+	LOG(LogLevel::Finer) << "Session::Session(RulesetInfo*, SmManager*) : the first sm info is [" << smManager->GetSmInfos()->at(0)->fileName << "].";
+
 	smInfo = smManager->GetSmInfos()->at(0);
 
 	//registerLoad(bind((int(Session::*)())&Session::load, this));

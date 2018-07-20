@@ -25,7 +25,6 @@ WorkingSm::~WorkingSm()
 
 Sm<Event>* WorkingSm::GetSm()
 {
-	cout << sm << endl;
 	if (sm)
 		return sm;
 
@@ -43,7 +42,7 @@ Sm<Event>* WorkingSm::createSm()
 	Sm<Event>* s;
 
 	// get path for file是在這個sm set裡面找他們全部的path，然後把path和檔名家在一起，回傳
-	ifstream* stream = new ifstream(getPathForFile(smInfo->path));
+	ifstream* stream = new ifstream(getPathForFile(smInfo->fileName));
 
 	SmDecoder* smDecoder = SmDecoder::GetDecoder(stream);
 	s = smDecoder->Decode(stream);

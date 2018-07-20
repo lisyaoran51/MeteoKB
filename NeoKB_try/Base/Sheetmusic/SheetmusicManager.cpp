@@ -73,7 +73,7 @@ vector<SmInfo*>* SmManager::importToStorage(FileReader & fileReader)
 
 		LOG(LogLevel::Finer) << "vector<SmInfo*>* SmManager::importToStorage(FileReader&) : Decode [" << smNames->at(i) << "] ...";
 		Sm<Event>* sm = smDecoder->Decode(stream);
-		sm->GetSmInfo()->path = smNames->at(i);
+		sm->GetSmInfo()->fileName = smNames->at(i);
 
 		// TODO: 把這段佔實的code改好，正確做法應該不是從filereader拿sm set info，要去trace osu的寫法
 		sm->GetSmInfo()->smSetInfo = fileReader.GetSmSetInfo();

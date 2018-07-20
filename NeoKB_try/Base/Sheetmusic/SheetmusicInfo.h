@@ -41,7 +41,7 @@ namespace Sheetmusics {
 
 		SmDifficulty* difficuty;
 
-		string path;
+		string fileName;
 
 		int rulesetId;
 
