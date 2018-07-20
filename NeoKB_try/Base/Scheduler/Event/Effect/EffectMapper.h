@@ -60,8 +60,6 @@ namespace Effects {
 		EffectMapper(int w, int h): EffectMapperInterface(){
 			width = w;
 			height = h;
-			// 把effect的功能打開，擺在effect
-			effect = dynamic_cast<T*>(event);
 		}
 
 		virtual int Elapse(MTO_FLOAT elapsedTime) {
@@ -100,15 +98,15 @@ namespace Effects {
 			}
 		}
 
+		T* GetEffect() { return dynamic_cast<T*>(event); }
+
 		virtual int GetWidth() { return width; }
 		virtual int GetHeight() { return height; }
-		virtual int GetX(){ return effect->GetX(); }
-		virtual int GetY(){ return effect->GetY(); }
-		virtual MTO_FLOAT GetSpeed(){ return effect->GetSpeed(); }
+		virtual int GetX(){ return GetEffect()->GetX(); }
+		virtual int GetY(){ return GetEffect()->GetY(); }
+		virtual MTO_FLOAT GetSpeed(){ return GetEffect()->GetSpeed(); }
 
 	protected:
-
-		T* effect;
 
 		Map* lightMap;
 

@@ -38,6 +38,7 @@ int MeteorRulesetExecutor::load()
 
 MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecutor"), RulesetExecutor()
 {
+	// TODO: 這個table可以社繼承自訂
 	eventProcessorTable["FallEffect"] = "FallEffectMapper";
 	eventProcessorTable["ExplodeEffect"] = "ExplodeEffectMapper";
 	eventProcessorTable["GlowLineEffect"] = "GlowLineEffectMapper";
@@ -84,17 +85,17 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	if (processorType == "FallEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
-		return new FallEffectMapper(width, height);
+		return new FallEffectMapper(width, height)->RegisterEvent(e);
 	}
 	else if (processorType == "GlowLineEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
-		return new GlowLineEffectMapper(width, height);
+		return new GlowLineEffectMapper(width, height)->RegisterEvent(e);
 	}
 	else if (processorType == "ExplodeEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
-		return new ExplodeEffectMapper(width, height);
+		return new ExplodeEffectMapper(width, height)->RegisterEvent(e);
 	}
 	
 	throw runtime_error("MeteorRulesetExecutor::getEventProcessor(Event*) : No matched processor type.");

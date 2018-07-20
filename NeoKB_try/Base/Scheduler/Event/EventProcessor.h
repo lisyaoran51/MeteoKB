@@ -33,9 +33,9 @@ namespace Events {
 		/// <summary>
 		/// register the Event to be processed.
 		/// </summary>
-		int RegisterEvent(T* e) {
+		virtual EventProcessor<T>* RegisterEvent(T* e) {
 			event = e;
-			return 0;
+			return this;
 		}
 
 		/// <summary>
