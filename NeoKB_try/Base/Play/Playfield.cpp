@@ -117,7 +117,7 @@ int Playfield::Add(EventProcessor<Event> * ep)
 			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
 		}
 
-		LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType] << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
+		LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType]->GetTypeName() << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
 
 		// 這邊要把map加進去
 		EffectMapperInterface* em = ep->Cast<EffectMapperInterface>();

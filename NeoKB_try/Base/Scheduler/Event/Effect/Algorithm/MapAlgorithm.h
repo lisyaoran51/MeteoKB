@@ -31,9 +31,11 @@ namespace Effects {
 namespace Algorithms{
 	
 
-	class MapAlgorithmInterface {
+	class MapAlgorithmInterface: public MtoObject {
 
 	public:
+
+		MapAlgorithmInterface(): MtoObject(), RegisterType("MapAlgorithmInterface"){}
 
 		virtual int RegisterBufferMap(Map* b) = 0;
 
@@ -49,7 +51,7 @@ namespace Algorithms{
 
 
 	template<typename T>
-	class MapAlgorithm: public MapAlgorithmInterface, public MtoObject
+	class MapAlgorithm: public MapAlgorithmInterface
 	{
 
 		bool constructed;
@@ -59,7 +61,7 @@ namespace Algorithms{
 		/// <summary>
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
-		MapAlgorithm(): RegisterType("MapAlgorithm") {
+		MapAlgorithm(): MapAlgorithmInterface(), RegisterType("MapAlgorithm") {
 			constructed = false;
 		}
 
