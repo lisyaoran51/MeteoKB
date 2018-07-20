@@ -46,8 +46,8 @@ SmDecoder* SmDecoder::GetDecoder(ifstream * stream)
 	}
 	LOG(LogLevel::Info) << "SmDecoder* SmDecoder::GetDecoder(ifstream*) : Get decoder [" << decoders[line] << "].";
 
-	InstanceCreator<SmDecoder> &instance_creater =
-		InstanceCreator<SmDecoder>::GetInstance();
+	InstanceCreator<MtoObject> &instance_creater =
+		InstanceCreator<MtoObject>::GetInstance();
 
 	return instance_creater.CreateInstanceWithT<SmDecoder>(decoders[line]);
 }
