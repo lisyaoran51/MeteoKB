@@ -20,10 +20,10 @@ int Player::load()
 	workingSm = s->GetWorkingSm();			// workingSm要在遊戲結束以後刪掉
 	
 
-	Sm<Event>* sm = workingSm->GetSm();
+	//Sm<Event>* sm = workingSm->GetSm();
 
-	if (!rulesetInfo)
-		rulesetInfo = sm->GetRulesetInfo();
+	//if (!rulesetInfo)
+	//	rulesetInfo = sm->GetRulesetInfo();
 	ruleset = rulesetInfo->CreateRuleset();
 
 	rulesetExecutor = ruleset->CreateRulesetExecutor(workingSm);
