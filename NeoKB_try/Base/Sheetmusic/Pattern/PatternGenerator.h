@@ -12,7 +12,7 @@
 #include "Pattern.h"
 #include "../../../Util/MtoObject.h"
 #include "../../Config/FrameworkConfigManager.h"
-#include "../../../Util/Hierachal/Loadable.h"
+#include "../../../Util/Hierachal/ChildAddable.h"
 
 
 
@@ -32,7 +32,7 @@ namespace Patterns {
 	/// <summary>
 	/// to generate special pattern from original events
 	///	</summary>
-	class PatternGenerator: public Loadable
+	class PatternGenerator: public ChildAddable
 	{
 
 		int load();
