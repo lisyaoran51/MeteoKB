@@ -115,6 +115,9 @@ namespace Rulesets {
 			sm = converter->Convert(workingSm->GetSm());
 			sm = postprocessor->postprocess(sm);
 
+			for (int i = 0; i < sm->GetEvents()->size(); i++) {
+				LOG(LogLevel::Finest) << "RulesetExecutor::load : loaded event #" << i << " start time is [" << sm->GetEvents()->at(i)->GetStartTime() << "].";
+			}
 
 			delete converter;
 			delete postprocessor;

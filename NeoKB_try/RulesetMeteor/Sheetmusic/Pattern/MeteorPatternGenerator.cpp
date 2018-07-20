@@ -104,12 +104,12 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 
 	pattern->Add(glow);
 	pattern->Add(fall);
-	pattern->Add(note);
+	//pattern->Add(note);
 
 	// 把pattern裡面的event一個一個加進去es裡
 	es->push_back(glow);
 	es->push_back(fall);
-	es->push_back(note);
+	//es->push_back(note);
 
 	return pattern;
 
