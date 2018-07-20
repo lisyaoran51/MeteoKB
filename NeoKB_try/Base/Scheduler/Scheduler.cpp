@@ -77,12 +77,12 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	LOG(LogLevel::Finest) << "Scheduler::Elapse() : elapsed time - [" << elapsedTime << "], current time - [" << currentTime << "]";
 
-	while (eventProcessors->back()->GetStartTime() < currentTime) {
+	while (eventProcessors->front()->GetStartTime() < currentTime) {
 
 		LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
 
 		//TODO: 應該先把超過的時間給減回去，避免多扣life time
-		deliverHandler(eventProcessors->back());
-		eventProcessors->pop_back();
+		deliverHandler(eventProcessors->front());
+		eventProcessors->erase(eventProcessors->begin());
 	}
 }
