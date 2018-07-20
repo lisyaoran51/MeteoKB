@@ -4,7 +4,7 @@ AudioFilename:Take_a_bow.mp3
 [Metadata]
 Title:Take_a_bow
 [Difficulty]
-[TimingPoints]
+[NoteControlPoints]
 60,2.6,-1
 76,2.98,-1
 80,3.34,-1
