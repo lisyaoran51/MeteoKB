@@ -45,7 +45,7 @@ void Updater::Update()
 
 		currentTime = system_clock::now();
 
-		LOG(LogLevel::Finest) << "Updater::Update() : new time - " << (currentTime - startTime).count();
+		LOG(LogLevel::Finest) << "Updater::Update() : elapse time - " << elapsedTime;
 
 		update(elapsedTime);
 		return;
