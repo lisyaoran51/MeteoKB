@@ -83,7 +83,7 @@ namespace Util {
 		}
 
 		int PrintCreators() {
-			map<string, MtoFunc>::iterator iter;
+			typename map<string, MtoFunc>::iterator iter;
 			int i = 0;
 			for (iter = creators.begin(); iter != creators.end(); iter++, i++)
 			{
