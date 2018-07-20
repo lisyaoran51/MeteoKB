@@ -41,15 +41,19 @@ namespace Sheetmusics {
 		Sm(Sm<T>* sm = NULL) {
 			if (sm) {
 				// TODO: 應該是要附置一份，而不是直接指過去
+				LOG(LogLevel::Finer) << "Sm(Sm<T>*) : Getting info ...";
 				SetSmInfo(sm->GetSmInfo());
+				LOG(LogLevel::Finer) << "Sm(Sm<T>*) : Getting metadata ...";
 				SetSmMetadata(sm->GetSmMetadata());
+				LOG(LogLevel::Finer) << "Sm(Sm<T>*) : Getting events ...";
 				SetEvents(sm->GetEvents());
+				LOG(LogLevel::Finer) << "Sm(Sm<T>*) : Getting ruleset info ...";
 				SetRulesetInfo(sm->GetRulesetInfo());
 			}
 			else {
 				SetSmInfo(new SmInfo());
 				smInfo->metadata = new SmMetadata();
-				// TODO: metadata到底要存哪？
+				// TODO: metadata到底要存哪？info裡還是sm裡
 				SetSmMetadata(new SmMetadata());
 				SetEvents(new vector<T*>());
 				// SetRulesetInfo
