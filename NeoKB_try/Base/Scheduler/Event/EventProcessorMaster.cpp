@@ -36,6 +36,9 @@ EventProcessorMaster::~EventProcessorMaster()
 
 int EventProcessorMaster::ReceiveEventProcessor(EventProcessor<Event>* ep)
 {
+
+	LOG(LogLevel::Finer) << "EventProcessorMaster::ReceiveEventProcessor(EventProcessor<Event>*) : event [" << ep->GetStartTime() << "] received.";
+
 	eventProcessors->push_back(ep);
 	return 0;
 }

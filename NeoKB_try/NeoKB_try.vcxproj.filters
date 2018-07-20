@@ -282,9 +282,6 @@
     <ClCompile Include="Base\Play\Playfield.cpp">
       <Filter>來源檔案\Base\Play</Filter>
     </ClCompile>
-    <ClCompile Include="Base\Scheduler\Event\Effect\EffectMapper.cpp">
-      <Filter>來源檔案\Base\Schedulers\Events\Effects</Filter>
-    </ClCompile>
     <ClCompile Include="Base\Graphic\Renderer\MapAlgorithm\HardwareMapAlgorithm.cpp">
       <Filter>來源檔案\Base\Graphic\Renderer\MapAlgorithm</Filter>
     </ClCompile>
