@@ -26,6 +26,8 @@ namespace Effects {
 
 		GlowLineEffectMapper(int w, int h);
 
+		virtual string GetTypeName();
+
 	};
 
 

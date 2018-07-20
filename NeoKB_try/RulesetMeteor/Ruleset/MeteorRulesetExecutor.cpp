@@ -77,7 +77,7 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 	string processorType = GetProcessorType(e->GetTypeName()); // .c_str();
 
-	LOG(LogLevel::Fine) << "MeteorRulesetExecutor::getEventProcessor(Event*) : event [" << e->GetStartTime() << "] has processor type [" << processorType << "].";
+	LOG(LogLevel::Finer) << "MeteorRulesetExecutor::getEventProcessor(Event*) : event [" << e->GetStartTime() << "] has processor type [" << processorType << "].";
 
 
 	//InstanceCreator<MtoObject>& iCreator = InstanceCreator<MtoObject>::GetInstance();
@@ -90,12 +90,7 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	else if (processorType == "GlowLineEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
-		LOG(LogLevel::Fine) << "1";
-		GlowLineEffectMapper* g = new GlowLineEffectMapper(width, height);
-		g->RegisterEvent(e);
-		LOG(LogLevel::Fine) << "2";
-
-		return g;
+		return (new GlowLineEffectMapper(width, height))->RegisterEvent(e);
 	}
 	else if (processorType == "ExplodeEffectMapper") {
 		int width = playfield->GetWidth();

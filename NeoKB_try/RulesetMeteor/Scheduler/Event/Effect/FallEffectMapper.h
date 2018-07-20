@@ -26,6 +26,8 @@ namespace Effects {
 
 		FallEffectMapper(int w, int h);
 
+		virtual string GetTypeName();
+
 	};
 
 

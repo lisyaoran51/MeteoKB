@@ -110,15 +110,17 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 		string processorType = ep->GetTypeName();
 
-		MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
-		if (mapAlgo)
+		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
+		if (iter != mapAlgorithms.end())
+		{
+			MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
 			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
+		}
 
-	}
+		LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType] << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
 
-	if (CanCast<EffectMapper<Effect>, EventProcessor<Event>>(ep)) {
-		// 這邊要判斷這個event是不是effect，式的話就把map加進去
-		EffectMapper<Effect>* em = Cast<EffectMapper<Effect>, EventProcessor<Event>>(ep);
+		// 這邊要把map加進去
+		EffectMapperInterface* em = ep->Cast<EffectMapperInterface>();
 		em->RegisterMap(lightMap);
 	}
 

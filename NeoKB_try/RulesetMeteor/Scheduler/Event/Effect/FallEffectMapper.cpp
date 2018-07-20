@@ -10,3 +10,8 @@ FallEffectMapper::FallEffectMapper(int w, int h) : EffectMapper<FallEffect>(w, h
 {
 
 }
+
+string FallEffectMapper::GetTypeName()
+{
+	return string("FallEffectMapper");
+}
