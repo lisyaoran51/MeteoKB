@@ -16,6 +16,9 @@ MeteorSmConverter::MeteorSmConverter(PatternGenerator * pg): SmConverter(pg)
 
 int MeteorSmConverter::convertEvent(vector<Event*>* es, Event* e)
 {
+
+	//LOG(LogLevel::Info) << "int MeteorSmConverter::convertEvent(vector<Event*>*, Event*) : Start converting events ...";
+
 	// 如果在讀檔的時候就是處理好的檔案，就直接付智一個然後回傳
 	// 但如果是多型的狀況，沒辦法這樣複製，要用clone
 	if (e->CanCast<Effect>()) {
@@ -26,6 +29,7 @@ int MeteorSmConverter::convertEvent(vector<Event*>* es, Event* e)
 
 	if (e->CanCast<NoteControlPoint>()) {
 		// 對本來單純的樂譜，生成各種特效，如提示光、落下、其他特效。
+
 		Pattern* newPattern = patternGenerator->Generate(es, e);
 		patternGenerator->Add(newPattern);
 
