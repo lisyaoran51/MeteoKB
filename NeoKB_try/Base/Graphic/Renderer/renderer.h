@@ -76,8 +76,8 @@ namespace Renderers {
 		/// <summary>
 		/// 禎數、針長、目前所經過時間
 		///	</summary>
-		MTO_FLOAT frameRate, frameLength, currentFrameLength;
-
+		MTO_FLOAT frameLength, currentFrameLength;
+		int frameRate;
 
 		/// <summary>
 		/// HWMapAlgo應該是和renderer板本綁定 先不用

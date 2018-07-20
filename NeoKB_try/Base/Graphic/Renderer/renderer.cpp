@@ -53,14 +53,14 @@ int Renderer::load()
 
 int Renderer::load(Updater * u, FrameworkConfigManager* f)
 {
-	LOG(LogLevel::Info) << "Renderer::load(Updater*, FrameworkConfigManager*) : 將render任務註冊至updater";
+	LOG(LogLevel::Info) << "Renderer::load(Updater*, FrameworkConfigManager*) : Register render task to updater";
 
 	u->RegisterTask(bind((int(Renderer::*)(MTO_FLOAT))&Renderer::Elapse, this, placeholders::_1));
 
 	if (!f->Get(FrameworkSetting::FrameRate, &frameRate))
 		throw runtime_error("int Renderer::load(Updater*, FrameworkConfigManager*) : FrameRate not found in Setting.");
 
-	frameLength = MTO_FLOAT(1) / frameRate;
+	frameLength = MTO_FLOAT(1) / MTO_FLOAT(frameRate);
 	currentFrameLength = 0;
 
 	return 0;
