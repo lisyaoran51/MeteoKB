@@ -90,4 +90,5 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 		deliverHandler(eventProcessors->front());
 		eventProcessors->erase(eventProcessors->begin());
 	}
+	return 0;
 }
