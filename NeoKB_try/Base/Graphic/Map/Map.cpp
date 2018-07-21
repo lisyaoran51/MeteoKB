@@ -19,12 +19,12 @@ Map::Map(int w, int h)
 
 	// new一個二微陣列
 	matrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
-	for (int i = 0; i < height; i++)
-		matrix[i] = ((uint8_t*)(matrix+height)) + i * width + sizeof(uint8_t);
+	for (int i = 0; i < width; i++)
+		matrix[i] = ((uint8_t*)(matrix+height)) + i * height + sizeof(uint8_t);
 
 	defaultMatrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
-	for (int i = 0; i < height; i++)
-		defaultMatrix[i] = ((uint8_t*)(defaultMatrix + height)) + i * width + sizeof(uint8_t);
+	for (int i = 0; i < width; i++)
+		defaultMatrix[i] = ((uint8_t*)(defaultMatrix + height)) + i * height + sizeof(uint8_t);
 
 
 	// TODO: 改成用memset做比較快
