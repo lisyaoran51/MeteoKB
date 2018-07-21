@@ -61,6 +61,8 @@ namespace Renderers {
 
 		virtual int SendToDriver() = 0;
 
+		virtual int CleanMap();
+
 	protected:
 
 		/// <summary>

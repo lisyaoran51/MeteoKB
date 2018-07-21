@@ -124,5 +124,13 @@ int Renderer::Elapse(MTO_FLOAT elapsedTime)
 		LOG(LogLevel::Finest) << "Renderer::Elapse() : Rendering done.";
 	}
 
+	CleanMap();
+
+	return 0;
+}
+
+int Renderer::CleanMap()
+{
+	lightMap->Reset();
 	return 0;
 }
