@@ -121,6 +121,7 @@ int Renderer::Elapse(MTO_FLOAT elapsedTime)
 		currentFrameLength -= frameLength;
 		Render();
 		SendToDriver();
+		LOG(LogLevel::Finest) << "Renderer::Elapse() : Rendering done.";
 	}
 
 	return 0;
