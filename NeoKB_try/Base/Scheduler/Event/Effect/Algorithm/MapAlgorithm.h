@@ -5,11 +5,14 @@
 #include "../../../../../Util/Hierachal/ChildAddable.h"
 #include "MapGenerateAlgorithm.h"
 #include "MapShiftAlgorithm.h"
+#include "../../../../Config/FrameworkConfigManager.h"
 
 
 using namespace Base::Graphic::Maps;
 using namespace Util;
 using namespace Util::Hierachal;
+using namespace Base::Config;
+
 
 
 namespace Base {
