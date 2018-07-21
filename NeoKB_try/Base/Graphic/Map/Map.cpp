@@ -135,8 +135,8 @@ int Map::PasteSet(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
 int Map::Reset()
 {
 	
-	for (int i = 0; i < height; i++) {
-		for (int j = 0; j < width; j++) {
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
 			matrix[i][j] = defaultMatrix[i][j];
 		}
 	}
