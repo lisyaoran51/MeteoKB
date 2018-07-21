@@ -1226,14 +1226,16 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
             }
         }
     }
+	printf("ws2811_render : ------------ waiting dma, the driver mode is %d (spi = 3)------------\n", ws2811->device->driver_mode);
 
-	printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
-    // Wait for any previous DMA operation to complete.
+	// Wait for any previous DMA operation to complete.
     if ((ret = ws2811_wait(ws2811)) != WS2811_SUCCESS)
     {
         return ret;
     }
+	printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
 
+	
     if (ws2811->render_wait_time != 0) {
         const uint64_t current_timestamp = get_microsecond_timestamp();
         uint64_t time_diff = current_timestamp - previous_timestamp;
@@ -1249,6 +1251,7 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
     }
     else
     {
+		printf("ws2811_render : ------------ start transfering ------------\n");
         ret = spi_transfer(ws2811);
     }
 
