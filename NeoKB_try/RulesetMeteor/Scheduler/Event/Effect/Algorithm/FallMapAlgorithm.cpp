@@ -10,22 +10,22 @@ using namespace Base::Schedulers::Events::Effects;
 
 FallMapAlgorithm::FallMapAlgorithm(): RegisterType("FallMapAlgorithm"), MapAlgorithm()
 {
-	genAlgo = new FallMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<FallEffect>();
 	constructed = false;
 }
 
-int FallMapAlgorithm::LazyConstruct(int w, int h)
+int FallMapAlgorithm::LazyConstruct(int w, int h, int sX)
 {
-	MapAlgorithm<FallEffect>::LazyConstruct(w, h);
+	genAlgo = new FallMapGenerateAlgorithm();
+	shiftAlgo = new MapShiftAlgorithm<FallEffect>(sX);
+	MapAlgorithm<FallEffect>::LazyConstruct(w, h, sX);
 	constructed = true;
 	return 0;
 }
 
-FallMapAlgorithm::FallMapAlgorithm(int w, int h) : RegisterType("FallMapAlgorithm"), MapAlgorithm(w, h)
+FallMapAlgorithm::FallMapAlgorithm(int w, int h, int sX) : RegisterType("FallMapAlgorithm"), MapAlgorithm(w, h, sX)
 {
 	genAlgo = new FallMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<FallEffect>();
+	shiftAlgo = new MapShiftAlgorithm<FallEffect>(sX);
 	constructed = true;
 }
 

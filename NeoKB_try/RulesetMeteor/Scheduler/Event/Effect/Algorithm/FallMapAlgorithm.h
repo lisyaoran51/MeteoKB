@@ -35,12 +35,12 @@ namespace Algorithms{
 		///	</summary>
 		FallMapAlgorithm();
 
-		int LazyConstruct(int w, int h);
+		int LazyConstruct(int w, int h, int sX);
 
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		FallMapAlgorithm(int w, int h);
+		FallMapAlgorithm(int w, int h, int sX);
 
 	};
 

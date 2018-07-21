@@ -36,12 +36,12 @@ namespace Algorithms{
 		///	</summary>
 		ExplodeMapAlgorithm();
 
-		int LazyConstruct(int w, int h);
+		int LazyConstruct(int w, int h, int sX);
 
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		ExplodeMapAlgorithm(int w, int h);
+		ExplodeMapAlgorithm(int w, int h, int sX);
 
 	};
 

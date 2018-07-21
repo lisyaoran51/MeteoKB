@@ -65,10 +65,11 @@ namespace Algorithms{
 			constructed = false;
 		}
 
-		int LazyConstruct(int w, int h) {
+		int LazyConstruct(int w, int h, int sX) {
 			// if not constructed
 			width = w;
 			height = h;
+			startX = sX;
 			constructed = true;
 			return 0;
 		}
@@ -76,10 +77,11 @@ namespace Algorithms{
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		MapAlgorithm(int w, int h) : RegisterType("MapAlgorithm")
+		MapAlgorithm(int w, int h, int sX) : RegisterType("MapAlgorithm")
 		{
 			width = w;
 			height = h;
+			startX = sX
 			constructed = true;
 		}
 
@@ -133,7 +135,8 @@ namespace Algorithms{
 		int width;
 
 		int height;
-
+		
+		int startX;
 		//static Matrix2D<int>* matrix;
 
 		Map* bufferMap;

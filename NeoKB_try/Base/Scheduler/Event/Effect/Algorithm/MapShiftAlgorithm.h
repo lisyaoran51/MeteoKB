@@ -49,6 +49,11 @@ namespace Algorithms{
 	{
 
 	public:
+
+		MapShiftAlgorithm(int sX) {
+			startX = sX;
+		}
+
 		/// <summary>
 		/// 移動到指定位置上
 		///	</summary>
@@ -68,7 +73,7 @@ namespace Algorithms{
 		///	</summary>
 		virtual int ImplementShift(Map* bufferMap, Map* lightMap, EffectMapper<T>* em) {
 
-			MTO_FLOAT x = em->GetX();
+			MTO_FLOAT x = em->GetX() - startX;
 			MTO_FLOAT y = em->GetY();
 
 			LOG(LogLevel::Finest) << "MapShiftAlgorithm::ImplementShift(Map*,Map*,EffectMapper<T>*) : Shifting effect [" << em->GetStartTime() << "] to position [" << x << "][" << y << "].";
@@ -95,6 +100,8 @@ namespace Algorithms{
 			}
 			return 0;
 		}
+
+		int startX;
 
 	};
 	

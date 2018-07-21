@@ -34,12 +34,12 @@ namespace Algorithms{
 		///	</summary>
 		GlowLineMapAlgorithm();
 
-		int LazyConstruct(int w, int h);
+		int LazyConstruct(int w, int h, int sX);
 
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		GlowLineMapAlgorithm(int w, int h);
+		GlowLineMapAlgorithm(int w, int h, int sX);
 
 	};
 
