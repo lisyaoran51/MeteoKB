@@ -51,7 +51,7 @@ namespace Hierachal{
 					return NULL;
 
 				Cachable* c = Cast<Cachable>(h);
-				cout << "cast to cachable" << endl;
+				//cout << "cast to cachable" << endl;
 				return c->GetCache<T>(type);
 			}
 
