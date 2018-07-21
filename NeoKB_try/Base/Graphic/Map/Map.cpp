@@ -15,17 +15,19 @@ Map::Map(int w, int h)
 	width = w;
 	height = h;
 
-	matrix = new uint8_t*[h];
-	for (int i = 0; i < h; i++) {
-		matrix[i] = new uint8_t[w];
-	}
+	// 參考 http://mropengate.blogspot.com/2015/12/cc-dynamic-2d-arrays-in-c.html
 
-	defaultMatrix = new uint8_t*[h];
-	for (int i = 0; i < h; i++) {
-		defaultMatrix[i] = new uint8_t[w];
-	}
+	// new一個二微陣列
+	matrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
+	for (int i = 0; i < height; i++)
+		matrix[i] = ((uint8_t*)(matrix+height)) + i * width + sizeof(uint8_t);
 
-	// TODO: 改成用memcpy做比較快
+	defaultMatrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
+	for (int i = 0; i < height; i++)
+		defaultMatrix[i] = ((uint8_t*)(defaultMatrix + height)) + i * width + sizeof(uint8_t);
+
+
+	// TODO: 改成用memset做比較快
 	for (int i = 0; i < width; i++) {
 		for (int j = 0; j < height; j++) {
 			matrix[i][j] = 0;
@@ -37,10 +39,6 @@ Map::Map(int w, int h)
 
 Map::~Map()
 {
-	for (int i = 0; i < height; i++) {
-		delete [] matrix[i];
-		delete[] defaultMatrix[i];
-	}
 	delete[] matrix;
 	delete[] defaultMatrix;
 }
@@ -63,11 +61,11 @@ int Map::GetHeight()
 
 int Map::Add(int x, int y, int v)
 {
-	int brightness = ((uint8_t*)matrix)[x * height + y] + v;
+	int brightness = matrix[x][y] + v;
 	if (brightness > BRIGHTNESS_MAX)
-		((uint8_t*)matrix)[x * height + y] = BRIGHTNESS_MAX;
+		matrix[x][y] = BRIGHTNESS_MAX;
 	else
-		((uint8_t*)matrix)[x * height + y] = brightness;
+		matrix[x][y] = brightness;
 	clear = false;
 	return 0;
 }

@@ -296,3 +296,6 @@
 
 7/21
 	不知道為什麼event processor life time從-1開始
+	
+	動態配置二微陣列
+	http://mropengate.blogspot.com/2015/12/cc-dynamic-2d-arrays-in-c.html
