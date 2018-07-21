@@ -1226,38 +1226,42 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
             }
         }
     }
-	printf("ws2811_render : ------------ waiting dma, the driver mode is %d (spi = 3)------------\n", ws2811->device->driver_mode);
+	
+	if (0) // 這邊先全部拿掉，因為等待可以擺在遊戲的renderer裡面作
+	{
+		printf("ws2811_render : ------------ waiting dma, the driver mode is %d (spi = 3)------------\n", ws2811->device->driver_mode);
 
-	// Wait for any previous DMA operation to complete.
-    if ((ret = ws2811_wait(ws2811)) != WS2811_SUCCESS)
-    {
-        return ret;
-    }
-	printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
+		// Wait for any previous DMA operation to complete.
+		if ((ret = ws2811_wait(ws2811)) != WS2811_SUCCESS)
+		{
+			return ret;
+		}
+		printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
 
 	
-    if (ws2811->render_wait_time != 0) {
-        const uint64_t current_timestamp = get_microsecond_timestamp();
-        uint64_t time_diff = current_timestamp - previous_timestamp;
+		if (ws2811->render_wait_time != 0) {
+			const uint64_t current_timestamp = get_microsecond_timestamp();
+			uint64_t time_diff = current_timestamp - previous_timestamp;
 
-        if (ws2811->render_wait_time > time_diff) {
-            usleep(ws2811->render_wait_time - time_diff);
-        }
-    }
+			if (ws2811->render_wait_time > time_diff) {
+				usleep(ws2811->render_wait_time - time_diff);
+			}
+		}
 
-    if (driver_mode != SPI)
-    {
-        dma_start(ws2811);
-    }
-    else
-    {
-		printf("ws2811_render : ------------ start transfering ------------\n");
-        ret = spi_transfer(ws2811);
-    }
+		if (driver_mode != SPI)
+		{
+			dma_start(ws2811);
+		}
+		else
+		{
+			printf("ws2811_render : ------------ start transfering ------------\n");
+			ret = spi_transfer(ws2811);
+		}
 
-    // LED_RESET_WAIT_TIME is added to allow enough time for the reset to occur.
-    previous_timestamp = get_microsecond_timestamp();
-    ws2811->render_wait_time = protocol_time + LED_RESET_WAIT_TIME;
+		// LED_RESET_WAIT_TIME is added to allow enough time for the reset to occur.
+		previous_timestamp = get_microsecond_timestamp();
+		ws2811->render_wait_time = protocol_time + LED_RESET_WAIT_TIME;
+	}
 
     return ret;
 }
