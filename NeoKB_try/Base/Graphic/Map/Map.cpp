@@ -63,11 +63,11 @@ int Map::GetHeight()
 
 int Map::Add(int x, int y, int v)
 {
-	int brightness = matrix[x][y] + v;
+	int brightness = ((uint8_t*)matrix)[x * height + y] + v;
 	if (brightness > BRIGHTNESS_MAX)
-		matrix[x][y] = BRIGHTNESS_MAX;
+		((uint8_t*)matrix)[x * height + y] = BRIGHTNESS_MAX;
 	else
-		matrix[x][y] = brightness;
+		((uint8_t*)matrix)[x * height + y] = brightness;
 	clear = false;
 	return 0;
 }
