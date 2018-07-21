@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	fConfigManager->Set(FrameworkSetting::TargetHeight, 20);
 	fConfigManager->Set(FrameworkSetting::BlackKeyTargetHeight, 14);
 	fConfigManager->Set(FrameworkSetting::StartPitch, 48);
-	fConfigManager->Set(FrameworkSetting::FrameRate, 10);
+	fConfigManager->Set(FrameworkSetting::FrameRate, 30);
 	// TODO: ³]©w....
 	game->Cache<FrameworkConfigManager>(fConfigManager);
 
