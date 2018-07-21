@@ -54,5 +54,19 @@ int FallMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<FallEffect
 				m->Add(width, height + i, brightness);
 		}
 	}
+	LOG(LogLevel::Finest) << [](int width, int height, Map* m) {
+		LOG(LogLevel::Finest) << "FallMapGenerateAlgorithm::ImplementGenerate : light map";
+		// 因為只看畫面中央，所以不看其他排
+		for (int i = width/2-1; i < width/2+1; i++) {
+			string s;
+			for (int j = 0; j < height; j++) {
+				s += to_string(m->Get(i, height+j));
+				s += " ";
+			}
+			LOG(LogLevel::Finest) << "| " << s << "|";
+		}
+		return 0;
+	}(width, height, m);
+
 	return 0;
 }
