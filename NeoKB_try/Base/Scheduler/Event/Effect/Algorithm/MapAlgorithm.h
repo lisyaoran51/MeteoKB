@@ -59,11 +59,6 @@ namespace Algorithms{
 
 			LOG(LogLevel::Info) << "MapAlgorithm::load() : Start loading config.";
 
-			MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
-
-			if (!m)
-				throw runtime_error("int MapAlgorithm::load() : MeteorConfigManager not found in cache.");
-
 			FrameworkConfigManager* f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
 
 			if (!f)
@@ -72,7 +67,7 @@ namespace Algorithms{
 			return load(m, f);
 		}
 
-		int load(FrameworkConfigManager* f, MeteorConfigManager * m) {
+		int load(FrameworkConfigManager* f) {
 
 			if (f->Get(FrameworkSetting::StartPitch, &startX)) {}
 			if (f->Get(FrameworkSetting::Width, &width)) {}
