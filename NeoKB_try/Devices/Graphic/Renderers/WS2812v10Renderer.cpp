@@ -42,6 +42,8 @@ int WS2812v10Renderer::load(FrameworkConfigManager * f)
 		arraySize += whiteKey ? height : blackKeyHeight;
 
 	}
+
+	LOG(LogLevel::Info) << "WS2812v10Renderer::load(FrameworkConfigManager*) : Build light array with size [" << arraySize << "].";
 	
 	lightArray.freq = TARGET_FREQ;
 	lightArray.dmanum = DMA;

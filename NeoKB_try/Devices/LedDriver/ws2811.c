@@ -1128,10 +1128,14 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
     uint32_t protocol_time = 0;
     static uint64_t previous_timestamp = 0;
 
+	printf("ws2811_render : ------------ Setting done. ------------\n");
+
+
     bitpos = (driver_mode == SPI ? 7 : 31);
 
     for (chan = 0; chan < RPI_PWM_CHANNELS; chan++)         // Channel
     {
+		printf("ws2811_render : ------------ start #%d channel ------------\n", chan);
         ws2811_channel_t *channel = &ws2811->channel[chan];
 
         int wordpos = chan; // PWM & PCM
@@ -1223,6 +1227,7 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
         }
     }
 
+	printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
     // Wait for any previous DMA operation to complete.
     if ((ret = ws2811_wait(ws2811)) != WS2811_SUCCESS)
     {
