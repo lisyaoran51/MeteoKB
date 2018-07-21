@@ -102,10 +102,32 @@ int WS2812v10Renderer::Render()
 		// 判斷白建和黑建，來設定鍵長
 		bool whiteKey = isWhiteKey(startPitch + i);
 
-		memcpy(
-			&lightArray.channel[0].leds[tempPos],
-			whiteKey ? &matrix[i][0] : &matrix[i][height - blackKeyHeight],
-			whiteKey ? height : blackKeyHeight);
+		if (whiteKey) {
+
+			for (int j = 0; j < height; j++) {
+				lightArray.channel[0].leds[tempPos + j] = matrix[i][height - j - 1];
+			}
+
+			//memcpy(
+			//	&lightArray.channel[0].leds[tempPos],
+			//	&matrix[i][0],
+			//	height);
+
+			tempPos += height;
+		}
+		else {
+
+			for (int j = 0; j < blackKeyHeight; j++) {
+				lightArray.channel[0].leds[tempPos + j] = matrix[i][height - j - 1];
+			}
+
+			//memcpy(
+			//	&lightArray.channel[0].leds[tempPos],
+			//	&matrix[i][height - blackKeyHeight],
+			//	blackKeyHeight);
+
+			tempPos += blackKeyHeight;
+		}
 		
 		//LOG(LogLevel::Finest) << [](int tempPos, bool isWhite, int height, int blackKeyHeight, ws2811_t* lightArray) {
 		//	string s;
@@ -117,7 +139,6 @@ int WS2812v10Renderer::Render()
 		//	return 0;
 		//}(tempPos, whiteKey, height, blackKeyHeight, &lightArray);
 
-		tempPos += whiteKey ? height : blackKeyHeight;
 	}
 
 	return 0;
