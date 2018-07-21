@@ -1128,14 +1128,14 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
     uint32_t protocol_time = 0;
     static uint64_t previous_timestamp = 0;
 
-	printf("ws2811_render : ------------ Setting done. ------------\n");
+	if (0)printf("ws2811_render : ------------ Setting done. ------------\n");
 
 
     bitpos = (driver_mode == SPI ? 7 : 31);
 
     for (chan = 0; chan < RPI_PWM_CHANNELS; chan++)         // Channel
     {
-		printf("ws2811_render : ------------ start #%d channel ------------\n", chan);
+		if(0)printf("ws2811_render : ------------ start #%d channel ------------\n", chan);
         ws2811_channel_t *channel = &ws2811->channel[chan];
 
         int wordpos = chan; // PWM & PCM
@@ -1238,7 +1238,7 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
 		}
 		printf("ws2811_render : ------------ waiting dma, render wait time is %f ------------\n", ws2811->render_wait_time);
 
-	
+
 		if (ws2811->render_wait_time != 0) {
 			const uint64_t current_timestamp = get_microsecond_timestamp();
 			uint64_t time_diff = current_timestamp - previous_timestamp;
@@ -1248,16 +1248,19 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
 			}
 		}
 
-		if (driver_mode != SPI)
-		{
-			dma_start(ws2811);
-		}
-		else
-		{
-			printf("ws2811_render : ------------ start transfering ------------\n");
-			ret = spi_transfer(ws2811);
-		}
+	}
 
+	if (driver_mode != SPI)
+	{
+		dma_start(ws2811);
+	}
+	else
+	{
+		printf("ws2811_render : ------------ start transfering ------------\n");
+		ret = spi_transfer(ws2811);
+	}
+
+	if (0) { // 這邊先全部拿掉，因為等待可以擺在遊戲的renderer裡面作
 		// LED_RESET_WAIT_TIME is added to allow enough time for the reset to occur.
 		previous_timestamp = get_microsecond_timestamp();
 		ws2811->render_wait_time = protocol_time + LED_RESET_WAIT_TIME;
