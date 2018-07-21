@@ -17,14 +17,18 @@ Map::Map(int w, int h)
 
 	// 參考 http://mropengate.blogspot.com/2015/12/cc-dynamic-2d-arrays-in-c.html
 
-	// new一個二微陣列
-	matrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
-	for (int i = 0; i < width; i++)
-		matrix[i] = ((uint8_t*)(matrix+height)) + i * height + sizeof(uint8_t);
 
-	defaultMatrix = (uint8_t**)new uint8_t(width * height * sizeof(uint8_t));
-	for (int i = 0; i < width; i++)
-		defaultMatrix[i] = ((uint8_t*)(defaultMatrix + height)) + i * height + sizeof(uint8_t);
+
+	// new一個二微陣列
+	matrix = (uint8_t**)new uint8_t*[width];
+	uint8_t* pData = (uint8_t*)new uint8_t[width * height];
+	for (int i = 0; i < width; i++, pData += height)
+		matrix[i] = pData;
+
+	defaultMatrix = (uint8_t**)new uint8_t*[width];
+	pData = (uint8_t*)new uint8_t[width * height];
+	for (int i = 0; i < width; i++, pData += height)
+		defaultMatrix[i] = pData;
 
 
 	// TODO: 改成用memset做比較快
@@ -39,7 +43,11 @@ Map::Map(int w, int h)
 
 Map::~Map()
 {
+
+	// TODO: 檢查會不會mem leak
+	delete[] matrix[0];
 	delete[] matrix;
+	delete[] defaultMatrix[0];
 	delete[] defaultMatrix;
 }
 
