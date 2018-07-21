@@ -64,7 +64,7 @@ namespace Algorithms{
 			if (!f)
 				throw runtime_error("int MapAlgorithm::load() : FrameworkConfigManager not found in cache.");
 
-			return load(m, f);
+			return load(f);
 		}
 
 		int load(FrameworkConfigManager* f) {
