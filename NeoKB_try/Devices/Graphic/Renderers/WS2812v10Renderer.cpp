@@ -89,7 +89,7 @@ int WS2812v10Renderer::Render()
 		for (int i = 0; i < width; i++) {
 			string s;
 			for (int j = 0; j < height; j++) {
-				s += (int)matrix[i][j];
+				s += to_string(matrix[i][j]);
 				s += " ";
 			}
 			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light map | " << s << "|";
@@ -107,15 +107,15 @@ int WS2812v10Renderer::Render()
 			whiteKey ? &matrix[i][0] : &matrix[i][height - blackKeyHeight],
 			whiteKey ? height : blackKeyHeight);
 		
-		LOG(LogLevel::Finest) << [](int tempPos, bool isWhite, int height, int blackKeyHeight, ws2811_t* lightArray) {
-			string s;
-			for (int j = 0; j < isWhite ? height : blackKeyHeight; j++) {
-				s += (int)lightArray->channel[0].leds[tempPos+ j];
-				s += " ";
-			}
-			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light array | " << s << "|";
-			return 0;
-		}(tempPos, whiteKey, height, blackKeyHeight, &lightArray);
+		//LOG(LogLevel::Finest) << [](int tempPos, bool isWhite, int height, int blackKeyHeight, ws2811_t* lightArray) {
+		//	string s;
+		//	for (int j = 0; j < isWhite ? height : blackKeyHeight; j++) {
+		//		s += to_string(lightArray->channel[0].leds[tempPos+ j]);
+		//		s += " ";
+		//	}
+		//	LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light array | " << s << "|";
+		//	return 0;
+		//}(tempPos, whiteKey, height, blackKeyHeight, &lightArray);
 
 		tempPos += whiteKey ? height : blackKeyHeight;
 	}
