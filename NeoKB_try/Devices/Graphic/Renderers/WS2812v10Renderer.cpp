@@ -24,6 +24,9 @@ int WS2812v10Renderer::load()
 
 int WS2812v10Renderer::load(FrameworkConfigManager * f)
 {
+
+	LOG(LogLevel::Info) << "WS2812v10Renderer::load(FrameworkConfigManager*) : Loading WS2812 v10 renderer.";
+
 	if (f->Get(FrameworkSetting::Width, &width)) {}
 	if (f->Get(FrameworkSetting::StartPitch, &startPitch)) {}
 	if (f->Get(FrameworkSetting::Height, &height)) {}
@@ -55,6 +58,10 @@ int WS2812v10Renderer::load(FrameworkConfigManager * f)
 	ws2811_return_t ret;
 	if ((ret = ws2811_init(&lightArray)) != WS2811_SUCCESS)
 	{
+		LOG(LogLevel::Error) << "WS2812v10Renderer::load(FrameworkConfigManager*) : Initializing WS2812 failed with error no. [" << ws2811_get_return_t_str(ret) << "].";
+
+		throw runtime_error("WS2812v10Renderer::load(FrameworkConfigManager*) : Initializing WS2812 failed.");
+
 		fprintf(stderr, "ws2811_init failed: %s\n", ws2811_get_return_t_str(ret));
 		//return ret;
 		// TODO: 噴錯誤
@@ -70,6 +77,7 @@ WS2812v10Renderer::WS2812v10Renderer(): Renderer(), RegisterType("WS2812v10Rende
 
 int WS2812v10Renderer::Render()
 {
+	LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : Rendering ... ";
 	// 陣列中的目前位置
 	int tempPos = 0;
 
@@ -93,9 +101,15 @@ int WS2812v10Renderer::Render()
 
 int WS2812v10Renderer::SendToDriver()
 {
+	LOG(LogLevel::Finest) << "WS2812v10Renderer::SendToDriver() : Sending out light array...";
+
 	ws2811_return_t ret;
 	if ((ret = ws2811_render(&lightArray)) != WS2811_SUCCESS)
 	{
+		LOG(LogLevel::Error) << "WS2812v10Renderer::SendToDriver() : rendering failed with error no. [" << ws2811_get_return_t_str(ret) << "].";
+
+		throw runtime_error("WS2812v10Renderer::SendToDriver() : rendering failed.");
+
 		fprintf(stderr, "ws2811_render failed: %s\n", ws2811_get_return_t_str(ret));
 		// TODO: 噴錯誤
 	}
