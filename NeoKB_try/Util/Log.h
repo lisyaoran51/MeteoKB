@@ -26,7 +26,8 @@ namespace Util {
 		Fine, 		// 細捷資訊 (執行的function)
 		Finer, 		// 更細捷資訊 (function的細節)
 		Finest, 	// 最細捷資訊 (運算的細節)
-		All			// 所有資訊
+		All,		// 所有資訊
+		Depricated
 	};
 
 #define LOG_NONE LogLevel::None
