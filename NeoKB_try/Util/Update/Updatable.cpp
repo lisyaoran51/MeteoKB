@@ -5,7 +5,7 @@ using namespace Util::Update;
 
 Updatable::Updatable()
 {
-	currentTime = -1;
+	currentTime = 0;
 }
 
 MTO_FLOAT Updatable::GetCurrentTime()

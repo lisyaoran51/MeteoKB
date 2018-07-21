@@ -293,3 +293,6 @@
 
 	downcast到virtual class的方法
 	https://stackoverflow.com/questions/3747066/c-cannot-convert-from-base-a-to-derived-type-b-via-virtual-base-a
+
+7/21
+	不知道為什麼event processor life time從-1開始
