@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	fConfigManager->Async();
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, string("MeteorPatternGenerator"));
 	fConfigManager->Set(FrameworkSetting::HardwareVersion, 10);
-	fConfigManager->Set(FrameworkSetting::Width, 3); //要改
+	fConfigManager->Set(FrameworkSetting::Width, 6); //要改
 	fConfigManager->Set(FrameworkSetting::Height, 24);
 	fConfigManager->Set(FrameworkSetting::BlackKeyHeight, 16);
 	fConfigManager->Set(FrameworkSetting::TargetHeight, 20);
