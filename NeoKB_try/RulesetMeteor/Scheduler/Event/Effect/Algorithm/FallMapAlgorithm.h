@@ -48,11 +48,12 @@ namespace Algorithms{
 
 	public:
 
-		FallMapGenerateAlgorithm(int fLength);
+		FallMapGenerateAlgorithm(MeteorConfigManager* m);
 
 	protected:
 
 		int fallLength;
+		MTO_FLOAT fallBrightness;
 
 		/// <summary>
 		/// 把evnet的狀態轉成圖案
