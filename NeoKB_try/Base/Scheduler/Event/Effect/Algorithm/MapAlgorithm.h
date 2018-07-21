@@ -81,7 +81,7 @@ namespace Algorithms{
 		{
 			width = w;
 			height = h;
-			startX = sX
+			startX = sX;
 			constructed = true;
 		}
 
