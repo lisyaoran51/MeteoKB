@@ -16,8 +16,13 @@ using namespace Meteor::Schedulers::Events::Effects;
 
 int MeteorPatternGenerator::load()
 {
-	MeteorConfigManager * f = GetCache<MeteorConfigManager>("MeteorConfigManager");
-	return load(f);
+
+	MeteorConfigManager * m = GetCache<MeteorConfigManager>("MeteorConfigManager");
+
+	if (!m)
+		throw runtime_error("int MeteorPatternGenerator::load() : MeteorConfigManager not found in cache.");
+
+	return load(m);
 }
 
 int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
@@ -28,6 +33,9 @@ int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 
 	if( !mcf->Get(MeteorSetting::FallBrightness, &fallBrightness))
 		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : FallBrightness not found in Setting.");
+
+	if (!mcf->Get(MeteorSetting::FallLength, &fallLength))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : FallLength not found in Setting.");
 
 	if( !mcf->Get(MeteorSetting::ExplodeSpeed, &explodeSpeed))
 		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : ExplodeSpeed not found in Setting.");
@@ -81,8 +89,8 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	) / fallSpeed;
 
 	MTO_FLOAT fallLifeTime = MTO_FLOAT( 
-		note->IsWhiteKey() ?
-		height : blackKeyHeight
+		(note->IsWhiteKey() ?
+		height : blackKeyHeight) + fallLength
 		) / fallSpeed;
 
 	MTO_FLOAT glowLineTime = fallTime + MTO_FLOAT(1) / glowLineSpeed + glowLineDuration;

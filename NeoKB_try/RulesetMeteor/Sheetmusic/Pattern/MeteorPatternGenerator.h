@@ -44,6 +44,7 @@ namespace Patterns {
 
 		MTO_FLOAT fallSpeed = 0;
 		MTO_FLOAT fallBrightness = 0;
+		int fallLength = 0;
 		MTO_FLOAT explodeSpeed = 0;
 		MTO_FLOAT explodeBrightness = 0;
 		MTO_FLOAT glowLineSpeed = 0;
