@@ -24,7 +24,15 @@ Map::Map(int w, int h)
 	for (int i = 0; i < h; i++) {
 		defaultMatrix[i] = new uint8_t[w];
 	}
-	clear = false;
+
+	// TODO: 改成用memcpy做比較快
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < height; j++) {
+			matrix[i][j] = 0;
+			defaultMatrix[i][j] = 0;
+		}
+	}
+	clear = true;
 }
 
 Map::~Map()

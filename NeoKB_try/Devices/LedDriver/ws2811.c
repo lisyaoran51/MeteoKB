@@ -52,6 +52,8 @@
 
 #include "ws2811.h"
 
+#define WS2811_DEBUG							 0
+
 
 #define BUS_TO_PHYS(x)                           ((x)&~0xC0000000)
 
@@ -1128,14 +1130,14 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
     uint32_t protocol_time = 0;
     static uint64_t previous_timestamp = 0;
 
-	if (0)printf("ws2811_render : ------------ Setting done. ------------\n");
+	if (WS2811_DEBUG)printf("ws2811_render : ------------ Setting done. ------------\n");
 
 
     bitpos = (driver_mode == SPI ? 7 : 31);
 
     for (chan = 0; chan < RPI_PWM_CHANNELS; chan++)         // Channel
     {
-		if(0)printf("ws2811_render : ------------ start #%d channel ------------\n", chan);
+		if(WS2811_DEBUG)printf("ws2811_render : ------------ start #%d channel ------------\n", chan);
         ws2811_channel_t *channel = &ws2811->channel[chan];
 
         int wordpos = chan; // PWM & PCM
@@ -1256,7 +1258,7 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
 	}
 	else
 	{
-		printf("ws2811_render : ------------ start transfering ------------\n");
+		if(WS2811_DEBUG) printf("ws2811_render : ------------ start transfering ------------\n");
 		ret = spi_transfer(ws2811);
 	}
 
