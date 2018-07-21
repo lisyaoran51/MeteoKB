@@ -25,7 +25,7 @@ namespace Algorithms{
 	class GlowLineMapAlgorithm: public MapAlgorithm<GlowLineEffect>
 	{
 
-		bool constructed;
+		int load();
 
 	public:
 
@@ -33,13 +33,6 @@ namespace Algorithms{
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
 		GlowLineMapAlgorithm();
-
-		int LazyConstruct(int w, int h, int sX);
-
-		/// <summary>
-		/// construct an immediate effect
-		///	</summary>
-		GlowLineMapAlgorithm(int w, int h, int sX);
 
 	};
 

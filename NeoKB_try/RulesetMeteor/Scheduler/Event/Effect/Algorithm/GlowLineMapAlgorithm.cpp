@@ -2,25 +2,19 @@
 
 using namespace Meteor::Schedulers::Events::Effects::Algorithms;
 
-GlowLineMapAlgorithm::GlowLineMapAlgorithm(): RegisterType("GlowLineMapAlgorithm"), MapAlgorithm()
-{
-	constructed = false;
-}
 
-int GlowLineMapAlgorithm::LazyConstruct(int w, int h, int sX)
+
+
+int GlowLineMapAlgorithm::load()
 {
-	MapAlgorithm<GlowLineEffect>::LazyConstruct(w, h, sX);
 	genAlgo = new GlowLineMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<GlowLineEffect>(sX);
-	constructed = true;
+	shiftAlgo = new MapShiftAlgorithm<GlowLineEffect>(startX);
 	return 0;
 }
 
-GlowLineMapAlgorithm::GlowLineMapAlgorithm(int w, int h, int sX) : RegisterType("GlowLineMapAlgorithm"), MapAlgorithm(w, h, sX)
+GlowLineMapAlgorithm::GlowLineMapAlgorithm(): RegisterType("GlowLineMapAlgorithm"), MapAlgorithm()
 {
-	genAlgo = new GlowLineMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<GlowLineEffect>(sX);
-	constructed = true;
+	registerLoad(bind((int(GlowLineMapAlgorithm::*)())&GlowLineMapAlgorithm::load, this));
 }
 
 int GlowLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<GlowLineEffect>* em)

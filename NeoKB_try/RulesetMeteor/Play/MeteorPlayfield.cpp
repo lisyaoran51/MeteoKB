@@ -42,49 +42,46 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 	string mapAlgoName;
 
-	// FallEffect map algo
+	// --------------------- FallEffect map algo ---------------------
 	if (m->Get(MeteorSetting::FallMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
-		
-		mapAlgo->LazyConstruct(width, height, (int)startPitch);
 
 		mapAlgorithms["FallEffect"] = mapAlgo;
 	}
 	else
-		mapAlgorithms["FallEffect"] = new FallMapAlgorithm(width, height, (int)startPitch);
+		mapAlgorithms["FallEffect"] = new FallMapAlgorithm();
 
 	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : FallMapAlgorithm [" << mapAlgorithms["FallEffect"]->GetTypeName() << "] loaded.";
 
+	AddChild(mapAlgorithms["FallEffect"]);
 	mapAlgorithms["FallEffect"]->RegisterBufferMap(bufferMap);
 
-	// ExplodeEffect map algo
+	// --------------------- ExplodeEffect map algo ---------------------
 	if (m->Get(MeteorSetting::ExplodeMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
-		
-		mapAlgo->LazyConstruct(width, height, (int)startPitch);
 
 		mapAlgorithms["ExplodeEffect"] = mapAlgo;
 	}
 	else
-		mapAlgorithms["ExplodeEffect"] = new ExplodeMapAlgorithm(width, height, (int)startPitch);
+		mapAlgorithms["ExplodeEffect"] = new ExplodeMapAlgorithm();
 
 	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : ExplodeMapAlgorithm [" << mapAlgorithms["ExplodeEffect"]->GetTypeName() << "] loaded.";
 
+	AddChild(mapAlgorithms["ExplodeEffect"]);
 	mapAlgorithms["ExplodeEffect"]->RegisterBufferMap(bufferMap);
 
-	// GlowLineEffect map algo
+	// --------------------- GlowLineEffect map algo ---------------------
 	if (m->Get(MeteorSetting::GlowLineMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
-
-		mapAlgo->LazyConstruct(width, height, (int)startPitch);
 
 		mapAlgorithms["GlowLineEffect"] = mapAlgo;
 	}
 	else
-		mapAlgorithms["GlowLineEffect"] = new GlowLineMapAlgorithm(width, height, (int)startPitch);
+		mapAlgorithms["GlowLineEffect"] = new GlowLineMapAlgorithm();
 
 	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : GlowLineMapAlgorithm [" << mapAlgorithms["GlowLineEffect"]->GetTypeName() << "] loaded.";
 
+	AddChild(mapAlgorithms["GlowLineEffect"]);
 	mapAlgorithms["GlowLineEffect"]->RegisterBufferMap(bufferMap);
 
 	return 0;

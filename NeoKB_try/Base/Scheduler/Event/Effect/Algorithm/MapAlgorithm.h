@@ -2,13 +2,14 @@
 #define MAP_ALGORITHM_H
 
 #include"../../../../Graphic/Map/Map.h"
-#include "../../../../../Util/MtoObject.h"
+#include "../../../../../Util/Hierachal/ChildAddable.h"
 #include "MapGenerateAlgorithm.h"
 #include "MapShiftAlgorithm.h"
 
 
 using namespace Base::Graphic::Maps;
 using namespace Util;
+using namespace Util::Hierachal;
 
 
 namespace Base {
@@ -31,11 +32,11 @@ namespace Effects {
 namespace Algorithms{
 	
 
-	class MapAlgorithmInterface: public MtoObject {
+	class MapAlgorithmInterface: public ChildAddable {
 
 	public:
 
-		MapAlgorithmInterface(): MtoObject(), RegisterType("MapAlgorithmInterface"){}
+		MapAlgorithmInterface(): ChildAddable(), RegisterType("MapAlgorithmInterface"){}
 
 		virtual int RegisterBufferMap(Map* b) = 0;
 
@@ -54,7 +55,31 @@ namespace Algorithms{
 	class MapAlgorithm: public MapAlgorithmInterface
 	{
 
-		bool constructed;
+		int load() {
+
+			LOG(LogLevel::Info) << "MapAlgorithm::load() : Start loading config.";
+
+			MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
+
+			if (!m)
+				throw runtime_error("int MapAlgorithm::load() : MeteorConfigManager not found in cache.");
+
+			FrameworkConfigManager* f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+
+			if (!f)
+				throw runtime_error("int MapAlgorithm::load() : FrameworkConfigManager not found in cache.");
+
+			return load(m, f);
+		}
+
+		int load(FrameworkConfigManager* f, MeteorConfigManager * m) {
+
+			if (f->Get(FrameworkSetting::StartPitch, &startX)) {}
+			if (f->Get(FrameworkSetting::Width, &width)) {}
+			if (f->Get(FrameworkSetting::Height, &height)) {}
+
+			return 0;
+		}
 
 	public:
 
@@ -62,31 +87,11 @@ namespace Algorithms{
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
 		MapAlgorithm(): MapAlgorithmInterface(), RegisterType("MapAlgorithm") {
-			constructed = false;
-		}
-
-		int LazyConstruct(int w, int h, int sX) {
-			// if not constructed
-			width = w;
-			height = h;
-			startX = sX;
-			constructed = true;
-			return 0;
-		}
-
-		/// <summary>
-		/// construct an immediate effect
-		///	</summary>
-		MapAlgorithm(int w, int h, int sX) : RegisterType("MapAlgorithm")
-		{
-			width = w;
-			height = h;
-			startX = sX;
-			constructed = true;
+			registerLoad(bind((int(MapAlgorithm<T>::*)())&MapAlgorithm<T>::load, this));
 		}
 
 		~MapAlgorithm() {
-			// TODO: 應該是要計算目前有幾個map algo，如果剩0個才把matrix刪掉
+			// TODO: ???
 		}
 
 		virtual int RegisterBufferMap(Map* b) {
@@ -95,6 +100,8 @@ namespace Algorithms{
 				bufferMap = b;
 				return 0;
 			}
+			else
+				throw invalid_argument("MapAlgorithm::RegisterBufferMap : Invalid size buffer map");
 			// TODO: debug Log
 			return -1;
 		}

@@ -4,25 +4,16 @@
 using namespace Meteor::Schedulers::Events::Effects::Algorithms;
 
 
-ExplodeMapAlgorithm::ExplodeMapAlgorithm(): RegisterType("ExplodeMapAlgorithm"), MapAlgorithm()
-{
-	constructed = false;
-}
-
-int ExplodeMapAlgorithm::LazyConstruct(int w, int h, int sX)
+int ExplodeMapAlgorithm::load()
 {
 	genAlgo = new ExplodeMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<ExplodeEffect>(sX);
-	MapAlgorithm<ExplodeEffect>::LazyConstruct(w, h, sX);
-	constructed = true;
+	shiftAlgo = new MapShiftAlgorithm<ExplodeEffect>(startX);
 	return 0;
 }
 
-ExplodeMapAlgorithm::ExplodeMapAlgorithm(int w, int h, int sX): RegisterType("ExplodeMapAlgorithm"), MapAlgorithm(w, h, sX)
+ExplodeMapAlgorithm::ExplodeMapAlgorithm(): RegisterType("ExplodeMapAlgorithm"), MapAlgorithm()
 {
-	genAlgo = new ExplodeMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<ExplodeEffect>(sX);
-	constructed = true;
+	registerLoad(bind((int(ExplodeMapAlgorithm::*)())&ExplodeMapAlgorithm::load, this));
 }
 
 int ExplodeMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<ExplodeEffect>* em)

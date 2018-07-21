@@ -27,7 +27,7 @@ namespace Algorithms{
 	class ExplodeMapAlgorithm: public MapAlgorithm<ExplodeEffect>
 	{
 
-		bool constructed;
+		int load();
 
 	public:
 
@@ -35,13 +35,6 @@ namespace Algorithms{
 		/// 無功用的建構子，要搭配lazy construct
 		///	</summary>
 		ExplodeMapAlgorithm();
-
-		int LazyConstruct(int w, int h, int sX);
-
-		/// <summary>
-		/// construct an immediate effect
-		///	</summary>
-		ExplodeMapAlgorithm(int w, int h, int sX);
 
 	};
 

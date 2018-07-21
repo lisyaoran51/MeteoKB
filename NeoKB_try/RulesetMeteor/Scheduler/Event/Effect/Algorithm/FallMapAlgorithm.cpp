@@ -5,28 +5,42 @@
 using namespace Meteor::Schedulers::Events::Effects::Algorithms; 
 using namespace Meteor::Schedulers::Events::Effects;
 using namespace Base::Schedulers::Events::Effects;
+using namespace Meteor::Config;
 
 
 
-FallMapAlgorithm::FallMapAlgorithm(): RegisterType("FallMapAlgorithm"), MapAlgorithm()
+int FallMapAlgorithm::load()
 {
-	constructed = false;
+	LOG(LogLevel::Info) << "FallMapAlgorithm::load() : Start loading config.";
+
+	shiftAlgo = new MapShiftAlgorithm<FallEffect>(startX);
+
+	MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
+
+	if (!m)
+		throw runtime_error("int MeteorPlayfield::load() : MeteorConfigManager not found in cache.");
+	
+	return load(m);
 }
 
-int FallMapAlgorithm::LazyConstruct(int w, int h, int sX)
+int FallMapAlgorithm::load(MeteorConfigManager * m)
 {
-	genAlgo = new FallMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<FallEffect>(sX);
-	MapAlgorithm<FallEffect>::LazyConstruct(w, h, sX);
-	constructed = true;
+
+	if (m->Get(MeteorSetting::FallLength, &fallLength)) {}
+
+	genAlgo = new FallMapGenerateAlgorithm(fallLength);
+
 	return 0;
 }
 
-FallMapAlgorithm::FallMapAlgorithm(int w, int h, int sX) : RegisterType("FallMapAlgorithm"), MapAlgorithm(w, h, sX)
+FallMapAlgorithm::FallMapAlgorithm(): RegisterType("FallMapAlgorithm"), MapAlgorithm()
 {
-	genAlgo = new FallMapGenerateAlgorithm();
-	shiftAlgo = new MapShiftAlgorithm<FallEffect>(sX);
-	constructed = true;
+	registerLoad(bind((int(FallMapAlgorithm::*)())&FallMapAlgorithm::load, this));
+}
+
+FallMapGenerateAlgorithm::FallMapGenerateAlgorithm(int fLength)
+{
+	fallLength = fLength;
 }
 
 int FallMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<FallEffect>* em)
@@ -62,9 +76,9 @@ int FallMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<FallEffect
 	for (int i = 0; i < height; i++) {
 
 		// TODO: 應該把流星長度變成參數
-		if (i > meteorPos && i < meteorPos + 8.0) {
+		if (i > meteorPos && i < meteorPos + MTO_FLOAT(fallLength)) {
 
-			int brightness = -BRIGHTNESS_MAX * (MTO_FLOAT(i) - meteorPos) / 8.0 + BRIGHTNESS_MAX;
+			int brightness = -BRIGHTNESS_MAX * (MTO_FLOAT(i) - meteorPos) / MTO_FLOAT(fallLength) + BRIGHTNESS_MAX;
 			LOG(LogLevel::Finest) << "FallMapGenerateAlgorithm::ImplementGenerate : bright_max: " << BRIGHTNESS_MAX << ", MtoPos: " << meteorPos << ", i: " << i << ", bright: " << brightness;
 			if (brightness > 0)
 				m->Add(width, height + i, brightness);

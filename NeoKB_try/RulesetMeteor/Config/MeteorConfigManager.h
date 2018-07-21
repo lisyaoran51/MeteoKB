@@ -40,6 +40,7 @@ namespace Config{
 
 		FallSpeed,				// ¨C¬í²¾°Ê´XÁû
 		FallBrightness,
+		FallLength,
 		ExplodeSpeed,
 		ExplodeBrightness,
 		GlowLineSpeed,
