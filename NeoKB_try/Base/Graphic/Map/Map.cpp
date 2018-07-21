@@ -84,7 +84,7 @@ int Map::Set(int x, int y, int v)
 
 uint8_t Map::Get(int x, int y)
 {
-	return matrix[x][y];
+	return ((uint8_t*)matrix)[x * height + y];
 }
 
 int Map::PasteAdd(Map * m, int x, int y, int toX, int toY, int xLen, int yLen)
