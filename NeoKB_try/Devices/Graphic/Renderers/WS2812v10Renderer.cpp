@@ -85,6 +85,18 @@ int WS2812v10Renderer::Render()
 
 	uint8_t** matrix = lightMap->GetMatrix();
 
+	LOG(LogLevel::Finest) << [](int width, int height, uint8_t** matrix){
+		for (int i = 0; i < width; i++) {
+			string s;
+			for (int j = 0; j < height; j++) {
+				s += matrix[i][j];
+				s += " ";
+			}
+			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light map | " << s << " |";
+		}
+		return 0;
+	}(width, height, matrix);
+
 	for (int i = 0; i < width; i++) {
 
 		// 判斷白建和黑建，來設定鍵長
@@ -95,8 +107,30 @@ int WS2812v10Renderer::Render()
 			whiteKey ? &matrix[i][0] : &matrix[i][height - blackKeyHeight],
 			whiteKey ? height : blackKeyHeight);
 		
+		LOG(LogLevel::Finest) << [](int tempPos, bool isWhite, int height, int blackKeyHeight, ws2811_t& lightArray) {
+			string s;
+			for (int j = 0; j < isWhite ? height : blackKeyHeight; j++) {
+				s += lightArray.channel[0].leds[tempPos+ j];
+				s += " ";
+			}
+			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light array | " << s << " |";
+			return 0;
+		}(tempPos, whiteKey, height, blackKeyHeight, lightArray);
+
 		tempPos += whiteKey ? height : blackKeyHeight;
 	}
+
+	LOG(LogLevel::Finest) << [](int width, int height, uint8_t** matrix) {
+		for (int i = 0; i < lightArray.channel[0].; i++) {
+			string s;
+			for (int j = 0; j < height; j++) {
+				s += matrix[i][j];
+				s += " ";
+			}
+			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light map | " << s << " |";
+		}
+		return 0;
+	};
 
 	return 0;
 }
