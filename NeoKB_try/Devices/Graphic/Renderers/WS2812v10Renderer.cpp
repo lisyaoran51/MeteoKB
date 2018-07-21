@@ -120,18 +120,6 @@ int WS2812v10Renderer::Render()
 		tempPos += whiteKey ? height : blackKeyHeight;
 	}
 
-	LOG(LogLevel::Finest) << [](int width, int height, uint8_t** matrix) {
-		for (int i = 0; i < lightArray.channel[0].; i++) {
-			string s;
-			for (int j = 0; j < height; j++) {
-				s += matrix[i][j];
-				s += " ";
-			}
-			LOG(LogLevel::Finest) << "WS2812v10Renderer::Render() : light map | " << s << " |";
-		}
-		return 0;
-	};
-
 	return 0;
 }
 
