@@ -67,8 +67,11 @@ namespace Algorithms{
 		/// 移動到指定位置上
 		///	</summary>
 		virtual int ImplementShift(Map* bufferMap, Map* lightMap, EffectMapper<T>* em) {
+
 			MTO_FLOAT x = em->GetX();
 			MTO_FLOAT y = em->GetY();
+
+			LOG(LogLevel::Finest) << "MapShiftAlgorithm::ImplementShift(Map*,Map*,EffectMapper<T>*) : Shifting effect [" << em->GetStartTime() << "] to position [" << x << "][" << y << "].";
 
 			MTO_FLOAT width = lightMap->GetWidth();
 			MTO_FLOAT height = lightMap->GetHeight();
