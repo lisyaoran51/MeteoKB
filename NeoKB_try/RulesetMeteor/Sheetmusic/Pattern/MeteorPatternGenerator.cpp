@@ -67,6 +67,13 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 
 	Pitch pitch = note->GetPitch();
 
+	if (static_cast<int>(pitch) > static_cast<int>(startPitch) + width - 1 ||
+		static_cast<int>(pitch) < static_cast<int>(startPitch)) {
+		LOG(LogLevel::Warning) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Note [" << static_cast<int>(note->GetPitch()) << " is out of light map boundary.";
+		return pattern;
+	}
+
+
 	// 公式： (鍵盤高度-打擊點高度) / 速度
 	MTO_FLOAT fallTime = MTO_FLOAT(
 		note->IsWhiteKey() ?
