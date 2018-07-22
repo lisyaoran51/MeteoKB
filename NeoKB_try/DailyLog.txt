@@ -299,3 +299,8 @@
 	
 	°ÊºA°t¸m¤G·L°}¦C
 	http://mropengate.blogspot.com/2015/12/cc-dynamic-2d-arrays-in-c.html
+
+	zero audio
+	https://learn.adafruit.com/introducing-the-raspberry-pi-zero/audio-outputs
+	https://www.youtube.com/watch?v=3pXB90IDNoY
+	http://shallowsky.com/blog/hardware/pi-zero-audio.html
