@@ -304,3 +304,34 @@
 	https://learn.adafruit.com/introducing-the-raspberry-pi-zero/audio-outputs
 	https://www.youtube.com/watch?v=3pXB90IDNoY
 	http://shallowsky.com/blog/hardware/pi-zero-audio.html
+	
+	最後用的方法
+	https://www.raspberrypi.org/blog/tinkernut-diy-pi-zero-audio/
+	
+7/30
+	pulse audio 多個音源
+	https://superuser.com/questions/461405/why-cant-i-play-audio-from-two-or-more-sources
+
+8/8
+	多音源 正解
+	https://stackoverflow.com/questions/14398573/alsa-api-how-to-play-two-wave-files-simultaneously
+	
+8/11
+	弄出鋼琴
+	
+8/13
+	alsa流程
+	https://wenku.baidu.com/view/29edc08a680203d8ce2f2408.html
+	
+8/14
+	wav格式
+	https://blog.csdn.net/XiaoXiaoPengBo/article/details/51900776
+	wav讀取
+	https://github.com/olleolleolle/wav2c/blob/master/wavdata.c
+	
+	lock
+	https://kheresy.wordpress.com/2012/07/11/multi-thread-programming-in-c-thread-p2/
+	http://www.bogotobogo.com/cplusplus/C11/7_C11_Thread_Sharing_Memory.php
+	
+	wav header讀取
+	https://stackoverflow.com/questions/27791694/alsa-application-to-read-and-play-a-wav-file-on-raspberry-pi
