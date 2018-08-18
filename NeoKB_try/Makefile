@@ -53,7 +53,7 @@ Updater.o Updatable.o
 all:$(TARGET)
 
 $(TARGET): $(OBJS) 
-	$(CC) $(OBJS) -o $@ 
+	$(CC) $(OBJS) -o $@ -pthread
 	
 .c.o:
 	$(CC) $(INCLUDE) $(CFLAGS) -c -o $@ $< 	
