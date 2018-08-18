@@ -59,6 +59,9 @@ int main(int argc, char *argv[]) {
 	game->Async();
 
 	LOG(LogLevel::Info) << "int main(int,char*) : Run the game.";
+	
+	system("aplay Resources/Sms/not_for_anyone.wav");
+	
 	game->Run();
 
 

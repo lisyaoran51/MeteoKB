@@ -335,3 +335,6 @@
 	
 	wav header讀取
 	https://stackoverflow.com/questions/27791694/alsa-application-to-read-and-play-a-wav-file-on-raspberry-pi
+	
+8/19
+	沒辦法傳Spi實，要開/boot/cmdline.txt	加spidev.bufsiz=32768
