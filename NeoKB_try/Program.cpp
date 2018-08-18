@@ -2,6 +2,7 @@
 
 #include "Base/Play/Session.h"
 #include "Util/ProgramInitializer.h"
+#include <thread>
 
 using namespace Base;
 using namespace Meteor;
@@ -9,7 +10,9 @@ using namespace Base::Play;
 using namespace Util;
 using namespace Util::Hierachal;
 
-
+void Aplay(){
+	system("aplay Resources/Sms/not_for_anyone.wav");
+}
 
 int main(int argc, char *argv[]) {
 
@@ -60,7 +63,8 @@ int main(int argc, char *argv[]) {
 
 	LOG(LogLevel::Info) << "int main(int,char*) : Run the game.";
 	
-	system("aplay Resources/Sms/not_for_anyone.wav");
+	thread t(Aplay);
+	t.detach();
 	
 	game->Run();
 

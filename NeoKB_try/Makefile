@@ -30,7 +30,7 @@ TARGET  = MeteoKB
 #compiler 
 CC = g++
 #cflags 
-CFLAGS = -Wall -ansi -s -std=c++14
+CFLAGS = -Wall -ansi -s -std=c++14 -pthread
 #object 
 OBJS = Program.o Game.o \
 FrameworkConfigManager.o \
