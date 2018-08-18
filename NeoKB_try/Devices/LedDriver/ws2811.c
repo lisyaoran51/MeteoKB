@@ -854,7 +854,6 @@ static ws2811_return_t spi_transfer(ws2811_t *ws2811)
     ret = ioctl(ws2811->device->spi_fd, SPI_IOC_MESSAGE(1), &tr);
     if (ret < 1)
     {
-		printf("Error: %d\n", ret);
         fprintf(stderr, "Can't send spi message");
         return WS2811_ERROR_SPI_TRANSFER;
     }
