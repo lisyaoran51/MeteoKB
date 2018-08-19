@@ -16,6 +16,9 @@ void Updater::update(MTO_FLOAT elapsedTime)
 	for (it = begin; it != end; it++) {
 		(*it)(elapsedTime);
 	}
+	
+	// 因為如果跑太快，累積的時間誤差會越來越大，會變得越來越快
+	usleep(50);
 }
 
 Updater::Updater(): MtoObject(), RegisterType("Updater")
