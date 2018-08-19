@@ -1,6 +1,7 @@
 #include "Updater.h"
 
 #include "../Log.h"
+#include <unistd.h>
 
 using namespace Util::Update;
 using namespace std::chrono;
@@ -18,7 +19,7 @@ void Updater::update(MTO_FLOAT elapsedTime)
 	}
 	
 	// 因為如果跑太快，累積的時間誤差會越來越大，會變得越來越快
-	usleep(50);
+	usleep(5000);
 }
 
 Updater::Updater(): MtoObject(), RegisterType("Updater")
