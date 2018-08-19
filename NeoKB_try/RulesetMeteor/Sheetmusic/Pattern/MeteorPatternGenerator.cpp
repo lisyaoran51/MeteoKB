@@ -85,7 +85,7 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	// 公式： (鍵盤高度-打擊點高度) / 速度
 	MTO_FLOAT fallTime = MTO_FLOAT(
 		note->IsWhiteKey() ?
-		(height - targetHeight) : (blackKeyHeight - blackKeyTargetHeight)
+		targetHeight : blackKeyTargetHeight
 	) / fallSpeed;
 
 	MTO_FLOAT fallLifeTime = MTO_FLOAT( 
