@@ -1,5 +1,6 @@
 #include "ProgramInitializer.h"
 
+#include "Log.h"
 #include "InstanceCreator.h"
 #include "MtoObject.h"
 
