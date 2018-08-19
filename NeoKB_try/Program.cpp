@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
 	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
 	mConfigManager->Async();
 	mConfigManager->Set(MeteorSetting::FallBrightness, MTO_FLOAT(0.6f));
+	mConfigManager->Set(MeteorSetting::FallLength, 4);
 	game->Cache<MeteorConfigManager>(mConfigManager);
 
 	// 1. cache session
