@@ -338,3 +338,17 @@
 	
 8/19
 	沒辦法傳Spi實，要開/boot/cmdline.txt	加spidev.bufsiz=32768
+	
+8/29
+	asound斷續播會突然聲音不鍵
+	
+	wav data
+	https://stackoverflow.com/questions/13039846/what-do-the-bytes-in-a-wav-file-represent
+	
+	大小排
+	http://www.prudentman.idv.tw/2007/11/big-endianlittle-endian.html
+	
+	overflow
+	https://msdn.microsoft.com/zh-tw/library/296az74e.aspx
+	
+	把播放佣thread會斷掉，回傳-77 frame，
