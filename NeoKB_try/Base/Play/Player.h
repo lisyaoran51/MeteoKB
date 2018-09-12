@@ -6,12 +6,14 @@
 #include "../Ruleset/RulesetExecutor.h"
 #include "../Sheetmusic/SheetmusicManager.h"
 #include "../Sheetmusic/WorkingSheetmusic.h"
+#include "../Config/FrameworkConfigManager.h"
 
 
 
 using namespace Util::Hierachal;
 using namespace Base::Rulesets;
 using namespace Base::Sheetmusics;
+using namespace Base::Config;
 
 namespace Base {
 namespace Play {

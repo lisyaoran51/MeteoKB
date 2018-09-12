@@ -1,5 +1,6 @@
 #include "Player.h"
-#include <string.h>
+
+#include <string>
 #include "Session.h"
 #include "../Sheetmusic/Sheetmusic.h"
 
@@ -8,6 +9,7 @@ using namespace Base::Play;
 using namespace Util::Hierachal;
 using namespace Base::Rulesets;
 using namespace Base::Sheetmusics;
+using namespace Base::Config;
 
 
 int Player::load()
@@ -33,7 +35,7 @@ int Player::load(FrameworkConfigManager* f)
 	if (f->Get<string>(FrameworkSetting::SongTitle, &songTitle))
 		workingSm = s->GetWorkingSm(songTitle);			// workingSm要在遊戲結束以後刪掉
 	else
-		workingSm = s->GetWorkingSm();	// 這個寫法之後應該要改掉
+		workingSm = s->GetWorkingSm();					// 這個寫法之後應該要改掉
 	
 	/***
 	Sm<Event>* sm = workingSm->GetSm();
