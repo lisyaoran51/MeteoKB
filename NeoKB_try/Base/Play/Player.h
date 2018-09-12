@@ -1,7 +1,6 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <string>
 #include "../../Util/Update/Updatable.h"
 #include "../../Util/Hierachal/ChildAddable.h"
 #include "../Ruleset/RulesetExecutor.h"
@@ -28,7 +27,7 @@ namespace Play {
 		RulesetInfo* rulesetInfo;
 
 		RulesetExecutor<Event>* rulesetExecutor;
-
+		
 		/// <summary>
 		/// load in things like sm, Ruleset info. then create Ruleset executor
 		/// </summary>

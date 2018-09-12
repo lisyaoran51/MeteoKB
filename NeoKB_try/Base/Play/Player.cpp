@@ -1,5 +1,5 @@
-#include"Player.h"
-#include<string>
+#include "Player.h"
+#include <string.h>
 #include "Session.h"
 #include "../Sheetmusic/Sheetmusic.h"
 
@@ -27,16 +27,21 @@ int Player::load(FrameworkConfigManager* f)
 
 	rulesetInfo = s->GetRulesetInfo();
 	
+		
 	string songTitle;
+	
 	if (f->Get<string>(FrameworkSetting::SongTitle, &songTitle))
 		workingSm = s->GetWorkingSm(songTitle);			// workingSm要在遊戲結束以後刪掉
 	else
 		workingSm = s->GetWorkingSm();	// 這個寫法之後應該要改掉
 	
-	//Sm<Event>* sm = workingSm->GetSm();
-
-	//if (!rulesetInfo)
-	//	rulesetInfo = sm->GetRulesetInfo();
+	/***
+	Sm<Event>* sm = workingSm->GetSm();
+	 
+	if (!rulesetInfo)
+		rulesetInfo = sm->GetRulesetInfo();
+	***/
+	
 	ruleset = rulesetInfo->CreateRuleset();
 
 	rulesetExecutor = ruleset->CreateRulesetExecutor(workingSm);
