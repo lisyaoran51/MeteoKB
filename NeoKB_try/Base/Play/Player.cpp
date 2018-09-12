@@ -32,7 +32,7 @@ int Player::load(FrameworkConfigManager* f)
 		
 	string songTitle;
 	
-	if (f->Get<string>(FrameworkSetting::SongTitle, &songTitle))
+	if (f->Get<string>(FrameworkSetting::PatternGenerator, &songTitle))
 		workingSm = s->GetWorkingSm(songTitle);			// workingSm要在遊戲結束以後刪掉
 	else
 		workingSm = s->GetWorkingSm();					// 這個寫法之後應該要改掉
