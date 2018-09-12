@@ -12,14 +12,27 @@ using namespace Base::Sheetmusics;
 
 int Player::load()
 {
+	FrameworkConfigManager * f = GetCache<FrameworkConfigManager>("FrameworkConfigManager");
+	if (!f)
+		throw runtime_error("int  RulesetExecutor<T>::load() : FrameworkConfigManager not found in cache.");
+
+	return load(f);
+}
+
+int Player::load(FrameworkConfigManager* f)
+{
 	LOG(LogLevel::Info) << "Player::load : start loading the player and reading the sm and ruleset from session.";
 
 	Session* s = GetCache<Session>("Session");
 
 	rulesetInfo = s->GetRulesetInfo();
-	workingSm = s->GetWorkingSm();			// workingSm要在遊戲結束以後刪掉
 	
-
+	string songTitle;
+	if (f->Get<string>(FrameworkSetting::SongTitle, &songTitle))
+		workingSm = s->GetWorkingSm(songTitle);			// workingSm要在遊戲結束以後刪掉
+	else
+		workingSm = s->GetWorkingSm();	// 這個寫法之後應該要改掉
+	
 	//Sm<Event>* sm = workingSm->GetSm();
 
 	//if (!rulesetInfo)

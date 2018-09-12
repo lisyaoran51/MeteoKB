@@ -1,11 +1,13 @@
 #ifndef SESSION_H
 #define SESSION_H
 
+#include <vector>
 #include "../../Util/Hierachal/ChildAddable.h"
 #include "../Ruleset/RulesetInfo.h"
 #include "../Sheetmusic/WorkingSheetmusic.h"
 #include "../Sheetmusic/SheetmusicManager.h"
 
+using namespace std;
 using namespace Util::Hierachal;
 using namespace Base::Sheetmusics;
 
@@ -26,6 +28,8 @@ namespace Play {
 		RulesetInfo* GetRulesetInfo();
 
 		WorkingSm* GetWorkingSm();
+		
+		WorkingSm* GetWorkingSm(string title);
 
 	protected:
 
@@ -33,7 +37,9 @@ namespace Play {
 
 		SmManager* smManager;
 
-		SmInfo* smInfo;
+		SmInfo* smInfo; 	// 這行之後要刪掉
+		
+		vector<SmInfo*> smInfos;
 
 	};
 

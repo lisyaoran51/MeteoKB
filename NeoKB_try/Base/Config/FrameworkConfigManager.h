@@ -28,7 +28,9 @@ namespace Config{
 
 
 	enum class FrameworkSetting {
-
+		
+		SongTitle, // 之後要刪掉，擺到正確的地方
+		
 		AudioDevice,
 		VolumeUniversal,
 		VolumeEffect,

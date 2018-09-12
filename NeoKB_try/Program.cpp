@@ -10,8 +10,16 @@ using namespace Base::Play;
 using namespace Util;
 using namespace Util::Hierachal;
 
+
+string aplayCommand = ""; // 這行之後要刪掉
+
 void Aplay(){
-	system("aplay Resources/Sms/not_for_anyone.wav");
+	
+	/*
+	system("aplay Resources/Sms/say_seperate.wav");
+	*/
+	
+	system(aplayCommand.c_str());
 }
 
 int main(int argc, char *argv[]) {
@@ -27,6 +35,10 @@ int main(int argc, char *argv[]) {
 	LOG(LogLevel::Fine) << "int main(int,char*) : Create Config Manager [FrameworkConfigManager].";
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
 	fConfigManager->Async();
+	/**********/
+	aplayCommand = "aplay Resources/Sms/" + argv[1] + ".wav";			// 這行之後要刪掉
+	fConfigManager->Set(FrameworkSetting::SongTitle, string(argv[1]));  // 這行之後要刪掉
+	/**********/
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, string("MeteorPatternGenerator"));
 	fConfigManager->Set(FrameworkSetting::HardwareVersion, 10);
 	fConfigManager->Set(FrameworkSetting::Width, 48); //要改

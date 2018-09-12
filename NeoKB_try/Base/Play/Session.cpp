@@ -40,7 +40,9 @@ Session::Session(RulesetInfo* r, SmManager* s): RegisterType("Session"), ChildAd
 	LOG(LogLevel::Finer) << "Session::Session(RulesetInfo*, SmManager*) : sm manager has [" << smManager->GetSmInfos()->size() << "] sm infos.";
 	LOG(LogLevel::Finer) << "Session::Session(RulesetInfo*, SmManager*) : the first sm info is [" << smManager->GetSmInfos()->at(0)->fileName << "].";
 
-	smInfo = smManager->GetSmInfos()->at(0);
+	
+	smInfos = smManager->GetSmInfos();
+	smInfo = smManager->GetSmInfos()->at(0);	// 這行之後要刪掉
 
 	//registerLoad(bind((int(Session::*)())&Session::load, this));
 }
@@ -50,7 +52,19 @@ RulesetInfo * Session::GetRulesetInfo()
 	return rulesetInfo;
 }
 
+// 這行之後要刪掉
 WorkingSm * Session::GetWorkingSm()
 {
 	return smManager->GetWorkingSm(smInfo);
+}
+
+WorkingSm* Session::GetWorkingSm(string title){
+	
+	for(int i = 0; i < smInfos.size(); i++){
+		
+		if(smInfos->at(i)->metadata.Title == title)
+			return smInfos->at(i);
+		
+	}
+	return NULL;
 }
