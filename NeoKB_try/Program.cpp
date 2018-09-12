@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 	FrameworkConfigManager* fConfigManager = new FrameworkConfigManager();
 	fConfigManager->Async();
 	/**********/
-	aplayCommand = "aplay Resources/Sms/" + argv[1] + ".wav";			// 這行之後要刪掉
+	aplayCommand = string("aplay Resources/Sms/") + argv[1] + string(".wav");			// 這行之後要刪掉
 	fConfigManager->Set(FrameworkSetting::SongTitle, string(argv[1]));  // 這行之後要刪掉
 	/**********/
 	fConfigManager->Set(FrameworkSetting::PatternGenerator, string("MeteorPatternGenerator"));
