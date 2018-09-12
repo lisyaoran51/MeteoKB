@@ -60,10 +60,10 @@ WorkingSm * Session::GetWorkingSm()
 
 WorkingSm* Session::GetWorkingSm(string title){
 	
-	for(int i = 0; i < smInfos.size(); i++){
+	for(int i = 0; i < smInfos->size(); i++){
 		
-		if(smInfos->at(i)->metadata.Title == title)
-			return smInfos->at(i);
+		if(smInfos->at(i)->metadata->Title == title)
+			return smManager->GetWorkingSm(smInfos->at(i));
 		
 	}
 	return NULL;

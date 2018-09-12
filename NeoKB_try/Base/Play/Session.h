@@ -39,7 +39,7 @@ namespace Play {
 
 		SmInfo* smInfo; 	// 這行之後要刪掉
 		
-		vector<SmInfo*> smInfos;
+		vector<SmInfo*>* smInfos;
 
 	};
 
