@@ -32,6 +32,8 @@ namespace Play {
 		/// load in things like sm, Ruleset info. then create Ruleset executor
 		/// </summary>
 		int load();
+		
+		int load(FrameworkConfigManager* f);
 
 	public:
 
