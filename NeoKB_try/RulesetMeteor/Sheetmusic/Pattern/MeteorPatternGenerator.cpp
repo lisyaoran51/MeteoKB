@@ -72,7 +72,10 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	
 	/* 所有的event都要複製一個新的來用，才不會動到原本讀好的譜 */
 	/* 為什麼沒有delete?? 是不是之後要拿來當判斷點?? */
+	LOG(LogLevel::Finer) << "TODELETE MeteorPatternGenerator Generate : event start time: " << e->GetStartTime();
+
 	Event* eventClone = e->Clone();
+	LOG(LogLevel::Finer) << "TODELETE MeteorPatternGenerator Generate : event clone start time: " << eventClone->GetStartTime();
 	NoteControlPoint* note = eventClone->Cast<NoteControlPoint>();
 	StartGameEvent* start = eventClone->Cast<StartGameEvent>();
 
@@ -98,13 +101,13 @@ Pattern * MeteorPatternGenerator::generateNoteControlPoint(vector<Event*>* es, N
 	/* 在pattern generator消滅實消滅，或是converter跑完消滅 */
 	Pattern* pattern = new Pattern();
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Start converting [" << static_cast<int>(note->GetPitch()) << "," << note->GetStartTime() << "] to pattern...";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::generateNoteControlPoint(vector<Event*>*, Event*) : Start converting [" << static_cast<int>(note->GetPitch()) << "," << note->GetStartTime() << "] to pattern...";
 
 	Pitch pitch = note->GetPitch();
 
 	if (static_cast<int>(pitch) > static_cast<int>(startPitch) + width - 1 ||
 		static_cast<int>(pitch) < static_cast<int>(startPitch)) {
-		LOG(LogLevel::Warning) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Note [" << static_cast<int>(note->GetPitch()) << " is out of light map boundary.";
+		LOG(LogLevel::Warning) << "int MeteorSmConverter::generateNoteControlPoint(vector<Event*>*, Event*) : Note [" << static_cast<int>(note->GetPitch()) << " is out of light map boundary.";
 		return pattern;
 	}
 
