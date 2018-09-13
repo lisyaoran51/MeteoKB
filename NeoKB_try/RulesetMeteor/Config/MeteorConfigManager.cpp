@@ -15,6 +15,7 @@ int MeteorConfigManager::InitializeDefault()
 	Set(MeteorSetting::FallMapAlgorithm, "FallMapAlgorithm");
 	Set(MeteorSetting::ExplodeMapAlgorithm, "ExplodeMapAlgorithm");
 	Set(MeteorSetting::GlowLineMapAlgorithm, "GlowLineMapAlgorithm");
+	Set(MeteorSetting::TargetLineMapAlgorithm, "TargetLineMapAlgorithm");
 
 	Set(MeteorSetting::FallSpeed, MTO_FLOAT(16.f));
 	Set(MeteorSetting::FallBrightness, MTO_FLOAT(1.f));
