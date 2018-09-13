@@ -17,3 +17,8 @@ string StartGameEvent::GetTypeName()
 {
 	return "StartGameEvent";
 }
+
+Event * StartGameEvent::Clone()
+{
+	return new StartGameEvent(startTime, lifeTime);
+}

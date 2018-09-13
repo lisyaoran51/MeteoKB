@@ -21,6 +21,7 @@ namespace GameEvents {
 		// 一定要每次都override!!
 		virtual string GetTypeName();
 
+		virtual Event* Clone();
 	};
 
 }}}}
