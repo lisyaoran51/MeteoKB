@@ -87,7 +87,10 @@ namespace Sheetmusics {
 
 		int SetEvents(vector<T*>* e) {
 			events = e;
+			
 			// TODO: sort
+			// 這個再postprocessor有作，這邊又作一次?
+
 			sort(e->begin(), e->end());
 			return 0;
 		}

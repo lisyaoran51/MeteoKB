@@ -9,6 +9,7 @@
 #include "../Scheduler/Event/Effect/FallEffectMapper.h"
 #include "../Scheduler/Event/Effect/ExplodeEffectMapper.h"
 #include "../Scheduler/Event/Effect/GlowLineEffectMapper.h"
+#include "../Scheduler/Event/Effect/TargetLineEffectMapper.h"
 
 using namespace Meteor::Rulesets;
 using namespace Base::Schedulers::Events;
@@ -42,6 +43,7 @@ MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecu
 	eventProcessorTable["FallEffect"] = "FallEffectMapper";
 	eventProcessorTable["ExplodeEffect"] = "ExplodeEffectMapper";
 	eventProcessorTable["GlowLineEffect"] = "GlowLineEffectMapper";
+	eventProcessorTable["TargetLineEffect"] = "TargetLineEffectMapper";
 
 	// 註冊private load (c++才需要)
 	registerLoad(bind(static_cast<int(MeteorRulesetExecutor::*)(void)>(&MeteorRulesetExecutor::load), this));
@@ -97,7 +99,12 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 		int height = playfield->GetHeight();
 		return (new ExplodeEffectMapper(width, height))->RegisterEvent(e);
 	}
-	
+	else if (processorType == "TargetLineEffectMapper") {
+		int width = playfield->GetWidth();
+		int height = playfield->GetHeight();
+		return (new TargetLineEffectMapper(width, height))->RegisterEvent(e);
+	}
+
 	throw runtime_error("MeteorRulesetExecutor::getEventProcessor(Event*) : No matched processor type.");
 	// TODO:吐錯誤訊息
 	return NULL;

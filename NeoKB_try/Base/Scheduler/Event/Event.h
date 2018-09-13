@@ -17,6 +17,8 @@ namespace Schedulers {
 namespace Events {
 	
 	enum class EventStartType;
+	enum class EventLifeType;
+
 
 	class Event
 	{
@@ -26,6 +28,9 @@ namespace Events {
 		Event();
 		Event(MTO_FLOAT s, MTO_FLOAT l);
 		Event(const Event&);
+
+		EventStartType GetStartType();
+		EventLifeType GetLifeType();
 
 		int SetStartTime(MTO_FLOAT s);
 		int SetLifeTime(MTO_FLOAT l);
@@ -61,6 +66,7 @@ namespace Events {
 		int eid;
 
 		EventStartType startType;
+		EventLifeType lifeType;
 
 		/// <summary>
 		/// 開始時間，如果式即時事件就是-1
@@ -77,9 +83,14 @@ namespace Events {
 
 	enum class EventStartType {
 		Immediate,
-		Reserved
+		Reserved,
 	};
 
+	enum class EventLifeType {
+		Immediate,
+		Timed,
+		Infinite
+	};
 	
 
 }}}

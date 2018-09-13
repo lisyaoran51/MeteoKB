@@ -1,17 +1,44 @@
 #include"MeteorSheetmusicConverter.h"
+
 #include "../../Base/Scheduler/Event/Effect/Effect.h"
 #include "../../Base/Scheduler/Event/ControlPoints/NoteControlPoint.h"
+#include "../../Base/Scheduler/Event/GameEvents/StartGameEvent.h"
 
 using namespace Meteor::Sheetmusics;
 using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers::Events::Effects;
 using namespace Base::Schedulers::Events::ControlPoints;
-
+using namespace Base::Schedulers::Events::GameEvents;
 
 
 
 MeteorSmConverter::MeteorSmConverter(PatternGenerator * pg): SmConverter(pg)
 {
+}
+
+Sm<Event>* Meteor::Sheetmusics::MeteorSmConverter::Convert(Sm<Event>* s)
+{
+	Sm<Event>* convertedSm = SmConverter::Convert(s);
+
+	/* 加入開始特效，包括打擊線... */
+	/* 這個部分之後應該要擺到SmConverter裡面 */
+
+	vector<Event*>* convertedEvent = new vector<Event*>();
+	StartGameEvent* startGameEvent = new StartGameEvent(0, -1);
+
+	Pattern* newPattern = patternGenerator->Generate(convertedEvent, startGameEvent);
+	patternGenerator->Add(newPattern);
+
+	for (int i = 0; i < convertedEvent->size(); i++) {
+		convertedSm->GetEvents()->push_back(convertedEvent->at(i));
+	}
+
+	convertedEvent->clear();
+	delete convertedEvent;
+
+	/* [結束] 加入開始特效，包括打擊線... */
+
+	return convertedSm;
 }
 
 int MeteorSmConverter::convertEvent(vector<Event*>* es, Event* e)
@@ -33,13 +60,7 @@ int MeteorSmConverter::convertEvent(vector<Event*>* es, Event* e)
 		Pattern* newPattern = patternGenerator->Generate(es, e);
 		patternGenerator->Add(newPattern);
 
-
-
-
 	}
-
-
-	
 
 	return 0;
 }

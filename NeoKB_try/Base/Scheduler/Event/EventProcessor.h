@@ -46,7 +46,17 @@ namespace Events {
 
 		MTO_FLOAT GetStartTime(){ return event->GetStartTime(); }
 		MTO_FLOAT GetLifeTime(){ return event->GetLifeTime(); }
-		MTO_FLOAT GetTimeLeft(){ return event->GetLifeTime() - currentTime; }
+
+		MTO_FLOAT GetTimeLeft(){ 
+
+			if (event->GetLifeType == EventLifeType::Infinite)
+				return MTO_INFINITE;
+			else if (event->GetLifeType == EventLifeType::Immediate)
+				return 0;
+			else
+				return event->GetLifeTime() - currentTime; 
+
+		}
 
 		// 一定要每次都override!!
 		virtual string GetEventTypeName(){ return event->GetTypeName(); }

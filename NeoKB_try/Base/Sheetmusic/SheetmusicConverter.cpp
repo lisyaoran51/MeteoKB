@@ -53,6 +53,7 @@ Sm<Event>* SmConverter::Convert(Sm<Event>* s)
 	patternGenerator->CleanPatterns();
 
 	sm->SetEvents(newEvents);
+	delete tempEvents;
 
 	return sm;
 }

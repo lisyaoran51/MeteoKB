@@ -4,6 +4,7 @@
 #include "../../../Base/Scheduler/Event/ControlPoints/NoteControlPoint.h"
 #include "../../Scheduler/Event/Effect/FallEffect.h"
 #include "../../Scheduler/Event/Effect/GlowLineEffect.h"
+#include "../../../Base/Scheduler/Event/GameEvents/StartGameEvent.h"
 
 
 using namespace Meteor::Sheetmusics::Patterns;
@@ -11,6 +12,7 @@ using namespace Meteor::Config;
 using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers::Events::ControlPoints;
 using namespace Meteor::Schedulers::Events::Effects;
+using namespace Base::Schedulers::Events::GameEvents;
 
 
 
@@ -62,16 +64,36 @@ MeteorPatternGenerator::MeteorPatternGenerator(): PatternGenerator(), RegisterTy
 
 Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 {
-	// 在pattern generator消滅實消滅，或是converter跑完消滅
+	
+	/* 所有的event都要複製一個新的來用，才不會動到原本讀好的譜 */
+	/* 為什麼沒有delete?? 是不是之後要拿來當判斷點?? */
+	Event* eventClone = e->Clone();
+	NoteControlPoint* note = eventClone->Cast<NoteControlPoint>();
+	StartGameEvent* start = eventClone->Cast<StartGameEvent>();
+
+	/* 鍵力音符的特效 */
+	if (note)
+		return generateNoteControlPoint(es, note);
+
+	/* 鍵力開始的特效 */
+	if (start)
+		return generateStartGameEvent(es, start);
+
+
+	if (!note && !start)
+		throw runtime_error("Pattern* MeteorPatternGenerator::Generate(vector<Event*>*, Event*) : event cannot cast to NoteControlPoint or StartGameEvent.");
+
+
+	return NULL;
+
+}
+
+Pattern * MeteorPatternGenerator::generateNoteControlPoint(vector<Event*>* es, NoteControlPoint * note)
+{
+	/* 在pattern generator消滅實消滅，或是converter跑完消滅 */
 	Pattern* pattern = new Pattern();
 
-	// 所有的event都要複製一個新的來用，才不會動到原本讀好的譜
-	NoteControlPoint* note = e->Clone()->Cast<NoteControlPoint>();
-	
 	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Start converting [" << static_cast<int>(note->GetPitch()) << "," << note->GetStartTime() << "] to pattern...";
-
-	if(!note)
-		throw runtime_error("Pattern* MeteorPatternGenerator::Generate(vector<Event*>*, Event*) : event cannot cast to NoteControlPoint.");
 
 	Pitch pitch = note->GetPitch();
 
@@ -88,10 +110,10 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 		targetHeight : blackKeyTargetHeight
 	) / fallSpeed;
 
-	MTO_FLOAT fallLifeTime = MTO_FLOAT( 
+	MTO_FLOAT fallLifeTime = MTO_FLOAT(
 		(note->IsWhiteKey() ?
-		height : blackKeyHeight) + fallLength
-		) / fallSpeed;
+			height : blackKeyHeight) + fallLength
+	) / fallSpeed;
 
 	MTO_FLOAT glowLineTime = fallTime + MTO_FLOAT(1) / glowLineSpeed + glowLineDuration;
 
@@ -105,18 +127,18 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], start time [" << e->GetStartTime() - glowLineTime << "], life time [" << fallTime + glowLineDuration << "].";
 
 	GlowLineEffect* glow = new GlowLineEffect(
-		(int)pitch, 
-		0, 
-		e->GetStartTime() - glowLineTime, 
+		(int)pitch,
+		0,
+		note->GetStartTime() - glowLineTime,
 		fallTime + glowLineDuration,
 		glowLineSpeed);
 
 	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << e->GetStartTime() - fallTime << "], life time [" << fallLifeTime << "].";
 
 	FallEffect* fall = new FallEffect(
-		(int)pitch, 
-		0, 
-		e->GetStartTime() - fallTime,
+		(int)pitch,
+		0,
+		note->GetStartTime() - fallTime,
 		fallLifeTime,
 		fallSpeed);
 
@@ -133,4 +155,32 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 
 	return pattern;
 
+}
+
+Pattern * MeteorPatternGenerator::generateStartGameEvent(vector<Event*>* es, StartGameEvent * start)
+{
+	/* 在pattern generator消滅實消滅，或是converter跑完消滅 */
+	Pattern* pattern = new Pattern();
+
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::generateStartGameEvent(vector<Event*>*, StartGameEvent*) : Start converting [ StartGameEvent ," << start->GetStartTime() << "] to pattern...";
+
+
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::generateStartGameEvent(vector<Event*>*, StartGameEvent*) : Generate TargetLine at [" 
+		<< targetHeight << "(white) , " << blackKeyTargetHeight << "(black) ], start time [" << start->GetStartTime()<< "], life time [ INFINITE ].";
+
+	TargetLineEffect* targetLine = new TargetLineEffect(
+		targetHeight,
+		blackKeyTargetHeight,
+		0,
+		start->GetStartTime(),
+		-1,	// 之後要去define每一個數是什麼意思
+		blinkSpeed);
+
+	pattern->Add(targetLine);
+	//pattern->Add(start);
+
+	/* 把pattern裡面的event一個一個加進去es裡 */
+	es->push_back(targetLine);
+
+	return pattern;
 }

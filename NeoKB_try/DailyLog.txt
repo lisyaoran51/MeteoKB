@@ -410,3 +410,6 @@
 9/12
 	pwm音效的設定
 	dtoverlay=pwm-2chan,pin=18,func=2,pin2=13,func2=4
+
+9/13
+	為了把target line加入，鍵力一個新Event叫game event，pattern generator再把game start event轉出target line

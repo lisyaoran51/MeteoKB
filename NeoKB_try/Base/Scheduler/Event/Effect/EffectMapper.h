@@ -72,7 +72,7 @@ namespace Effects {
 			if (!mapAlgo)
 				throw runtime_error("int EffectMapper::Process() : no map algorithm registered!");
 
-			// current time從effect開始播放時，從0開始計算，直到current time超過life time時，特效結束
+			/* current time從effect開始播放時，從0開始計算，直到current time超過life time時，特效結束 */
 			currentTime += elapsedTime;
 
 			mapAlgo->Draw(lightMap, this);

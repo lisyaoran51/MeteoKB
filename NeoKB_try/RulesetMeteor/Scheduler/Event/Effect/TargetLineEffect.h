@@ -1,5 +1,6 @@
-#ifndef GLOW_LINE_EFFECT_H
-#define GLOW_LINE_EFFECT_H
+#ifndef TARGETLINE_EFFECT_H
+#define TARGETLINE_EFFECT_H
+
 
 #include <string>
 #include <fstream>
@@ -17,8 +18,10 @@ namespace Schedulers {
 namespace Events {
 namespace Effects {
 	
-
-	class GlowLineEffect: public Effect
+	/// <summary>
+	/// 打擊線特效，會在琴鍵上閃爍，之後應該要和glow line effect 
+	/// </summary>
+	class TargetLineEffect: public Effect
 	{
 
 	public:
@@ -26,23 +29,26 @@ namespace Effects {
 		/// <summary>
 		/// 這個建構子不是用來執行的，指示用來給TConstraint來確認繼承關係用
 		///	</summary>
-		GlowLineEffect();
+		TargetLineEffect();
 
 		/// <summary>
 		/// construct an immediate effect
 		///	</summary>
-		GlowLineEffect(
-			int xPos,
-			int yPos,
+		TargetLineEffect(
+			int wHeight,
+			int bHeight,
 			MTO_FLOAT sTime,
 			MTO_FLOAT l,
-			MTO_FLOAT sp
+			MTO_FLOAT bSpeed
 		);
 
-		// 一定要每次都override!!
+		/* 一定要每次都override!! */
 		virtual string GetTypeName();
 
 	protected:
+
+		int whiteKeyTargetHeight;
+		int blackKeyTargetHeight;
 
 	};
 
@@ -51,6 +57,8 @@ namespace Effects {
 	
 
 }}}}
+
+
 
 
 

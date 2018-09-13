@@ -34,9 +34,10 @@ namespace Config{
 		FallMapAlgorithm,
 		ExplodeMapAlgorithm,
 		GlowLineMapAlgorithm,
+		TargetLineMapAlgorithm,
 
-		//PitchCount,
-		//TargetLineHeight,
+		WhiteKeyTargetHeight,
+		BlackKeyTargetHeight,
 
 		FallSpeed,				// ¨C¬í²¾°Ê´XÁû
 		FallBrightness,
@@ -47,7 +48,8 @@ namespace Config{
 		GlowLineDuration,
 		GlowLineBrightness,
 
-
+		TargetLineBlinkSpeed,
+		TargetLineBrightness
 
 	};
 
