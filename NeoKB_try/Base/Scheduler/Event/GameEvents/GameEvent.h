@@ -10,7 +10,7 @@ namespace Schedulers {
 namespace Events {
 namespace GameEvents {
 
-	enum class GameEventsType;
+	enum class GameEventType;
 
 	class GameEvent : public Event {
 
@@ -18,14 +18,14 @@ namespace GameEvents {
 
 		GameEvent(MTO_FLOAT s, MTO_FLOAT l);
 
-		virtual GameEventsType GetGameEventsType() = 0;
+		virtual GameEventType GetGameEventType() = 0;
 
 		// 一定要每次都override!!
 		virtual string GetTypeName();
 
 	};
 
-	enum class GameEventsType {
+	enum class GameEventType {
 		Start,
 		Pause,
 		Resume,

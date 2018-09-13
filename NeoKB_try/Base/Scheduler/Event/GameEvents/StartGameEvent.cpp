@@ -8,9 +8,9 @@ StartGameEvent::StartGameEvent(MTO_FLOAT s, MTO_FLOAT l) : GameEvent(s,l)
 {
 }
 
-GameEventsType StartGameEvent::GetGameEventsType()
+GameEventType StartGameEvent::GetGameEventType()
 {
-	return GameEventsType::Start;
+	return GameEventType::Start;
 }
 
 string StartGameEvent::GetTypeName()
