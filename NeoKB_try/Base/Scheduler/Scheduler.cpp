@@ -84,6 +84,13 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	while (eventProcessors->front()->GetStartTime() < currentTime) {
 
+		if (eventProcessors->front()->GetStartTime() < 0) {
+			LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] is less than 0. Killed directly";
+
+			eventProcessors->erase(eventProcessors->begin());
+			continue;
+		}
+
 		LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] popped.";
 
 		//TODO: 應該先把超過的時間給減回去，避免多扣life time
