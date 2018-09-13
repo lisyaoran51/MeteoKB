@@ -176,6 +176,9 @@ namespace Algorithms{
 		/// 把evnet的狀態轉成圖案，然後移到他的位置上
 		///	</summary>
 		virtual int ImplementDraw(Map* m, EffectMapper<T>* em) {
+
+			LOG(LogLevel::Finer) << "TODELETE MapAlgorithmInterface::ImplementDraw : start by " << GetTypeName();
+
 			if (!bufferMap->IsClear())
 				bufferMap->Reset();
 
