@@ -4,6 +4,7 @@
 #include "../../../Base/Scheduler/Event/ControlPoints/NoteControlPoint.h"
 #include "../../Scheduler/Event/Effect/FallEffect.h"
 #include "../../Scheduler/Event/Effect/GlowLineEffect.h"
+#include "../../Scheduler/Event/Effect/TargetLineEffect.h"
 #include "../../../Base/Scheduler/Event/GameEvents/StartGameEvent.h"
 
 
@@ -53,6 +54,10 @@ int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 
 	if( !mcf->Get(MeteorSetting::GlowLineBrightness, &glowLineBrightness))
 		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : GlowLineBrightness not found in Setting.");
+
+	if (!mcf->Get(MeteorSetting::TargetLineBlinkSpeed, &targetLineBlinkSpeed))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : TargetLineBlinkSpeed not found in Setting.");
+
 
 	return 0;
 }
@@ -124,7 +129,7 @@ Pattern * MeteorPatternGenerator::generateNoteControlPoint(vector<Event*>* es, N
 
 	LOG(LogLevel::Finest) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Fall speed is [" << fallSpeed << "], GlowLine speed is [" << glowLineSpeed << "].";
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], start time [" << e->GetStartTime() - glowLineTime << "], life time [" << fallTime + glowLineDuration << "].";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate GlowLine at [" << (int)pitch << "], start time [" << note->GetStartTime() - glowLineTime << "], life time [" << fallTime + glowLineDuration << "].";
 
 	GlowLineEffect* glow = new GlowLineEffect(
 		(int)pitch,
@@ -133,7 +138,7 @@ Pattern * MeteorPatternGenerator::generateNoteControlPoint(vector<Event*>* es, N
 		fallTime + glowLineDuration,
 		glowLineSpeed);
 
-	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << e->GetStartTime() - fallTime << "], life time [" << fallLifeTime << "].";
+	LOG(LogLevel::Finer) << "int MeteorSmConverter::Generate(vector<Event*>*, Event*) : Generate Fall at [" << (int)pitch << "], start time [" << note->GetStartTime() - fallTime << "], life time [" << fallLifeTime << "].";
 
 	FallEffect* fall = new FallEffect(
 		(int)pitch,
@@ -174,7 +179,7 @@ Pattern * MeteorPatternGenerator::generateStartGameEvent(vector<Event*>* es, Sta
 		0,
 		start->GetStartTime(),
 		-1,	// 之後要去define每一個數是什麼意思
-		blinkSpeed);
+		targetLineBlinkSpeed);
 
 	pattern->Add(targetLine);
 	//pattern->Add(start);

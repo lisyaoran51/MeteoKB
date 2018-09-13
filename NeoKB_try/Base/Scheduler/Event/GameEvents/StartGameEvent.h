@@ -10,6 +10,7 @@ namespace Schedulers {
 namespace Events {
 namespace GameEvents {
 
+	enum class GameEventsType;
 
 	class StartGameEvent : public GameEvent {
 

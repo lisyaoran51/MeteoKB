@@ -56,6 +56,8 @@ namespace Patterns {
 		MTO_FLOAT glowLineSpeed = 0;
 		MTO_FLOAT glowLineDuration = 0;
 		MTO_FLOAT glowLineBrightness = 0;
+		MTO_FLOAT targetLineBlinkSpeed = 0;
+
 
 		Pattern* generateNoteControlPoint(vector<Event*>* es, NoteControlPoint* note);
 		Pattern* generateStartGameEvent(vector<Event*>* es, StartGameEvent* start);
