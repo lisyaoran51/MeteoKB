@@ -176,7 +176,6 @@ Pattern * MeteorPatternGenerator::generateStartGameEvent(vector<Event*>* es, Sta
 	TargetLineEffect* targetLine = new TargetLineEffect(
 		targetHeight,
 		blackKeyTargetHeight,
-		0,
 		start->GetStartTime(),
 		-1,	// 之後要去define每一個數是什麼意思
 		targetLineBlinkSpeed);
