@@ -112,8 +112,10 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		LOG(LogLevel::Finer) << "TODELETE Playfield::Add";
 
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
+		LOG(LogLevel::Finer) << "TODELETE Playfield::Add find map algo";
 		if (iter != mapAlgorithms.end())
 		{
+			LOG(LogLevel::Finer) << "TODELETE Playfield::Add found map algo";
 			MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
 			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
 		}
