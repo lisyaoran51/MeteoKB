@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 	mConfigManager->Async();
 	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 4);
 	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 2);
-	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(24.f));
+	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(16.f));
 	mConfigManager->Set(MeteorSetting::FallBrightness		, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::FallLength			, 4);
 	mConfigManager->Set(MeteorSetting::ExplodeSpeed			, MTO_FLOAT(0.6f));

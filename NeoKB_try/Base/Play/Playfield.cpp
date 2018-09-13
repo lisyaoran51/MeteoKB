@@ -109,6 +109,8 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 		string processorType = ep->GetEventTypeName();
 
+		LOG(LogLevel::Finer) << "TODELETE Playfield::Add";
+
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
 		if (iter != mapAlgorithms.end())
 		{

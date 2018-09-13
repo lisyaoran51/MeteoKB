@@ -102,6 +102,7 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	else if (processorType == "TargetLineEffectMapper") {
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
+		LOG(LogLevel::Finer) << "TODELETE getEventProcessor TargetLineEffectMapper";
 		return (new TargetLineEffectMapper(width, height))->RegisterEvent(e);
 	}
 
@@ -117,6 +118,8 @@ string MeteorRulesetExecutor::GetProcessorType(string eventType)
 	{
 		return eventProcessorTable[eventType];
 	}
+
+
 	// TODO: ¦R¤@¨Ç¿ù»~°T®§
 	return string("");
 }
