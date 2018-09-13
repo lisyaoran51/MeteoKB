@@ -52,7 +52,7 @@ namespace Events {
 			if (event->GetLifeType() == EventLifeType::Infinite)
 				return MTO_INFINITE;
 			else if (event->GetLifeType() == EventLifeType::Immediate)
-				return 0;
+				return event->GetLifeTime() - currentTime;
 			else
 				return event->GetLifeTime() - currentTime; 
 
