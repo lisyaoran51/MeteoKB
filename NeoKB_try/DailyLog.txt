@@ -415,3 +415,6 @@
 	為了把target line加入，鍵力一個新Event叫game event，pattern generator再把game start event轉出target line
 
 	卡再register effect to mapper的地方，target line不行
+
+9/14
+	再 Scheduler::Elapse裡面先暫時寫一段把比0小的事件刪掉的扣

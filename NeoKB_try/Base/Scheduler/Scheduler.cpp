@@ -84,7 +84,8 @@ int Scheduler::Elapse(MTO_FLOAT elapsedTime) {
 
 	while (eventProcessors->front()->GetStartTime() < currentTime) {
 
-		if (eventProcessors->front()->GetStartTime() <= 0) {
+		/* 暫時寫法，之後要改掉，不然會mem leak */
+		if (eventProcessors->front()->GetStartTime() < 0) {
 			LOG(LogLevel::Finer) << "Scheduler::Elapse() : event [" << eventProcessors->back()->GetStartTime() << "] is less than 0. Killed directly";
 
 			eventProcessors->erase(eventProcessors->begin());
