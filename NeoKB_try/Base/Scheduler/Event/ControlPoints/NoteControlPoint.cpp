@@ -46,5 +46,7 @@ bool NoteControlPoint::IsWhiteKey()
 
 Event* NoteControlPoint::Clone()
 {
+	LOG(LogLevel::Finer) << "TODELETE NoteControlPoint::Clone : start time: " << startTime;
+
 	return new NoteControlPoint(pitch, startTime, lifeTime);
 }
