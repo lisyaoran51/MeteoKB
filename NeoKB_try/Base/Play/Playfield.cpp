@@ -108,23 +108,24 @@ int Playfield::Add(EventProcessor<Event> * ep)
 
 		// 為什麼不用event自己來create? 因為要去搭配不同的mapper，所以要動態調配
 		string processorType = ep->GetEventTypeName();
-
-		LOG(LogLevel::Finer) << "TODELETE Playfield::Add";
-
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
-		LOG(LogLevel::Finer) << "TODELETE Playfield::Add find map algo";
 
-		mapAlgorithms.end();
-		LOG(LogLevel::Finer) << "TODELETE Playfield::map algo end?";
-		if (iter != mapAlgorithms.end())
+		LOG(LogLevel::Finer) << "TODELETE map algos:";
+		for (map<string, MapAlgorithmInterface*>::iterator it = mapAlgorithms.begin(); it != mapAlgorithms.end(); it++)
 		{
-			LOG(LogLevel::Finer) << "TODELETE Playfield::Add found map algo";
-			MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
-			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
+			LOG(LogLevel::Finer) << "TODELETE          -- " << it->first;
 		}
 
-		LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType]->GetTypeName() << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
+		if (iter != mapAlgorithms.end())
+		{
+			MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
+			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
 
+			LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType]->GetTypeName() << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
+
+		}
+
+		
 		// 這邊要把map加進去
 		EffectMapperInterface* em = ep->Cast<EffectMapperInterface>();
 		em->RegisterMap(lightMap);
