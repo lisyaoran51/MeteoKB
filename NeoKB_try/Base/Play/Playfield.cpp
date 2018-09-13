@@ -110,19 +110,12 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		string processorType = ep->GetEventTypeName();
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
 
-		LOG(LogLevel::Finer) << "TODELETE map algos:";
-		for (map<string, MapAlgorithmInterface*>::iterator it = mapAlgorithms.begin(); it != mapAlgorithms.end(); it++)
-		{
-			LOG(LogLevel::Finer) << "TODELETE          -- " << it->first;
-		}
-
 		if (iter != mapAlgorithms.end())
 		{
 			MapAlgorithmInterface* mapAlgo = mapAlgorithms[processorType];
 			ep->Cast<EffectMapperInterface>()->RegisterMapAlgorithm(mapAlgo);
 
 			LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType]->GetTypeName() << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
-
 		}
 
 		

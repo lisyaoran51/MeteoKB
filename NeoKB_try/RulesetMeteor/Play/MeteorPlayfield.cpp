@@ -4,6 +4,7 @@
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/ExplodeMapAlgorithm.h"
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/FallMapAlgorithm.h"
 #include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/GlowLineMapAlgorithm.h"
+#include "../../RulesetMeteor/Scheduler/Event/Effect/Algorithm/TargetLineMapAlgorithm.h"
 #include "../../Util/Log.h"
 
 
@@ -38,11 +39,11 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	if(f->Get(FrameworkSetting::Width, &pitchCount)){}
 
 
-	// 利用map algo的名字建立map algo
+	/* 利用map algo的名字建立map algo */
 	InstanceCreator<MtoObject> &iCreator = InstanceCreator<MtoObject>::GetInstance();
 	string mapAlgoName;
 
-	// --------------------- FallEffect map algo ---------------------
+	/* --------------------- FallEffect map algo --------------------- */
 	if (m->Get(MeteorSetting::FallMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 
@@ -56,7 +57,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	AddChild(mapAlgorithms["FallEffect"]);
 	mapAlgorithms["FallEffect"]->RegisterBufferMap(bufferMap);
 
-	// --------------------- ExplodeEffect map algo ---------------------
+	/* --------------------- ExplodeEffect map algo --------------------- */
 	if (m->Get(MeteorSetting::ExplodeMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 
@@ -70,7 +71,7 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 	AddChild(mapAlgorithms["ExplodeEffect"]);
 	mapAlgorithms["ExplodeEffect"]->RegisterBufferMap(bufferMap);
 
-	// --------------------- GlowLineEffect map algo ---------------------
+	/* --------------------- GlowLineEffect map algo --------------------- */
 	if (m->Get(MeteorSetting::GlowLineMapAlgorithm, &mapAlgoName)) {
 		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
 
@@ -83,6 +84,20 @@ int MeteorPlayfield::load(FrameworkConfigManager* f, MeteorConfigManager * m)
 
 	AddChild(mapAlgorithms["GlowLineEffect"]);
 	mapAlgorithms["GlowLineEffect"]->RegisterBufferMap(bufferMap);
+
+	/* --------------------- TargetLineEffect map algo --------------------- */
+	if (m->Get(MeteorSetting::TargetLineMapAlgorithm, &mapAlgoName)) {
+		MapAlgorithm<Event>* mapAlgo = iCreator.CreateInstanceWithT<MapAlgorithm<Event>>(mapAlgoName);
+
+		mapAlgorithms["TargetLineEffect"] = mapAlgo;
+	}
+	else
+		mapAlgorithms["TargetLineEffect"] = new TargetLineMapAlgorithm();
+
+	LOG(LogLevel::Finer) << "MeteorPlayfield::load() : TargetLineMapAlgorithm [" << mapAlgorithms["TargetLineEffect"]->GetTypeName() << "] loaded.";
+
+	AddChild(mapAlgorithms["TargetLineEffect"]);
+	mapAlgorithms["TargetLineEffect"]->RegisterBufferMap(bufferMap);
 
 	return 0;
 }
