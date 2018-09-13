@@ -60,6 +60,7 @@ using namespace Meteor::Rulesets;
 #include "../RulesetMeteor/Scheduler/Event/Effect/Algorithm/ExplodeMapAlgorithm.h"
 #include "../RulesetMeteor/Scheduler/Event/Effect/Algorithm/FallMapAlgorithm.h"
 #include "../RulesetMeteor/Scheduler/Event/Effect/Algorithm/GlowLineMapAlgorithm.h"
+#include "../RulesetMeteor/Scheduler/Event/Effect/Algorithm/TargetLineMapAlgorithm.h"
 using namespace Meteor::Schedulers::Events::Effects::Algorithms;
 
 // Meteor/Sheetmusics/Patterns

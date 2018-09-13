@@ -130,6 +130,7 @@ int ProgramInitializer::Initialize()
 	iCreator.RegisterType<ExplodeMapAlgorithm>("ExplodeMapAlgorithm");
 	iCreator.RegisterType<FallMapAlgorithm>("FallMapAlgorithm");
 	iCreator.RegisterType<GlowLineMapAlgorithm>("GlowLineMapAlgorithm");
+	iCreator.RegisterType<TargetLineMapAlgorithm>("TargetLineMapAlgorithm");
 
 	// Meteor/Sheetmusics/Patterns
 	iCreator.RegisterType<MeteorPatternGenerator>("MeteorPatternGenerator");

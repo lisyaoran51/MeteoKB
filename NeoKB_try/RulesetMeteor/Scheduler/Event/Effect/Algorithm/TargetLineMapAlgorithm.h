@@ -1,5 +1,5 @@
-#ifndef FALL_MAP_ALGORITHM_H
-#define FALL_MAP_ALGORITHM_H
+#ifndef TARGETLINE_MAP_ALGORITHM_H
+#define TARGETLINE_MAP_ALGORITHM_H
 
 #include"../../../../../Base/Graphic/Map/Map.h"
 #include "../../../../../Base/Scheduler/Event/Effect/Algorithm/MapGenerateAlgorithm.h"

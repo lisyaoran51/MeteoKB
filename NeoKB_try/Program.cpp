@@ -56,6 +56,10 @@ int main(int argc, char *argv[]) {
 	mConfigManager->Async();
 	mConfigManager->Set(MeteorSetting::FallBrightness, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::FallLength, 4);
+	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight, 4);
+	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight, 2);
+	mConfigManager->Set(MeteorSetting::TargetLineBlinkSpeed, MTO_FLOAT(0.5f));
+	mConfigManager->Set(MeteorSetting::TargetLineBrightness, MTO_FLOAT(0.1f));
 	game->Cache<MeteorConfigManager>(mConfigManager);
 
 	// 1. cache session
