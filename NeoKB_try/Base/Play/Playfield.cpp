@@ -114,7 +114,8 @@ int Playfield::Add(EventProcessor<Event> * ep)
 		map<string, MapAlgorithmInterface*>::iterator iter = mapAlgorithms.find(processorType);
 		LOG(LogLevel::Finer) << "TODELETE Playfield::Add find map algo";
 
-
+		mapAlgorithms.end();
+		LOG(LogLevel::Finer) << "TODELETE Playfield::map algo end?";
 		if (iter != mapAlgorithms.end())
 		{
 			LOG(LogLevel::Finer) << "TODELETE Playfield::Add found map algo";

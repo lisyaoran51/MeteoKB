@@ -72,10 +72,7 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 	
 	/* 所有的event都要複製一個新的來用，才不會動到原本讀好的譜 */
 	/* 為什麼沒有delete?? 是不是之後要拿來當判斷點?? */
-	LOG(LogLevel::Finer) << "TODELETE MeteorPatternGenerator Generate : event start time: " << e->GetStartTime();
-
 	Event* eventClone = e->Clone();
-	LOG(LogLevel::Finer) << "TODELETE MeteorPatternGenerator Generate : event clone start time: " << eventClone->GetStartTime();
 	NoteControlPoint* note = eventClone->Cast<NoteControlPoint>();
 	StartGameEvent* start = eventClone->Cast<StartGameEvent>();
 
