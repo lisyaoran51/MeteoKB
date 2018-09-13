@@ -15,17 +15,13 @@ int TargetLineMapAlgorithm::load()
 {
 	LOG(LogLevel::Info) << "TargetLineMapAlgorithm::load() : Start loading config.";
 
-	shiftAlgo = new MapShiftAlgorithm<TargetLineEffect>(startX);
-
-
+	shiftAlgo = new MapShiftAlgorithm<TargetLineEffect>(0);
 
 
 	MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
 
 	if (!m)
 		throw runtime_error("int MeteorPlayfield::load() : MeteorConfigManager not found in cache.");
-
-
 
 
 	return load(m);
