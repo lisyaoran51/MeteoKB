@@ -61,8 +61,8 @@ namespace Algorithms{
 		MTO_FLOAT blinkInterval;		// 媒次閃爍的時間，等同於1/blinkSpeed
 		MTO_FLOAT targetLineBrightness;
 
-		MTO_FLOAT whiteKeyTargetLineHeight;
-		MTO_FLOAT blackKeyTargetLineHeight;
+		int whiteKeyTargetLineHeight;
+		int blackKeyTargetLineHeight;
 
 		/// <summary>
 		/// 把evnet的狀態轉成圖案

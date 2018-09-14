@@ -86,8 +86,6 @@ TargetLineMapGenerateAlgorithm::TargetLineMapGenerateAlgorithm(MeteorConfigManag
 	if (!m->Get(MeteorSetting::BlackKeyTargetHeight, &blackKeyTargetLineHeight))
 		throw runtime_error("int TargetLineMapGenerateAlgorithm::load() : BlackKeyTargetHeight not found in Setting.");
 	
-	LOG(LogLevel::Finest) << "TODELETE TargetLine algo : white height " << whiteKeyTargetLineHeight << ", black height " << blackKeyTargetLineHeight;
-
 	blinkInterval = 1.f / blinkSpeed;
 }
 
