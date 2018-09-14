@@ -82,13 +82,13 @@ namespace Events {
 	};
 
 	enum class EventStartType {
-		Immediate,
 		Reserved,
+		Immediate,
 	};
 
 	enum class EventLifeType {
-		Immediate,
 		Timed,
+		Immediate,
 		Infinite
 	};
 	

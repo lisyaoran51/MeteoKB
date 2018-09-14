@@ -49,8 +49,6 @@ namespace Events {
 
 		MTO_FLOAT GetTimeLeft(){ 
 
-			return event->GetLifeTime() - currentTime;
-
 			if (event->GetLifeType() == EventLifeType::Infinite)
 				return MTO_INFINITE;
 			else if (event->GetLifeType() == EventLifeType::Immediate)
