@@ -29,6 +29,9 @@ int main(int argc, char *argv[]) {
 	// 建立instance creator和sm decoder
 	ProgramInitializer::Initialize();
 
+	/* 暫時用argv來設定log level */
+	Util::logLevel = (LogLevel)atoi(argv[2]);
+
 	LOG(LogLevel::Info) << "int main(int,char*) : Create game [MeteorGame].";
 	Game* game = new MeteorGame();
 
