@@ -87,6 +87,7 @@ int TargetLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<Targ
 
 	LOG(LogLevel::Depricated) << "TargetLineMapGenerateAlgorithm::ImplementGenerate() : Generate Effect [" << em->GetStartTime() << "] on [" << em->GetCurrentTime() << "].";
 
+	LOG(LogLevel::Finest) << "TODELETE targetline generate start";
 	MTO_FLOAT currentTime = em->GetCurrentTime();
 	// MTO_FLOAT lifeTime = em->GetLifeTime();
 	MTO_FLOAT speed = em->GetSpeed();
@@ -110,6 +111,7 @@ int TargetLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<Targ
 	}(width, height, m);
 
 
+	LOG(LogLevel::Finest) << "TODELETE targetline generate config";
 	/* 畫上打擊線 */
 	MTO_FLOAT blinkTime = currentTime * blinkSpeed - floor(currentTime * blinkSpeed);
 
@@ -118,6 +120,8 @@ int TargetLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<Targ
 		blinkTime		  * 2.f * targetLineBrightness * BRIGHTNESS_MAX :
 		(1.f - blinkTime) * 2.f * targetLineBrightness * BRIGHTNESS_MAX;
 
+
+	LOG(LogLevel::Finest) << "TODELETE targetline generate draw";
 	for (int i = 0; i < width; i++) {
 		if(isWhiteKey(i))
 			m->Add(i, whiteKeyTargetLineHeight, brightness);

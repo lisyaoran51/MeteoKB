@@ -177,14 +177,11 @@ namespace Algorithms{
 		///	</summary>
 		virtual int ImplementDraw(Map* m, EffectMapper<T>* em) {
 
-			LOG(LogLevel::Finest) << "TODELETE start implement draw";
 			if (!bufferMap->IsClear())
 				bufferMap->Reset();
 
-			LOG(LogLevel::Finest) << "TODELETE start implement draw - generate";
 			genAlgo->Generate(bufferMap, em);
 
-			LOG(LogLevel::Finest) << "TODELETE start implement draw - shift";
 			shiftAlgo->Shift(bufferMap, m, em);
 
 			bufferMap->Reset();
