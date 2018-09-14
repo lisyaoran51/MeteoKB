@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 10);
 	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(16.f));
 	mConfigManager->Set(MeteorSetting::FallBrightness		, MTO_FLOAT(0.6f));
-	mConfigManager->Set(MeteorSetting::FallLength			, 4);
+	mConfigManager->Set(MeteorSetting::FallLength			, 2);
 	mConfigManager->Set(MeteorSetting::ExplodeSpeed			, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::ExplodeBrightness	, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::GlowLineSpeed		, MTO_FLOAT(0.6f));
