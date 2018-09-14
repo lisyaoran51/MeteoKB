@@ -38,7 +38,7 @@ int TargetLineMapAlgorithm::load(MeteorConfigManager * m)
 
 
 
-TargetLineMapAlgorithm::TargetLineMapAlgorithm() : RegisterType("FallMapAlgorithm"), MapAlgorithm()
+TargetLineMapAlgorithm::TargetLineMapAlgorithm() : RegisterType("TargetLineMapAlgorithm"), MapAlgorithm()
 {
 	registerLoad(bind((int(TargetLineMapAlgorithm::*)())&TargetLineMapAlgorithm::load, this));
 }
@@ -74,11 +74,20 @@ bool TargetLineMapGenerateAlgorithm::isWhiteKey(int key)
 
 TargetLineMapGenerateAlgorithm::TargetLineMapGenerateAlgorithm(MeteorConfigManager * m)
 {
-	if (m->Get(MeteorSetting::TargetLineBlinkSpeed, &blinkSpeed)) {}
-	if (m->Get(MeteorSetting::TargetLineBrightness, &targetLineBrightness)) {}
-	if (m->Get(MeteorSetting::WhiteKeyTargetHeight, &whiteKeyTargetLineHeight)) {}
-	if (m->Get(MeteorSetting::BlackKeyTargetHeight, &blackKeyTargetLineHeight)) {}
+	if (!m->Get(MeteorSetting::TargetLineBlinkSpeed, &blinkSpeed))
+		throw runtime_error("int TargetLineMapGenerateAlgorithm::load() : TargetLineBlinkSpeed not found in Setting.");
+
+	if (!m->Get(MeteorSetting::TargetLineBrightness, &targetLineBrightness))
+		throw runtime_error("int TargetLineMapGenerateAlgorithm::load() : TargetLineBrightness not found in Setting.");
+
+	if (!m->Get(MeteorSetting::WhiteKeyTargetHeight, &whiteKeyTargetLineHeight))
+		throw runtime_error("int TargetLineMapGenerateAlgorithm::load() : WhiteKeyTargetHeight not found in Setting.");
+
+	if (!m->Get(MeteorSetting::BlackKeyTargetHeight, &blackKeyTargetLineHeight))
+		throw runtime_error("int TargetLineMapGenerateAlgorithm::load() : BlackKeyTargetHeight not found in Setting.");
 	
+	LOG(LogLevel::Finest) << "TODELETE TargetLine algo : white height " << whiteKeyTargetLineHeight << ", black height " << blackKeyTargetLineHeight;
+
 	blinkInterval = 1.f / blinkSpeed;
 }
 
