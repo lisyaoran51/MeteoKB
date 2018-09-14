@@ -15,7 +15,7 @@ int TargetLineMapAlgorithm::load()
 {
 	LOG(LogLevel::Info) << "TargetLineMapAlgorithm::load() : Start loading config.";
 
-	shiftAlgo = new MapShiftAlgorithm<TargetLineEffect>(0);
+	shiftAlgo = new MapShiftAlgorithm<TargetLineEffect>(startX);
 
 
 	MeteorConfigManager* m = GetCache<MeteorConfigManager>("MeteorConfigManager");
