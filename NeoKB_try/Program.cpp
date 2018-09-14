@@ -68,8 +68,8 @@ int main(int argc, char *argv[]) {
 	mConfigManager->Set(MeteorSetting::GlowLineSpeed		, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::GlowLineDuration		, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::GlowLineBrightness	, MTO_FLOAT(0.6f));
-	mConfigManager->Set(MeteorSetting::TargetLineBlinkSpeed	, MTO_FLOAT(0.5f));
-	mConfigManager->Set(MeteorSetting::TargetLineBrightness	, MTO_FLOAT(0.1f));
+	mConfigManager->Set(MeteorSetting::TargetLineBlinkSpeed	, MTO_FLOAT(0.75f));
+	mConfigManager->Set(MeteorSetting::TargetLineBrightness	, MTO_FLOAT(0.05f));
 	game->Cache<MeteorConfigManager>(mConfigManager);
 
 
