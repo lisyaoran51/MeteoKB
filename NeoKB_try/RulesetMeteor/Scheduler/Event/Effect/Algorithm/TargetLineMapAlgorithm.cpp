@@ -131,11 +131,12 @@ int TargetLineMapGenerateAlgorithm::ImplementGenerate(Map * m, EffectMapper<Targ
 
 	LOG(LogLevel::Finest) << "TODELETE targetline generate draw at " << whiteKeyTargetLineHeight << "(white), " 
 		<< blackKeyTargetLineHeight << "(black) : with brightness " << brightness;
+	/* (width,height)才是畫面中心點，所以要從那邊開始畫 */
 	for (int i = 0; i < width; i++) {
 		if(isWhiteKey(i))
-			m->Add(i, whiteKeyTargetLineHeight, brightness);
+			m->Add(width + i, height + whiteKeyTargetLineHeight, brightness);
 		else
-			m->Add(i, blackKeyTargetLineHeight, brightness);
+			m->Add(width + i, height + blackKeyTargetLineHeight, brightness);
 	}
 
 	/* Log完成畫面 */
