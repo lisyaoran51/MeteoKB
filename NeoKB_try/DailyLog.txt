@@ -418,3 +418,51 @@
 
 9/14
 	再 Scheduler::Elapse裡面先暫時寫一段把比0小的事件刪掉的扣
+	
+	74hc595會一直抓到錯的輸入，可以的狀況是：
+	
+																bcm2835_gpio_write(CE_PIN, LOW);
+																for(int i = 7; i >= 0; i--){
+																	if(i == registerNumber){
+																		for( int j = 7; j >= 0; j--){
+																			bcm2835_gpio_write(DI_PIN, j == highBit ? HIGH : LOW);
+																			bcm2835_gpio_write(CL_PIN, LOW);
+																			bcm2835_gpio_write(CL_PIN, HIGH);
+																		}
+																	}
+																	else{
+																		for( int j = 0; j < 8; j++){
+																			bcm2835_gpio_write(DI_PIN, LOW);
+																			bcm2835_gpio_write(CL_PIN, LOW);
+																			bcm2835_gpio_write(CL_PIN, HIGH);
+																		}
+																	}
+																}
+																bcm2835_gpio_write(CE_PIN, HIGH);
+																usleep(100);
+																if(bcm2835_gpio_lev(INPUT_PIN) == HIGH)
+																	return true;
+	
+	如果在播放的thread裡印出字串，就會抓到錯的輸入，例如
+	printf("Catch! flag: %d, key: %d\n", flag, pitch-24);
+	
+9/15
+	https://www.alsa-project.org/alsa-doc/alsa-lib/_2test_2pcm_8c-example.html
+	
+9/16
+	underrun 解決
+	https://www.linuxquestions.org/questions/linux-software-2/alsa-buffer-underrun-error-548045/
+	寫出來了但還是有delay
+	
+9/17
+	psm_wait
+	http://equalarea.com/paul/alsa-audio.html
+
+	pause
+	https://bbs.csdn.net/topics/340188576
+	
+	test return
+	https://github.com/FredYeye/FRES/blob/1b2346357f646c40447d6ca977906a4e8f7b13f1/src/alsa.cpp
+	
+	busybox
+	http://descent-incoming.blogspot.com/2015/12/raspberry-pi-2-linux.html
