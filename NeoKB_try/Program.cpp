@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 	fConfigManager->Set(FrameworkSetting::Width					, 48); //нnзя
 	fConfigManager->Set(FrameworkSetting::Height				, 24);
 	fConfigManager->Set(FrameworkSetting::BlackKeyHeight		, 16);	
-	fConfigManager->Set(FrameworkSetting::TargetHeight			, 18);	// 20
+	fConfigManager->Set(FrameworkSetting::TargetHeight			, 14);	// 20
 	fConfigManager->Set(FrameworkSetting::BlackKeyTargetHeight	, 16);	// 14
 	fConfigManager->Set(FrameworkSetting::StartPitch			, 24);
 	fConfigManager->Set(FrameworkSetting::FrameRate				, 30);
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 	LOG(LogLevel::Fine) << "int main(int,char*) : Create Config Manager [MeteorConfigManager].";
 	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
 	mConfigManager->Async();
-	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 6);	// 4
+	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 10);	// 4
 	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 8);
 	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(16.f));
 	mConfigManager->Set(MeteorSetting::FallBrightness		, MTO_FLOAT(0.6f));
