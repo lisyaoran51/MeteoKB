@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 	LOG(LogLevel::Fine) << "int main(int,char*) : Create Config Manager [MeteorConfigManager].";
 	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
 	mConfigManager->Async();
-	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 19);	// 4
+	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 9);	// 4
 	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 8);
 	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(16.f));
 	mConfigManager->Set(MeteorSetting::FallBrightness		, MTO_FLOAT(0.6f));
