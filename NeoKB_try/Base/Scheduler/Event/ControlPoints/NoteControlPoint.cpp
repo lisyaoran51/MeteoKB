@@ -23,6 +23,14 @@ Pitch NoteControlPoint::GetPitch()
 	return pitch;
 }
 
+int NoteControlPoint::GetSectionIndex(){
+	return sectionIndex;
+}
+
+HandType NoteControlPoint::GetHandType(){
+	return handType;
+}
+
 bool NoteControlPoint::IsWhiteKey()
 {
 	switch (int(pitch) % 12) {

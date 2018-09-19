@@ -140,6 +140,11 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 	Pitch pitch = static_cast<Pitch>(atoi(splitLine.at(0).c_str()));
 	MTO_FLOAT time = stof(splitLine.at(1).c_str());
 	MTO_FLOAT noteLength = stof(splitLine.at(2).c_str());
+	MTO_FLOAT volume = stof(splitLine.at(3).c_str());
+	
+	int sectionIndex = atoi(splitLine.at(4).c_str());
+	int hand = atoi(splitLine.at(5).c_str());
+	
 	//MTO_FLOAT speedMultiplier = noteLength < 0 ? 100f / -noteLength : 1;
 	//
 	//TimeSignatures timeSignature = TimeSignatures.SimpleQuadruple;
@@ -154,13 +159,13 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 	//if (split.Length >= 5)
 	//    sampleBank = (SampleBank)int.Parse(split[4]);
 
-	int sampleVolume = defaultSampleVolume;
-	if (splitLine.size() >= 5)
-		sampleVolume = atoi(splitLine.at(4).c_str());
-
+	//int sampleVolume = defaultSampleVolume;
+	//if (splitLine.size() >= 5)
+	//	sampleVolume = atoi(splitLine.at(4).c_str());
+    //
 	bool timingChange = true;
-	if (splitLine.size() >= 6)
-		timingChange = atoi(splitLine.at(5).c_str()) == 1;
+	//if (splitLine.size() >= 6)
+	//	timingChange = atoi(splitLine.at(5).c_str()) == 1;
 
 	//bool kiaiMode = false;
 	//bool omitFirstBarSignature = false;

@@ -8,9 +8,15 @@ namespace Schedulers {
 namespace Events {
 namespace ControlPoints {
 
+	enum class HandType;
+
 	class NoteControlPoint : public ControlPoint {
 
 		Pitch pitch;
+		
+		int sectionIndex;
+		
+		HandType handType;
 
 	public:
 
@@ -22,6 +28,10 @@ namespace ControlPoints {
 		virtual string GetTypeName();
 
 		Pitch GetPitch();
+		
+		int GetSectionIndex();
+		
+		HandType GetHandType();
 
 		bool IsWhiteKey();
 
@@ -29,7 +39,16 @@ namespace ControlPoints {
 
 	};
 
-
+	
+	enum class HandType{
+		None,
+		Left,
+		Right,
+		HiddenNone,
+		HiddenLeft,
+		HiddenRight
+	}
+	
 }}}}
 
 
