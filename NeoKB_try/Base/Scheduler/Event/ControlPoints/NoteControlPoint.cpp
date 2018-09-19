@@ -73,5 +73,9 @@ bool NoteControlPoint::IsWhiteKey()
 
 Event* NoteControlPoint::Clone()
 {
-	return new NoteControlPoint(pitch, startTime, lifeTime);
+	NoteControlPoint* newNoteControlPoint = new NoteControlPoint(pitch, startTime, lifeTime);
+	newNoteControlPoint->SetVolume(volume);
+	newNoteControlPoint->SetSectionIndex(sectionIndex);
+	newNoteControlPoint->SetHandType(handType);
+	return newNoteControlPoint;
 }
