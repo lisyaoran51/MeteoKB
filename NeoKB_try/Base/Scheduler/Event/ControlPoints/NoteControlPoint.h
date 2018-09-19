@@ -47,7 +47,7 @@ namespace ControlPoints {
 		HiddenNone,
 		HiddenLeft,
 		HiddenRight
-	}
+	};
 	
 }}}}
 
