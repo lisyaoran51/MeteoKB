@@ -140,10 +140,10 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 	Pitch pitch = static_cast<Pitch>(atoi(splitLine.at(0).c_str()));
 	MTO_FLOAT time = stof(splitLine.at(1).c_str());
 	MTO_FLOAT noteLength = stof(splitLine.at(2).c_str());
-	MTO_FLOAT volume = stof(splitLine.at(3).c_str());
 	
-	int sectionIndex = atoi(splitLine.at(4).c_str());
-	int hand = atoi(splitLine.at(5).c_str());
+	MTO_FLOAT volume 	= splitLine.size() >= 3 ? stof(splitLine.at(3).c_str()) : 0;
+	int sectionIndex 	= splitLine.size() >= 4 ? atoi(splitLine.at(4).c_str()) : 0;
+	int hand 			= splitLine.size() >= 5 ? atoi(splitLine.at(5).c_str()) : 0;
 	
 	//MTO_FLOAT speedMultiplier = noteLength < 0 ? 100f / -noteLength : 1;
 	//
@@ -185,11 +185,16 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 
 	if (timingChange) {
 
-		sm->GetEvents()->push_back(new NoteControlPoint(
+		NoteControlPoint* newNoteControlPoint = new NoteControlPoint(
 			pitch,
 			time,
 			noteLength
-		));
+		);
+		newNoteControlPoint->
+		
+		sm->GetEvents()->push_back();
+		
+		
 		
 	}
 

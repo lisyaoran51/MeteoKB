@@ -23,12 +23,31 @@ Pitch NoteControlPoint::GetPitch()
 	return pitch;
 }
 
+MTO_FLOAT NoteControlPoint::GetVolume(){
+	return volume;
+}
+
+int NoteControlPoint::SetVolume(MTO_FLOAT v){
+	volume = v;
+	return 0;
+}
+
 int NoteControlPoint::GetSectionIndex(){
 	return sectionIndex;
 }
 
+int NoteControlPoint::SetSectionIndex(int sI){
+	sectionIndex = sI;
+	return 0;
+}
+
 HandType NoteControlPoint::GetHandType(){
 	return handType;
+}
+
+int NoteControlPoint::SetHandType(HandType h){
+	handType = h;
+	return 0;
 }
 
 bool NoteControlPoint::IsWhiteKey()

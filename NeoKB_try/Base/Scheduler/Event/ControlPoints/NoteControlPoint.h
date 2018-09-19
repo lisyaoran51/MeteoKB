@@ -14,6 +14,8 @@ namespace ControlPoints {
 
 		Pitch pitch;
 		
+		MTO_FLOAT volume;
+		
 		int sectionIndex;
 		
 		HandType handType;
@@ -29,9 +31,14 @@ namespace ControlPoints {
 
 		Pitch GetPitch();
 		
+		MTO_FLOAT GetVolume();
+		int SetVolume(MTO_FLOAT v);
+		
 		int GetSectionIndex();
+		int SetSectionIndex(int sI);
 		
 		HandType GetHandType();
+		int SetHandType(HandType h);
 
 		bool IsWhiteKey();
 
