@@ -141,9 +141,9 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 	MTO_FLOAT time = stof(splitLine.at(1).c_str());
 	MTO_FLOAT noteLength = stof(splitLine.at(2).c_str());
 	
-	MTO_FLOAT volume 	= splitLine.size() >= 3 ? stof(splitLine.at(3).c_str()) : 0;
-	int sectionIndex 	= splitLine.size() >= 4 ? atoi(splitLine.at(4).c_str()) : 0;
-	int hand 			= splitLine.size() >= 5 ? atoi(splitLine.at(5).c_str()) : 0 ;
+	MTO_FLOAT volume 	= splitLine.size() > 3 ? stof(splitLine.at(3).c_str()) : 0;
+	int sectionIndex 	= splitLine.size() > 4 ? atoi(splitLine.at(4).c_str()) : 0;
+	int hand 			= splitLine.size() > 5 ? atoi(splitLine.at(5).c_str()) : 0 ;
 	
 	//MTO_FLOAT speedMultiplier = noteLength < 0 ? 100f / -noteLength : 1;
 	//
