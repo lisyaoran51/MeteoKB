@@ -143,7 +143,7 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 	
 	MTO_FLOAT volume 	= splitLine.size() >= 3 ? stof(splitLine.at(3).c_str()) : 0;
 	int sectionIndex 	= splitLine.size() >= 4 ? atoi(splitLine.at(4).c_str()) : 0;
-	int hand 			= splitLine.size() >= 5 ? atoi(splitLine.at(5).c_str()) : 0;
+	int hand 			= splitLine.size() >= 5 ? atoi(splitLine.at(5).c_str()) : 0 ;
 	
 	//MTO_FLOAT speedMultiplier = noteLength < 0 ? 100f / -noteLength : 1;
 	//
@@ -190,12 +190,12 @@ int SimpleSmDecoder::handleNoteControlPoints(Sm<Event>* sm, string & line)
 			time,
 			noteLength
 		);
-		newNoteControlPoint->
 		
-		sm->GetEvents()->push_back();
+		newNoteControlPoint->SetVolume(volume);
+		newNoteControlPoint->SetSectionIndex(sectionIndex);
+		newNoteControlPoint->SetHandType(static_cast<HandType>(hand));
 		
-		
-		
+		sm->GetEvents()->push_back(newNoteControlPoint);
 	}
 
 	//if (speedMultiplier != difficultyPoint.SpeedMultiplier) {
