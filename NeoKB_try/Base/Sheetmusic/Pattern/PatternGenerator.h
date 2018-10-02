@@ -51,6 +51,11 @@ namespace Patterns {
 
 		int CleanPatterns();
 
+		/// <summary>
+		/// 之後要移到post processor裡面
+		/// </summary>
+		virtual int CreateOtherEvent(vector<Event*>* es);
+
 	protected:
 
 		int width;

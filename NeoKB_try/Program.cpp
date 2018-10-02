@@ -70,6 +70,8 @@ int main(int argc, char *argv[]) {
 	mConfigManager->Set(MeteorSetting::GlowLineBrightness	, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::TargetLineBlinkSpeed	, MTO_FLOAT(0.75f));
 	mConfigManager->Set(MeteorSetting::TargetLineBrightness	, MTO_FLOAT(0.05f));
+	if(argc >= 3)
+	mConfigManager->Set(MeteorSetting::RestartSection		, atoi(argv[3]));
 	game->Cache<MeteorConfigManager>(mConfigManager);
 
 

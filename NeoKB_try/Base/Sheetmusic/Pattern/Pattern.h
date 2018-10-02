@@ -22,13 +22,23 @@ namespace Patterns {
 
 	public:
 
+		Pattern();
+
+		Pattern(Event* oEvent);
+
 		int Add(Event* e);
 
 		vector<Event*>* GetEvents();
 
+		int SetOriginalEvent(Event* e);
+
+		Event* GetOriginalEvent();
+
 	protected:
 
 		vector<Event*> events;
+
+		Event* originalEvent = NULL;
 
 	};
 

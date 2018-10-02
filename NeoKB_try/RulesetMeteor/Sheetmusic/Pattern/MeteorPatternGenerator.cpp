@@ -6,6 +6,9 @@
 #include "../../Scheduler/Event/Effect/GlowLineEffect.h"
 #include "../../Scheduler/Event/Effect/TargetLineEffect.h"
 #include "../../../Base/Scheduler/Event/GameEvents/StartGameEvent.h"
+#include "../../../Base/Scheduler/Event/SystemEvents/SystemEvent.h"
+#include "../../../Base/Scheduler/Event/SystemEvents/StopSystemEvent.h"
+
 
 
 using namespace Meteor::Sheetmusics::Patterns;
@@ -14,6 +17,7 @@ using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers::Events::ControlPoints;
 using namespace Meteor::Schedulers::Events::Effects;
 using namespace Base::Schedulers::Events::GameEvents;
+using namespace Base::Schedulers::Events::SystemEvents;
 
 
 
@@ -57,6 +61,9 @@ int MeteorPatternGenerator::load(MeteorConfigManager * mcf)
 
 	if (!mcf->Get(MeteorSetting::TargetLineBlinkSpeed, &targetLineBlinkSpeed))
 		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : TargetLineBlinkSpeed not found in Setting.");
+	
+	if (!mcf->Get(MeteorSetting::RestartSection, &restartSection))
+		throw runtime_error("int MeteorPatternGenerator::load(MeteorConfigManager*) : RestartSection not found in Setting.");
 
 
 	return 0;
@@ -93,10 +100,40 @@ Pattern* MeteorPatternGenerator::Generate(vector<Event*>* es, Event * e)
 
 }
 
+int MeteorPatternGenerator::CreateOtherEvent(vector<Event*>* es)
+{
+	if (restartSection == 0)
+		return -1;
+
+	MTO_FLOAT sectionStartTime = 99999;
+	Pattern* sectionFirstPattern = NULL;
+
+	for (int i = 0; i < patterns.size(); i++) {
+		Event* e = patterns.at(i)->GetOriginalEvent();
+		
+		/* 抓小節的開始時間 */
+		if (e)
+		if (e->Cast<NoteControlPoint>())
+		if (e->Cast<NoteControlPoint>()->GetSectionIndex() == restartSection)
+		if (e->Cast<NoteControlPoint>()->GetStartTime() < sectionStartTime) {
+			
+			sectionFirstPattern = patterns.at(i);
+			sectionStartTime = e->Cast<NoteControlPoint>()->GetStartTime();
+
+		}
+	}
+
+	SystemEvent* systemEvent = new StopSystemEvent(sectionStartTime, -1);
+
+	es->push_back(systemEvent);
+
+	return 0;
+}
+
 Pattern * MeteorPatternGenerator::generateNoteControlPoint(vector<Event*>* es, NoteControlPoint * note)
 {
 	/* 在pattern generator消滅實消滅，或是converter跑完消滅 */
-	Pattern* pattern = new Pattern();
+	Pattern* pattern = new Pattern(note);
 
 	LOG(LogLevel::Finer) << "int MeteorSmConverter::generateNoteControlPoint(vector<Event*>*, Event*) : Start converting [" << static_cast<int>(note->GetPitch()) << "," << note->GetStartTime() << "] to pattern...";
 

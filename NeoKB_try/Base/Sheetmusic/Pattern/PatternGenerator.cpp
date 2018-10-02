@@ -49,3 +49,8 @@ int PatternGenerator::CleanPatterns()
 	}
 	return 0;
 }
+
+int PatternGenerator::CreateOtherEvent(vector<Event*>* es)
+{
+	return -1;
+}

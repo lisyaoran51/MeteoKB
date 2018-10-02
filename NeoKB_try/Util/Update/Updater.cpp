@@ -55,7 +55,7 @@ void Updater::Update()
 		update(elapsedTime);
 		return;
 	}
-	else {
+	else if(updateState == UpdateState::NotStarted){
 
 		LOG(LogLevel::Finest) << "Updater::Update() : Update start.";
 
@@ -65,4 +65,16 @@ void Updater::Update()
 
 		update(-1);
 	}
+	else if (updateState == UpdateState::Stopped) {
+		// TODO: 加入playfield收取從外面來的操作，來解除stop或pause狀態
+		//		 或是節數這個遊戲session，回到還未開始遊戲的狀態
+		
+		/* 放入節數遊戲的動作 */
+	}
+}
+
+int Updater::SetUpdateState(UpdateState uState)
+{
+	updateState = uState;
+	return 0;
 }

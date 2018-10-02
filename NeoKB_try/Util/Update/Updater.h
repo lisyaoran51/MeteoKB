@@ -51,6 +51,8 @@ namespace Update {
 		// int RemoveTask(MTO_FUNC_POINTER t);
 
 		void Update();
+
+		int SetUpdateState(UpdateState uState);
 	};
 
 

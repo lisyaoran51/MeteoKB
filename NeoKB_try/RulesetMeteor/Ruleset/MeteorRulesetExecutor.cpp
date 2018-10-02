@@ -10,9 +10,12 @@
 #include "../Scheduler/Event/Effect/ExplodeEffectMapper.h"
 #include "../Scheduler/Event/Effect/GlowLineEffectMapper.h"
 #include "../Scheduler/Event/Effect/TargetLineEffectMapper.h"
+#include "../../Base/Scheduler/Event/SystemEvents/SystemEventHandler.h"
+
 
 using namespace Meteor::Rulesets;
 using namespace Base::Schedulers::Events;
+using namespace Base::Schedulers::Events::SystemEvents;
 using namespace Base::Sheetmusics;
 using namespace Meteor::Sheetmusics;
 using namespace Meteor::Play;
@@ -40,10 +43,11 @@ int MeteorRulesetExecutor::load()
 MeteorRulesetExecutor::MeteorRulesetExecutor(): RegisterType("MeteorRulesetExecutor"), RulesetExecutor()
 {
 	// 如果要自定效果，要直接從config那裡改map algo，這邊不能動。
-	eventProcessorTable["FallEffect"] = "FallEffectMapper";
-	eventProcessorTable["ExplodeEffect"] = "ExplodeEffectMapper";
-	eventProcessorTable["GlowLineEffect"] = "GlowLineEffectMapper";
-	eventProcessorTable["TargetLineEffect"] = "TargetLineEffectMapper";
+	eventProcessorTable["FallEffect"		] = "FallEffectMapper";
+	eventProcessorTable["ExplodeEffect"		] = "ExplodeEffectMapper";
+	eventProcessorTable["GlowLineEffect"	] = "GlowLineEffectMapper";
+	eventProcessorTable["TargetLineEffect"	] = "TargetLineEffectMapper";
+	eventProcessorTable["StopSystemEvent"	] = "SystemEventHandler";
 
 	// 註冊private load (c++才需要)
 	registerLoad(bind(static_cast<int(MeteorRulesetExecutor::*)(void)>(&MeteorRulesetExecutor::load), this));
@@ -103,6 +107,10 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 		int width = playfield->GetWidth();
 		int height = playfield->GetHeight();
 		return (new TargetLineEffectMapper(width, height))->RegisterEvent(e);
+	}
+	else if (processorType == "SystemEventHandler") {
+		// TODO: 在這邊把歌曲名稱擺進去
+		return (new SystemEventHandler<SystemEvent>())->RegisterEvent(e);
 	}
 
 	throw runtime_error("MeteorRulesetExecutor::getEventProcessor(Event*) : No matched processor type.");

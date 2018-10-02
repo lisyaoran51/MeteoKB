@@ -46,6 +46,11 @@ namespace Patterns {
 
 		virtual Pattern* Generate(vector<Event*>* es, Event * e);
 
+		/// <summary>
+		/// 之後要移到post processor裡面，在sm converter裡面呼叫
+		/// </summary>
+		virtual int CreateOtherEvent(vector<Event*>* es);
+
 	protected:
 
 		MTO_FLOAT fallSpeed = 0;
@@ -57,7 +62,7 @@ namespace Patterns {
 		MTO_FLOAT glowLineDuration = 0;
 		MTO_FLOAT glowLineBrightness = 0;
 		MTO_FLOAT targetLineBlinkSpeed = 0;
-
+		int restartSection = 0;
 
 		Pattern* generateNoteControlPoint(vector<Event*>* es, NoteControlPoint* note);
 		Pattern* generateStartGameEvent(vector<Event*>* es, StartGameEvent* start);

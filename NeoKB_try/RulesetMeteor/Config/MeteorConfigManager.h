@@ -49,7 +49,9 @@ namespace Config{
 		GlowLineBrightness,
 
 		TargetLineBlinkSpeed,
-		TargetLineBrightness
+		TargetLineBrightness,
+
+		RestartSection			// 如果要玩練習版本，可以在這裡輸入到第幾小節要重新播放
 
 	};
 

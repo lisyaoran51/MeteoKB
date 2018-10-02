@@ -16,7 +16,7 @@ MeteorSmConverter::MeteorSmConverter(PatternGenerator * pg): SmConverter(pg)
 {
 }
 
-Sm<Event>* Meteor::Sheetmusics::MeteorSmConverter::Convert(Sm<Event>* s)
+Sm<Event>* MeteorSmConverter::Convert(Sm<Event>* s)
 {
 	Sm<Event>* convertedSm = SmConverter::Convert(s);
 
@@ -34,6 +34,7 @@ Sm<Event>* Meteor::Sheetmusics::MeteorSmConverter::Convert(Sm<Event>* s)
 	}
 
 	convertedEvent->clear();
+
 	delete convertedEvent;
 
 	/* [結束] 加入開始特效，包括打擊線... */

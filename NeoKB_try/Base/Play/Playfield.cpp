@@ -118,7 +118,6 @@ int Playfield::Add(EventProcessor<Event> * ep)
 			LOG(LogLevel::Finer) << "Playfield::Add(EventProcessor<Event>*) : Register [" << mapAlgorithms[processorType]->GetTypeName() << "] to mapper [" << processorType << "] on [" << ep->GetStartTime() << "].";
 		}
 
-		
 		// 這邊要把map加進去
 		EffectMapperInterface* em = ep->Cast<EffectMapperInterface>();
 		em->RegisterMap(lightMap);

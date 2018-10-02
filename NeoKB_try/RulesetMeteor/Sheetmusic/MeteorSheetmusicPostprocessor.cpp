@@ -4,14 +4,14 @@
 
 
 using namespace Meteor::Config;
+using namespace Meteor::Sheetmusics;
 
 
-
-Meteor::Sheetmusics::MeteorSmPostprocessor::MeteorSmPostprocessor() 
+MeteorSmPostprocessor::MeteorSmPostprocessor() 
 {
 }
 
-Sm<Event>* Meteor::Sheetmusics::MeteorSmPostprocessor::postprocess(Sm<Event>* s)
+Sm<Event>* MeteorSmPostprocessor::postprocess(Sm<Event>* s)
 {
-	return nullptr;
+	return s;
 }

@@ -25,5 +25,7 @@ int MeteorConfigManager::InitializeDefault()
 	Set(MeteorSetting::GlowLineSpeed, MTO_FLOAT(1.f));
 	Set(MeteorSetting::GlowLineBrightness, MTO_FLOAT(1.f));
 	Set(MeteorSetting::GlowLineDuration, MTO_FLOAT(1.f));
+
+	Set(MeteorSetting::RestartSection, 0);
 	return 0;
 }

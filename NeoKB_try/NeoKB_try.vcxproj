@@ -39,6 +39,9 @@
     <ClCompile Include="Base\Scheduler\Event\EventProcessorMaster.cpp" />
     <ClCompile Include="Base\Scheduler\Event\GameEvents\GameEvent.cpp" />
     <ClCompile Include="Base\Scheduler\Event\GameEvents\StartGameEvent.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\SystemEvents\StopSystemEvent.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\SystemEvents\SystemEvent.cpp" />
+    <ClCompile Include="Base\Scheduler\Event\SystemEvents\SystemEventHandler.cpp" />
     <ClCompile Include="Base\Scheduler\Scheduler.cpp" />
     <ClCompile Include="Base\Sheetmusic\Format\SimpleSmDecoder.cpp" />
     <ClCompile Include="Base\Sheetmusic\Format\SmDecoder.cpp" />
@@ -120,6 +123,10 @@
     <ClInclude Include="Base\Scheduler\Event\EventProcessorMaster.h" />
     <ClInclude Include="Base\Scheduler\Event\GameEvents\GameEvent.h" />
     <ClInclude Include="Base\Scheduler\Event\GameEvents\StartGameEvent.h" />
+    <ClInclude Include="Base\Scheduler\Event\GameEvents\StopGameEvent.h" />
+    <ClInclude Include="Base\Scheduler\Event\SystemEvents\StopSystemEvent.h" />
+    <ClInclude Include="Base\Scheduler\Event\SystemEvents\SystemEvent.h" />
+    <ClInclude Include="Base\Scheduler\Event\SystemEvents\SystemEventHandler.h" />
     <ClInclude Include="Base\Scheduler\Scheduler.h" />
     <ClInclude Include="Base\Sheetmusic\Format\Parser\EventParser.h" />
     <ClInclude Include="Base\Sheetmusic\Format\SimpleSmDecoder.h" />

@@ -466,3 +466,10 @@
 	
 	busybox
 	http://descent-incoming.blogspot.com/2015/12/raspberry-pi-2-linux.html
+
+9/28
+	sheetmusic convertet沒有辦法載入設定，而他的建立者smconverter又還沒有讀完所有設定，就會先建立初sm converter。
+	
+	解決方法：把smconverter的所有工做分割成幾個子工作，各設計一個像pattern generator的東西去跑他，然後擺進去sm converter裡面。
+
+	暫時解法：先把讀到的資料塞到pattern generator裡面，先叫pattern generator來做
