@@ -473,3 +473,6 @@
 	解決方法：把smconverter的所有工做分割成幾個子工作，各設計一個像pattern generator的東西去跑他，然後擺進去sm converter裡面。
 
 	暫時解法：先把讀到的資料塞到pattern generator裡面，先叫pattern generator來做
+
+10/3
+	計易遊戲模式
