@@ -1,5 +1,6 @@
 VPATH=Base:Base/Config:Base/Graphic:Base/Graphic/Map:Base/Graphic/Renderer:Base/Play:Base/Ruleset:\
 Base/Scheduler:Base/Scheduler/Event:Base/Scheduler/Event/ControlPoints:Base/Scheduler/Event/GameEvents:Base/Scheduler/Event/Effect:\
+Base/Scheduler:Base/Scheduler/Event/GameEvents:Base/Scheduler:Base/Scheduler/Event/SystemEvents:\
 Base/Scheduler/Event/Effect/Algorithm:\
 Base/Sheetmusic:Base/Sheetmusic/Format:Base/Sheetmusic/IO:Base/Sheetmusic/Pattern:\
 Devices:Devices/Graphic/Renderers:Devices/LedDriver:\
@@ -12,6 +13,7 @@ Util:Util/Hierachal:Util/Update
 
 INCLUDE = -IBase -IBase/Config -IBase/Graphic -IBase/Graphic/Map -IBase/Graphic/Renderer -IBase/Play -IBase/Ruleset \
 -IBase/Scheduler -IBase/Scheduler/Event -IBase/Scheduler/Event/ControlPoints -IBase/Scheduler/Event/GameEvents -IBase/Scheduler/Event/Effect \
+-IBase/Scheduler/Event/GameEvents -IBase/Scheduler/Event/SystemEvents \
 -IBase/Sheetmusic -IBase/Sheetmusic/Pattern -IBase/Sheetmusic/IO -IBase/Sheetmusic/Format \
 -IRulesetMeteor -IRulesetMeteor/Config -IRulesetMeteor/Graphic -IRulesetMeteor/Graphic/Renderer \
 -IRulesetMeteor/Play -IRulesetMeteor/Scheduler/Event/Effect -IRulesetMeteor/Scheduler/Event/Effect/Algorithm \
@@ -37,6 +39,7 @@ FrameworkConfigManager.o \
 Map.o renderer.o \
 Player.o Playfield.o Session.o Ruleset.o RulesetInfo.o \
 Scheduler.o Event.o EventProcessorMaster.o GameEvent.o StartGameEvent.o ControlPoint.o NoteControlPoint.o Effect.o \
+SystemEvent.o StopSystemEvent.o SystemEventHandler.o
 SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
 SmDecoder.o SimpleSmDecoder.o FileReader.o Pattern.o PatternGenerator.o \
 WS2812v10Renderer.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o \

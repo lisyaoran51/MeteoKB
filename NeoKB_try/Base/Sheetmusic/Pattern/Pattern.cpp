@@ -28,7 +28,7 @@ int Pattern::SetOriginalEvent(Event * e)
 	return 0;
 }
 
-const Event * Pattern::GetOriginalEvent()
+Event * Pattern::GetOriginalEvent()
 {
 	return originalEvent;
 }
