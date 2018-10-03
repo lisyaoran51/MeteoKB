@@ -25,8 +25,10 @@ WorkingSm::~WorkingSm()
 
 Sm<Event>* WorkingSm::GetSm()
 {
-	if (sm)
+	if (sm) {
+		LOG(LogLevel::Fine) << "Sm<Event>* WorkingSm::GetSm() : retrieving existing sm ...";
 		return sm;
+	}
 
 	LOG(LogLevel::Fine) << "Sm<Event>* WorkingSm::GetSm() : creating Sm ...";
 	sm = createSm();

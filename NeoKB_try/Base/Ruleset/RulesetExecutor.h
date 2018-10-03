@@ -109,6 +109,7 @@ namespace Rulesets {
 			SmConverter* converter = createSmConverter(pg);
 			SmPostprocessor* postprocessor = createSmPostprocessor();
 
+
 			LOG(LogLevel::Fine) << "RulesetExecutor::load : Converting sm ...";
 			sm = converter->Convert(workingSm->GetSm());
 			sm = postprocessor->postprocess(sm);
