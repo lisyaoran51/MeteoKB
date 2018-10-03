@@ -15,6 +15,11 @@ namespace SystemEvents {
 	class SystemEvent : public Event {
 
 	public:
+	
+		/// <summary>
+		/// ¿À¨d≈ﬁøË•Œ
+		/// </summary>
+		SystemEvent();
 
 		SystemEvent(MTO_FLOAT s, MTO_FLOAT l);
 

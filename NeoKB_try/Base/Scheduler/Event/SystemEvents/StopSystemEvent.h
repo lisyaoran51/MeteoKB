@@ -14,7 +14,12 @@ namespace SystemEvents {
 	class StopSystemEvent : public SystemEvent {
 
 	public:
-
+		
+		/// <summary>
+		/// ¿À¨d≈ﬁøË•Œ
+		/// </summary>
+		StopSystemEvent();
+		
 		StopSystemEvent(MTO_FLOAT s, MTO_FLOAT l);
 
 		virtual SystemEventType GetSystemEventType();
