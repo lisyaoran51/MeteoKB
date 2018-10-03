@@ -18,6 +18,7 @@ MeteorSmConverter::MeteorSmConverter(PatternGenerator * pg): SmConverter(pg)
 
 Sm<Event>* MeteorSmConverter::Convert(Sm<Event>* s)
 {
+	LOG(LogLevel::Fine) << "MeteorSmConverter::Convert(Sm<Event>*) : Start converting sheetmusic...";
 	Sm<Event>* convertedSm = SmConverter::Convert(s);
 
 	/* 加入開始特效，包括打擊線... */
