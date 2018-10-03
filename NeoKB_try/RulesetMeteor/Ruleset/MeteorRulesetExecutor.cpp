@@ -110,7 +110,7 @@ EventProcessor<Event>* MeteorRulesetExecutor::getEventProcessor(Event * e)
 	}
 	else if (processorType == "SystemEventHandler") {
 		// TODO: 在這邊把歌曲名稱擺進去
-		return (new SystemEventHandler<SystemEvent>())->RegisterEvent(e);
+		return (new SystemEventHandler<StopSystemEvent>())->RegisterEvent(e);
 	}
 
 	throw runtime_error("MeteorRulesetExecutor::getEventProcessor(Event*) : No matched processor type.");
