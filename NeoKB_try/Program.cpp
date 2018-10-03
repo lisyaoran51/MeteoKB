@@ -24,7 +24,7 @@ void Aplay(){
 
 int main(int argc, char *argv[]) {
 
-	LOG(LogLevel::Info) << "int main(int,char*) : Program start.";
+	LOG(LogLevel::Info) << "int main(int,char*) : Program start. " << argc;
 
 	// «Ø¥ßinstance creator©Msm decoder
 	ProgramInitializer::Initialize();

@@ -39,7 +39,7 @@ FrameworkConfigManager.o \
 Map.o renderer.o \
 Player.o Playfield.o Session.o Ruleset.o RulesetInfo.o \
 Scheduler.o Event.o EventProcessorMaster.o GameEvent.o StartGameEvent.o ControlPoint.o NoteControlPoint.o Effect.o \
-SystemEvent.o StopSystemEvent.o SystemEventHandler.o
+SystemEvent.o StopSystemEvent.o SystemEventHandler.o \
 SheetmusicConverter.o SheetmusicManager.o SheetmusicMetadata.o SheetmusicPostprocessor.o WorkingSheetmusic.o \
 SmDecoder.o SimpleSmDecoder.o FileReader.o Pattern.o PatternGenerator.o \
 WS2812v10Renderer.o dma.o pwm.o ws2811.o mailbox.o pcm.o rpihw.o \
