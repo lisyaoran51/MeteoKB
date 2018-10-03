@@ -7,7 +7,8 @@
 #include "SystemEvent.h"
 #include "../../Scheduler.h"
 #include <stdexcept>
-
+ #include <unistd.h>
+ 
 
 using namespace Base::Schedulers::Events;
 using namespace Base::Schedulers;
@@ -53,8 +54,8 @@ namespace SystemEvents {
 
 		virtual int Elapse(MTO_FLOAT elapsedTime) {
 
-			if (!scheduler)
-				throw runtime_error("int SystemEventHandler::Elapse() : no scheduler registered!");
+			//if (!scheduler)
+			//	throw runtime_error("int SystemEventHandler::Elapse() : no scheduler registered!");
 
 			if (GetSystemEvent()->GetSystemEventType() == SystemEventType::Stop) {
 
