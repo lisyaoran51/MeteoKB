@@ -1,8 +1,8 @@
 simple file format v0
 [General]
-AudioFilename:casual.mp3
+AudioFilename:casual_mem.mp3
 [Metadata]
-Title:casual
+Title:casual_mem
 [Difficulty]
 [NoteControlPoints]
 46,0.418,-1,-1,0,0

@@ -37,6 +37,8 @@ int Player::load(FrameworkConfigManager* f)
 	else
 		workingSm = s->GetWorkingSm();					// 這個寫法之後應該要改掉
 	
+	LOG(LogLevel::Finer) << "Player::load : get working sm [" << (int)workingSm << "]";
+
 	/***
 	Sm<Event>* sm = workingSm->GetSm();
 	 
