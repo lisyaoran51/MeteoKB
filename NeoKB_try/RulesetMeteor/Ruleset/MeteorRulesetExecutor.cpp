@@ -11,6 +11,7 @@
 #include "../Scheduler/Event/Effect/GlowLineEffectMapper.h"
 #include "../Scheduler/Event/Effect/TargetLineEffectMapper.h"
 #include "../../Base/Scheduler/Event/SystemEvents/SystemEventHandler.h"
+#include "../../Base/Scheduler/Event/SystemEvents/StopSystemEvent.h"
 
 
 using namespace Meteor::Rulesets;
