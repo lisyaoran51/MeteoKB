@@ -98,8 +98,12 @@ namespace Algorithms{
 				bufferMap = b;
 				return 0;
 			}
-			else
+			else {
+				LOG(LogLevel::Error) << "MapAlgorithm::RegisterBufferMap() : Invalid size buffer map (" << b->GetWidth() << ", " << 
+					b->GetHeight() << ") not match algo size (" << width << ", " << height << ")";
+
 				throw invalid_argument("MapAlgorithm::RegisterBufferMap : Invalid size buffer map");
+			}
 			// TODO: debug Log
 			return -1;
 		}
