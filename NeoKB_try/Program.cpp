@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 	fConfigManager->Set(FrameworkSetting::HardwareVersion		, 10);
 	fConfigManager->Set(FrameworkSetting::Width					, 48); //要改
 	fConfigManager->Set(FrameworkSetting::Height				, 24);
-	fConfigManager->Set(FrameworkSetting::BlackKeyHeight		, 16);	
+	fConfigManager->Set(FrameworkSetting::BlackKeyHeight		, 24);	
 	fConfigManager->Set(FrameworkSetting::TargetHeight			, 20);	// 低20		// 高15
 	fConfigManager->Set(FrameworkSetting::BlackKeyTargetHeight	, 18);	// 黑高16	// 黑低18
 	fConfigManager->Set(FrameworkSetting::StartPitch			, 36);	// 48鍵24	
