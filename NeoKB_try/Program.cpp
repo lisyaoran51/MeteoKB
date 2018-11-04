@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 	fConfigManager->Set(FrameworkSetting::Height				, 24);
 	fConfigManager->Set(FrameworkSetting::BlackKeyHeight		, 24);	
 	fConfigManager->Set(FrameworkSetting::TargetHeight			, 20);	// 低20		// 高15
-	fConfigManager->Set(FrameworkSetting::BlackKeyTargetHeight	, 18);	// 黑高16	// 黑低18
+	fConfigManager->Set(FrameworkSetting::BlackKeyTargetHeight	, 20);	// 黑高16	// 黑低20
 	fConfigManager->Set(FrameworkSetting::StartPitch			, 36);	// 48鍵24	
 	fConfigManager->Set(FrameworkSetting::FrameRate				, 30);
 	game->Cache<FrameworkConfigManager>(fConfigManager);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 	MeteorConfigManager* mConfigManager = new MeteorConfigManager();
 	mConfigManager->Async();
 	mConfigManager->Set(MeteorSetting::WhiteKeyTargetHeight	, 4);	// 低4	  高9
-	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 6);	// 黑高8  黑低6
+	mConfigManager->Set(MeteorSetting::BlackKeyTargetHeight	, 4);	// 黑高8  黑低4
 	mConfigManager->Set(MeteorSetting::FallSpeed			, MTO_FLOAT(16.f));
 	mConfigManager->Set(MeteorSetting::FallBrightness		, MTO_FLOAT(0.6f));
 	mConfigManager->Set(MeteorSetting::FallLength			, 1);
